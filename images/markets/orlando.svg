@@ -1,0 +1,10 @@
+<svg width="800" height="900" viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orlando city and wheel illustration">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A3B3C3"/><stop offset="1" stop-color="#2A4766"/></linearGradient></defs>
+<rect width="800" height="900" fill="url(#g)"/>
+<rect y="630" width="800" height="270" fill="#1A3553"/>
+<circle cx="620" cy="350" r="120" fill="none" stroke="#E7EEF6" stroke-width="10" opacity=".6"/>
+<line x1="620" y1="230" x2="620" y2="470" stroke="#E7EEF6" opacity=".45"/>
+<line x1="500" y1="350" x2="740" y2="350" stroke="#E7EEF6" opacity=".45"/>
+<rect x="80" y="330" width="110" height="300" fill="#2C5276"/><rect x="220" y="250" width="130" height="380" fill="#365D81"/>
+<rect x="380" y="280" width="90" height="350" fill="#274B70"/>
+</svg>
