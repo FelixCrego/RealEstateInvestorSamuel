@@ -208,10 +208,62 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   display: block;
 }
 
-.pain-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
-.pain-grid article { padding: 1.35rem; border-radius: 1rem; border: 1px solid var(--line); background: #fff; }
-.pain-grid h3, .steps-grid h3, .feature-list h3, .chips p, .testimonials-grid figcaption { color: #132e49; }
-.pain-grid h3 { font-size: 1rem; margin-bottom: 0.55rem; }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.pain-card {
+  position: relative;
+  min-height: 220px;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.pain-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 23, 38, 0.12) 0%, rgba(10, 23, 38, 0.84) 74%, rgba(10, 23, 38, 0.95) 100%);
+}
+
+.pain-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pain-grid h3,
+.steps-grid h3,
+.feature-list h3,
+.chips p,
+.testimonials-grid figcaption {
+  color: #132e49;
+}
+
+.pain-card h3 {
+  color: #f4f9ff;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.pain-card p {
+  color: rgba(237, 245, 253, 0.92);
+}
+
+.pain-repairs { background: #2d4f70 url("images/hero-bg.svg") center/cover no-repeat; }
+.pain-foreclosure { background: #2c4b6a url("images/markets/jacksonville.svg") center/cover no-repeat; }
+.pain-inherited { background: #2e5274 url("images/markets/st-petersburg.svg") center/cover no-repeat; }
+.pain-rental { background: #2c4c6d url("images/markets/orlando.svg") center/cover no-repeat; }
+.pain-urgent { background: #2d4f70 url("images/markets/miami.svg") center/cover no-repeat; }
+.pain-probate { background: #2a4968 url("images/markets/cape-coral.svg") center/cover no-repeat; }
+.pain-divorce { background: #2f5376 url("images/markets/tampa.svg") center/cover no-repeat; }
+.pain-vacant { background: #2b4868 url("images/samuel-colon-placeholder-1.svg") center/cover no-repeat; }
 
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 .steps-grid article { padding: 1.7rem; border-radius: 1.2rem; background: #fff; border: 1px solid var(--line); }
