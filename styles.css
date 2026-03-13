@@ -121,8 +121,22 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .samuel-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: center; }
 .samuel-copy p { margin-top: 1rem; max-width: 58ch; }
 .samuel-copy .btn { margin-top: 1.3rem; }
-.samuel-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.samuel-images img { width: 100%; border-radius: 1rem; border: 1px solid #d2dfeb; box-shadow: var(--shadow); background: #fff; }
+.samuel-images {
+  margin: 0;
+  width: min(100%, 520px);
+  justify-self: end;
+}
+.samuel-images img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 1.1rem;
+  border: 1px solid #d2dfeb;
+  box-shadow: var(--shadow);
+  background: #fff;
+  display: block;
+}
 
 .pain-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .pain-grid article { padding: 1.35rem; border-radius: 1rem; border: 1px solid var(--line); background: #fff; }
@@ -286,7 +300,7 @@ details p { margin-top: 0.7rem; }
   .site-nav { flex-wrap: wrap; gap: 0.75rem 1rem; }
   .site-nav a { font-size: 0.88rem; }
   .brand-logo { width: min(88vw, 420px); }
-  .samuel-images { grid-template-columns: 1fr; }
+  .samuel-images { width: min(100%, 460px); justify-self: start; }
   .market-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
