@@ -108,6 +108,71 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   cursor: pointer;
 }
 
+
+.purchase-ticker {
+  border-top: 1px solid #e8eef5;
+  border-bottom: 1px solid #e8eef5;
+  background: #f9fbfd;
+  overflow: hidden;
+}
+
+.ticker-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 72px;
+}
+
+.ticker-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6d7f91;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: max-content;
+  animation: ticker-slide 28s linear infinite;
+}
+
+.ticker-item {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.46rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #dbe4ee;
+  background: #fff;
+  color: #4f6275;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  flex: 0 0 auto;
+}
+
+@keyframes ticker-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-35%); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
+
 .trust-strip { padding: 1.15rem 0; border-top: 1px solid #edf2f7; border-bottom: 1px solid #edf2f7; background: #fcfdff; }
 .trust-items { display: flex; justify-content: space-between; gap: 1rem; }
 .trust-items p { font-size: 0.95rem; color: #33526e; }
@@ -291,6 +356,8 @@ details p { margin-top: 0.7rem; }
   .market-grid { grid-template-columns: repeat(2, 1fr); }
   .trust-items { flex-direction: column; text-align: center; }
   .site-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .ticker-row { grid-template-columns: 1fr; align-items: start; padding-block: 0.8rem; }
+  .ticker-track { animation-duration: 34s; }
 }
 
 @media (max-width: 640px) {
@@ -300,6 +367,8 @@ details p { margin-top: 0.7rem; }
   .site-nav { flex-wrap: wrap; gap: 0.75rem 1rem; }
   .site-nav a { font-size: 0.88rem; }
   .brand-logo { width: min(88vw, 420px); }
+  .ticker-label { letter-spacing: 0.16em; font-size: 0.74rem; }
+  .ticker-item { font-size: 0.88rem; }
   .samuel-images { width: min(100%, 460px); justify-self: start; }
   .market-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
