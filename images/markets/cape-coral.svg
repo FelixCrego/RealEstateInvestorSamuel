@@ -1,0 +1,10 @@
+<svg width="800" height="900" viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cape Coral waterfront illustration">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9CA8B8"/><stop offset="1" stop-color="#30445C"/></linearGradient></defs>
+<rect width="800" height="900" fill="url(#g)"/>
+<rect y="600" width="800" height="300" fill="#243A53"/>
+<path d="M0 710 C120 680 240 740 360 705 C510 660 650 730 800 690 L800 900 L0 900 Z" fill="#1C4F79"/>
+<path d="M120 600 L220 430 L320 600 Z" fill="#4E5F72"/>
+<path d="M300 600 L430 390 L560 600 Z" fill="#58697C"/>
+<path d="M520 600 L620 460 L720 600 Z" fill="#46576A"/>
+<circle cx="645" cy="185" r="42" fill="#F7941E" opacity=".75"/>
+</svg>
