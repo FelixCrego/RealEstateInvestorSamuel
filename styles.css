@@ -173,10 +173,6 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   .ticker-track { animation: none; }
 }
 
-.trust-strip { padding: 1.15rem 0; border-top: 1px solid #edf2f7; border-bottom: 1px solid #edf2f7; background: #fcfdff; }
-.trust-items { display: flex; justify-content: space-between; gap: 1rem; }
-.trust-items p { font-size: 0.95rem; color: #33526e; }
-
 .section { padding: 5.5rem 0; }
 .section-muted { background: var(--surface); }
 .section-soft { background: linear-gradient(180deg, rgba(242, 237, 208, 0.22), transparent 88%); }
@@ -354,7 +350,6 @@ details p { margin-top: 0.7rem; }
   .testimonials-grid, .steps-grid { grid-template-columns: 1fr; }
   .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }
   .market-grid { grid-template-columns: repeat(2, 1fr); }
-  .trust-items { flex-direction: column; text-align: center; }
   .site-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
   .ticker-row { grid-template-columns: 1fr; align-items: start; padding-block: 0.8rem; }
   .ticker-track { animation-duration: 34s; }
