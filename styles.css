@@ -256,7 +256,7 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   color: rgba(237, 245, 253, 0.92);
 }
 
-.pain-repairs { background: #2d4f70 url("images/hero-bg.svg") center/cover no-repeat; }
+.pain-repairs { background: #2d4f70 url("images/webuyhousescashinanycondition.jpg") center/cover no-repeat, url("images/hero-bg.svg") center/cover no-repeat; }
 .pain-foreclosure { background: #2c4b6a url("images/markets/jacksonville.svg") center/cover no-repeat; }
 .pain-inherited { background: #2e5274 url("images/markets/st-petersburg.svg") center/cover no-repeat; }
 .pain-rental { background: #2c4c6d url("images/markets/orlando.svg") center/cover no-repeat; }
