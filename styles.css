@@ -226,6 +226,56 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .chips { display: flex; flex-wrap: wrap; gap: 0.85rem; }
 .chips p { margin: 0; font-weight: 700; padding: 0.65rem 1rem; border-radius: 999px; border: 1px solid #cfdbe8; background: #fff; }
 
+
+.situations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.situation-card {
+  position: relative;
+  min-height: 220px;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.situation-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 23, 38, 0.15) 0%, rgba(10, 23, 38, 0.86) 75%, rgba(10, 23, 38, 0.95) 100%);
+}
+
+.situation-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.situation-card h3 {
+  font-size: 1.15rem;
+  color: #f4f9ff;
+}
+
+.situation-card p {
+  margin-top: 0.4rem;
+  color: rgba(237, 245, 253, 0.92);
+  font-size: 0.96rem;
+}
+
+.situation-inherited { background: #2f4c6b url("images/markets/st-petersburg.svg") center/cover no-repeat; }
+.situation-foreclosure { background: #334e6f url("images/markets/jacksonville.svg") center/cover no-repeat; }
+.situation-repairs { background: #3a5b79 url("images/hero-bg.svg") center/cover no-repeat; }
+.situation-fast { background: #2c4a69 url("images/markets/miami.svg") center/cover no-repeat; }
+.situation-rental { background: #2e4f71 url("images/markets/orlando.svg") center/cover no-repeat; }
+.situation-estate { background: #2a4a6a url("images/markets/cape-coral.svg") center/cover no-repeat; }
+.situation-divorce { background: #2f5274 url("images/markets/tampa.svg") center/cover no-repeat; }
+.situation-vacant { background: #2b4868 url("images/samuel-colon-placeholder-1.svg") center/cover no-repeat; }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 .testimonials-grid figure { margin: 0; border-radius: 1rem; padding: 1.4rem; background: #fff; border: 1px solid var(--line); }
 blockquote { margin: 0; color: #243b53; }
@@ -356,6 +406,7 @@ details p { margin-top: 0.7rem; }
 
 @media (max-width: 1024px) {
   .pain-grid { grid-template-columns: repeat(2, 1fr); }
+  .situations-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid, .steps-grid { grid-template-columns: 1fr; }
   .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }
   .market-grid { grid-template-columns: repeat(2, 1fr); }
@@ -377,5 +428,6 @@ details p { margin-top: 0.7rem; }
   .market-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
+  .situations-grid { grid-template-columns: 1fr; }
   .final-cta-box { padding: 2rem 1.2rem; }
 }
