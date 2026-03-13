@@ -1,0 +1,10 @@
+<svg width="800" height="900" viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Miami coast illustration">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8CA6C4"/><stop offset="1" stop-color="#284D73"/></linearGradient></defs>
+<rect width="800" height="900" fill="url(#g)"/>
+<rect y="610" width="800" height="290" fill="#1A395A"/>
+<path d="M0 700 C130 660 260 730 400 700 C540 670 660 740 800 700 L800 900 L0 900 Z" fill="#2F6E96"/>
+<rect x="90" y="320" width="95" height="290" fill="#244869"/><rect x="220" y="260" width="130" height="350" fill="#2A5275"/>
+<rect x="380" y="210" width="95" height="400" fill="#1C3D5E"/><rect x="505" y="280" width="110" height="330" fill="#325E82"/>
+<rect x="650" y="340" width="80" height="270" fill="#274E72"/>
+<circle cx="670" cy="170" r="55" fill="#F7941E" opacity=".85"/>
+</svg>
