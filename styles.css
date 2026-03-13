@@ -37,7 +37,7 @@ p { margin: 0; color: var(--muted); }
   padding: 2rem 0 5.5rem;
   background:
     linear-gradient(90deg, rgba(9, 22, 38, 0.72) 0%, rgba(9, 22, 38, 0.42) 40%, rgba(12, 30, 50, 0.58) 100%),
-    url("images/hero-house.jpg") center / cover no-repeat,
+    url("images/cashhomebuyerflorida.jpg") center / cover no-repeat,
     url("images/hero-bg.svg") center / cover no-repeat;
   border-bottom: 1px solid #edf2f7;
 }
