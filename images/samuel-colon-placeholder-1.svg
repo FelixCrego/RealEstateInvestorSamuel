@@ -1,0 +1,16 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Samuel Colón portrait placeholder</title>
+  <desc id="d">Placeholder portrait frame for Samuel Colón brand photography.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#154A7A"/>
+      <stop offset="1" stop-color="#1BA8B3"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1100" rx="36" fill="url(#bg)"/>
+  <rect x="48" y="48" width="804" height="1004" rx="28" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.4"/>
+  <circle cx="450" cy="410" r="140" fill="#F2EDD0"/>
+  <rect x="255" y="590" width="390" height="220" rx="110" fill="#F2EDD0"/>
+  <text x="450" y="920" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat, Arial, sans-serif" font-size="44" font-weight="700">SAMUEL COLÓN PHOTO</text>
+  <text x="450" y="970" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.9" font-family="Lato, Arial, sans-serif" font-size="28">Replace with approved brand image</text>
+</svg>
