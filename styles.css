@@ -117,11 +117,11 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .ticker-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   align-items: center;
   gap: 1.2rem;
   min-height: 72px;
+  width: 100%;
 }
 
 .ticker-label {
@@ -132,6 +132,7 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   font-weight: 700;
   color: #6d7f91;
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .ticker-track {
@@ -140,6 +141,13 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   gap: 0.8rem;
   width: max-content;
   animation: ticker-slide 28s linear infinite;
+  flex: 0 0 auto;
+}
+
+.ticker-viewport {
+  flex: 1 1 auto;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .ticker-item {
@@ -351,7 +359,7 @@ details p { margin-top: 0.7rem; }
   .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }
   .market-grid { grid-template-columns: repeat(2, 1fr); }
   .site-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
-  .ticker-row { grid-template-columns: 1fr; align-items: start; padding-block: 0.8rem; }
+  .ticker-row { flex-direction: column; align-items: flex-start; padding-block: 0.8rem; }
   .ticker-track { animation-duration: 34s; }
 }
 
