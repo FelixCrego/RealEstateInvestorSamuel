@@ -1,0 +1,17 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t2 d2">
+  <title id="t2">Samuel Colón handshake placeholder</title>
+  <desc id="d2">Placeholder frame for team or homeowner interaction photography.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F3455"/>
+      <stop offset="1" stop-color="#154A7A"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1100" rx="36" fill="url(#bg2)"/>
+  <rect x="48" y="48" width="804" height="1004" rx="28" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.4"/>
+  <rect x="205" y="320" width="210" height="430" rx="105" fill="#F2EDD0"/>
+  <rect x="485" y="320" width="210" height="430" rx="105" fill="#F2EDD0"/>
+  <rect x="355" y="545" width="190" height="90" rx="45" fill="#F7941E"/>
+  <text x="450" y="920" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat, Arial, sans-serif" font-size="44" font-weight="700">ADDITIONAL SAMUEL IMAGE</text>
+  <text x="450" y="970" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.9" font-family="Lato, Arial, sans-serif" font-size="28">Team, closing, or client photo</text>
+</svg>

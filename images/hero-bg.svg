@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Florida home exterior style background">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fb0cc"/>
+      <stop offset="1" stop-color="#dbe8f2"/>
+    </linearGradient>
+    <linearGradient id="house" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9e3ed"/>
+      <stop offset="1" stop-color="#f4f7fb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect y="560" width="1600" height="340" fill="#6e8e66"/>
+  <rect y="620" width="1600" height="280" fill="#54744f" opacity="0.5"/>
+  <rect x="620" y="300" width="540" height="300" rx="8" fill="url(#house)"/>
+  <polygon points="580,360 890,180 1210,360" fill="#7f96ab"/>
+  <rect x="700" y="400" width="96" height="200" fill="#eaf1f7"/>
+  <rect x="830" y="400" width="96" height="200" fill="#edf3f8"/>
+  <rect x="960" y="400" width="96" height="200" fill="#e8eff6"/>
+  <rect x="1000" y="470" width="80" height="130" fill="#d8e4ef"/>
+  <rect x="220" y="320" width="210" height="240" rx="8" fill="#cfdbe7"/>
+  <polygon points="190,360 325,260 460,360" fill="#8ea3b7"/>
+  <rect x="1250" y="340" width="180" height="220" rx="8" fill="#c7d5e2"/>
+  <polygon points="1225,365 1340,280 1455,365" fill="#879db2"/>
+</svg>
