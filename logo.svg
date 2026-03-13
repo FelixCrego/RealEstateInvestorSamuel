@@ -1,0 +1,42 @@
+<svg width="1080" height="180" viewBox="0 0 1080 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Florida Cash House Buyers logo</title>
+  <desc id="logoDesc">A stylized house with palm tree, sun, and waves next to Florida Cash House Buyers text.</desc>
+  <defs>
+    <linearGradient id="waveA" x1="30" y1="140" x2="300" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1BA8B3"/>
+      <stop offset="1" stop-color="#2C79C6"/>
+    </linearGradient>
+    <linearGradient id="waveB" x1="20" y1="154" x2="290" y2="154" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3BAA66"/>
+      <stop offset="1" stop-color="#1BA8B3"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M42 103C65 90 78 83 96 64C111 47 124 43 133 49C142 55 142 69 134 84C124 104 127 120 131 130" stroke="#0F7B5A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M96 63C81 58 72 51 61 39C80 41 92 45 101 56" fill="#0F7B5A"/>
+  <path d="M98 61C85 66 73 66 56 62C75 53 89 52 100 56" fill="#0F7B5A"/>
+  <path d="M101 61C110 49 121 43 138 42C124 51 116 59 107 64" fill="#0F7B5A"/>
+  <path d="M101 63C114 66 124 73 136 84C120 82 109 76 100 66" fill="#0F7B5A"/>
+
+  <circle cx="178" cy="76" r="34" fill="#F2B233"/>
+  <g stroke="#E2A225" stroke-width="3">
+    <line x1="178" y1="23" x2="178" y2="9"/>
+    <line x1="199" y1="28" x2="206" y2="15"/>
+    <line x1="214" y1="42" x2="227" y2="35"/>
+    <line x1="219" y1="63" x2="233" y2="63"/>
+    <line x1="135" y1="28" x2="128" y2="15"/>
+    <line x1="118" y1="42" x2="106" y2="35"/>
+    <line x1="112" y1="63" x2="98" y2="63"/>
+  </g>
+
+  <path d="M75 108L142 58L199 94V108H181V127H166V110H112V127H92V108H75Z" fill="#113E6D"/>
+  <rect x="119" y="90" width="25" height="22" fill="#F3F7FC"/>
+  <line x1="131.5" y1="90" x2="131.5" y2="112" stroke="#113E6D"/>
+  <line x1="119" y1="101" x2="144" y2="101" stroke="#113E6D"/>
+
+  <path d="M35 132C84 118 118 120 153 130C179 137 210 137 236 126" stroke="url(#waveB)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M30 145C82 132 113 134 145 144C176 153 210 154 245 145" stroke="url(#waveA)" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="270" y="95" fill="#154A7A" font-size="64" font-weight="800" font-family="Montserrat, Arial, sans-serif" letter-spacing="1">FLORIDA</text>
+  <text x="270" y="142" fill="#3BAA66" font-size="40" font-weight="700" font-family="Montserrat, Arial, sans-serif" letter-spacing="1.4">CASH HOUSE BUYERS</text>
+</svg>
