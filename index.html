@@ -45,13 +45,30 @@
           </div>
           <p class="hero-note">No repairs. No open houses. No hidden fees.</p>
         </div>
-        <aside class="hero-panel" aria-label="Fast offer highlights">
-          <h2>Why homeowners choose us</h2>
-          <ul>
-            <li>Local Florida market expertise</li>
-            <li>Professional, clear communication</li>
-            <li>Flexible timelines for real-life transitions</li>
-          </ul>
+        <aside class="hero-panel" aria-label="Get your cash offer form">
+          <h2>Get your no-pressure cash offer</h2>
+          <p>Tell us about your property and we’ll reach out quickly with next steps.</p>
+          <form class="hero-form" action="#final-cta" method="get">
+            <label for="full-name">Full Name</label>
+            <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Your name" required />
+
+            <label for="property-address">Property Address</label>
+            <input id="property-address" name="property-address" type="text" autocomplete="street-address" placeholder="Street, City" required />
+
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(813) 555-0192" required />
+
+            <label for="timeline">Selling Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="" selected disabled>Select timeline</option>
+              <option value="asap">As soon as possible</option>
+              <option value="30-days">Within 30 days</option>
+              <option value="60-days">Within 60 days</option>
+              <option value="flexible">I'm flexible</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">Request My Offer</button>
+          </form>
         </aside>
       </div>
     </header>
