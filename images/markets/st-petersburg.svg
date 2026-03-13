@@ -1,0 +1,10 @@
+<svg width="800" height="900" viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="St. Petersburg waterfront illustration">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6DB7D1"/><stop offset="1" stop-color="#1E5E88"/></linearGradient></defs>
+<rect width="800" height="900" fill="url(#g)"/>
+<rect y="590" width="800" height="310" fill="#14507A"/>
+<path d="M0 670 C160 630 310 710 470 675 C590 650 700 690 800 665 L800 900 L0 900 Z" fill="#0F3F64"/>
+<rect x="90" y="360" width="70" height="230" fill="#2F6E99"/><rect x="190" y="320" width="95" height="270" fill="#2A628B"/>
+<rect x="315" y="280" width="105" height="310" fill="#3778A2"/><rect x="450" y="340" width="85" height="250" fill="#2F6F99"/>
+<rect x="560" y="300" width="110" height="290" fill="#2A5F88"/>
+<circle cx="130" cy="220" r="36" fill="#F2EDD0"/>
+</svg>

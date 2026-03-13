@@ -1,0 +1,487 @@
+:root {
+  --blue: #154a7a;
+  --orange: #f7941e;
+  --green: #3baa66;
+  --teal: #1ba8b3;
+  --sand: #f2edd0;
+  --ink: #0f1f2f;
+  --muted: #596b7d;
+  --line: #dbe4ed;
+  --surface: #f5f8fb;
+  --white: #ffffff;
+  --shadow: 0 20px 50px rgba(21, 74, 122, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  color: var(--ink);
+  line-height: 1.65;
+  background: var(--white);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.2;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+p { margin: 0; color: var(--muted); }
+
+.container { width: min(1120px, calc(100% - 3rem)); margin: 0 auto; }
+
+.hero {
+  padding: 2rem 0 5.5rem;
+  background:
+    linear-gradient(90deg, rgba(9, 22, 38, 0.72) 0%, rgba(9, 22, 38, 0.42) 40%, rgba(12, 30, 50, 0.58) 100%),
+    url("images/cashhomebuyerflorida.jpg") center / cover no-repeat,
+    url("images/hero-bg.svg") center / cover no-repeat;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.nav-wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.brand-block { display: inline-flex; align-items: center; text-decoration: none; }
+.brand-logo { width: clamp(250px, 34vw, 420px); height: auto; display: block; }
+
+.site-nav { display: flex; align-items: center; gap: 1.15rem; }
+.site-nav a { text-decoration: none; color: #dce8f5; font-weight: 700; font-size: 0.92rem; }
+.site-nav a:hover { color: #ffffff; }
+
+.hero-grid { margin-top: 4.3rem; display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.76rem; color: var(--teal); font-weight: 700; }
+.hero .eyebrow { color: #9ad7dd; }
+h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18ch; color: #ffffff; }
+.hero-copy p { margin-top: 1.3rem; max-width: 50ch; font-size: 1.08rem; color: #d8e5f3; }
+.hero-actions { margin-top: 1.7rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700;
+  border-radius: 999px; padding: 0.8rem 1.35rem; transition: all 0.2s ease;
+}
+.btn-primary { background: var(--blue); color: var(--white); }
+.btn-primary:hover { background: #10395e; }
+.btn-outline { border: 1px solid rgba(236, 244, 255, 0.56); color: #eaf2fb; background: rgba(7, 24, 41, 0.35); }
+.btn-outline:hover { border-color: #ffffff; }
+.btn-text { color: #dce8f5; padding-inline: 0.2rem; }
+
+.hero-note { margin-top: 1.1rem; color: #ffffff; font-weight: 700; }
+.hero-panel { padding: 2rem; border-radius: 1.25rem; background: #fff; border: 1px solid #e6edf5; box-shadow: var(--shadow); }
+.hero-panel h2 { font-size: 1.3rem; margin-bottom: 1rem; }
+.hero-panel ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+.hero-panel li + li { margin-top: 0.8rem; }
+
+.hero-panel p {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.hero-form {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.hero-form label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1b3652;
+}
+
+.hero-form input,
+.hero-form select {
+  width: 100%;
+  border: 1px solid #cdd9e5;
+  border-radius: 0.65rem;
+  padding: 0.68rem 0.75rem;
+  font: inherit;
+  color: #1f3650;
+  background: #fff;
+}
+
+.hero-form .btn {
+  margin-top: 0.4rem;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+}
+
+
+.purchase-ticker {
+  border-top: 1px solid #e8eef5;
+  border-bottom: 1px solid #e8eef5;
+  background: #f9fbfd;
+  overflow: hidden;
+}
+
+.ticker-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 72px;
+  width: 100%;
+  padding-inline: 0.35rem;
+}
+
+.ticker-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6d7f91;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: max-content;
+  animation: ticker-slide 28s linear infinite;
+  flex: 0 0 auto;
+}
+
+.ticker-viewport {
+  flex: 1 1 auto;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.ticker-item {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.46rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #dbe4ee;
+  background: #fff;
+  color: #4f6275;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  flex: 0 0 auto;
+}
+
+@keyframes ticker-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-35%); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
+
+.section { padding: 5.5rem 0; }
+.section-muted { background: var(--surface); }
+.section-soft { background: linear-gradient(180deg, rgba(242, 237, 208, 0.22), transparent 88%); }
+.section-head { max-width: 60ch; margin-bottom: 2rem; }
+.section-head h2 { margin-top: 0.65rem; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+
+.samuel-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: center; }
+.samuel-copy p { margin-top: 1rem; max-width: 58ch; }
+.samuel-copy .btn { margin-top: 1.3rem; }
+.samuel-images {
+  margin: 0;
+  width: min(100%, 520px);
+  justify-self: end;
+}
+.samuel-images img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 1.1rem;
+  border: 1px solid #d2dfeb;
+  box-shadow: var(--shadow);
+  background: #fff;
+  display: block;
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.pain-card {
+  position: relative;
+  min-height: 220px;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.pain-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 23, 38, 0.12) 0%, rgba(10, 23, 38, 0.84) 74%, rgba(10, 23, 38, 0.95) 100%);
+}
+
+.pain-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pain-grid h3,
+.steps-grid h3,
+.feature-list h3,
+.chips p,
+.testimonials-grid figcaption {
+  color: #132e49;
+}
+
+.pain-card h3 {
+  color: #f4f9ff;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.pain-card p {
+  color: rgba(237, 245, 253, 0.92);
+}
+
+.pain-repairs {
+  background: #2d4f70 url("images/webuyhousescashinanycondition.jpg") center/cover no-repeat;
+}
+.pain-foreclosure { background: #2c4b6a url("images/markets/jacksonville.svg") center/cover no-repeat; }
+.pain-inherited { background: #2e5274 url("images/markets/st-petersburg.svg") center/cover no-repeat; }
+.pain-rental { background: #2c4c6d url("images/markets/orlando.svg") center/cover no-repeat; }
+.pain-urgent { background: #2d4f70 url("images/markets/miami.svg") center/cover no-repeat; }
+.pain-probate { background: #2a4968 url("images/markets/cape-coral.svg") center/cover no-repeat; }
+.pain-divorce { background: #2f5376 url("images/markets/tampa.svg") center/cover no-repeat; }
+.pain-vacant { background: #2b4868 url("images/samuel-colon-placeholder-1.svg") center/cover no-repeat; }
+
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.steps-grid article { padding: 1.7rem; border-radius: 1.2rem; background: #fff; border: 1px solid var(--line); }
+.steps-grid span { display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 700; color: var(--orange); margin-bottom: 0.8rem; }
+.steps-grid h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+
+.why-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.2rem; }
+.lead { margin-top: 1rem; font-size: 1.08rem; max-width: 45ch; }
+.feature-list article { padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+.feature-list article:first-child { padding-top: 0; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+.chips p { margin: 0; font-weight: 700; padding: 0.65rem 1rem; border-radius: 999px; border: 1px solid #cfdbe8; background: #fff; }
+
+
+.situations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.situation-card {
+  position: relative;
+  min-height: 220px;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.situation-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 23, 38, 0.15) 0%, rgba(10, 23, 38, 0.86) 75%, rgba(10, 23, 38, 0.95) 100%);
+}
+
+.situation-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.situation-card h3 {
+  font-size: 1.15rem;
+  color: #f4f9ff;
+}
+
+.situation-card p {
+  margin-top: 0.4rem;
+  color: rgba(237, 245, 253, 0.92);
+  font-size: 0.96rem;
+}
+
+.situation-inherited { background: #2f4c6b url("images/markets/st-petersburg.svg") center/cover no-repeat; }
+.situation-foreclosure { background: #334e6f url("images/markets/jacksonville.svg") center/cover no-repeat; }
+.situation-repairs { background: #3a5b79 url("images/hero-bg.svg") center/cover no-repeat; }
+.situation-fast { background: #2c4a69 url("images/markets/miami.svg") center/cover no-repeat; }
+.situation-rental { background: #2e4f71 url("images/markets/orlando.svg") center/cover no-repeat; }
+.situation-estate { background: #2a4a6a url("images/markets/cape-coral.svg") center/cover no-repeat; }
+.situation-divorce { background: #2f5274 url("images/markets/tampa.svg") center/cover no-repeat; }
+.situation-vacant { background: #2b4868 url("images/samuel-colon-placeholder-1.svg") center/cover no-repeat; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.testimonials-grid figure { margin: 0; border-radius: 1rem; padding: 1.4rem; background: #fff; border: 1px solid var(--line); }
+blockquote { margin: 0; color: #243b53; }
+figcaption { margin-top: 1rem; font-weight: 700; }
+
+
+.service-areas-head {
+  text-align: center;
+  max-width: 900px;
+}
+
+.service-areas-head h2 {
+  margin-top: 0.7rem;
+  font-size: clamp(2rem, 4.2vw, 4.2rem);
+  color: #101f31;
+  max-width: 15ch;
+  margin-inline: auto;
+}
+
+.service-areas-head .lead {
+  max-width: 44ch;
+  margin: 1.2rem auto 0;
+}
+
+.service-note {
+  margin-top: 1rem;
+  color: #5f7082;
+  font-weight: 600;
+}
+
+.market-grid {
+  margin-top: 2.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.market-card {
+  position: relative;
+  min-height: 332px;
+  border-radius: 1.25rem;
+  padding: 1.35rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #e9f0f6;
+  box-shadow: var(--shadow);
+}
+
+.market-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 22, 34, 0.18) 0%, rgba(10, 23, 38, 0.82) 72%, rgba(10, 23, 38, 0.96) 100%);
+}
+
+.market-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.market-county {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  color: rgba(233, 240, 246, 0.82);
+  font-weight: 700;
+}
+
+.market-card h3 {
+  margin-top: 0.45rem;
+  font-size: 2rem;
+  color: #f3f8ff;
+}
+
+.market-card p {
+  color: rgba(238, 245, 252, 0.9);
+  max-width: 28ch;
+}
+
+.market-card h3 + p {
+  margin-top: 0.55rem;
+}
+
+.market-link {
+  margin-top: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-decoration: none;
+  color: #f3f8ff;
+  border: 1px solid rgba(243, 248, 255, 0.34);
+  border-radius: 999px;
+  padding: 0.58rem 1.05rem;
+  font-weight: 700;
+  backdrop-filter: blur(2px);
+}
+
+.market-link::after {
+  content: "→";
+  margin-left: 0.5rem;
+}
+
+.market-link:hover {
+  border-color: rgba(243, 248, 255, 0.65);
+}
+
+.market-jax { background: #1d3550 url("images/markets/jacksonville.svg") center/cover no-repeat; }
+.market-miami { background: #294a6b url("images/markets/miami.svg") center/cover no-repeat; }
+.market-tampa { background: #1f3e5f url("images/markets/tampa.svg") center/cover no-repeat; }
+.market-orlando { background: #2f4d6d url("images/markets/orlando.svg") center/cover no-repeat; }
+.market-stpete { background: #1b5b83 url("images/markets/st-petersburg.svg") center/cover no-repeat; }
+.market-coral { background: #33485f url("images/markets/cape-coral.svg") center/cover no-repeat; }
+
+.faq-list { display: grid; gap: 0.9rem; }
+details { border-radius: 0.8rem; border: 1px solid var(--line); background: #fff; padding: 1rem 1.1rem; }
+summary { cursor: pointer; font-weight: 700; color: #163350; }
+details p { margin-top: 0.7rem; }
+
+.final-cta { padding: 0 0 6rem; }
+.final-cta-box { background: #0f3455; color: #fff; border-radius: 1.25rem; padding: 3rem; text-align: center; }
+.final-cta-box .eyebrow, .final-cta-box p, .final-cta-box h2 { color: #fff; }
+.final-cta-box h2 { margin-top: 0.7rem; font-size: clamp(1.8rem, 3.2vw, 2.7rem); }
+.final-cta-box p { max-width: 62ch; margin: 1rem auto 0; }
+.final-cta-box .btn-outline { color: #fff; border-color: rgba(255, 255, 255, 0.55); background: transparent; }
+
+@media (max-width: 1024px) {
+  .pain-grid { grid-template-columns: repeat(2, 1fr); }
+  .situations-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid, .steps-grid { grid-template-columns: 1fr; }
+  .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }
+  .market-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .ticker-row { flex-direction: column; align-items: flex-start; padding-block: 0.8rem; padding-inline: 0.2rem; }
+  .ticker-track { animation-duration: 34s; }
+}
+
+@media (max-width: 640px) {
+  .container { width: min(1120px, calc(100% - 1.5rem)); }
+  .hero { padding-top: 1rem; background-position: 62% center; }
+  .nav-wrap { flex-direction: column; align-items: flex-start; }
+  .site-nav { flex-wrap: wrap; gap: 0.75rem 1rem; }
+  .site-nav a { font-size: 0.88rem; }
+  .brand-logo { width: min(88vw, 420px); }
+  .ticker-label { letter-spacing: 0.16em; font-size: 0.74rem; }
+  .ticker-item { font-size: 0.88rem; }
+  .samuel-images { width: min(100%, 460px); justify-self: start; }
+  .market-grid { grid-template-columns: 1fr; }
+  .section, .final-cta { padding-block: 4rem; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .situations-grid { grid-template-columns: 1fr; }
+  .final-cta-box { padding: 2rem 1.2rem; }
+}
