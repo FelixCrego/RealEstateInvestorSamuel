@@ -309,9 +309,57 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .pain-vacant { background: #2b4868 url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png") center/cover no-repeat; }
 
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-.steps-grid article { padding: 1.7rem; border-radius: 1.2rem; background: #fff; border: 1px solid var(--line); }
+
+.process-step {
+  border-radius: 1.2rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.process-step.is-active {
+  border-color: #8fb3d6;
+  box-shadow: 0 12px 28px rgba(15, 42, 67, 0.12);
+  transform: translateY(-3px);
+}
+
+.process-step-button {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-radius: inherit;
+  padding: 1.7rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.process-step-button:focus-visible {
+  outline: 3px solid #1d7ec4;
+  outline-offset: 3px;
+}
+
 .steps-grid span { display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 700; color: var(--orange); margin-bottom: 0.8rem; }
 .steps-grid h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+
+.process-detail {
+  margin-top: 1rem;
+  padding: 1.2rem 1.3rem;
+  border-radius: 1rem;
+  border: 1px solid #c7d8e8;
+  background: #f7fbff;
+}
+
+.process-panel h3 {
+  margin-bottom: 0.45rem;
+  color: #113256;
+}
+
+.process-panel p {
+  margin: 0;
+  color: #36546f;
+}
 
 .why-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.2rem; }
 .lead { margin-top: 1rem; font-size: 1.08rem; max-width: 45ch; }
@@ -598,6 +646,7 @@ details p { margin-top: 0.7rem; }
   .pain-grid { grid-template-columns: repeat(2, 1fr); }
   .situations-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid, .steps-grid { grid-template-columns: 1fr; }
+  .process-step.is-active { transform: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }

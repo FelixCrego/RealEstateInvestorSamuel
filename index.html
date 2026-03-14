@@ -167,22 +167,74 @@
             <p class="eyebrow">Simple by design</p>
             <h2>A calm 3-step process from first call to closing.</h2>
           </div>
-          <div class="steps-grid">
-            <article>
-              <span>01</span>
-              <h3>Share your property details</h3>
-              <p>Tell us about the home and your goals. No pressure, no commitment.</p>
+          <div class="steps-grid" role="tablist" aria-label="3-step selling process">
+            <article class="process-step is-active" data-step="01" role="presentation">
+              <button
+                class="process-step-button"
+                type="button"
+                id="step-tab-1"
+                role="tab"
+                aria-controls="step-panel-1"
+                aria-selected="true"
+              >
+                <span>01</span>
+                <h3>Share your property details</h3>
+                <p>Tell us about the home and your goals. No pressure, no commitment.</p>
+              </button>
             </article>
-            <article>
-              <span>02</span>
-              <h3>Review your cash offer</h3>
-              <p>We present a straightforward offer and answer every question clearly.</p>
+            <article class="process-step" data-step="02" role="presentation">
+              <button
+                class="process-step-button"
+                type="button"
+                id="step-tab-2"
+                role="tab"
+                aria-controls="step-panel-2"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span>02</span>
+                <h3>Review your cash offer</h3>
+                <p>We present a straightforward offer and answer every question clearly.</p>
+              </button>
             </article>
-            <article>
-              <span>03</span>
-              <h3>Close on your schedule</h3>
-              <p>Choose a timeline that works for your transition.</p>
+            <article class="process-step" data-step="03" role="presentation">
+              <button
+                class="process-step-button"
+                type="button"
+                id="step-tab-3"
+                role="tab"
+                aria-controls="step-panel-3"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span>03</span>
+                <h3>Close on your schedule</h3>
+                <p>Choose a timeline that works for your transition.</p>
+              </button>
             </article>
+          </div>
+          <div class="process-detail" aria-live="polite">
+            <section class="process-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1">
+              <h3>Step 1: Start with a quick conversation</h3>
+              <p>
+                Tell us about the property condition, timeline, and your priorities. We listen first,
+                ask only what's needed, and give you clear next steps.
+              </p>
+            </section>
+            <section class="process-panel" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" hidden>
+              <h3>Step 2: Get a transparent cash offer</h3>
+              <p>
+                You receive a clear offer with zero hidden fees. We'll walk through every detail so
+                you understand exactly how the numbers and timeline work.
+              </p>
+            </section>
+            <section class="process-panel" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" hidden>
+              <h3>Step 3: Pick the closing date that fits</h3>
+              <p>
+                Move fast or choose extra time—we align the closing schedule with your transition
+                and keep communication steady through the finish line.
+              </p>
+            </section>
           </div>
         </div>
       </section>
@@ -418,5 +470,58 @@
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        const tabs = Array.from(document.querySelectorAll('.process-step-button'));
+        const panels = Array.from(document.querySelectorAll('.process-panel'));
+
+        if (!tabs.length || !panels.length) {
+          return;
+        }
+
+        const activateStep = (targetTab, moveFocus = false) => {
+          tabs.forEach((tab) => {
+            const selected = tab === targetTab;
+            tab.setAttribute('aria-selected', String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            tab.closest('.process-step')?.classList.toggle('is-active', selected);
+          });
+
+          panels.forEach((panel) => {
+            panel.hidden = panel.id !== targetTab.getAttribute('aria-controls');
+          });
+
+          if (moveFocus) {
+            targetTab.focus();
+          }
+        };
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener('click', () => activateStep(tab));
+          tab.addEventListener('mouseenter', () => activateStep(tab));
+
+          tab.addEventListener('keydown', (event) => {
+            if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) {
+              return;
+            }
+
+            event.preventDefault();
+
+            let nextIndex = index;
+            if (event.key === 'ArrowRight') {
+              nextIndex = (index + 1) % tabs.length;
+            } else if (event.key === 'ArrowLeft') {
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+            } else if (event.key === 'Home') {
+              nextIndex = 0;
+            } else if (event.key === 'End') {
+              nextIndex = tabs.length - 1;
+            }
+
+            activateStep(tabs[nextIndex], true);
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
