@@ -328,7 +328,7 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .situation-fast { background: #2c4a69 url("images/markets/miami.svg") center/cover no-repeat; }
 .situation-rental { background: #2e4f71 url("images/markets/orlando.svg") center/cover no-repeat; }
 .situation-estate { background: #2a4a6a url("images/markets/cape-coral.svg") center/cover no-repeat; }
-.situation-divorce { background: #2f5274 url("images/sellyourhousefastforcashdivorce.png") center/cover no-repeat; }
+.situation-divorce { background: #2f5274 url("images/cashhomebuyerflorida.jpg") center/cover no-repeat; }
 .situation-vacant { background: #2b4868 url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png") center/cover no-repeat; }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 .testimonials-grid figure { margin: 0; border-radius: 1rem; padding: 1.4rem; background: #fff; border: 1px solid var(--line); }
