@@ -265,7 +265,7 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .pain-urgent { background: #2d4f70 url("images/sellyourfloridahomefast.png") center/cover no-repeat; }
 .pain-probate { background: #2a4968 url("images/webuyfloridaprobatehomesfastforcash.png") center/cover no-repeat; }
 .pain-divorce { background: #2f5376 url("images/markets/tampa.svg") center/cover no-repeat; }
-.pain-vacant { background: #2b4868 url("images/samuel-colon-placeholder-1.svg") center/cover no-repeat; }
+.pain-vacant { background: #2b4868 url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png") center/cover no-repeat; }
 
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 .steps-grid article { padding: 1.7rem; border-radius: 1.2rem; background: #fff; border: 1px solid var(--line); }
@@ -328,8 +328,8 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .situation-fast { background: #2c4a69 url("images/markets/miami.svg") center/cover no-repeat; }
 .situation-rental { background: #2e4f71 url("images/markets/orlando.svg") center/cover no-repeat; }
 .situation-estate { background: #2a4a6a url("images/markets/cape-coral.svg") center/cover no-repeat; }
-.situation-divorce { background: #2f5274 url("images/markets/tampa.svg") center/cover no-repeat; }
-.situation-vacant { background: #2b4868 url("images/samuel-colon-placeholder-1.svg") center/cover no-repeat; }
+.situation-divorce { background: #2f5274 url("images/sellyourhousefastforcashdivorce.png") center/cover no-repeat; }
+.situation-vacant { background: #2b4868 url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png") center/cover no-repeat; }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 .testimonials-grid figure { margin: 0; border-radius: 1rem; padding: 1.4rem; background: #fff; border: 1px solid var(--line); }
 blockquote { margin: 0; color: #243b53; }
