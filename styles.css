@@ -50,6 +50,47 @@ p { margin: 0; color: var(--muted); }
 .site-nav a { text-decoration: none; color: #dce8f5; font-weight: 700; font-size: 0.92rem; }
 .site-nav a:hover { color: #ffffff; }
 
+
+.city-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.city-nav-link {
+  text-decoration: none;
+  color: #dce8f5;
+  font-weight: 700;
+  font-size: 0.78rem;
+  border: 1px solid rgba(220, 232, 245, 0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+}
+
+.city-nav-link:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.subpage-hero {
+  padding-bottom: 3.6rem;
+}
+
+.subpage-hero-copy {
+  margin-top: 2.6rem;
+}
+
+.subpage-hero-copy h1 {
+  max-width: 18ch;
+}
+
+.subpage-hero-copy p {
+  margin-top: 1rem;
+  max-width: 62ch;
+  color: #d8e5f3;
+}
+
 .hero-grid { margin-top: 4.3rem; display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; }
 .eyebrow { text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.76rem; color: var(--teal); font-weight: 700; }
 .hero .eyebrow { color: #9ad7dd; }
@@ -254,6 +295,26 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 
 .pain-card p {
   color: rgba(237, 245, 253, 0.92);
+}
+
+
+.card-link {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-decoration: none;
+  color: #f3f8ff;
+  border: 1px solid rgba(243, 248, 255, 0.34);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  font-weight: 700;
+  font-size: 0.84rem;
+}
+
+.card-link:hover {
+  border-color: rgba(243, 248, 255, 0.7);
 }
 
 .pain-repairs {
@@ -562,6 +623,7 @@ details p { margin-top: 0.7rem; }
   .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }
   .market-grid { grid-template-columns: repeat(2, 1fr); }
   .site-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .city-nav { width: 100%; justify-content: flex-start; }
   .ticker-row { flex-direction: column; align-items: flex-start; padding-block: 0.8rem; padding-inline: 0.2rem; }
   .ticker-track { animation-duration: 34s; }
 }
@@ -571,6 +633,7 @@ details p { margin-top: 0.7rem; }
   .hero { padding-top: 1rem; background-position: 62% center; }
   .nav-wrap { flex-direction: column; align-items: flex-start; }
   .site-nav { flex-wrap: wrap; gap: 0.75rem 1rem; }
+  .city-nav { gap: 0.55rem; }
   .site-nav a { font-size: 0.88rem; }
   .brand-logo { width: min(88vw, 420px); }
   .ticker-label { letter-spacing: 0.16em; font-size: 0.74rem; }
