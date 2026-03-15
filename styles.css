@@ -684,12 +684,12 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   font-size: 0.96rem;
 }
 
-.situation-inherited { background: #2f4c6b url("images/markets/st-petersburg.svg") center/cover no-repeat; }
-.situation-foreclosure { background: #334e6f url("images/markets/jacksonville.svg") center/cover no-repeat; }
-.situation-repairs { background: #3a5b79 url("images/hero-bg.svg") center/cover no-repeat; }
-.situation-fast { background: #2c4a69 url("images/markets/miami.svg") center/cover no-repeat; }
-.situation-rental { background: #2e4f71 url("images/markets/orlando.svg") center/cover no-repeat; }
-.situation-estate { background: #2a4a6a url("images/markets/cape-coral.svg") center/cover no-repeat; }
+.situation-inherited { background: #2f4c6b url("images/webuyfloridainheritedpropertiescash.jpg") center/cover no-repeat; }
+.situation-foreclosure { background: #334e6f url("images/webuyfloridapreforeclosurehomes.webp") center/cover no-repeat; }
+.situation-repairs { background: #3a5b79 url("images/webuyhousescashinanycondition.jpg") center/cover no-repeat; }
+.situation-fast { background: #2c4a69 url("images/sellyourfloridahomefast.png") center/cover no-repeat; }
+.situation-rental { background: #2e4f71 url("images/webuyunwantedrentalsinflorida.png") center/cover no-repeat; }
+.situation-estate { background: #2a4a6a url("images/webuyfloridaprobatehomesfastforcash.png") center/cover no-repeat; }
 .situation-divorce { background: #2f5274 url("images/cashhomebuyerflorida.jpg") center/cover no-repeat; }
 .situation-vacant { background: #2b4868 url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png") center/cover no-repeat; }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
