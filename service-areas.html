@@ -44,58 +44,87 @@
 
         <div class="container regional-grid" aria-label="Florida regions we serve">
           <article class="region-card">
-            <h3>Central Florida</h3>
-            <p>Serving the high-growth I-4 corridor where owners face rapid market shifts.</p>
-            <ul class="region-city-list">
-              <li><a href="orlando.html">Orlando</a></li>
-              <li><a href="kissimmee.html">Kissimmee</a></li>
-              <li><a href="sanford.html">Sanford</a></li>
-              <li><a href="lakeland.html">Lakeland</a></li>
-              <li><a href="ocala.html">Ocala</a></li>
-            </ul>
+            <img class="region-card-image" src="https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=1400&q=80" alt="Lake Eola skyline representing Central Florida" loading="lazy" />
+            <div class="region-card-overlay"></div>
+            <div class="region-card-content">
+              <h3>Central Florida</h3>
+              <p>Serving the high-growth I-4 corridor where owners face rapid market shifts.</p>
+              <label class="region-select-label" for="central-region">Select Your City</label>
+              <select id="central-region" class="region-select" aria-label="Select your city in Central Florida" onchange="if(this.value){window.location.href=this.value;}">
+                <option value="">Choose a city...</option>
+                <option value="orlando.html">Orlando</option>
+                <option value="kissimmee.html">Kissimmee</option>
+                <option value="sanford.html">Sanford</option>
+                <option value="lakeland.html">Lakeland</option>
+                <option value="ocala.html">Ocala</option>
+              </select>
+            </div>
           </article>
 
           <article class="region-card">
-            <h3>South Florida</h3>
-            <p>Navigating high-density markets with complex HOA and condo requirements.</p>
-            <ul class="region-city-list">
-              <li><a href="miami.html">Miami</a></li>
-              <li><a href="ft-lauderdale.html">Ft. Lauderdale</a></li>
-              <li><a href="west-palm-beach.html">West Palm Beach</a></li>
-              <li><a href="homestead.html">Homestead</a></li>
-              <li><a href="hialeah.html">Hialeah</a></li>
-            </ul>
+            <img class="region-card-image" src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1400&q=80" alt="Art Deco architecture representing South Florida" loading="lazy" />
+            <div class="region-card-overlay"></div>
+            <div class="region-card-content">
+              <h3>South Florida</h3>
+              <p>Navigating high-density markets with complex HOA and condo requirements.</p>
+              <label class="region-select-label" for="south-region">Select Your City</label>
+              <select id="south-region" class="region-select" aria-label="Select your city in South Florida" onchange="if(this.value){window.location.href=this.value;}">
+                <option value="">Choose a city...</option>
+                <option value="miami.html">Miami</option>
+                <option value="ft-lauderdale.html">Ft. Lauderdale</option>
+                <option value="west-palm-beach.html">West Palm Beach</option>
+                <option value="homestead.html">Homestead</option>
+                <option value="hialeah.html">Hialeah</option>
+              </select>
+            </div>
           </article>
 
           <article class="region-card">
-            <h3>Gulf Coast</h3>
-            <p>Specializing in coastal properties where insurance underwriting has become a bottleneck.</p>
-            <ul class="region-city-list">
-              <li><a href="tampa.html">Tampa</a></li>
-              <li><a href="st-petersburg.html">St. Petersburg</a></li>
-              <li><a href="cape-coral.html">Cape Coral</a></li>
-              <li><a href="sarasota.html">Sarasota</a></li>
-              <li><a href="ft-myers.html">Ft. Myers</a></li>
-            </ul>
+            <img class="region-card-image" src="https://images.unsplash.com/photo-1609346709137-24d0d65b3e95?auto=format&fit=crop&w=1400&q=80" alt="Riverwalk scene representing Florida Gulf Coast" loading="lazy" />
+            <div class="region-card-overlay"></div>
+            <div class="region-card-content">
+              <h3>Gulf Coast</h3>
+              <p>Specializing in coastal properties where insurance underwriting has become a bottleneck.</p>
+              <label class="region-select-label" for="gulf-region">Select Your City</label>
+              <select id="gulf-region" class="region-select" aria-label="Select your city in Florida Gulf Coast" onchange="if(this.value){window.location.href=this.value;}">
+                <option value="">Choose a city...</option>
+                <option value="tampa.html">Tampa</option>
+                <option value="st-petersburg.html">St. Petersburg</option>
+                <option value="cape-coral.html">Cape Coral</option>
+                <option value="sarasota.html">Sarasota</option>
+                <option value="ft-myers.html">Ft. Myers</option>
+              </select>
+            </div>
           </article>
 
           <article class="region-card">
-            <h3>North Florida</h3>
-            <p>Supporting heirs and families with estate-driven sales across the Panhandle and First Coast.</p>
-            <ul class="region-city-list">
-              <li><a href="jacksonville.html">Jacksonville</a></li>
-              <li><a href="tallahassee.html">Tallahassee</a></li>
-              <li><a href="pensacola.html">Pensacola</a></li>
-              <li><a href="gainesville.html">Gainesville</a></li>
-              <li><a href="st-augustine.html">St. Augustine</a></li>
-            </ul>
+            <img class="region-card-image" src="https://images.unsplash.com/photo-1668799368386-bde83a7052b4?auto=format&fit=crop&w=1400&q=80" alt="Jacksonville bridge representing North Florida" loading="lazy" />
+            <div class="region-card-overlay"></div>
+            <div class="region-card-content">
+              <h3>North Florida</h3>
+              <p>Supporting heirs and families with estate-driven sales across the Panhandle and First Coast.</p>
+              <label class="region-select-label" for="north-region">Select Your City</label>
+              <select id="north-region" class="region-select" aria-label="Select your city in North Florida" onchange="if(this.value){window.location.href=this.value;}">
+                <option value="">Choose a city...</option>
+                <option value="jacksonville.html">Jacksonville</option>
+                <option value="tallahassee.html">Tallahassee</option>
+                <option value="pensacola.html">Pensacola</option>
+                <option value="gainesville.html">Gainesville</option>
+                <option value="st-augustine.html">St. Augustine</option>
+              </select>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section authority-section">
         <div class="container authority-box">
-          <h2>We Buy Houses in All 67 Florida Counties.</h2>
+          <div class="authority-title-wrap">
+            <svg class="authority-map-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <path d="M40 6 24 11l-6 12 2 10-9 7 5 10-1 8 12-3 9 2 7-6 5 3 5-5-2-7 5-8-3-11-6-3-3-8-9-6Z" />
+            </svg>
+            <h2>We Buy Houses in All 67 Florida Counties.</h2>
+          </div>
           <p>Don't see your city? Our reach extends statewide. We use remote closing technology to ensure you can sell your Florida house from anywhere in the world.</p>
         </div>
       </section>
