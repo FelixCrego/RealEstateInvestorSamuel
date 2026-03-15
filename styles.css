@@ -345,7 +345,7 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .pain-card {
-  min-height: 520px;
+  min-height: 450px;
   height: 100%;
   border-radius: 12px;
   overflow: hidden;
@@ -364,8 +364,8 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .pain-card-media {
-  flex: 0 0 40%;
-  min-height: 180px;
+  flex: 0 0 34%;
+  min-height: 160px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -379,7 +379,7 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .pain-card-content {
   flex: 1 1 60%;
   background: #ffffff;
-  padding: 1.3rem;
+  padding: 1.15rem;
   display: flex;
   flex-direction: column;
   color: #243f57;
@@ -402,9 +402,9 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 
 .pain-card p {
   color: #2d465d;
-  margin-top: 0.72rem;
+  margin-top: 0.6rem;
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .problem-label {
@@ -1078,7 +1078,7 @@ details p { margin-top: 0.7rem; }
   .region-card, .region-card-content { min-height: 300px; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
-  .pain-card { min-height: 450px; }
+  .pain-card { min-height: 400px; }
   .situations-grid { grid-template-columns: 1fr; }
   .glance-grid { grid-template-columns: 1fr; }
   .final-cta-box { padding: 2rem 1.2rem; }
