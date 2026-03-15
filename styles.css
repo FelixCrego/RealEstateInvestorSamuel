@@ -288,6 +288,28 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   max-width: 72ch;
 }
 
+.seo-content-block {
+  padding-bottom: 3.2rem;
+}
+
+.seo-content-box {
+  background: linear-gradient(140deg, #f8fbff 0%, #ffffff 58%, #f4f8fc 100%);
+  border: 1px solid #d9e4ef;
+  border-radius: 1.2rem;
+  padding: clamp(1.6rem, 2.4vw, 2.3rem);
+  box-shadow: var(--shadow);
+}
+
+.seo-content-box h2 {
+  margin-top: 0.65rem;
+  font-size: clamp(1.55rem, 2.7vw, 2.2rem);
+}
+
+.seo-content-box p {
+  margin-top: 0.9rem;
+  max-width: 76ch;
+}
+
 .samuel-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: center; }
 .samuel-copy p { margin-top: 1rem; max-width: 58ch; }
 .samuel-copy .btn { margin-top: 1.3rem; }
@@ -312,35 +334,44 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.4rem;
+  align-items: stretch;
 }
 
 .pain-card {
-  min-height: 420px;
+  min-height: 520px;
+  height: 100%;
   border-radius: 1rem;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 40% 1fr auto;
+  grid-template-rows: 45% 55%;
   background: #ffffff;
   border: 1px solid #d6e2ef;
-  box-shadow: 0 16px 34px rgba(20, 45, 70, 0.08);
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 14px 30px rgba(20, 45, 70, 0.08);
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
 .pain-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   border-color: #8fb3d6;
-  box-shadow: 0 20px 40px rgba(17, 45, 73, 0.14);
+  box-shadow: 0 24px 46px rgba(17, 45, 73, 0.18);
 }
 
 .pain-card-media {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: transform 0.45s ease;
+}
+
+.pain-card:hover .pain-card-media {
+  transform: scale(1.05);
 }
 
 .pain-card-content {
-  background: #f8fbff;
-  padding: 1.15rem 1.15rem 0.85rem;
+  background: #ffffff;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .pain-grid h3,
@@ -354,20 +385,15 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .pain-card h3 {
   color: #12385a;
   font-size: 1.1rem;
+  font-weight: 700;
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.card-icon {
-  font-size: 1rem;
 }
 
 .pain-card p {
-  color: #365975;
+  color: #3d566f;
   margin-top: 0.65rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .problem-statement strong,
@@ -401,6 +427,10 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .comparison-card p {
   margin-top: 0.55rem;
   color: #3b5d79;
+}
+
+.seo-benefits {
+  padding-top: 2.8rem;
 }
 
 .process-glance {
@@ -470,27 +500,29 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .card-link {
-  margin: 0 1.15rem 1.2rem;
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: 100%;
   text-decoration: none;
   color: #123d64;
-  border: 1px solid #9db8d2;
+  border: 1px solid #8ea8c3;
   background: #ffffff;
   border-radius: 999px;
-  padding: 0.55rem 1rem;
-  font-weight: 700;
-  font-size: 0.84rem;
-  letter-spacing: 0.01em;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  padding: 0.58rem 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .card-link:hover {
   border-color: #1f5f92;
   color: #0d304d;
   background: #f1f7fd;
+  transform: translateY(-1px);
 }
 
 .pain-repairs .pain-card-media {
@@ -874,7 +906,7 @@ details p { margin-top: 0.7rem; }
   .market-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
-  .pain-card { min-height: 390px; }
+  .pain-card { min-height: 460px; }
   .situations-grid { grid-template-columns: 1fr; }
   .glance-grid { grid-template-columns: 1fr; }
   .final-cta-box { padding: 2rem 1.2rem; }
