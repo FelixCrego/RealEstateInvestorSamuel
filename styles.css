@@ -289,25 +289,31 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .seo-content-block {
-  padding-bottom: 3.2rem;
+  padding: 3.4rem 0 3.8rem;
 }
 
 .seo-content-box {
-  background: linear-gradient(140deg, #f8fbff 0%, #ffffff 58%, #f4f8fc 100%);
-  border: 1px solid #d9e4ef;
-  border-radius: 1.2rem;
-  padding: clamp(1.6rem, 2.4vw, 2.3rem);
-  box-shadow: var(--shadow);
+  max-width: 90ch;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #dce6f1;
+  border-radius: 1.1rem;
+  padding: clamp(2rem, 3.2vw, 3rem);
+  box-shadow: 0 16px 34px rgba(20, 45, 70, 0.07);
 }
 
 .seo-content-box h2 {
   margin-top: 0.65rem;
-  font-size: clamp(1.55rem, 2.7vw, 2.2rem);
+  margin-bottom: 1.1rem;
+  font-size: clamp(1.7rem, 2.9vw, 2.35rem);
+  color: #112f4a;
 }
 
 .seo-content-box p {
-  margin-top: 0.9rem;
-  max-width: 76ch;
+  margin-top: 1rem;
+  max-width: 72ch;
+  line-height: 1.75;
+  color: #2b465f;
 }
 
 .samuel-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: center; }
@@ -335,28 +341,31 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.4rem;
   align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .pain-card {
   min-height: 520px;
   height: 100%;
-  border-radius: 1rem;
+  border-radius: 12px;
   overflow: hidden;
-  display: grid;
-  grid-template-rows: 45% 55%;
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
-  border: 1px solid #d6e2ef;
-  box-shadow: 0 14px 30px rgba(20, 45, 70, 0.08);
-  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+  border: 1px solid #dce6f1;
+  box-shadow: 0 12px 30px rgba(14, 36, 61, 0.1);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 
 .pain-card:hover {
   transform: translateY(-8px);
-  border-color: #8fb3d6;
-  box-shadow: 0 24px 46px rgba(17, 45, 73, 0.18);
+  border-color: #9ab6d2;
+  box-shadow: 0 28px 52px rgba(13, 38, 64, 0.22);
 }
 
 .pain-card-media {
+  flex: 0 0 40%;
+  min-height: 180px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -364,14 +373,16 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .pain-card:hover .pain-card-media {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .pain-card-content {
+  flex: 1 1 60%;
   background: #ffffff;
-  padding: 1.2rem;
+  padding: 1.3rem;
   display: flex;
   flex-direction: column;
+  color: #243f57;
 }
 
 .pain-grid h3,
@@ -383,22 +394,25 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .pain-card h3 {
-  color: #12385a;
-  font-size: 1.1rem;
-  font-weight: 700;
+  color: #1a3149;
+  font-size: 1.28rem;
+  font-weight: 800;
   margin: 0;
 }
 
 .pain-card p {
-  color: #3d566f;
-  margin-top: 0.65rem;
-  font-size: 0.9rem;
-  line-height: 1.55;
+  color: #2d465d;
+  margin-top: 0.72rem;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.problem-statement strong,
-.solution-statement strong {
-  color: #133b60;
+.problem-label {
+  color: #c85d3f;
+}
+
+.solution-label {
+  color: #1f6d4e;
 }
 
 .solution-comparison {
@@ -430,7 +444,23 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .seo-benefits {
-  padding-top: 2.8rem;
+  padding: 3rem 0 3.5rem;
+}
+
+.seo-benefits .section-head {
+  max-width: 70ch;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+.seo-benefits .section-head h2 {
+  color: #112f49;
+}
+
+.seo-benefits .comparison-grid {
+  max-width: 1050px;
+  margin-inline: auto;
+  gap: 1.2rem;
 }
 
 .process-glance {
@@ -506,42 +536,43 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   justify-content: center;
   width: 100%;
   text-decoration: none;
-  color: #123d64;
-  border: 1px solid #8ea8c3;
+  color: #16466f;
+  border: 1px solid #7f9bb7;
   background: #ffffff;
   border-radius: 999px;
-  padding: 0.58rem 1rem;
-  font-weight: 600;
-  font-size: 0.8rem;
+  padding: 0.62rem 1rem;
+  font-weight: 700;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
+.pain-card:hover .card-link,
 .card-link:hover {
-  border-color: #1f5f92;
-  color: #0d304d;
-  background: #f1f7fd;
+  border-color: #1c5d90;
+  color: #ffffff;
+  background: #1c5d90;
   transform: translateY(-1px);
 }
 
 .pain-repairs .pain-card-media {
-  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/webuyhousescashinanycondition.jpg");
+  background-image: linear-gradient(180deg, rgba(12, 35, 56, 0.02), rgba(12, 35, 56, 0.14)), url("images/webuyhousescashinanycondition.jpg");
 }
 .pain-foreclosure .pain-card-media {
-  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/webuyfloridapreforeclosurehomes.webp");
+  background-image: linear-gradient(180deg, rgba(12, 35, 56, 0.02), rgba(12, 35, 56, 0.14)), url("images/webuyfloridapreforeclosurehomes.webp");
 }
 .pain-rental .pain-card-media {
-  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/ChatGPT Image Mar 13, 2026, 08_17_55 PM.png");
+  background-image: linear-gradient(180deg, rgba(12, 35, 56, 0.02), rgba(12, 35, 56, 0.14)), url("images/ChatGPT Image Mar 13, 2026, 08_17_55 PM.png");
 }
 .pain-probate .pain-card-media {
-  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/webuyfloridaprobatehomesfastforcash.png");
+  background-image: linear-gradient(180deg, rgba(12, 35, 56, 0.02), rgba(12, 35, 56, 0.14)), url("images/webuyfloridaprobatehomesfastforcash.png");
 }
 .pain-divorce .pain-card-media {
-  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/cashhomebuyerflorida.jpg");
+  background-image: linear-gradient(180deg, rgba(12, 35, 56, 0.02), rgba(12, 35, 56, 0.14)), url("images/cashhomebuyerflorida.jpg");
 }
 .pain-vacant .pain-card-media {
-  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png");
+  background-image: linear-gradient(180deg, rgba(12, 35, 56, 0.02), rgba(12, 35, 56, 0.14)), url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png");
 }
 
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
@@ -906,7 +937,7 @@ details p { margin-top: 0.7rem; }
   .market-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
-  .pain-card { min-height: 460px; }
+  .pain-card { min-height: 450px; }
   .situations-grid { grid-template-columns: 1fr; }
   .glance-grid { grid-template-columns: 1fr; }
   .final-cta-box { padding: 2rem 1.2rem; }
