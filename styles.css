@@ -259,15 +259,15 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   .ticker-track { animation: none; }
 }
 
-.section { padding: 5.5rem 0; }
+.section { padding: 6.25rem 0; }
 .section-muted { background: var(--surface); }
 .section-soft { background: linear-gradient(180deg, rgba(242, 237, 208, 0.22), transparent 88%); }
-.section-head { max-width: 60ch; margin-bottom: 2rem; }
+.section-head { max-width: 60ch; margin-bottom: 2.4rem; }
 .section-head h2 { margin-top: 0.65rem; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
 
 
 .expertise-section {
-  padding-bottom: 2.2rem;
+  padding-bottom: 3.2rem;
 }
 
 .expertise-box {
@@ -310,32 +310,37 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 
 .pain-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
 }
 
 .pain-card {
-  position: relative;
-  min-height: 220px;
+  min-height: 420px;
   border-radius: 1rem;
-  padding: 1.1rem;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: 40% 1fr auto;
+  background: #ffffff;
+  border: 1px solid #d6e2ef;
+  box-shadow: 0 16px 34px rgba(20, 45, 70, 0.08);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-.pain-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 23, 38, 0.12) 0%, rgba(10, 23, 38, 0.84) 74%, rgba(10, 23, 38, 0.95) 100%);
+.pain-card:hover {
+  transform: translateY(-6px);
+  border-color: #8fb3d6;
+  box-shadow: 0 20px 40px rgba(17, 45, 73, 0.14);
 }
 
-.pain-card > * {
-  position: relative;
-  z-index: 1;
+.pain-card-media {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pain-card-content {
+  background: #f8fbff;
+  padding: 1.15rem 1.15rem 0.85rem;
 }
 
 .pain-grid h3,
@@ -347,25 +352,55 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .pain-card h3 {
-  color: #f4f9ff;
-  font-size: 1.15rem;
-  margin-bottom: 0.4rem;
+  color: #12385a;
+  font-size: 1.1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.card-icon {
+  font-size: 1rem;
 }
 
 .pain-card p {
-  color: rgba(237, 245, 253, 0.92);
+  color: #365975;
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
 }
 
-
-
-.card-benefit {
-  margin: 0.65rem 0 0;
-  padding-left: 1.15rem;
-  color: #f1f7ff;
+.problem-statement strong,
+.solution-statement strong {
+  color: #133b60;
 }
 
-.card-benefit li {
+.solution-comparison {
+  padding-top: 2.8rem;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.comparison-card {
+  border: 1px solid #d8e4f0;
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1.3rem;
+  box-shadow: var(--shadow);
+}
+
+.comparison-card h3 {
   margin: 0;
+  color: #123a5f;
+}
+
+.comparison-card p {
+  margin-top: 0.55rem;
+  color: #3b5d79;
 }
 
 .process-glance {
@@ -435,34 +470,47 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 }
 
 .card-link {
-  margin-top: 0.9rem;
+  margin: 0 1.15rem 1.2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
   text-decoration: none;
-  color: #f3f8ff;
-  border: 1px solid rgba(243, 248, 255, 0.34);
+  color: #123d64;
+  border: 1px solid #9db8d2;
+  background: #ffffff;
   border-radius: 999px;
-  padding: 0.5rem 0.95rem;
+  padding: 0.55rem 1rem;
   font-weight: 700;
   font-size: 0.84rem;
+  letter-spacing: 0.01em;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 .card-link:hover {
-  border-color: rgba(243, 248, 255, 0.7);
+  border-color: #1f5f92;
+  color: #0d304d;
+  background: #f1f7fd;
 }
 
-.pain-repairs {
-  background: #2d4f70 url("images/webuyhousescashinanycondition.jpg") center/cover no-repeat;
+.pain-repairs .pain-card-media {
+  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/webuyhousescashinanycondition.jpg");
 }
-.pain-foreclosure { background: #2c4b6a url("images/webuyfloridapreforeclosurehomes.webp") center/cover no-repeat; }
-.pain-inherited { background: #2e5274 url("images/webuyfloridainheritedpropertiescash.jpg") center/cover no-repeat; }
-.pain-rental { background: #2c4c6d url("images/ChatGPT Image Mar 13, 2026, 08_17_55 PM.png") center/cover no-repeat; }
-.pain-urgent { background: #2d4f70 url("images/sellyourfloridahomefast.png") center/cover no-repeat; }
-.pain-probate { background: #2a4968 url("images/webuyfloridaprobatehomesfastforcash.png") center/cover no-repeat; }
-.pain-divorce { background: #2f5376 url("images/cashhomebuyerflorida.jpg") center/cover no-repeat; }
-.pain-vacant { background: #2b4868 url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png") center/cover no-repeat; }
+.pain-foreclosure .pain-card-media {
+  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/webuyfloridapreforeclosurehomes.webp");
+}
+.pain-rental .pain-card-media {
+  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/ChatGPT Image Mar 13, 2026, 08_17_55 PM.png");
+}
+.pain-probate .pain-card-media {
+  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/webuyfloridaprobatehomesfastforcash.png");
+}
+.pain-divorce .pain-card-media {
+  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/cashhomebuyerflorida.jpg");
+}
+.pain-vacant .pain-card-media {
+  background-image: linear-gradient(180deg, rgba(18, 41, 64, 0.08), rgba(18, 41, 64, 0.25)), url("images/ChatGPT Image Mar 14, 2026, 12_34_21 PM.png");
+}
 
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 
@@ -800,6 +848,7 @@ details p { margin-top: 0.7rem; }
 
 @media (max-width: 1024px) {
   .pain-grid { grid-template-columns: repeat(2, 1fr); }
+  .comparison-grid { grid-template-columns: 1fr; }
   .situations-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid, .steps-grid { grid-template-columns: 1fr; }
   .process-step.is-active { transform: none; }
@@ -825,6 +874,7 @@ details p { margin-top: 0.7rem; }
   .market-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
+  .pain-card { min-height: 390px; }
   .situations-grid { grid-template-columns: 1fr; }
   .glance-grid { grid-template-columns: 1fr; }
   .final-cta-box { padding: 2rem 1.2rem; }
