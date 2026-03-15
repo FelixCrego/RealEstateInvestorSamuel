@@ -777,6 +777,11 @@ figcaption { margin-top: 1rem; font-weight: 700; }
   font-size: 0.95rem;
 }
 
+.region-card .btn {
+  margin-top: 0.95rem;
+  align-self: flex-start;
+}
+
 .region-select-label {
   margin-top: 1rem;
   font-size: 0.78rem;
