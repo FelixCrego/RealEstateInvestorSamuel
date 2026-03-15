@@ -729,41 +729,79 @@ figcaption { margin-top: 1rem; font-weight: 700; }
 }
 
 .region-card {
-  background: #fff;
-  border: 1px solid var(--line);
+  position: relative;
+  min-height: 330px;
   border-radius: 1rem;
-  padding: 1.25rem;
+  overflow: hidden;
   box-shadow: var(--shadow);
+  border: 1px solid rgba(197, 215, 233, 0.75);
+  isolation: isolate;
+}
+
+.region-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.45s ease, filter 0.45s ease;
+  filter: brightness(0.75);
+}
+
+.region-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 22, 38, 0.22) 0%, rgba(8, 20, 34, 0.78) 72%, rgba(8, 20, 34, 0.92) 100%);
+}
+
+.region-card-content {
+  position: relative;
+  z-index: 1;
+  min-height: 330px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .region-card h3 {
   margin: 0;
-  font-size: 1.25rem;
-  color: #123456;
+  font-size: 1.45rem;
+  color: #ffffff;
 }
 
 .region-card p {
   margin-top: 0.65rem;
-  color: #42596f;
+  color: rgba(236, 243, 251, 0.95);
   font-size: 0.95rem;
 }
 
-.region-city-list {
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.45rem;
-}
-
-.region-city-list a {
-  color: #154a7a;
-  text-decoration: none;
+.region-select-label {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   font-weight: 700;
+  color: rgba(229, 240, 252, 0.95);
 }
 
-.region-city-list a:hover {
-  text-decoration: underline;
+.region-select {
+  margin-top: 0.45rem;
+  width: 100%;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(190, 211, 235, 0.92);
+  background: rgba(255, 255, 255, 0.93);
+  color: #173855;
+  font-weight: 700;
+  padding: 0.68rem 0.8rem;
+  appearance: none;
+}
+
+.region-card:hover .region-card-image,
+.region-card:focus-within .region-card-image {
+  transform: scale(1.06);
+  filter: brightness(0.9);
 }
 
 .authority-section {
@@ -776,6 +814,20 @@ figcaption { margin-top: 1rem; font-weight: 700; }
   border-radius: 1.2rem;
   padding: 2.2rem;
   text-align: center;
+}
+
+.authority-title-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.authority-map-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: #1f5f93;
+  flex: 0 0 auto;
 }
 
 .authority-box h2 {
@@ -1011,6 +1063,8 @@ details p { margin-top: 0.7rem; }
   .samuel-images { width: min(100%, 460px); justify-self: start; }
   .market-grid { grid-template-columns: 1fr; }
   .regional-grid { grid-template-columns: 1fr; }
+
+  .region-card, .region-card-content { min-height: 300px; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
   .pain-card { min-height: 450px; }
