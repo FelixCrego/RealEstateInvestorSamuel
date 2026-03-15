@@ -265,6 +265,29 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
 .section-head { max-width: 60ch; margin-bottom: 2rem; }
 .section-head h2 { margin-top: 0.65rem; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
 
+
+.expertise-section {
+  padding-bottom: 2.2rem;
+}
+
+.expertise-box {
+  background: linear-gradient(135deg, #f7fbff 0%, #ffffff 55%, #f1f7fe 100%);
+  border: 1px solid #d9e6f3;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.expertise-box h2 {
+  margin-top: 0.65rem;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+}
+
+.expertise-box p {
+  margin-top: 0.9rem;
+  max-width: 72ch;
+}
+
 .samuel-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: center; }
 .samuel-copy p { margin-top: 1rem; max-width: 58ch; }
 .samuel-copy .btn { margin-top: 1.3rem; }
@@ -333,6 +356,83 @@ h1 { margin-top: 0.7rem; font-size: clamp(2.1rem, 4.5vw, 3.8rem); max-width: 18c
   color: rgba(237, 245, 253, 0.92);
 }
 
+
+
+.card-benefit {
+  margin: 0.65rem 0 0;
+  padding-left: 1.15rem;
+  color: #f1f7ff;
+}
+
+.card-benefit li {
+  margin: 0;
+}
+
+.process-glance {
+  padding-top: 1.2rem;
+}
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.glance-card {
+  border: 1px solid #d6e2ef;
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1.3rem;
+  box-shadow: var(--shadow);
+}
+
+.glance-card span {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf3fb;
+  color: #113b63;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+.glance-card h3 {
+  margin-top: 0.8rem;
+  color: #153758;
+}
+
+.glance-card p {
+  margin-top: 0.55rem;
+  color: #3a5a76;
+}
+
+.guarantees-bar {
+  border-top: 1px solid #d0deeb;
+  border-bottom: 1px solid #d0deeb;
+  background: #f8fbff;
+  padding: 0.7rem 0;
+}
+
+.guarantees-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.guarantees-grid p {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #123657;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.94rem;
+}
 
 .card-link {
   margin-top: 0.9rem;
@@ -726,8 +826,10 @@ details p { margin-top: 0.7rem; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
   .situations-grid { grid-template-columns: 1fr; }
+  .glance-grid { grid-template-columns: 1fr; }
   .final-cta-box { padding: 2rem 1.2rem; }
   .footer-grid { grid-template-columns: 1fr; }
+  .guarantees-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .footer-legal { flex-wrap: wrap; gap: 0.7rem 1rem; }
 }
