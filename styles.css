@@ -716,6 +716,80 @@ figcaption { margin-top: 1rem; font-weight: 700; }
   font-weight: 600;
 }
 
+
+.regional-hub {
+  padding-bottom: 4.5rem;
+}
+
+.regional-grid {
+  margin-top: 2.3rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.region-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.region-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #123456;
+}
+
+.region-card p {
+  margin-top: 0.65rem;
+  color: #42596f;
+  font-size: 0.95rem;
+}
+
+.region-city-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.region-city-list a {
+  color: #154a7a;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.region-city-list a:hover {
+  text-decoration: underline;
+}
+
+.authority-section {
+  padding-top: 0;
+}
+
+.authority-box {
+  background: linear-gradient(135deg, #f2f8ff 0%, #e4f0ff 100%);
+  border: 1px solid #cfdeef;
+  border-radius: 1.2rem;
+  padding: 2.2rem;
+  text-align: center;
+}
+
+.authority-box h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  color: #10273f;
+}
+
+.authority-box p {
+  margin: 0.9rem auto 0;
+  max-width: 70ch;
+  color: #334c64;
+}
+
 .market-grid {
   margin-top: 2.3rem;
   display: grid;
@@ -919,6 +993,7 @@ details p { margin-top: 0.7rem; }
   .footer-brand { grid-column: 1 / -1; }
   .hero-grid, .why-grid, .samuel-grid { grid-template-columns: 1fr; }
   .market-grid { grid-template-columns: repeat(2, 1fr); }
+  .regional-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
   .ticker-row { flex-direction: column; align-items: flex-start; padding-block: 0.8rem; padding-inline: 0.2rem; }
   .ticker-track { animation-duration: 34s; }
@@ -935,6 +1010,7 @@ details p { margin-top: 0.7rem; }
   .ticker-item { font-size: 0.88rem; }
   .samuel-images { width: min(100%, 460px); justify-self: start; }
   .market-grid { grid-template-columns: 1fr; }
+  .regional-grid { grid-template-columns: 1fr; }
   .section, .final-cta { padding-block: 4rem; }
   .pain-grid { grid-template-columns: 1fr; }
   .pain-card { min-height: 450px; }
