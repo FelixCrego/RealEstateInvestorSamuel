@@ -932,12 +932,41 @@ figcaption { margin-top: 1rem; font-weight: 700; }
   border-color: rgba(243, 248, 255, 0.65);
 }
 
-.market-jax { background: #1d3550 url("images/markets/jacksonville.svg") center/cover no-repeat; }
-.market-miami { background: #294a6b url("images/markets/miami.svg") center/cover no-repeat; }
-.market-tampa { background: #1f3e5f url("images/markets/tampa.svg") center/cover no-repeat; }
-.market-orlando { background: #2f4d6d url("images/markets/orlando.svg") center/cover no-repeat; }
-.market-stpete { background: #1b5b83 url("images/markets/st-petersburg.svg") center/cover no-repeat; }
-.market-coral { background: #33485f url("images/markets/cape-coral.svg") center/cover no-repeat; }
+.market-jax {
+  background: #1d3550
+    url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+}
+
+.market-miami {
+  background: #294a6b
+    url("https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+}
+
+.market-tampa {
+  background: #1f3e5f
+    url("https://images.unsplash.com/photo-1605723517503-3cadb5818a0c?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+}
+
+.market-orlando {
+  background: #2f4d6d
+    url("https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+}
+
+.market-stpete {
+  background: #1b5b83
+    url("https://images.unsplash.com/photo-1561089489-f13d5e730d72?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+}
+
+.market-coral {
+  background: #33485f
+    url("https://images.unsplash.com/photo-1614942391153-16ad6688f7c3?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+}
 
 .faq-list { display: grid; gap: 0.9rem; }
 details { border-radius: 0.8rem; border: 1px solid var(--line); background: #fff; padding: 1rem 1.1rem; }
