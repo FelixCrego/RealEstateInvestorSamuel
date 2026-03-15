@@ -1118,3 +1118,55 @@ details p { margin-top: 0.7rem; }
     grid-template-columns: 1fr;
   }
 }
+
+.probate-hero-copy h1 {
+  max-width: 22ch;
+}
+
+.authority-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.authority-card {
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #fff;
+}
+
+.authority-card h3 {
+  font-size: 1.4rem;
+  color: #123b61;
+}
+
+.authority-card p {
+  margin-top: 0.95rem;
+}
+
+.heir-relief-box {
+  border-radius: 1.2rem;
+  border: 1px solid #cfe0f0;
+  background: linear-gradient(165deg, #f7fbff 0%, #edf4fb 100%);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.heir-relief-box h2 {
+  margin-top: 0.6rem;
+}
+
+.heir-relief-box p {
+  margin-top: 0.9rem;
+  max-width: 78ch;
+}
+
+.probate-final-cta {
+  border: 3px solid rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 860px) {
+  .authority-grid {
+    grid-template-columns: 1fr;
+  }
+}
