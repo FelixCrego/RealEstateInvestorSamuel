@@ -62,7 +62,7 @@
         </div>
         <aside class="hero-panel" aria-label="Get personalized selling options form">
           <h2>Find options for your city and situation</h2>
-          <p>Share two quick details to see the most relevant path for your Florida home sale.</p>
+          <p>Choose your ZIP and situation to see every related page we have for your city.</p>
           <form class="hero-form" method="get">
             <label for="zip-code">ZIP Code</label>
             <input
@@ -96,6 +96,16 @@
       </div>
     </header>
 
+    <section class="section section-soft" id="tailored-results" hidden>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Tailored Content</p>
+          <h2 id="tailored-results-title">Pages for your situation and city</h2>
+          <p id="tailored-results-subhead">These pages match your ZIP and situation.</p>
+        </div>
+        <div class="situations-grid" id="tailored-results-grid" aria-live="polite"></div>
+      </div>
+    </section>
 
     <section class="purchase-ticker" aria-label="Recent homes purchased">
       <div class="container ticker-row">
@@ -671,39 +681,50 @@
         const heroForm = document.querySelector('.hero-form');
         const zipInput = document.getElementById('zip-code');
         const situationInput = document.getElementById('situation');
-        const heroHeadline = document.getElementById('hero-headline');
-        const heroSubhead = document.getElementById('hero-subhead');
-        const serviceAreaSection = document.getElementById('service-area');
-        const situationsSection = document.getElementById('situations');
+        const resultsSection = document.getElementById('tailored-results');
+        const resultsTitle = document.getElementById('tailored-results-title');
+        const resultsSubhead = document.getElementById('tailored-results-subhead');
+        const resultsGrid = document.getElementById('tailored-results-grid');
 
-        if (!heroForm || !zipInput || !situationInput || !heroHeadline || !heroSubhead || !serviceAreaSection || !situationsSection) {
+        if (!heroForm || !zipInput || !situationInput || !resultsSection || !resultsGrid) {
           return;
         }
 
-        const defaultHeroHeadline = heroHeadline.textContent;
-        const defaultHeroSubhead = heroSubhead.textContent;
         const zipPattern = /^[0-9]{5}$/;
-        const cityZipRules = [
-          { slug: 'miami', name: 'Miami', test: (zip) => /^331\d{2}$/.test(zip) },
-          { slug: 'tampa', name: 'Tampa', test: (zip) => /^336\d{2}$/.test(zip) },
-          { slug: 'orlando', name: 'Orlando', test: (zip) => /^328\d{2}$/.test(zip) },
-          { slug: 'jacksonville', name: 'Jacksonville', test: (zip) => /^322\d{2}$/.test(zip) },
-          { slug: 'st-petersburg', name: 'St. Petersburg', test: (zip) => /^337\d{2}$/.test(zip) },
-          { slug: 'cape-coral', name: 'Cape Coral', test: (zip) => /^339\d{2}$/.test(zip) }
-        ];
+        const searchParams = new URLSearchParams(window.location.search);
+        const queryZip = (searchParams.get('zip') || '').trim();
+        const querySituation = (searchParams.get('situation') || '').trim();
 
-        const situationMeta = {
-          'inherited-property': { cardClass: 'situation-inherited', label: 'an inherited or probate property' },
-          'foreclosure-pressure': { cardClass: 'situation-foreclosure', label: 'foreclosure pressure' },
-          'major-repairs-needed': { cardClass: 'situation-repairs', label: 'a house needing major repairs' },
-          'urgent-timeline': { cardClass: 'situation-fast', label: 'an urgent selling timeline' },
-          'unwanted-rental': { cardClass: 'situation-rental', label: 'an unwanted rental property' },
-          'probate-complexity': { cardClass: 'situation-estate', label: 'probate complexity' },
-          'divorce-transition': { cardClass: 'situation-divorce', label: 'a divorce transition' },
-          'vacant-home-costs': { cardClass: 'situation-vacant', label: 'high holding costs' }
+        const situationLabels = {
+          'major-repairs-needed': 'Major Repairs Needed',
+          'foreclosure-pressure': 'Foreclosure Pressure',
+          'inherited-property': 'Inherited Property',
+          'unwanted-rental': 'Unwanted Rental',
+          'urgent-timeline': 'Urgent Timeline',
+          'probate-complexity': 'Probate Complexity',
+          'divorce-transition': 'Divorce Transition',
+          'vacant-home-costs': 'Vacant Home Costs'
         };
 
-        const resolveCityFromZip = (zip) => cityZipRules.find((rule) => rule.test(zip)) || null;
+        const contentInventory = [
+          { href: 'miami.html', title: 'Miami Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['miami'], situations: ['all'] },
+          { href: 'tampa.html', title: 'Tampa Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['tampa'], situations: ['all'] },
+          { href: 'orlando.html', title: 'Orlando Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['orlando'], situations: ['all'] },
+          { href: 'jacksonville.html', title: 'Jacksonville Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['jacksonville'], situations: ['all'] },
+          { href: 'st-petersburg.html', title: 'St. Petersburg Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['st-petersburg'], situations: ['all'] },
+          { href: 'cape-coral.html', title: 'Cape Coral Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['cape-coral'], situations: ['all'] },
+          { href: 'major-repairs-needed.html', title: 'Major Repairs Needed Guide', description: 'Options for selling without fixing everything first.', citySlugs: ['all'], situations: ['major-repairs-needed'] },
+          { href: 'foreclosure-pressure.html', title: 'Foreclosure Pressure Guide', description: 'Urgent steps and options before auction in Florida.', citySlugs: ['all'], situations: ['foreclosure-pressure'] },
+          { href: 'inherited-property.html', title: 'Inherited Property Guide', description: 'Guidance for inherited homes and decision planning.', citySlugs: ['all'], situations: ['inherited-property'] },
+          { href: 'unwanted-rental.html', title: 'Unwanted Rental Guide', description: 'Ways to sell rental properties with tenant or turnover issues.', citySlugs: ['all'], situations: ['unwanted-rental'] },
+          { href: 'urgent-timeline.html', title: 'Urgent Timeline Guide', description: 'Steps for a faster, controlled sale process.', citySlugs: ['all'], situations: ['urgent-timeline'] },
+          { href: 'probate-complexity.html', title: 'Probate Complexity Guide', description: 'What to do when probate slows your sale process.', citySlugs: ['all'], situations: ['probate-complexity'] },
+          { href: 'divorce-transition.html', title: 'Divorce Transition Guide', description: 'Clear home-sale options during divorce transitions.', citySlugs: ['all'], situations: ['divorce-transition'] },
+          { href: 'vacant-home-costs.html', title: 'Vacant Home Costs Guide', description: 'How to reduce ongoing costs on empty properties.', citySlugs: ['all'], situations: ['vacant-home-costs'] }
+        ];
+
+        const isCityMatch = (entry, citySlug) => entry.citySlugs.includes('all') || (citySlug && entry.citySlugs.includes(citySlug));
+        const isSituationMatch = (entry, situationSlug) => entry.situations.includes('all') || entry.situations.includes(situationSlug);
 
         const updateUrl = (zip, situation) => {
           const url = new URL(window.location.href);
@@ -716,73 +737,44 @@
           window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
         };
 
-        const sortServiceAreaForCity = (citySlug) => {
-          const grid = serviceAreaSection.querySelector('.market-grid');
-          if (!grid) {
-            return;
-          }
+        const renderResults = ({ zip, situation }) => {
+          const resolvedCity = typeof window.resolveFloridaCityByZip === 'function'
+            ? window.resolveFloridaCityByZip(zip)
+            : null;
+          const citySlug = resolvedCity?.citySlug || null;
+          const cityName = resolvedCity?.cityDisplayName || 'Florida';
+          const situationName = situationLabels[situation] || 'Your Situation';
 
-          const cards = Array.from(grid.querySelectorAll('.market-card'));
-          cards.forEach((card) => card.classList.remove('is-prioritized'));
+          const matched = contentInventory.filter((entry) => isCityMatch(entry, citySlug) && isSituationMatch(entry, situation));
 
-          const prioritizedCard = cards.find((card) => card.querySelector(`a[href="${citySlug}.html"]`));
-          if (prioritizedCard) {
-            prioritizedCard.classList.add('is-prioritized');
-            grid.prepend(prioritizedCard);
-          }
+          resultsTitle.textContent = `${situationName} resources for ${cityName}`;
+          resultsSubhead.textContent = matched.length
+            ? `We found ${matched.length} page${matched.length === 1 ? '' : 's'} related to ${situationName.toLowerCase()} in ${cityName}.`
+            : `We couldn't find an exact match, so start with our statewide resources.`;
+
+          resultsGrid.innerHTML = '';
+
+          const pagesToShow = matched.length
+            ? matched
+            : [{ href: 'situations.html', title: 'All Situation Guides', description: 'Browse all of our Florida situation pages.', citySlugs: ['all'], situations: ['all'] }];
+
+          pagesToShow.forEach((entry) => {
+            const card = document.createElement('article');
+            card.className = 'situation-card';
+            card.innerHTML = `
+              <h3>${entry.title}</h3>
+              <p>${entry.description}</p>
+              <a class="card-link" href="${entry.href}" title="View ${entry.title}">View Page</a>
+            `;
+            resultsGrid.appendChild(card);
+          });
+
+          resultsSection.hidden = false;
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         };
 
-        const sortSituations = (situationSlug) => {
-          const grid = situationsSection.querySelector('.situations-grid');
-          const metadata = situationMeta[situationSlug];
-          if (!grid || !metadata) {
-            return;
-          }
-
-          const cards = Array.from(grid.querySelectorAll('.situation-card'));
-          cards.forEach((card) => card.classList.remove('is-prioritized'));
-
-          const prioritizedCard = cards.find((card) => card.classList.contains(metadata.cardClass));
-          if (prioritizedCard) {
-            prioritizedCard.classList.add('is-prioritized');
-            grid.prepend(prioritizedCard);
-          }
-        };
-
-        const updateHeroCopy = (cityName, situationSlug) => {
-          const situationLabel = situationMeta[situationSlug]?.label;
-          if (!cityName || !situationLabel) {
-            heroHeadline.textContent = defaultHeroHeadline;
-            heroSubhead.textContent = defaultHeroSubhead;
-            return;
-          }
-
-          heroHeadline.textContent = `Sell Your ${cityName} House Fast—Without Repairs, Fees, or Stress.`;
-          heroSubhead.textContent = `If you're dealing with ${situationLabel} in ${cityName}, we provide a fair, certain path to selling as-is on your timeline.`;
-        };
-
-        const applyPersonalization = (profile) => {
-          if (!profile || !zipPattern.test(profile.zip) || !situationMeta[profile.situation]) {
-            updateHeroCopy();
-            return;
-          }
-
-          const resolvedCity = resolveCityFromZip(profile.zip);
-          if (!resolvedCity) {
-            updateHeroCopy();
-            return;
-          }
-
-          sortServiceAreaForCity(resolvedCity.slug);
-          sortSituations(profile.situation);
-          updateHeroCopy(resolvedCity.name, profile.situation);
-        };
-
-        const searchParams = new URLSearchParams(window.location.search);
-        const queryZip = searchParams.get('zip') || '';
-        const querySituation = searchParams.get('situation') || '';
         const storedProfile = JSON.parse(window.localStorage.getItem(PROFILE_STORAGE_KEY) || 'null');
-        const initialProfile = zipPattern.test(queryZip) && situationMeta[querySituation]
+        const initialProfile = zipPattern.test(queryZip) && situationLabels[querySituation]
           ? { zip: queryZip, situation: querySituation }
           : storedProfile;
 
@@ -790,11 +782,12 @@
           zipInput.value = initialProfile.zip;
         }
 
-        if (initialProfile?.situation && situationMeta[initialProfile.situation]) {
+        if (initialProfile?.situation && situationLabels[initialProfile.situation]) {
           situationInput.value = initialProfile.situation;
+          if (zipPattern.test(initialProfile.zip)) {
+            renderResults(initialProfile);
+          }
         }
-
-        applyPersonalization(initialProfile);
 
         heroForm.addEventListener('submit', (event) => {
           event.preventDefault();
@@ -803,21 +796,24 @@
           const situation = situationInput.value;
 
           if (!zipPattern.test(zip)) {
-            event.preventDefault();
             zipInput.setCustomValidity('Please enter a valid 5-digit Florida ZIP code.');
             zipInput.reportValidity();
             return;
           }
 
+          if (!situationLabels[situation]) {
+            situationInput.setCustomValidity('Please select your situation.');
+            situationInput.reportValidity();
+            return;
+          }
+
           zipInput.setCustomValidity('');
+          situationInput.setCustomValidity('');
 
           const profile = { zip, situation };
           storeProfile(profile);
           updateUrl(zip, situation);
-          applyPersonalization(profile);
-
-          const tailoredResultsSection = document.querySelector('#situations') || document.querySelector('#service-area');
-          tailoredResultsSection?.scrollIntoView({ behavior: 'smooth' });
+          renderResults(profile);
         });
       })();
     </script>
