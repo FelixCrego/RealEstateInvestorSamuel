@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Your Offer | 60% ARV Calculator | Florida Cash House Buyers</title>
+    <meta
+      name="description"
+      content="Use our 60% ARV offer calculator to estimate a cash offer range in seconds. Enter your after-repair value and repair costs to create your offer."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero subpage-hero" id="top">
+      <div class="container nav-wrap">
+        <a class="brand-block" href="index.html" aria-label="Florida Cash House Buyers home" title="Go to Florida Cash House Buyers home page">
+          <img src="logo.svg" alt="Florida Cash House Buyers" class="brand-logo" />
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="how-it-works.html" title="How the home buying process works">How It Works</a>
+          <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
+          <a href="service-areas.html" title="See the Florida areas where we buy houses">Areas We Buy</a>
+          <a href="create-your-offer.html" aria-current="page" title="Estimate your cash offer with our 60% ARV calculator">Offer Calculator</a>
+          <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
+          <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
+          <a href="index.html#faq" title="View frequently asked questions about selling your house">FAQ</a>
+        </nav>
+        <a class="btn btn-nav-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Call (813) 555-0192</a>
+      </div>
+
+      <div class="container subpage-hero-copy offer-hero-copy">
+        <p class="eyebrow">Create your offer</p>
+        <h1>60% ARV Offer Calculator</h1>
+        <p>
+          Use this quick calculator to estimate a conservative cash offer using the 60% ARV rule.
+          Enter your expected after-repair value and repair budget to get a fast estimate.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-soft" id="offer-calculator">
+        <div class="container">
+          <div class="offer-calculator-layout">
+            <article class="offer-calculator-card" aria-label="60% ARV calculator form">
+              <h2>Build Your Offer</h2>
+              <p>Formula: <strong>(ARV × 60%) − Estimated Repairs</strong></p>
+
+              <form class="calculator-form" id="calculator-form">
+                <label for="arv">After Repair Value (ARV)</label>
+                <div class="money-input-wrap">
+                  <span aria-hidden="true">$</span>
+                  <input id="arv" name="arv" inputmode="decimal" type="number" min="0" step="1000" placeholder="350000" required />
+                </div>
+
+                <label for="repairs">Estimated Repair Costs</label>
+                <div class="money-input-wrap">
+                  <span aria-hidden="true">$</span>
+                  <input id="repairs" name="repairs" inputmode="decimal" type="number" min="0" step="500" placeholder="40000" required />
+                </div>
+
+                <button class="btn btn-primary" type="submit">Calculate My Offer</button>
+              </form>
+            </article>
+
+            <aside class="offer-result-card" aria-live="polite" aria-label="Calculated offer result">
+              <p class="offer-result-label">Estimated Cash Offer</p>
+              <p class="offer-result-value" id="offer-result">$0</p>
+              <p class="offer-result-note" id="offer-note">Enter your numbers to generate an estimate.</p>
+
+              <ul class="offer-breakdown" id="offer-breakdown">
+                <li><span>60% of ARV</span><strong>$0</strong></li>
+                <li><span>Repairs Deducted</span><strong>$0</strong></li>
+              </ul>
+
+              <div class="hero-actions">
+                <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Discuss My Numbers</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" id="final-cta">
+        <div class="container final-cta-box">
+          <p class="eyebrow">Ready for a real offer?</p>
+          <h2>Get a no-pressure, property-specific cash offer from our team.</h2>
+          <p>Your final number depends on condition, title details, and timeline—but we keep every step transparent.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Request My Cash Offer</a>
+            <a class="btn btn-outline" href="how-it-works.html" title="Learn how our home buying process works">See How It Works</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById('calculator-form');
+      const result = document.getElementById('offer-result');
+      const note = document.getElementById('offer-note');
+      const breakdown = document.getElementById('offer-breakdown');
+
+      const asCurrency = (value) =>
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const arv = Number(form.arv.value) || 0;
+        const repairs = Number(form.repairs.value) || 0;
+
+        const sixtyPercent = arv * 0.6;
+        const estimatedOffer = Math.max(sixtyPercent - repairs, 0);
+
+        result.textContent = asCurrency(estimatedOffer);
+        note.textContent = estimatedOffer > 0
+          ? 'This is an estimate for planning. We can fine-tune a final as-is offer after a quick walkthrough.'
+          : 'Repair costs currently consume the 60% ARV target. Call us for custom options.';
+
+        breakdown.innerHTML = `
+          <li><span>60% of ARV</span><strong>${asCurrency(sixtyPercent)}</strong></li>
+          <li><span>Repairs Deducted</span><strong>-${asCurrency(repairs)}</strong></li>
+        `;
+      });
+    </script>
+  </body>
+</html>
