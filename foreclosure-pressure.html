@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="zip-city-resolver.js" defer></script>
   </head>
   <body>
     <header class="hero subpage-hero" id="top">
@@ -31,8 +32,8 @@
 
       <div class="container subpage-hero-copy">
         <p class="eyebrow">Foreclosure Help</p>
-        <h1>How to Stop Foreclosure in Florida: The 2026 Homeowner’s Guide to Saving Equity</h1>
-        <p>
+        <h1 id="foreclosure-hero-title">How to Stop Foreclosure in Florida: The 2026 Homeowner’s Guide to Saving Equity</h1>
+        <p id="foreclosure-hero-subhead">
           Receiving a Lis Pendens is not the end. In Florida's judicial system, you have specific legal rights and a window of opportunity to protect your credit and your cash. Discover the fastest, most reliable ways to stop a foreclosure auction today.
         </p>
         <div class="hero-actions">
@@ -310,6 +311,28 @@
           }
         ]
       }
+    </script>
+
+    <script>
+      (function () {
+        const title = document.getElementById('foreclosure-hero-title');
+        const subhead = document.getElementById('foreclosure-hero-subhead');
+        if (!title || !subhead || typeof window.resolveFloridaCityByZip !== 'function') {
+          return;
+        }
+
+        const searchParams = new URLSearchParams(window.location.search);
+        const zip = (searchParams.get('zip') || '').trim();
+        const resolvedCity = window.resolveFloridaCityByZip(zip);
+
+        if (!resolvedCity?.cityDisplayName || !resolvedCity.isSupportedMarket) {
+          return;
+        }
+
+        const cityName = resolvedCity.cityDisplayName;
+        title.textContent = `How to Stop Foreclosure in ${cityName}: The 2026 Homeowner’s Guide to Saving Equity`;
+        subhead.textContent = `If you're facing foreclosure in ${cityName}, you still have legal options to protect your equity, timeline, and credit before auction.`;
+      })();
     </script>
   </body>
 </html>
