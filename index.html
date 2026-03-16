@@ -50,8 +50,8 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Sell on your timeline</p>
-          <h1>Sell Your Florida House Fast—Without Repairs, Fees, or Stress.</h1>
-          <p>
+          <h1 id="hero-headline">Sell Your Florida House Fast—Without Repairs, Fees, or Stress.</h1>
+          <p id="hero-subhead">
             We provide homeowners with a fair, certain path to selling. Skip the open houses and the 6% commissions. Whether it's an inherited property or an urgent relocation, we buy your house exactly as it is today.
           </p>
           <div class="hero-actions">
@@ -72,6 +72,22 @@
 
             <label for="phone">Phone Number</label>
             <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(813) 555-0192" required />
+
+            <label for="zip">Florida ZIP Code</label>
+            <input id="zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="33602" required />
+
+            <label for="situation">Your Situation</label>
+            <select id="situation" name="situation" required>
+              <option value="" selected disabled>Select your situation</option>
+              <option value="inherited-property">Inherited &amp; Probate Property</option>
+              <option value="foreclosure-pressure">Stop Florida Foreclosure</option>
+              <option value="major-repairs-needed">Houses Needing Massive Repairs</option>
+              <option value="urgent-timeline">Selling Fast</option>
+              <option value="unwanted-rental">Tired Landlords &amp; Bad Tenants</option>
+              <option value="probate-complexity">Probate / Estate Sale</option>
+              <option value="divorce-transition">Divorce Transition</option>
+              <option value="vacant-home-costs">High Insurance &amp; Holding Costs</option>
+            </select>
 
             <label for="timeline">Selling Timeline</label>
             <select id="timeline" name="timeline" required>
@@ -594,6 +610,156 @@
 
             activateStep(tabs[nextIndex], true);
           });
+        });
+      })();
+
+      (function () {
+        const PROFILE_STORAGE_KEY = 'fchb-profile';
+        const heroForm = document.querySelector('.hero-form');
+        const zipInput = document.getElementById('zip');
+        const situationInput = document.getElementById('situation');
+        const heroHeadline = document.getElementById('hero-headline');
+        const heroSubhead = document.getElementById('hero-subhead');
+        const serviceAreaSection = document.getElementById('service-area');
+        const situationsSection = document.getElementById('situations');
+
+        if (!heroForm || !zipInput || !situationInput || !heroHeadline || !heroSubhead || !serviceAreaSection || !situationsSection) {
+          return;
+        }
+
+        const defaultHeroHeadline = heroHeadline.textContent;
+        const defaultHeroSubhead = heroSubhead.textContent;
+        const zipPattern = /^[0-9]{5}$/;
+        const cityZipRules = [
+          { slug: 'miami', name: 'Miami', test: (zip) => /^331\d{2}$/.test(zip) },
+          { slug: 'tampa', name: 'Tampa', test: (zip) => /^336\d{2}$/.test(zip) },
+          { slug: 'orlando', name: 'Orlando', test: (zip) => /^328\d{2}$/.test(zip) },
+          { slug: 'jacksonville', name: 'Jacksonville', test: (zip) => /^322\d{2}$/.test(zip) },
+          { slug: 'st-petersburg', name: 'St. Petersburg', test: (zip) => /^337\d{2}$/.test(zip) },
+          { slug: 'cape-coral', name: 'Cape Coral', test: (zip) => /^339\d{2}$/.test(zip) }
+        ];
+
+        const situationMeta = {
+          'inherited-property': { cardClass: 'situation-inherited', label: 'an inherited or probate property' },
+          'foreclosure-pressure': { cardClass: 'situation-foreclosure', label: 'foreclosure pressure' },
+          'major-repairs-needed': { cardClass: 'situation-repairs', label: 'a house needing major repairs' },
+          'urgent-timeline': { cardClass: 'situation-fast', label: 'an urgent selling timeline' },
+          'unwanted-rental': { cardClass: 'situation-rental', label: 'an unwanted rental property' },
+          'probate-complexity': { cardClass: 'situation-estate', label: 'probate complexity' },
+          'divorce-transition': { cardClass: 'situation-divorce', label: 'a divorce transition' },
+          'vacant-home-costs': { cardClass: 'situation-vacant', label: 'high holding costs' }
+        };
+
+        const resolveCityFromZip = (zip) => cityZipRules.find((rule) => rule.test(zip)) || null;
+
+        const updateUrl = (zip, situation) => {
+          const url = new URL(window.location.href);
+          url.searchParams.set('zip', zip);
+          url.searchParams.set('situation', situation);
+          window.history.replaceState({}, '', `${url.pathname}?${url.searchParams.toString()}${url.hash}`);
+        };
+
+        const storeProfile = (profile) => {
+          window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+        };
+
+        const sortServiceAreaForCity = (citySlug) => {
+          const grid = serviceAreaSection.querySelector('.market-grid');
+          if (!grid) {
+            return;
+          }
+
+          const cards = Array.from(grid.querySelectorAll('.market-card'));
+          cards.forEach((card) => card.classList.remove('is-prioritized'));
+
+          const prioritizedCard = cards.find((card) => card.querySelector(`a[href="${citySlug}.html"]`));
+          if (prioritizedCard) {
+            prioritizedCard.classList.add('is-prioritized');
+            grid.prepend(prioritizedCard);
+          }
+        };
+
+        const sortSituations = (situationSlug) => {
+          const grid = situationsSection.querySelector('.situations-grid');
+          const metadata = situationMeta[situationSlug];
+          if (!grid || !metadata) {
+            return;
+          }
+
+          const cards = Array.from(grid.querySelectorAll('.situation-card'));
+          cards.forEach((card) => card.classList.remove('is-prioritized'));
+
+          const prioritizedCard = cards.find((card) => card.classList.contains(metadata.cardClass));
+          if (prioritizedCard) {
+            prioritizedCard.classList.add('is-prioritized');
+            grid.prepend(prioritizedCard);
+          }
+        };
+
+        const updateHeroCopy = (cityName, situationSlug) => {
+          const situationLabel = situationMeta[situationSlug]?.label;
+          if (!cityName || !situationLabel) {
+            heroHeadline.textContent = defaultHeroHeadline;
+            heroSubhead.textContent = defaultHeroSubhead;
+            return;
+          }
+
+          heroHeadline.textContent = `Sell Your ${cityName} House Fast—Without Repairs, Fees, or Stress.`;
+          heroSubhead.textContent = `If you're dealing with ${situationLabel} in ${cityName}, we provide a fair, certain path to selling as-is on your timeline.`;
+        };
+
+        const applyPersonalization = (profile) => {
+          if (!profile || !zipPattern.test(profile.zip) || !situationMeta[profile.situation]) {
+            updateHeroCopy();
+            return;
+          }
+
+          const resolvedCity = resolveCityFromZip(profile.zip);
+          if (!resolvedCity) {
+            updateHeroCopy();
+            return;
+          }
+
+          sortServiceAreaForCity(resolvedCity.slug);
+          sortSituations(profile.situation);
+          updateHeroCopy(resolvedCity.name, profile.situation);
+        };
+
+        const searchParams = new URLSearchParams(window.location.search);
+        const queryZip = searchParams.get('zip') || '';
+        const querySituation = searchParams.get('situation') || '';
+        const storedProfile = JSON.parse(window.localStorage.getItem(PROFILE_STORAGE_KEY) || 'null');
+        const initialProfile = zipPattern.test(queryZip) && situationMeta[querySituation]
+          ? { zip: queryZip, situation: querySituation }
+          : storedProfile;
+
+        if (initialProfile?.zip) {
+          zipInput.value = initialProfile.zip;
+        }
+
+        if (initialProfile?.situation && situationMeta[initialProfile.situation]) {
+          situationInput.value = initialProfile.situation;
+        }
+
+        applyPersonalization(initialProfile);
+
+        heroForm.addEventListener('submit', (event) => {
+          const zip = zipInput.value.trim();
+          const situation = situationInput.value;
+
+          if (!zipPattern.test(zip)) {
+            event.preventDefault();
+            zipInput.setCustomValidity('Please enter a valid 5-digit Florida ZIP code.');
+            zipInput.reportValidity();
+            return;
+          }
+
+          zipInput.setCustomValidity('');
+
+          const profile = { zip, situation };
+          storeProfile(profile);
+          updateUrl(zip, situation);
+          applyPersonalization(profile);
         });
       })();
     </script>
