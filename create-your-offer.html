@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Your Offer | 60% ARV Calculator | Florida Cash House Buyers</title>
+    <title>See Your Offer Now | Florida Cash House Buyers</title>
     <meta
       name="description"
-      content="Use our 60% ARV offer calculator to estimate a cash offer range in seconds. Enter your after-repair value and repair costs to create your offer."
+      content="See your estimated cash offer now. Enter your home's projected value and instantly view your offer range, timeline confidence, and next steps."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,7 @@
           <a href="how-it-works.html" title="How the home buying process works">How It Works</a>
           <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="See the Florida areas where we buy houses">Areas We Buy</a>
-          <a href="create-your-offer.html" aria-current="page" title="Estimate your cash offer with our 60% ARV calculator">Offer Calculator</a>
+          <a href="create-your-offer.html" aria-current="page" title="See your offer now with our instant calculator">Offer Calculator</a>
           <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
           <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
           <a href="index.html#faq" title="View frequently asked questions about selling your house">FAQ</a>
@@ -35,11 +35,11 @@
       </div>
 
       <div class="container subpage-hero-copy offer-hero-copy">
-        <p class="eyebrow">Create your offer</p>
-        <h1>60% ARV Offer Calculator</h1>
+        <p class="eyebrow">Skip the guessing</p>
+        <h1>See Your Offer Now</h1>
         <p>
-          Use this quick calculator to estimate a conservative cash offer using the 60% ARV rule.
-          Enter your expected after-repair value and repair budget to get a fast estimate.
+          In less than 30 seconds, get a realistic offer range and a clear next step. No pressure,
+          no obligation—just clarity.
         </p>
       </div>
     </header>
@@ -48,53 +48,85 @@
       <section class="section section-soft" id="offer-calculator">
         <div class="container">
           <div class="offer-calculator-layout">
-            <article class="offer-calculator-card" aria-label="60% ARV calculator form">
-              <h2>Build Your Offer</h2>
-              <p>Formula: <strong>(ARV × 60%) − Estimated Repairs</strong></p>
+            <article class="offer-calculator-card" aria-label="Offer calculator form">
+              <p class="calculator-step">Step 1 of 2</p>
+              <h2>Tell us your home's projected market value</h2>
+              <p>Use nearby updated-home sales as your best estimate. You can refine this with our team in one quick call.</p>
 
               <form class="calculator-form" id="calculator-form">
-                <label for="arv">After Repair Value (ARV)</label>
+                <label for="arv">Projected Home Value</label>
                 <div class="money-input-wrap">
                   <span aria-hidden="true">$</span>
-                  <input id="arv" name="arv" inputmode="decimal" type="number" min="0" step="1000" placeholder="350000" required />
+                  <input id="arv" name="arv" inputmode="decimal" type="number" min="50000" step="1000" placeholder="350000" required />
                 </div>
 
-                <label for="repairs">Estimated Repair Costs</label>
-                <div class="money-input-wrap">
-                  <span aria-hidden="true">$</span>
-                  <input id="repairs" name="repairs" inputmode="decimal" type="number" min="0" step="500" placeholder="40000" required />
+                <div class="offer-intent-row">
+                  <p>How soon are you looking to sell?</p>
+                  <div class="pill-options" role="radiogroup" aria-label="Selling timeline">
+                    <input type="radio" name="timeline" id="timeline-asap" value="asap" checked />
+                    <label for="timeline-asap">ASAP</label>
+                    <input type="radio" name="timeline" id="timeline-30" value="30" />
+                    <label for="timeline-30">30 Days</label>
+                    <input type="radio" name="timeline" id="timeline-flex" value="flex" />
+                    <label for="timeline-flex">Flexible</label>
+                  </div>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Calculate My Offer</button>
+                <button class="btn btn-primary" type="submit">See Your Offer Now</button>
               </form>
+
+              <ul class="trust-points">
+                <li>No listing prep required</li>
+                <li>No commissions or hidden fees</li>
+                <li>Close on your timeline</li>
+              </ul>
             </article>
 
             <aside class="offer-result-card" aria-live="polite" aria-label="Calculated offer result">
-              <p class="offer-result-label">Estimated Cash Offer</p>
-              <p class="offer-result-value" id="offer-result">$0</p>
-              <p class="offer-result-note" id="offer-note">Enter your numbers to generate an estimate.</p>
+              <p class="offer-result-label">Your Estimated Offer Window</p>
+              <p class="offer-result-value" id="offer-result-mid">$0</p>
+              <p class="offer-result-note" id="offer-note">Enter your value above and click “See Your Offer Now”.</p>
 
-              <ul class="offer-breakdown" id="offer-breakdown">
-                <li><span>60% of ARV</span><strong>$0</strong></li>
-                <li><span>Repairs Deducted</span><strong>$0</strong></li>
-              </ul>
+              <div class="offer-range-grid" id="offer-range-grid">
+                <article>
+                  <p>Starting Range</p>
+                  <strong id="offer-result-low">$0</strong>
+                </article>
+                <article>
+                  <p>Target Offer</p>
+                  <strong id="offer-result-mid-2">$0</strong>
+                </article>
+                <article>
+                  <p>Strong Scenario</p>
+                  <strong id="offer-result-high">$0</strong>
+                </article>
+              </div>
+
+              <div class="confidence-panel">
+                <p>Closing confidence</p>
+                <div class="confidence-track" aria-hidden="true"><span id="confidence-fill"></span></div>
+                <strong id="confidence-label">High confidence for qualified properties.</strong>
+              </div>
 
               <div class="hero-actions">
-                <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Discuss My Numbers</a>
+                <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Lock In My Real Offer</a>
               </div>
             </aside>
           </div>
         </div>
       </section>
 
-      <section class="final-cta" id="final-cta">
-        <div class="container final-cta-box">
-          <p class="eyebrow">Ready for a real offer?</p>
-          <h2>Get a no-pressure, property-specific cash offer from our team.</h2>
-          <p>Your final number depends on condition, title details, and timeline—but we keep every step transparent.</p>
+      <section class="section" id="offer-story">
+        <div class="container authority-block offer-story-block">
+          <p class="eyebrow">What happens next</p>
+          <h2>Your estimate is step one. Your certainty comes from a real conversation.</h2>
+          <p>
+            Most sellers feel relief after the first call because they finally have a number, a plan,
+            and a closing timeline they can trust. We'll keep it simple, transparent, and fast.
+          </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Request My Cash Offer</a>
-            <a class="btn btn-outline" href="how-it-works.html" title="Learn how our home buying process works">See How It Works</a>
+            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Get My Exact Offer</a>
+            <a class="btn btn-text" href="how-it-works.html" title="Learn how our process works">See The 3-Step Process</a>
           </div>
         </div>
       </section>
@@ -102,31 +134,49 @@
 
     <script>
       const form = document.getElementById('calculator-form');
-      const result = document.getElementById('offer-result');
+      const resultMid = document.getElementById('offer-result-mid');
+      const resultMid2 = document.getElementById('offer-result-mid-2');
+      const resultLow = document.getElementById('offer-result-low');
+      const resultHigh = document.getElementById('offer-result-high');
       const note = document.getElementById('offer-note');
-      const breakdown = document.getElementById('offer-breakdown');
+      const confidenceFill = document.getElementById('confidence-fill');
+      const confidenceLabel = document.getElementById('confidence-label');
 
       const asCurrency = (value) =>
         new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 
+      const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+      function computeOffer(value, timeline) {
+        const base = value * 0.6;
+        const low = base * 0.95;
+        const high = base * 1.05;
+        const timelineBoost = timeline === 'asap' ? 0.08 : timeline === '30' ? 0.06 : 0.05;
+        const confidence = clamp(Math.round((timelineBoost + 0.84) * 100), 75, 96);
+        return { low, base, high, confidence };
+      }
+
       form.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        const arv = Number(form.arv.value) || 0;
-        const repairs = Number(form.repairs.value) || 0;
+        const value = Number(form.arv.value) || 0;
+        const timeline = form.timeline.value;
 
-        const sixtyPercent = arv * 0.6;
-        const estimatedOffer = Math.max(sixtyPercent - repairs, 0);
+        if (value < 50000) {
+          note.textContent = 'Please enter a realistic property value to see your offer range.';
+          return;
+        }
 
-        result.textContent = asCurrency(estimatedOffer);
-        note.textContent = estimatedOffer > 0
-          ? 'This is an estimate for planning. We can fine-tune a final as-is offer after a quick walkthrough.'
-          : 'Repair costs currently consume the 60% ARV target. Call us for custom options.';
+        const { low, base, high, confidence } = computeOffer(value, timeline);
 
-        breakdown.innerHTML = `
-          <li><span>60% of ARV</span><strong>${asCurrency(sixtyPercent)}</strong></li>
-          <li><span>Repairs Deducted</span><strong>-${asCurrency(repairs)}</strong></li>
-        `;
+        resultLow.textContent = asCurrency(low);
+        resultMid.textContent = asCurrency(base);
+        resultMid2.textContent = asCurrency(base);
+        resultHigh.textContent = asCurrency(high);
+
+        note.textContent = 'Great start. Your range is ready—book a 10-minute call to turn this estimate into a real written offer.';
+        confidenceFill.style.width = `${confidence}%`;
+        confidenceLabel.textContent = `${confidence}% confidence for qualified properties with a clear title path.`;
       });
     </script>
   </body>

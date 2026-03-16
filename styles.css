@@ -1578,3 +1578,141 @@ details p { margin-top: 0.7rem; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Offer calculator immersive refresh */
+.offer-hero-copy h1 {
+  max-width: 13ch;
+}
+
+.offer-calculator-card {
+  background: linear-gradient(170deg, #ffffff 0%, #f6fbff 100%);
+}
+
+.calculator-step {
+  display: inline-block;
+  margin: 0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: #e7f2ff;
+  color: #14548b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.offer-intent-row {
+  margin-top: 0.4rem;
+}
+
+.offer-intent-row p {
+  color: #1e4468;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+
+.pill-options {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.pill-options input {
+  display: none;
+}
+
+.pill-options label {
+  border: 1px solid #bfd4e8;
+  background: #fff;
+  color: #17466f;
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.pill-options input:checked + label {
+  background: #17548a;
+  border-color: #17548a;
+  color: #fff;
+}
+
+.trust-points {
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  color: #2a5277;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.offer-range-grid {
+  margin-top: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.offer-range-grid article {
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  padding: 0.6rem;
+}
+
+.offer-range-grid p {
+  color: #d7ebff;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.offer-range-grid strong {
+  margin-top: 0.2rem;
+  display: block;
+  color: #fff;
+  font-size: 1.08rem;
+}
+
+.confidence-panel {
+  margin-top: 0.9rem;
+}
+
+.confidence-panel p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #cde6ff;
+}
+
+.confidence-track {
+  margin-top: 0.45rem;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.confidence-track span {
+  display: block;
+  width: 84%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9dd1ff 0%, #ffffff 100%);
+  transition: width 300ms ease;
+}
+
+.confidence-panel strong {
+  margin-top: 0.45rem;
+  display: block;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.offer-story-block {
+  max-width: 980px;
+}
+
+@media (max-width: 920px) {
+  .offer-range-grid {
+    grid-template-columns: 1fr;
+  }
+}
