@@ -6,7 +6,7 @@
     <title>See Your Offer Now | Florida Cash House Buyers</title>
     <meta
       name="description"
-      content="See your estimated cash offer now. Enter your home's projected value and instantly view your offer range, timeline confidence, and next steps."
+      content="See your estimated cash offer now. Enter your home's projected value and instantly view your offer range, confidence level, and fastest next steps."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,11 +35,10 @@
       </div>
 
       <div class="container subpage-hero-copy offer-hero-copy">
-        <p class="eyebrow">Skip the guessing</p>
+        <p class="eyebrow">Fast clarity. Zero pressure.</p>
         <h1>See Your Offer Now</h1>
         <p>
-          In less than 30 seconds, get a realistic offer range and a clear next step. No pressure,
-          no obligation—just clarity.
+          Get a data-backed offer range in seconds, then speak with our team to convert it into a real written offer on your timeline.
         </p>
       </div>
     </header>
@@ -50,15 +49,22 @@
           <div class="offer-calculator-layout">
             <article class="offer-calculator-card" aria-label="Offer calculator form">
               <p class="calculator-step">Step 1 of 2</p>
-              <h2>Tell us your home's projected market value</h2>
-              <p>Use nearby updated-home sales as your best estimate. You can refine this with our team in one quick call.</p>
+              <h2>Build your offer profile</h2>
+              <p>Fill this in once. We use your timeline + condition profile to generate a stronger estimate instantly.</p>
 
-              <form class="calculator-form" id="calculator-form">
+              <form class="calculator-form" id="calculator-form" novalidate>
                 <label for="arv">Projected Home Value</label>
                 <div class="money-input-wrap">
                   <span aria-hidden="true">$</span>
-                  <input id="arv" name="arv" inputmode="decimal" type="number" min="50000" step="1000" placeholder="350000" required />
+                  <input id="arv" name="arv" inputmode="decimal" type="number" min="50000" max="5000000" step="1000" placeholder="350000" required />
                 </div>
+
+                <label for="condition">Property Condition</label>
+                <select id="condition" name="condition" required>
+                  <option value="solid" selected>Move-in Ready / Light Updates</option>
+                  <option value="average">Average Condition</option>
+                  <option value="heavy">Heavy Repairs Needed</option>
+                </select>
 
                 <div class="offer-intent-row">
                   <p>How soon are you looking to sell?</p>
@@ -72,22 +78,27 @@
                   </div>
                 </div>
 
+                <label for="zip">Property ZIP (optional)</label>
+                <input id="zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="33602" />
+
+                <p class="form-feedback" id="form-feedback" aria-live="polite">Enter your details to generate your offer window.</p>
+
                 <button class="btn btn-primary" type="submit">See Your Offer Now</button>
               </form>
 
               <ul class="trust-points">
                 <li>No listing prep required</li>
                 <li>No commissions or hidden fees</li>
-                <li>Close on your timeline</li>
+                <li>Choose your ideal closing date</li>
               </ul>
             </article>
 
             <aside class="offer-result-card" aria-live="polite" aria-label="Calculated offer result">
               <p class="offer-result-label">Your Estimated Offer Window</p>
               <p class="offer-result-value" id="offer-result-mid">$0</p>
-              <p class="offer-result-note" id="offer-note">Enter your value above and click “See Your Offer Now”.</p>
+              <p class="offer-result-note" id="offer-note">Complete the profile to unlock your range.</p>
 
-              <div class="offer-range-grid" id="offer-range-grid">
+              <div class="offer-range-grid">
                 <article>
                   <p>Starting Range</p>
                   <strong id="offer-result-low">$0</strong>
@@ -108,6 +119,17 @@
                 <strong id="confidence-label">High confidence for qualified properties.</strong>
               </div>
 
+              <div class="quick-metrics">
+                <article>
+                  <p>Expected call-back</p>
+                  <strong id="metric-callback">Within 10 minutes</strong>
+                </article>
+                <article>
+                  <p>Estimated closing pace</p>
+                  <strong id="metric-closing">7-21 days</strong>
+                </article>
+              </div>
+
               <div class="hero-actions">
                 <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Lock In My Real Offer</a>
               </div>
@@ -118,11 +140,10 @@
 
       <section class="section" id="offer-story">
         <div class="container authority-block offer-story-block">
-          <p class="eyebrow">What happens next</p>
-          <h2>Your estimate is step one. Your certainty comes from a real conversation.</h2>
+          <p class="eyebrow">Step 2 of 2</p>
+          <h2>Turn your estimate into certainty with a 10-minute call.</h2>
           <p>
-            Most sellers feel relief after the first call because they finally have a number, a plan,
-            and a closing timeline they can trust. We'll keep it simple, transparent, and fast.
+            Our team will confirm condition details, title status, and timeline so you get a clear, written offer you can trust—without pressure.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Get My Exact Offer</a>
@@ -134,6 +155,7 @@
 
     <script>
       const form = document.getElementById('calculator-form');
+      const feedback = document.getElementById('form-feedback');
       const resultMid = document.getElementById('offer-result-mid');
       const resultMid2 = document.getElementById('offer-result-mid-2');
       const resultLow = document.getElementById('offer-result-low');
@@ -141,43 +163,125 @@
       const note = document.getElementById('offer-note');
       const confidenceFill = document.getElementById('confidence-fill');
       const confidenceLabel = document.getElementById('confidence-label');
+      const metricClosing = document.getElementById('metric-closing');
+
+      const STORAGE_KEY = 'offer-calculator-profile-v2';
 
       const asCurrency = (value) =>
         new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 
       const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
-      function computeOffer(value, timeline) {
-        const base = value * 0.6;
-        const low = base * 0.95;
-        const high = base * 1.05;
-        const timelineBoost = timeline === 'asap' ? 0.08 : timeline === '30' ? 0.06 : 0.05;
-        const confidence = clamp(Math.round((timelineBoost + 0.84) * 100), 75, 96);
-        return { low, base, high, confidence };
+      function getMultipliers({ condition, timeline }) {
+        const conditionMap = { solid: 1.02, average: 1.0, heavy: 0.94 };
+        const timelineMap = { asap: 1.01, '30': 1.0, flex: 0.99 };
+        return {
+          conditionAdj: conditionMap[condition] || 1,
+          timelineAdj: timelineMap[timeline] || 1,
+        };
       }
 
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
+      function computeOffer(profile) {
+        const { value, condition, timeline } = profile;
+        const baseAnchor = value * 0.6;
+        const { conditionAdj, timelineAdj } = getMultipliers({ condition, timeline });
+        const target = baseAnchor * conditionAdj * timelineAdj;
+        const low = target * 0.95;
+        const high = target * 1.05;
 
+        const confidenceRaw = 88 + (condition === 'solid' ? 4 : condition === 'average' ? 2 : -2) + (timeline === 'asap' ? 2 : timeline === '30' ? 1 : 0);
+        const confidence = clamp(confidenceRaw, 78, 96);
+
+        const closingDays = timeline === 'asap' ? '7-14 days' : timeline === '30' ? '14-21 days' : '21-45 days';
+
+        return { low, target, high, confidence, closingDays };
+      }
+
+      function normalizeProfile() {
         const value = Number(form.arv.value) || 0;
-        const timeline = form.timeline.value;
+        const zip = (form.zip.value || '').trim();
+        const isZipValid = zip === '' || /^[0-9]{5}$/.test(zip);
 
-        if (value < 50000) {
-          note.textContent = 'Please enter a realistic property value to see your offer range.';
+        return {
+          value,
+          condition: form.condition.value,
+          timeline: form.timeline.value,
+          zip,
+          isZipValid,
+        };
+      }
+
+      function persistProfile(profile) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+        } catch {
+          // Storage may be blocked; continue silently.
+        }
+      }
+
+      function hydrateProfile() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          const profile = JSON.parse(raw);
+          if (profile.value) form.arv.value = profile.value;
+          if (profile.condition) form.condition.value = profile.condition;
+          if (profile.timeline) {
+            const timelineInput = form.querySelector(`input[name="timeline"][value="${profile.timeline}"]`);
+            if (timelineInput) timelineInput.checked = true;
+          }
+          if (profile.zip) form.zip.value = profile.zip;
+        } catch {
+          // Invalid cache should not break page.
+        }
+      }
+
+      function renderOffer(profile) {
+        if (!profile.isZipValid) {
+          feedback.textContent = 'Please enter a valid 5-digit ZIP code or leave ZIP blank.';
           return;
         }
 
-        const { low, base, high, confidence } = computeOffer(value, timeline);
+        if (profile.value < 50000 || profile.value > 5000000) {
+          feedback.textContent = 'Enter a property value between $50,000 and $5,000,000 to continue.';
+          note.textContent = 'Once your value is in range, your personalized offer window will appear here.';
+          return;
+        }
 
-        resultLow.textContent = asCurrency(low);
-        resultMid.textContent = asCurrency(base);
-        resultMid2.textContent = asCurrency(base);
-        resultHigh.textContent = asCurrency(high);
+        const offer = computeOffer(profile);
+        resultLow.textContent = asCurrency(offer.low);
+        resultMid.textContent = asCurrency(offer.target);
+        resultMid2.textContent = asCurrency(offer.target);
+        resultHigh.textContent = asCurrency(offer.high);
 
-        note.textContent = 'Great start. Your range is ready—book a 10-minute call to turn this estimate into a real written offer.';
-        confidenceFill.style.width = `${confidence}%`;
-        confidenceLabel.textContent = `${confidence}% confidence for qualified properties with a clear title path.`;
+        confidenceFill.style.width = `${offer.confidence}%`;
+        confidenceLabel.textContent = `${offer.confidence}% confidence for qualified properties with a clear title path.`;
+        metricClosing.textContent = offer.closingDays;
+
+        feedback.textContent = 'Offer window updated in real-time.';
+        note.textContent = 'Strong result. Your next best move is a 10-minute call so we can lock this into a real written offer.';
+
+        persistProfile(profile);
+      }
+
+      const scheduleRender = (() => {
+        let raf = 0;
+        return () => {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => renderOffer(normalizeProfile()));
+        };
+      })();
+
+      form.addEventListener('input', scheduleRender);
+      form.addEventListener('change', scheduleRender);
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        renderOffer(normalizeProfile());
       });
+
+      hydrateProfile();
+      renderOffer(normalizeProfile());
     </script>
   </body>
 </html>

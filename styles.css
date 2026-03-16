@@ -1716,3 +1716,43 @@ details p { margin-top: 0.7rem; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Offer calculator robustness enhancements */
+.form-feedback {
+  margin: 0.35rem 0 0.2rem;
+  font-size: 0.9rem;
+  color: #31506b;
+}
+
+.quick-metrics {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.quick-metrics article {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.65rem;
+}
+
+.quick-metrics p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #d7ebff;
+}
+
+.quick-metrics strong {
+  display: block;
+  margin-top: 0.25rem;
+  color: #fff;
+  font-size: 1rem;
+}
+
+@media (max-width: 920px) {
+  .quick-metrics {
+    grid-template-columns: 1fr;
+  }
+}
