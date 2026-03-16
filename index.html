@@ -80,14 +80,14 @@
             <label for="situation">Situation</label>
             <select id="situation" name="situation" required>
               <option value="" selected disabled>Select your situation</option>
-              <option value="major-repairs-needed.html">Major Repairs Needed</option>
-              <option value="foreclosure-pressure.html">Foreclosure Pressure</option>
-              <option value="inherited-property.html">Inherited Property</option>
-              <option value="unwanted-rental.html">Unwanted Rental</option>
-              <option value="urgent-timeline.html">Urgent Timeline</option>
-              <option value="probate-complexity.html">Probate Complexity</option>
-              <option value="divorce-transition.html">Divorce Transition</option>
-              <option value="vacant-home-costs.html">Vacant Home Costs</option>
+              <option value="major-repairs-needed">Major Repairs Needed</option>
+              <option value="foreclosure-pressure">Foreclosure Pressure</option>
+              <option value="inherited-property">Inherited Property</option>
+              <option value="unwanted-rental">Unwanted Rental</option>
+              <option value="urgent-timeline">Urgent Timeline</option>
+              <option value="probate-complexity">Probate Complexity</option>
+              <option value="divorce-transition">Divorce Transition</option>
+              <option value="vacant-home-costs">Vacant Home Costs</option>
             </select>
 
             <button class="btn btn-primary" type="submit">See My Tailored Options</button>
@@ -669,7 +669,7 @@
       (function () {
         const PROFILE_STORAGE_KEY = 'fchb-profile';
         const heroForm = document.querySelector('.hero-form');
-        const zipInput = document.getElementById('zip');
+        const zipInput = document.getElementById('zip-code');
         const situationInput = document.getElementById('situation');
         const heroHeadline = document.getElementById('hero-headline');
         const heroSubhead = document.getElementById('hero-subhead');
