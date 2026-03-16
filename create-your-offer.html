@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>See Your Offer Now | Florida Cash House Buyers</title>
+    <meta
+      name="description"
+      content="See your estimated cash offer now. Enter your home's projected value and instantly view your offer range, timeline confidence, and next steps."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero subpage-hero" id="top">
+      <div class="container nav-wrap">
+        <a class="brand-block" href="index.html" aria-label="Florida Cash House Buyers home" title="Go to Florida Cash House Buyers home page">
+          <img src="logo.svg" alt="Florida Cash House Buyers" class="brand-logo" />
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="how-it-works.html" title="How the home buying process works">How It Works</a>
+          <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
+          <a href="service-areas.html" title="See the Florida areas where we buy houses">Areas We Buy</a>
+          <a href="create-your-offer.html" aria-current="page" title="See your offer now with our instant calculator">Offer Calculator</a>
+          <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
+          <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
+          <a href="index.html#faq" title="View frequently asked questions about selling your house">FAQ</a>
+        </nav>
+        <a class="btn btn-nav-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Call (813) 555-0192</a>
+      </div>
+
+      <div class="container subpage-hero-copy offer-hero-copy">
+        <p class="eyebrow">Skip the guessing</p>
+        <h1>See Your Offer Now</h1>
+        <p>
+          In less than 30 seconds, get a realistic offer range and a clear next step. No pressure,
+          no obligation—just clarity.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-soft" id="offer-calculator">
+        <div class="container">
+          <div class="offer-calculator-layout">
+            <article class="offer-calculator-card" aria-label="Offer calculator form">
+              <p class="calculator-step">Step 1 of 2</p>
+              <h2>Tell us your home's projected market value</h2>
+              <p>Use nearby updated-home sales as your best estimate. You can refine this with our team in one quick call.</p>
+
+              <form class="calculator-form" id="calculator-form">
+                <label for="arv">Projected Home Value</label>
+                <div class="money-input-wrap">
+                  <span aria-hidden="true">$</span>
+                  <input id="arv" name="arv" inputmode="decimal" type="number" min="50000" step="1000" placeholder="350000" required />
+                </div>
+
+                <div class="offer-intent-row">
+                  <p>How soon are you looking to sell?</p>
+                  <div class="pill-options" role="radiogroup" aria-label="Selling timeline">
+                    <input type="radio" name="timeline" id="timeline-asap" value="asap" checked />
+                    <label for="timeline-asap">ASAP</label>
+                    <input type="radio" name="timeline" id="timeline-30" value="30" />
+                    <label for="timeline-30">30 Days</label>
+                    <input type="radio" name="timeline" id="timeline-flex" value="flex" />
+                    <label for="timeline-flex">Flexible</label>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary" type="submit">See Your Offer Now</button>
+              </form>
+
+              <ul class="trust-points">
+                <li>No listing prep required</li>
+                <li>No commissions or hidden fees</li>
+                <li>Close on your timeline</li>
+              </ul>
+            </article>
+
+            <aside class="offer-result-card" aria-live="polite" aria-label="Calculated offer result">
+              <p class="offer-result-label">Your Estimated Offer Window</p>
+              <p class="offer-result-value" id="offer-result-mid">$0</p>
+              <p class="offer-result-note" id="offer-note">Enter your value above and click “See Your Offer Now”.</p>
+
+              <div class="offer-range-grid" id="offer-range-grid">
+                <article>
+                  <p>Starting Range</p>
+                  <strong id="offer-result-low">$0</strong>
+                </article>
+                <article>
+                  <p>Target Offer</p>
+                  <strong id="offer-result-mid-2">$0</strong>
+                </article>
+                <article>
+                  <p>Strong Scenario</p>
+                  <strong id="offer-result-high">$0</strong>
+                </article>
+              </div>
+
+              <div class="confidence-panel">
+                <p>Closing confidence</p>
+                <div class="confidence-track" aria-hidden="true"><span id="confidence-fill"></span></div>
+                <strong id="confidence-label">High confidence for qualified properties.</strong>
+              </div>
+
+              <div class="hero-actions">
+                <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Lock In My Real Offer</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="offer-story">
+        <div class="container authority-block offer-story-block">
+          <p class="eyebrow">What happens next</p>
+          <h2>Your estimate is step one. Your certainty comes from a real conversation.</h2>
+          <p>
+            Most sellers feel relief after the first call because they finally have a number, a plan,
+            and a closing timeline they can trust. We'll keep it simple, transparent, and fast.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Get My Exact Offer</a>
+            <a class="btn btn-text" href="how-it-works.html" title="Learn how our process works">See The 3-Step Process</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById('calculator-form');
+      const resultMid = document.getElementById('offer-result-mid');
+      const resultMid2 = document.getElementById('offer-result-mid-2');
+      const resultLow = document.getElementById('offer-result-low');
+      const resultHigh = document.getElementById('offer-result-high');
+      const note = document.getElementById('offer-note');
+      const confidenceFill = document.getElementById('confidence-fill');
+      const confidenceLabel = document.getElementById('confidence-label');
+
+      const asCurrency = (value) =>
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+
+      const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+      function computeOffer(value, timeline) {
+        const base = value * 0.6;
+        const low = base * 0.95;
+        const high = base * 1.05;
+        const timelineBoost = timeline === 'asap' ? 0.08 : timeline === '30' ? 0.06 : 0.05;
+        const confidence = clamp(Math.round((timelineBoost + 0.84) * 100), 75, 96);
+        return { low, base, high, confidence };
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const value = Number(form.arv.value) || 0;
+        const timeline = form.timeline.value;
+
+        if (value < 50000) {
+          note.textContent = 'Please enter a realistic property value to see your offer range.';
+          return;
+        }
+
+        const { low, base, high, confidence } = computeOffer(value, timeline);
+
+        resultLow.textContent = asCurrency(low);
+        resultMid.textContent = asCurrency(base);
+        resultMid2.textContent = asCurrency(base);
+        resultHigh.textContent = asCurrency(high);
+
+        note.textContent = 'Great start. Your range is ready—book a 10-minute call to turn this estimate into a real written offer.';
+        confidenceFill.style.width = `${confidence}%`;
+        confidenceLabel.textContent = `${confidence}% confidence for qualified properties with a clear title path.`;
+      });
+    </script>
+  </body>
+</html>
