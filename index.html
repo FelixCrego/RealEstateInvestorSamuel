@@ -60,29 +60,37 @@
           </div>
           <p class="hero-note">No repairs. No open houses. No hidden fees.</p>
         </div>
-        <aside class="hero-panel" aria-label="Get your cash offer form">
-          <h2>Get your no-pressure cash offer</h2>
-          <p>Tell us about your property and we’ll reach out quickly with next steps.</p>
+        <aside class="hero-panel" aria-label="Get personalized selling options form">
+          <h2>Find options for your city and situation</h2>
+          <p>Share two quick details to see the most relevant path for your Florida home sale.</p>
           <form class="hero-form" action="#final-cta" method="get">
-            <label for="full-name">Full Name</label>
-            <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Your name" required />
+            <label for="zip-code">ZIP Code</label>
+            <input
+              id="zip-code"
+              name="zip-code"
+              type="text"
+              inputmode="numeric"
+              autocomplete="postal-code"
+              placeholder="e.g., 33602"
+              pattern="[0-9]{5}"
+              maxlength="5"
+              required
+            />
 
-            <label for="property-address">Property Address</label>
-            <input id="property-address" name="property-address" type="text" autocomplete="street-address" placeholder="Street, City" required />
-
-            <label for="phone">Phone Number</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(813) 555-0192" required />
-
-            <label for="timeline">Selling Timeline</label>
-            <select id="timeline" name="timeline" required>
-              <option value="" selected disabled>Select timeline</option>
-              <option value="asap">As soon as possible</option>
-              <option value="30-days">Within 30 days</option>
-              <option value="60-days">Within 60 days</option>
-              <option value="flexible">I'm flexible</option>
+            <label for="situation">Situation</label>
+            <select id="situation" name="situation" required>
+              <option value="" selected disabled>Select your situation</option>
+              <option value="major-repairs-needed.html">Major Repairs Needed</option>
+              <option value="foreclosure-pressure.html">Foreclosure Pressure</option>
+              <option value="inherited-property.html">Inherited Property</option>
+              <option value="unwanted-rental.html">Unwanted Rental</option>
+              <option value="urgent-timeline.html">Urgent Timeline</option>
+              <option value="probate-complexity.html">Probate Complexity</option>
+              <option value="divorce-transition.html">Divorce Transition</option>
+              <option value="vacant-home-costs.html">Vacant Home Costs</option>
             </select>
 
-            <button class="btn btn-primary" type="submit">Request My Offer</button>
+            <button class="btn btn-primary" type="submit">See My Tailored Options</button>
           </form>
         </aside>
       </div>
