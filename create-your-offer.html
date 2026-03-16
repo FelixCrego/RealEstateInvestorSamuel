@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>See Your Offer Now | Florida Cash House Buyers</title>
+    <meta
+      name="description"
+      content="See your estimated cash offer now. Enter your home's projected value and instantly view your offer range, confidence level, and fastest next steps."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero subpage-hero" id="top">
+      <div class="container nav-wrap">
+        <a class="brand-block" href="index.html" aria-label="Florida Cash House Buyers home" title="Go to Florida Cash House Buyers home page">
+          <img src="logo.svg" alt="Florida Cash House Buyers" class="brand-logo" />
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="how-it-works.html" title="How the home buying process works">How It Works</a>
+          <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
+          <a href="service-areas.html" title="See the Florida areas where we buy houses">Areas We Buy</a>
+          <a href="create-your-offer.html" aria-current="page" title="See your offer now with our instant calculator">Offer Calculator</a>
+          <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
+          <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
+          <a href="index.html#faq" title="View frequently asked questions about selling your house">FAQ</a>
+        </nav>
+        <a class="btn btn-nav-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Call (813) 555-0192</a>
+      </div>
+
+      <div class="container subpage-hero-copy offer-hero-copy">
+        <p class="eyebrow">Fast clarity. Zero pressure.</p>
+        <h1>See Your Offer Now</h1>
+        <p>
+          Get a data-backed offer range in seconds, then speak with our team to convert it into a real written offer on your timeline.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-soft" id="offer-calculator">
+        <div class="container">
+          <div class="offer-calculator-layout">
+            <article class="offer-calculator-card" aria-label="Offer calculator form">
+              <p class="calculator-step">Step 1 of 2</p>
+              <h2>Build your offer profile</h2>
+              <p>Fill this in once. We use your timeline + condition profile to generate a stronger estimate instantly.</p>
+
+              <form class="calculator-form" id="calculator-form" novalidate>
+                <label for="arv">Projected Home Value</label>
+                <div class="money-input-wrap">
+                  <span aria-hidden="true">$</span>
+                  <input id="arv" name="arv" inputmode="decimal" type="number" min="50000" max="5000000" step="1000" placeholder="350000" required />
+                </div>
+
+                <label for="condition">Property Condition</label>
+                <select id="condition" name="condition" required>
+                  <option value="solid" selected>Move-in Ready / Light Updates</option>
+                  <option value="average">Average Condition</option>
+                  <option value="heavy">Heavy Repairs Needed</option>
+                </select>
+
+                <div class="offer-intent-row">
+                  <p>How soon are you looking to sell?</p>
+                  <div class="pill-options" role="radiogroup" aria-label="Selling timeline">
+                    <input type="radio" name="timeline" id="timeline-asap" value="asap" checked />
+                    <label for="timeline-asap">ASAP</label>
+                    <input type="radio" name="timeline" id="timeline-30" value="30" />
+                    <label for="timeline-30">30 Days</label>
+                    <input type="radio" name="timeline" id="timeline-flex" value="flex" />
+                    <label for="timeline-flex">Flexible</label>
+                  </div>
+                </div>
+
+                <label for="zip">Property ZIP (optional)</label>
+                <input id="zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="33602" />
+
+                <p class="form-feedback" id="form-feedback" aria-live="polite">Enter your details to generate your offer window.</p>
+
+                <button class="btn btn-primary" type="submit">See Your Offer Now</button>
+              </form>
+
+              <ul class="trust-points">
+                <li>No listing prep required</li>
+                <li>No commissions or hidden fees</li>
+                <li>Choose your ideal closing date</li>
+              </ul>
+            </article>
+
+            <aside class="offer-result-card" aria-live="polite" aria-label="Calculated offer result">
+              <p class="offer-result-label">Your Estimated Offer Window</p>
+              <p class="offer-result-value" id="offer-result-mid">$0</p>
+              <p class="offer-result-note" id="offer-note">Complete the profile to unlock your range.</p>
+
+              <div class="offer-range-grid">
+                <article>
+                  <p>Starting Range</p>
+                  <strong id="offer-result-low">$0</strong>
+                </article>
+                <article>
+                  <p>Target Offer</p>
+                  <strong id="offer-result-mid-2">$0</strong>
+                </article>
+                <article>
+                  <p>Strong Scenario</p>
+                  <strong id="offer-result-high">$0</strong>
+                </article>
+              </div>
+
+              <div class="confidence-panel">
+                <p>Closing confidence</p>
+                <div class="confidence-track" aria-hidden="true"><span id="confidence-fill"></span></div>
+                <strong id="confidence-label">High confidence for qualified properties.</strong>
+              </div>
+
+              <div class="quick-metrics">
+                <article>
+                  <p>Expected call-back</p>
+                  <strong id="metric-callback">Within 10 minutes</strong>
+                </article>
+                <article>
+                  <p>Estimated closing pace</p>
+                  <strong id="metric-closing">7-21 days</strong>
+                </article>
+              </div>
+
+              <div class="hero-actions">
+                <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Lock In My Real Offer</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="offer-story">
+        <div class="container authority-block offer-story-block">
+          <p class="eyebrow">Step 2 of 2</p>
+          <h2>Turn your estimate into certainty with a 10-minute call.</h2>
+          <p>
+            Our team will confirm condition details, title status, and timeline so you get a clear, written offer you can trust—without pressure.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Get My Exact Offer</a>
+            <a class="btn btn-text" href="how-it-works.html" title="Learn how our process works">See The 3-Step Process</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById('calculator-form');
+      const feedback = document.getElementById('form-feedback');
+      const resultMid = document.getElementById('offer-result-mid');
+      const resultMid2 = document.getElementById('offer-result-mid-2');
+      const resultLow = document.getElementById('offer-result-low');
+      const resultHigh = document.getElementById('offer-result-high');
+      const note = document.getElementById('offer-note');
+      const confidenceFill = document.getElementById('confidence-fill');
+      const confidenceLabel = document.getElementById('confidence-label');
+      const metricClosing = document.getElementById('metric-closing');
+
+      const STORAGE_KEY = 'offer-calculator-profile-v2';
+
+      const asCurrency = (value) =>
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+
+      const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+      function getMultipliers({ condition, timeline }) {
+        const conditionMap = { solid: 1.02, average: 1.0, heavy: 0.94 };
+        const timelineMap = { asap: 1.01, '30': 1.0, flex: 0.99 };
+        return {
+          conditionAdj: conditionMap[condition] || 1,
+          timelineAdj: timelineMap[timeline] || 1,
+        };
+      }
+
+      function computeOffer(profile) {
+        const { value, condition, timeline } = profile;
+        const baseAnchor = value * 0.6;
+        const { conditionAdj, timelineAdj } = getMultipliers({ condition, timeline });
+        const target = baseAnchor * conditionAdj * timelineAdj;
+        const low = target * 0.95;
+        const high = target * 1.05;
+
+        const confidenceRaw = 88 + (condition === 'solid' ? 4 : condition === 'average' ? 2 : -2) + (timeline === 'asap' ? 2 : timeline === '30' ? 1 : 0);
+        const confidence = clamp(confidenceRaw, 78, 96);
+
+        const closingDays = timeline === 'asap' ? '7-14 days' : timeline === '30' ? '14-21 days' : '21-45 days';
+
+        return { low, target, high, confidence, closingDays };
+      }
+
+      function normalizeProfile() {
+        const value = Number(form.arv.value) || 0;
+        const zip = (form.zip.value || '').trim();
+        const isZipValid = zip === '' || /^[0-9]{5}$/.test(zip);
+
+        return {
+          value,
+          condition: form.condition.value,
+          timeline: form.timeline.value,
+          zip,
+          isZipValid,
+        };
+      }
+
+      function persistProfile(profile) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+        } catch {
+          // Storage may be blocked; continue silently.
+        }
+      }
+
+      function hydrateProfile() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          const profile = JSON.parse(raw);
+          if (profile.value) form.arv.value = profile.value;
+          if (profile.condition) form.condition.value = profile.condition;
+          if (profile.timeline) {
+            const timelineInput = form.querySelector(`input[name="timeline"][value="${profile.timeline}"]`);
+            if (timelineInput) timelineInput.checked = true;
+          }
+          if (profile.zip) form.zip.value = profile.zip;
+        } catch {
+          // Invalid cache should not break page.
+        }
+      }
+
+      function renderOffer(profile) {
+        if (!profile.isZipValid) {
+          feedback.textContent = 'Please enter a valid 5-digit ZIP code or leave ZIP blank.';
+          return;
+        }
+
+        if (profile.value < 50000 || profile.value > 5000000) {
+          feedback.textContent = 'Enter a property value between $50,000 and $5,000,000 to continue.';
+          note.textContent = 'Once your value is in range, your personalized offer window will appear here.';
+          return;
+        }
+
+        const offer = computeOffer(profile);
+        resultLow.textContent = asCurrency(offer.low);
+        resultMid.textContent = asCurrency(offer.target);
+        resultMid2.textContent = asCurrency(offer.target);
+        resultHigh.textContent = asCurrency(offer.high);
+
+        confidenceFill.style.width = `${offer.confidence}%`;
+        confidenceLabel.textContent = `${offer.confidence}% confidence for qualified properties with a clear title path.`;
+        metricClosing.textContent = offer.closingDays;
+
+        feedback.textContent = 'Offer window updated in real-time.';
+        note.textContent = 'Strong result. Your next best move is a 10-minute call so we can lock this into a real written offer.';
+
+        persistProfile(profile);
+      }
+
+      const scheduleRender = (() => {
+        let raf = 0;
+        return () => {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => renderOffer(normalizeProfile()));
+        };
+      })();
+
+      form.addEventListener('input', scheduleRender);
+      form.addEventListener('change', scheduleRender);
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        renderOffer(normalizeProfile());
+      });
+
+      hydrateProfile();
+      renderOffer(normalizeProfile());
+    </script>
+  </body>
+</html>
