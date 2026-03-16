@@ -63,7 +63,7 @@
         <aside class="hero-panel" aria-label="Get personalized selling options form">
           <h2>Find options for your city and situation</h2>
           <p>Share two quick details to see the most relevant path for your Florida home sale.</p>
-          <form class="hero-form" action="#final-cta" method="get">
+          <form class="hero-form" method="get">
             <label for="zip-code">ZIP Code</label>
             <input
               id="zip-code"
@@ -797,6 +797,8 @@
         applyPersonalization(initialProfile);
 
         heroForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+
           const zip = zipInput.value.trim();
           const situation = situationInput.value;
 
@@ -813,6 +815,9 @@
           storeProfile(profile);
           updateUrl(zip, situation);
           applyPersonalization(profile);
+
+          const tailoredResultsSection = document.querySelector('#situations') || document.querySelector('#service-area');
+          tailoredResultsSection?.scrollIntoView({ behavior: 'smooth' });
         });
       })();
     </script>
