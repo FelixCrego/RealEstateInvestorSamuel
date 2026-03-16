@@ -395,47 +395,50 @@
         </div>
 
         <div class="container market-grid" aria-label="Primary Florida market cards">
-          <article class="market-card market-jax">
+          <article class="market-card market-jax" data-city-slug="jacksonville">
             <p class="market-county">Duval County</p>
             <h3>Jacksonville</h3>
             <p>Helping property owners move on from inherited homes, repairs, and urgent timelines with confidence.</p>
             <a href="jacksonville.html" class="market-link" title="Sell your house fast in Jacksonville, Florida">View Market</a>
           </article>
 
-          <article class="market-card market-miami">
+          <article class="market-card market-miami" data-city-slug="miami">
             <p class="market-county">Miami-Dade County</p>
             <h3>Miami</h3>
             <p>Serving complex South Florida situations with direct communication and all-cash purchase options.</p>
             <a href="miami.html" class="market-link" title="Sell your house fast in Miami, Florida">View Market</a>
           </article>
 
-          <article class="market-card market-tampa">
+          <article class="market-card market-tampa" data-city-slug="tampa">
             <p class="market-county">Hillsborough County</p>
             <h3>Tampa</h3>
             <p>Helping Tampa homeowners skip renovations, listings, and uncertainty with a clear process.</p>
             <a href="tampa.html" class="market-link" title="Sell your house fast in Tampa, Florida">View Market</a>
           </article>
 
-          <article class="market-card market-orlando">
+          <article class="market-card market-orlando" data-city-slug="orlando">
             <p class="market-county">Orange County</p>
             <h3>Orlando</h3>
             <p>Supporting fast-moving transitions for homeowners, landlords, and families needing flexibility.</p>
             <a href="orlando.html" class="market-link" title="Sell your house fast in Orlando, Florida">View Market</a>
           </article>
 
-          <article class="market-card market-stpete">
+          <article class="market-card market-stpete" data-city-slug="st-petersburg">
             <p class="market-county">Pinellas County</p>
             <h3>St. Petersburg</h3>
             <p>Specializing in as-is acquisitions across Pinellas County for clean, professional closings.</p>
             <a href="st-petersburg.html" class="market-link" title="Sell your house fast in St. Petersburg, Florida">View Market</a>
           </article>
 
-          <article class="market-card market-coral">
+          <article class="market-card market-coral" data-city-slug="cape-coral">
             <p class="market-county">Lee County</p>
             <h3>Cape Coral</h3>
             <p>Providing direct, dependable options for homeowners ready to sell quickly without extra friction.</p>
             <a href="cape-coral.html" class="market-link" title="Sell your house fast in Cape Coral, Florida">View Market</a>
           </article>
+        </div>
+        <div class="container">
+          <p class="service-note" id="zip-personalization-note" aria-live="polite"></p>
         </div>
       </section>
 
@@ -544,12 +547,72 @@
         </div>
       </div>
     </footer>
+    <script src="zip-city-resolver.js"></script>
     <script>
       (function () {
         const tabs = Array.from(document.querySelectorAll('.process-step-button'));
         const panels = Array.from(document.querySelectorAll('.process-panel'));
+        const marketGrid = document.querySelector('.market-grid');
+        const marketCards = Array.from(document.querySelectorAll('.market-card[data-city-slug]'));
+        const zipNote = document.getElementById('zip-personalization-note');
+        const PROFILE_STORAGE_KEY = 'offer-calculator-profile-v2';
+
+        const getZipFromSession = () => {
+          const zipFromQuery = (new URLSearchParams(window.location.search).get('zip') || '').trim();
+          if (/^\d{5}$/.test(zipFromQuery)) {
+            return zipFromQuery;
+          }
+
+          try {
+            const saved = localStorage.getItem(PROFILE_STORAGE_KEY);
+            if (!saved) return '';
+            const profile = JSON.parse(saved);
+            return typeof profile.zip === 'string' ? profile.zip.trim() : '';
+          } catch {
+            return '';
+          }
+        };
+
+        const prioritizeCityCard = (citySlug) => {
+          if (!marketGrid || !citySlug) return;
+
+          const targetCard = marketCards.find((card) => card.dataset.citySlug === citySlug);
+          if (!targetCard) return;
+
+          marketGrid.prepend(targetCard);
+        };
+
+        const applyHomepagePersonalization = () => {
+          if (typeof window.resolveFloridaCityByZip !== 'function') {
+            return;
+          }
+
+          const zip = getZipFromSession();
+          const resolvedCity = window.resolveFloridaCityByZip(zip);
+
+          if (resolvedCity.citySlug) {
+            prioritizeCityCard(resolvedCity.citySlug);
+          }
+
+          if (!zipNote) {
+            return;
+          }
+
+          if (!resolvedCity.isZipValid) {
+            zipNote.textContent = 'Add a Florida ZIP in the Offer Calculator to highlight the market page that best matches your area.';
+            return;
+          }
+
+          if (!resolvedCity.isSupportedMarket) {
+            zipNote.innerHTML = 'We buy homes statewide. Your ZIP is valid but is outside our current featured market map, so we\'re showing Florida-wide defaults. <a href="service-areas.html" title="Browse all Florida service areas">Browse all service areas</a> to find your closest market.';
+            return;
+          }
+
+          zipNote.innerHTML = `Showing personalized service-area priority for <a href="${resolvedCity.cityPageHref}" title="View ${resolvedCity.cityDisplayName} market page">${resolvedCity.cityDisplayName}</a>.`;
+        };
 
         if (!tabs.length || !panels.length) {
+          applyHomepagePersonalization();
           return;
         }
 
@@ -595,6 +658,8 @@
             activateStep(tabs[nextIndex], true);
           });
         });
+
+        applyHomepagePersonalization();
       })();
     </script>
   </body>
