@@ -77,20 +77,9 @@
               required
             />
 
-            <label for="situation">Situation</label>
-            <select id="situation" name="situation" required>
-              <option value="" selected disabled>Select your situation</option>
-              <option value="major-repairs-needed">Major Repairs Needed</option>
-              <option value="foreclosure-pressure">Foreclosure Pressure</option>
-              <option value="inherited-property">Inherited Property</option>
-              <option value="unwanted-rental">Unwanted Rental</option>
-              <option value="urgent-timeline">Urgent Timeline</option>
-              <option value="probate-complexity">Probate Complexity</option>
-              <option value="divorce-transition">Divorce Transition</option>
-              <option value="vacant-home-costs">Vacant Home Costs</option>
-            </select>
+            <input id="situation" name="situation" type="hidden" value="foreclosure-pressure" />
 
-            <button class="btn btn-primary" type="submit">See My Tailored Options</button>
+            <button class="btn btn-primary" type="submit">See Foreclosure Options in My City</button>
           </form>
         </aside>
       </div>
@@ -726,12 +715,9 @@
         const isCityMatch = (entry, citySlug) => entry.citySlugs.includes('all') || (citySlug && entry.citySlugs.includes(citySlug));
         const isSituationMatch = (entry, situationSlug) => entry.situations.includes('all') || entry.situations.includes(situationSlug);
 
-        const updateUrl = (zip, situation) => {
-          const url = new URL(window.location.href);
-          url.searchParams.set('zip', zip);
-          url.searchParams.set('situation', situation);
-          window.history.replaceState({}, '', `${url.pathname}?${url.searchParams.toString()}${url.hash}`);
-        };
+        if (zipPattern.test(queryZip)) {
+          zipInput.value = queryZip;
+        }
 
         const storeProfile = (profile) => {
           window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
@@ -793,8 +779,6 @@
           event.preventDefault();
 
           const zip = zipInput.value.trim();
-          const situation = situationInput.value;
-
           if (!zipPattern.test(zip)) {
             zipInput.setCustomValidity('Please enter a valid 5-digit Florida ZIP code.');
             zipInput.reportValidity();
@@ -810,7 +794,11 @@
           zipInput.setCustomValidity('');
           situationInput.setCustomValidity('');
 
-          const profile = { zip, situation };
+          const resolvedCity = typeof window.resolveFloridaCityByZip === 'function'
+            ? window.resolveFloridaCityByZip(zip)
+            : null;
+
+          const profile = { zip, situation: 'foreclosure-pressure' };
           storeProfile(profile);
           updateUrl(zip, situation);
           renderResults(profile);
