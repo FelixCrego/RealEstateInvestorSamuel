@@ -197,6 +197,16 @@
                 </ul>
               </div>
 
+              <div class="valuation-insight-box comp-results-box">
+                <p class="market-context-label">Recent comparable sales</p>
+                <div id="comp-results" class="comp-results-list">
+                  <article class="comp-result-card">
+                    <strong>Comparable sales will appear here after the AI comp scan runs.</strong>
+                    <p>Each comp will show the address, sold price, sold date, basic size, and source when public web data is available.</p>
+                  </article>
+                </div>
+              </div>
+
               <div class="valuation-links">
                 <a class="btn btn-outline" id="county-link" href="counties.html" title="Browse Florida county pages">County Page</a>
                 <a class="btn btn-outline" id="market-link" href="service-areas.html" title="Browse Florida service area pages">Local Market</a>
@@ -301,6 +311,7 @@
       const repairAdjustment = document.getElementById('repair-adjustment');
       const aiSummary = document.getElementById('ai-summary');
       const compBullets = document.getElementById('comp-bullets');
+      const compResults = document.getElementById('comp-results');
       const marketContextTitle = document.getElementById('market-context-title');
       const marketContextCopy = document.getElementById('market-context-copy');
       const countyLink = document.getElementById('county-link');
@@ -481,6 +492,33 @@
         });
       }
 
+      function renderCompResults(comps) {
+        compResults.innerHTML = '';
+
+        if (!Array.isArray(comps) || !comps.length) {
+          const empty = document.createElement('article');
+          empty.className = 'comp-result-card';
+          empty.innerHTML = '<strong>No dated comps were available from the public web for this query.</strong><p>The range above can still be used as a planning estimate, but the comp list is limited for this address.</p>';
+          compResults.appendChild(empty);
+          return;
+        }
+
+        comps.forEach((comp) => {
+          const card = document.createElement('article');
+          card.className = 'comp-result-card';
+          card.innerHTML = `
+            <div class="comp-result-head">
+              <strong>${comp.address || 'Comparable sale'}</strong>
+              <span>${comp.sold_date || 'Date unavailable'}</span>
+            </div>
+            <p class="comp-result-price">${asCurrency(comp.sold_price || 0)}</p>
+            <p class="comp-result-meta">${comp.beds || '-'} beds · ${comp.baths || '-'} baths · ${comp.sqft || '-'} sqft</p>
+            <p class="comp-result-source">Source: ${comp.source || 'Public web data'}</p>
+          `;
+          compResults.appendChild(card);
+        });
+      }
+
       function renderMarketContext(profile, estimate) {
         const market = estimate.market;
 
@@ -540,6 +578,7 @@
         ]);
 
         aiSummary.textContent = 'Local estimate ready. If AI comp scan is available, it can add a public-web market summary, but the strongest next step is still confirming condition and title details with Samuel.';
+        renderCompResults([]);
 
         persistProfile(profile);
         return true;
@@ -583,6 +622,7 @@
           if (Array.isArray(payload.comp_summary) && payload.comp_summary.length) {
             renderBullets(payload.comp_summary);
           }
+          renderCompResults(payload.comps);
           if (payload.note) {
             note.textContent = payload.note;
           }

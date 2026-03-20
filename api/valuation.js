@@ -106,6 +106,17 @@ Return ONLY valid JSON with this exact shape:
   "confidence_label": string,
   "market_summary": string,
   "comp_summary": [string, string, string],
+  "comps": [
+    {
+      "address": string,
+      "sold_price": number,
+      "sold_date": string,
+      "beds": string,
+      "baths": string,
+      "sqft": string,
+      "source": string
+    }
+  ],
   "note": string
 }
 
@@ -114,6 +125,8 @@ Rules:
 - Keep cash numbers realistic for a direct buyer, not retail numbers repeated.
 - Confidence score must be 55-95.
 - comp_summary must have exactly 3 concise bullets.
+- comps must have exactly 3 items when public web comp signals are available.
+- sold_date should be human-readable, like "February 2026" or "2025-12-14" if available.
 - note must clearly say this is not an appraisal.
 `;
 
@@ -153,6 +166,25 @@ Rules:
                   minItems: 3,
                   maxItems: 3
                 },
+                comps: {
+                  type: 'array',
+                  minItems: 0,
+                  maxItems: 3,
+                  items: {
+                    type: 'object',
+                    additionalProperties: false,
+                    properties: {
+                      address: { type: 'string' },
+                      sold_price: { type: 'number' },
+                      sold_date: { type: 'string' },
+                      beds: { type: 'string' },
+                      baths: { type: 'string' },
+                      sqft: { type: 'string' },
+                      source: { type: 'string' }
+                    },
+                    required: ['address', 'sold_price', 'sold_date', 'beds', 'baths', 'sqft', 'source']
+                  }
+                },
                 note: { type: 'string' }
               },
               required: [
@@ -166,6 +198,7 @@ Rules:
                 'confidence_label',
                 'market_summary',
                 'comp_summary',
+                'comps',
                 'note'
               ]
             }
