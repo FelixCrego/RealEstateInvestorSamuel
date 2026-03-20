@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>We Buy Houses Florida | Get a Fair Cash Offer Today | Florida Cash House Buyers</title>
+    <title>We Buy Houses in Florida | Fair Cash Offers</title>
     <meta
       name="description"
-      content="Need to sell your Florida house fast? We buy houses AS-IS for cash. No repairs, no cleaning, and no commissions. Closing on your timeline since 2018. Get your offer in 24 hours."
+      content="Need to sell your Florida house fast? We buy houses as-is for cash with no repairs, cleaning, or commissions. Close on your timeline and get a fair offer fast."
     />
-    <script type="application/ld+json">
+    <link rel="canonical" href="https://real-estate-investor-samuel.vercel.app/index.html" />
+<script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "RealEstateAgent",
@@ -77,9 +78,19 @@
               required
             />
 
-            <input id="situation" name="situation" type="hidden" value="foreclosure-pressure" />
+            <label for="situation">Situation</label>
+            <select id="situation" name="situation" required>
+              <option value="major-repairs-needed">Sell My House As-Is (No Repairs)</option>
+              <option value="foreclosure-pressure" selected>Stop Foreclosure Fast</option>
+              <option value="inherited-property">Sell Inherited Property</option>
+              <option value="unwanted-rental">Selling a Rental with Tenants</option>
+              <option value="urgent-timeline">Urgent Timeline</option>
+              <option value="probate-complexity">Florida Probate Property Sale</option>
+              <option value="divorce-transition">Divorce Transition</option>
+              <option value="vacant-home-costs">Vacant Home Costs</option>
+            </select>
 
-            <button class="btn btn-primary" type="submit">See Foreclosure Options in My City</button>
+            <button class="btn btn-primary" id="hero-form-submit" type="submit">See Foreclosure Options in My City</button>
           </form>
         </aside>
       </div>
@@ -93,6 +104,26 @@
           <p id="tailored-results-subhead">These pages match your ZIP and situation.</p>
         </div>
         <div class="situations-grid" id="tailored-results-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container section-head">
+        <p class="eyebrow">From Samuel</p>
+        <h2>Articles that connect real stories with local decisions.</h2>
+        <p>Read Samuel's article-based guidance when you want more than a quick overview. These pages tie together real seller stories, local context, and the practical tradeoffs behind a direct sale.</p>
+      </div>
+      <div class="container comparison-grid" aria-label="Featured blog content">
+        <article class="comparison-card">
+          <h3>Samuel's Blog</h3>
+          <p>Browse article-style guidance built around real Florida seller situations and local markets.</p>
+          <a class="card-link" href="blog.html" title="Browse Samuel's Florida home selling blog">View Blog</a>
+        </article>
+        <article class="comparison-card">
+          <h3>Featured Orlando Inherited-House Article</h3>
+          <p>James Carter's story plus practical guidance on selling an inherited house in Orlando and Orange County.</p>
+          <a class="card-link" href="sell-inherited-house-fast-orlando-orange-county.html" title="Read the Orlando inherited-house article">Read Article</a>
+        </article>
       </div>
     </section>
 
@@ -320,42 +351,42 @@
           <div class="situations-grid" aria-label="Seller situation cards">
             <article class="situation-card situation-inherited">
               <h3>Inherited &amp; Probate Property</h3>
-              <p>Simplify the sale and avoid months of maintenance, prep, and uncertainty.</p>
+              <p>Sell inherited property without cleanup, repairs, or months of delay.</p>
               <a href="inherited-property.html" class="card-link" title="Explore inherited property cash sale options">View Situation</a>
             </article>
             <article class="situation-card situation-foreclosure">
               <h3>Stop Florida Foreclosure</h3>
-              <p>Get clear options quickly when timing is critical and decisions feel urgent.</p>
+              <p>Get clear options fast before the timeline gets tighter.</p>
               <a href="foreclosure-pressure.html" class="card-link" title="See foreclosure prevention home sale solutions">View Situation</a>
             </article>
             <article class="situation-card situation-repairs">
               <h3>Houses Needing Massive Repairs</h3>
-              <p>Sell as-is without contractor costs, staging, or renovation delays.</p>
+              <p>Sell as-is without contractors, staging, or renovation spending.</p>
               <a href="major-repairs-needed.html" class="card-link" title="Learn how we buy homes needing major repairs">View Situation</a>
             </article>
             <article class="situation-card situation-fast">
               <h3>Selling Fast</h3>
-              <p>Move forward on your timeline with a direct, reliable closing path.</p>
+              <p>Close on your timeline when certainty matters more than a long listing.</p>
               <a href="urgent-timeline.html" class="card-link" title="Find fast home sale options for urgent timelines">View Situation</a>
             </article>
             <article class="situation-card situation-rental">
               <h3>Tired Landlords &amp; Bad Tenants</h3>
-              <p>Exit landlord stress and tenant turnover with a streamlined sale.</p>
+              <p>Exit landlord stress, vacancies, and tenant turnover with a cleaner sale.</p>
               <a href="unwanted-rental.html" class="card-link" title="View options for selling an unwanted rental property">View Situation</a>
             </article>
             <article class="situation-card situation-estate">
               <h3>Probate / Estate Sale</h3>
-              <p>Navigate estate transitions with clear guidance and respectful communication.</p>
+              <p>Navigate estate timing with respectful communication and fewer moving parts.</p>
               <a href="probate-complexity.html" class="card-link" title="Understand how we help with probate property sales">View Situation</a>
             </article>
             <article class="situation-card situation-divorce">
               <h3>Divorce Transition</h3>
-              <p>Resolve property decisions quickly with low-friction, professional support.</p>
+              <p>Create a clean break without repeated showings or ongoing holding costs.</p>
               <a href="divorce-transition.html" class="card-link" title="Review home selling options during divorce transitions">View Situation</a>
             </article>
             <article class="situation-card situation-vacant">
               <h3>High Insurance &amp; Holding Costs</h3>
-              <p>Sell before carrying costs and upkeep become a bigger burden.</p>
+              <p>Stop paying for a vacant or costly property before carrying costs climb.</p>
               <a href="vacant-home-costs.html" class="card-link" title="See solutions for selling a vacant home quickly">View Situation</a>
             </article>
           </div>
@@ -365,28 +396,33 @@
       <section class="section" id="testimonials">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">Client experiences</p>
-            <h2>Real homeowners, real outcomes.</h2>
+            <p class="eyebrow">Real Seller Stories</p>
+            <h2>Proof that speaks to real Florida situations.</h2>
+            <p class="lead">These stories are grounded in real seller timelines, real local markets, and the kinds of problems homeowners are actually trying to solve.</p>
           </div>
           <div class="testimonials-grid">
             <figure>
               <blockquote>
-                “They were professional from day one. We sold an inherited property without repairs and closed faster than expected.”
+                “I needed to move closer to family, and I could not afford to replace the roof first. Selling as-is gave me a way to move forward without taking on more repair costs.”
               </blockquote>
-              <figcaption>— Maria L., Tampa</figcaption>
+              <figcaption>Markus • Orlando area • Major repairs + out-of-state move • Closed in 18 days</figcaption>
             </figure>
             <figure>
               <blockquote>
-                “No pushy tactics, no confusion. They explained every step and gave us the flexibility we needed.”
+                “We were not looking for a perfect scenario. We needed a real plan that could actually close before the situation got worse.”
               </blockquote>
-              <figcaption>— Anthony R., Orlando</figcaption>
+              <figcaption>Foreclosure Format • Timeline pressure • Equity protection + defined closing path</figcaption>
             </figure>
             <figure>
               <blockquote>
-                “I needed to move quickly due to financial pressure. Their team delivered exactly what they promised.”
+                “The real value was knowing the closing date was real. That changed the whole decision for us.”
               </blockquote>
-              <figcaption>— Danielle S., Fort Lauderdale</figcaption>
+              <figcaption>Urgent Sale Format • Move deadline • Certainty over a longer listing cycle</figcaption>
             </figure>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="success-stories.html" title="View all seller stories">View Seller Stories</a>
+            <a class="btn btn-text" href="inherited-property-story.html" title="Read James Carter's story">Read James's Story</a>
           </div>
         </div>
       </section>
@@ -500,57 +536,59 @@
       </section>
     </main>
 
-    <footer class="site-footer" aria-label="Site footer">
+        <footer class="site-footer" aria-label="Site footer">
       <div class="container footer-grid">
         <section class="footer-brand" aria-label="Florida Cash House Buyers contact details">
           <a class="brand-block footer-logo-wrap" href="index.html" aria-label="Florida Cash House Buyers home" title="Go to Florida Cash House Buyers home page">
             <img src="logo.svg" alt="Florida Cash House Buyers" class="footer-logo" />
           </a>
-          <p>
-            Helping Florida homeowners sell with confidence through a clear process,
-            straightforward communication, and flexible closing timelines.
-          </p>
+          <p>Helping Florida homeowners sell with confidence through a clear process, straightforward communication, and flexible closing timelines.</p>
           <a class="footer-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers at 813-555-0192">(813) 555-0192</a>
         </section>
-
         <nav class="footer-nav" aria-label="Footer navigation">
-          <h2>Navigate</h2>
+          <h2>Core Pages</h2>
           <a href="how-it-works.html" title="Learn our simple 3-step home buying process">How It Works</a>
+          <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="View all Florida service areas where we buy houses">Service Areas</a>
+          <a href="counties.html" title="Browse all 67 Florida county pages">County Directory</a>
+          <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog</a>
           <a href="create-your-offer.html" title="See your offer now with our instant calculator">Offer Calculator</a>
           <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
-          <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
-          <a href="index.html#faq" title="Read frequently asked questions about our process">FAQ</a>
         </nav>
-
+        <nav class="footer-nav" aria-label="Regional hubs">
+          <h2>Regional Hubs</h2>
+          <a href="central-florida.html" title="Central Florida home-selling guide">Central Florida</a>
+          <a href="south-florida.html" title="South Florida home-selling guide">South Florida</a>
+          <a href="gulf-coast.html" title="Gulf Coast home-selling guide">Gulf Coast</a>
+          <a href="north-florida.html" title="North Florida home-selling guide">North Florida</a>
+          <a href="counties.html" title="Florida county directory">All Counties</a>
+          <a href="situations.html" title="All seller situations">All Situations</a>
+        </nav>
         <section class="footer-contact" aria-label="Service footprint and hours">
-          <h2>Service Footprint</h2>
-          <p>Serving homeowners across major Florida markets.</p>
-          <p><strong>Hours:</strong> Monday–Saturday, 8am–7pm</p>
+          <h2>Coverage</h2>
+          <p>Serving homeowners across Florida with regional hubs, city pages, county pages, and county + situation content built for local seller intent.</p>
+          <p><strong>Hours:</strong> Monday-Saturday, 8am-7pm</p>
           <p><strong>Email:</strong> hello@floridacashhousebuyers.com</p>
         </section>
-
-        <nav class="footer-nav" aria-label="Primary service areas">
-          <h2>Primary Service Areas</h2>
-          <a href="miami.html" title="Miami cash home buyers">Miami</a>
-          <a href="tampa.html" title="Tampa cash home buyers">Tampa</a>
-          <a href="orlando.html" title="Orlando cash home buyers">Orlando</a>
-          <a href="jacksonville.html" title="Jacksonville cash home buyers">Jacksonville</a>
-          <a href="st-petersburg.html" title="St. Petersburg cash home buyers">St. Petersburg</a>
-          <a href="cape-coral.html" title="Cape Coral cash home buyers">Cape Coral</a>
+        <nav class="footer-nav" aria-label="Featured city pages">
+          <h2>Featured Cities</h2>
+          <a href="miami.html" title="Miami cash home buyer page">Miami</a><a href="tampa.html" title="Tampa cash home buyer page">Tampa</a><a href="orlando.html" title="Orlando cash home buyer page">Orlando</a><a href="jacksonville.html" title="Jacksonville cash home buyer page">Jacksonville</a><a href="st-petersburg.html" title="St. Petersburg cash home buyer page">St. Petersburg</a><a href="cape-coral.html" title="Cape Coral cash home buyer page">Cape Coral</a><a href="central-florida.html" title="Central Florida cash home buyer page">Central Florida</a><a href="counties.html" title="County Directory cash home buyer page">County Directory</a>
         </nav>
       </div>
-
       <div class="container footer-bottom">
-        <p>© 2026 Florida Cash House Buyers. All rights reserved.</p>
+        <p>&copy; 2026 Florida Cash House Buyers. All rights reserved.</p>
+        <div class="footer-credit" aria-label="Website credit">
+          <a href="https://www.felixcrego.com" target="_blank" rel="noopener noreferrer" title="Website Build and SEO by Felix Crego">Website Build &amp; SEO by Felix Crego</a>
+        </div>
         <div class="footer-legal" aria-label="Legal links">
-          <a href="#top" title="View our privacy information">Privacy</a>
-          <a href="#top" title="View our terms and conditions">Terms</a>
-          <a href="#top" title="Learn about accessibility support on this website">Accessibility</a>
+          <a href="index.html#top" title="View our privacy information">Privacy</a>
+          <a href="index.html#top" title="View our terms and conditions">Terms</a>
+          <a href="index.html#top" title="Learn about accessibility support on this website">Accessibility</a>
         </div>
       </div>
     </footer>
     <script src="zip-city-resolver.js"></script>
+    <script src="sticky-lead-widget.js"></script>
     <script>
       (function () {
         const tabs = Array.from(document.querySelectorAll('.process-step-button'));
@@ -607,11 +645,16 @@
           }
 
           if (!resolvedCity.isSupportedMarket) {
-            zipNote.innerHTML = 'We buy homes statewide. Your ZIP is valid but is outside our current featured market map, so we\'re showing Florida-wide defaults. <a href="service-areas.html" title="Browse all Florida service areas">Browse all service areas</a> to find your closest market.';
+            zipNote.innerHTML = 'We buy homes statewide. Your ZIP is valid but is outside our Florida market dataset, so we\'re showing statewide defaults. <a href="service-areas.html" title="Browse all Florida service areas">Browse all service areas</a> to find your closest market.';
             return;
           }
 
-          zipNote.innerHTML = `Showing personalized service-area priority for <a href="${resolvedCity.cityPageHref}" title="View ${resolvedCity.cityDisplayName} market page">${resolvedCity.cityDisplayName}</a>.`;
+          if (resolvedCity.citySlug && resolvedCity.cityPageHref !== 'service-areas.html') {
+            zipNote.innerHTML = `Showing personalized service-area priority for <a href="${resolvedCity.cityPageHref}" title="View ${resolvedCity.cityDisplayName} market page">${resolvedCity.cityDisplayName}</a> and <a href="${resolvedCity.countyPageHref}" title="View ${resolvedCity.countyName} County page">${resolvedCity.countyName} County</a>.`;
+            return;
+          }
+
+          zipNote.innerHTML = `Showing personalized service-area priority for <a href="${resolvedCity.countyPageHref}" title="View ${resolvedCity.countyName} County page">${resolvedCity.countyName} County</a>.`;
         };
 
         if (!tabs.length || !panels.length) {
@@ -674,6 +717,7 @@
         const resultsTitle = document.getElementById('tailored-results-title');
         const resultsSubhead = document.getElementById('tailored-results-subhead');
         const resultsGrid = document.getElementById('tailored-results-grid');
+        const submitButton = document.getElementById('hero-form-submit');
 
         if (!heroForm || !zipInput || !situationInput || !resultsSection || !resultsGrid) {
           return;
@@ -695,25 +739,190 @@
           'vacant-home-costs': 'Vacant Home Costs'
         };
 
-        const contentInventory = [
-          { href: 'miami.html', title: 'Miami Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['miami'], situations: ['all'] },
-          { href: 'tampa.html', title: 'Tampa Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['tampa'], situations: ['all'] },
-          { href: 'orlando.html', title: 'Orlando Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['orlando'], situations: ['all'] },
-          { href: 'jacksonville.html', title: 'Jacksonville Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['jacksonville'], situations: ['all'] },
-          { href: 'st-petersburg.html', title: 'St. Petersburg Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['st-petersburg'], situations: ['all'] },
-          { href: 'cape-coral.html', title: 'Cape Coral Market Page', description: 'City-specific selling guidance and local process details.', citySlugs: ['cape-coral'], situations: ['all'] },
-          { href: 'major-repairs-needed.html', title: 'Major Repairs Needed Guide', description: 'Options for selling without fixing everything first.', citySlugs: ['all'], situations: ['major-repairs-needed'] },
-          { href: 'foreclosure-pressure.html', title: 'Foreclosure Pressure Guide', description: 'Urgent steps and options before auction in Florida.', citySlugs: ['all'], situations: ['foreclosure-pressure'] },
-          { href: 'inherited-property.html', title: 'Inherited Property Guide', description: 'Guidance for inherited homes and decision planning.', citySlugs: ['all'], situations: ['inherited-property'] },
-          { href: 'unwanted-rental.html', title: 'Unwanted Rental Guide', description: 'Ways to sell rental properties with tenant or turnover issues.', citySlugs: ['all'], situations: ['unwanted-rental'] },
-          { href: 'urgent-timeline.html', title: 'Urgent Timeline Guide', description: 'Steps for a faster, controlled sale process.', citySlugs: ['all'], situations: ['urgent-timeline'] },
-          { href: 'probate-complexity.html', title: 'Probate Complexity Guide', description: 'What to do when probate slows your sale process.', citySlugs: ['all'], situations: ['probate-complexity'] },
-          { href: 'divorce-transition.html', title: 'Divorce Transition Guide', description: 'Clear home-sale options during divorce transitions.', citySlugs: ['all'], situations: ['divorce-transition'] },
-          { href: 'vacant-home-costs.html', title: 'Vacant Home Costs Guide', description: 'How to reduce ongoing costs on empty properties.', citySlugs: ['all'], situations: ['vacant-home-costs'] }
-        ];
+        const situationButtonLabels = {
+          'major-repairs-needed': 'See As-Is Selling Options in My City',
+          'foreclosure-pressure': 'See Foreclosure Options in My City',
+          'inherited-property': 'See Inherited Property Options in My City',
+          'unwanted-rental': 'See Rental Property Options in My City',
+          'urgent-timeline': 'See Fast-Sale Options in My City',
+          'probate-complexity': 'See Probate Sale Options in My City',
+          'divorce-transition': 'See Divorce Transition Options in My City',
+          'vacant-home-costs': 'See Vacant Home Options in My City'
+        };
 
-        const isCityMatch = (entry, citySlug) => entry.citySlugs.includes('all') || (citySlug && entry.citySlugs.includes(citySlug));
-        const isSituationMatch = (entry, situationSlug) => entry.situations.includes('all') || entry.situations.includes(situationSlug);
+        const situationCardClasses = {
+          'major-repairs-needed': 'situation-repairs',
+          'foreclosure-pressure': 'situation-foreclosure',
+          'inherited-property': 'situation-inherited',
+          'unwanted-rental': 'situation-rental',
+          'urgent-timeline': 'situation-fast',
+          'probate-complexity': 'situation-estate',
+          'divorce-transition': 'situation-divorce',
+          'vacant-home-costs': 'situation-vacant'
+        };
+
+        const situationPageMeta = {
+          'major-repairs-needed': {
+            file: 'major-repairs-needed.html',
+            countyDirectoryFile: 'major-repairs-needed-counties.html',
+            countyShortSlug: 'repairs',
+            countyTitleSuffix: 'As-Is Repairs',
+            statewideTitle: 'Major Repairs Needed Guide',
+            statewideDescription: 'Options for selling without fixing everything first.',
+            countyDescription: 'County-specific as-is selling guidance for houses with repair pressure, deferred maintenance, or expensive updates.'
+          },
+          'foreclosure-pressure': {
+            file: 'foreclosure-pressure.html',
+            countyDirectoryFile: 'foreclosure-pressure-counties.html',
+            countyShortSlug: 'foreclosure',
+            countyTitleSuffix: 'Foreclosure Help',
+            statewideTitle: 'Foreclosure Pressure Guide',
+            statewideDescription: 'Urgent steps and options before auction in Florida.',
+            countyDescription: 'County-specific foreclosure guidance for owners trying to protect equity and move before the timeline gets tighter.'
+          },
+          'inherited-property': {
+            file: 'inherited-property.html',
+            countyDirectoryFile: 'inherited-property-counties.html',
+            countyShortSlug: 'inherited-property',
+            countyTitleSuffix: 'Inherited Property',
+            statewideTitle: 'Inherited Property Guide',
+            statewideDescription: 'Guidance for inherited homes and decision planning.',
+            countyDescription: 'County-specific inherited property guidance for heirs, executors, cleanout pressure, and estate-related sales.'
+          },
+          'unwanted-rental': {
+            file: 'unwanted-rental.html',
+            countyDirectoryFile: 'unwanted-rental-counties.html',
+            countyShortSlug: 'rental',
+            countyTitleSuffix: 'Rental Exit',
+            statewideTitle: 'Unwanted Rental Guide',
+            statewideDescription: 'Ways to sell rental properties with tenant or turnover issues.',
+            countyDescription: 'County-specific rental exit guidance for landlords dealing with tenant friction, turnover costs, or maintenance drag.'
+          },
+          'urgent-timeline': {
+            file: 'urgent-timeline.html',
+            countyDirectoryFile: 'urgent-timeline-counties.html',
+            countyShortSlug: 'urgent-sale',
+            countyTitleSuffix: 'Urgent Sale',
+            statewideTitle: 'Urgent Timeline Guide',
+            statewideDescription: 'Steps for a faster, controlled sale process.',
+            countyDescription: 'County-specific fast-sale guidance for homeowners dealing with a move deadline, family change, or compressed closing window.'
+          },
+          'probate-complexity': {
+            file: 'probate-complexity.html',
+            countyDirectoryFile: 'probate-complexity-counties.html',
+            countyShortSlug: 'probate',
+            countyTitleSuffix: 'Probate Sale',
+            statewideTitle: 'Probate Complexity Guide',
+            statewideDescription: 'What to do when probate slows your sale process.',
+            countyDescription: 'County-specific probate guidance for estate timelines, title coordination, and court-driven selling pressure.'
+          },
+          'divorce-transition': {
+            file: 'divorce-transition.html',
+            countyDirectoryFile: 'divorce-transition-counties.html',
+            countyShortSlug: 'divorce',
+            countyTitleSuffix: 'Divorce Sale',
+            statewideTitle: 'Divorce Transition Guide',
+            statewideDescription: 'Clear home-sale options during divorce transitions.',
+            countyDescription: 'County-specific divorce sale guidance for private sales, timing coordination, and cleaner property transitions.'
+          },
+          'vacant-home-costs': {
+            file: 'vacant-home-costs.html',
+            countyDirectoryFile: 'vacant-home-costs-counties.html',
+            countyShortSlug: 'vacant-home',
+            countyTitleSuffix: 'Vacant Home Help',
+            statewideTitle: 'Vacant Home Costs Guide',
+            statewideDescription: 'How to reduce ongoing costs on empty properties.',
+            countyDescription: 'County-specific vacant-home guidance for holding costs, insurance stress, deferred maintenance, and as-is exits.'
+          }
+        };
+
+        const buildResultPages = (resolvedMarket, situation) => {
+          const meta = situationPageMeta[situation];
+
+          if (!meta) {
+            return [];
+          }
+
+          const pages = [];
+          const seen = new Set();
+          const pushPage = (entry) => {
+            if (!entry || !entry.href || seen.has(entry.href)) {
+              return;
+            }
+
+            seen.add(entry.href);
+            pages.push(entry);
+          };
+
+          if (resolvedMarket?.countyName && resolvedMarket?.countySlug) {
+            pushPage({
+              href: `${resolvedMarket.countySlug}-county-${meta.countyShortSlug}.html`,
+              title: `${resolvedMarket.countyName} County ${meta.countyTitleSuffix}`,
+              description: meta.countyDescription,
+              resultType: 'county-situation'
+            });
+
+            pushPage({
+              href: resolvedMarket.countyPageHref,
+              title: `${resolvedMarket.countyName} County Page`,
+              description: `County-specific guidance for ${resolvedMarket.countyName} County homeowners who need to sell as-is or on a faster timeline.`,
+              resultType: 'county'
+            });
+          }
+
+          (resolvedMarket?.relatedMarketPages || []).forEach((marketPage) => {
+            pushPage({
+              href: marketPage.href,
+              title: `${marketPage.label} Market Page`,
+              description: `Local market guidance connected to ${resolvedMarket.countyName ? `${resolvedMarket.countyName} County` : 'your area'}.`,
+              resultType: 'market'
+            });
+          });
+
+          pushPage({
+            href: meta.countyDirectoryFile,
+            title: `${situationLabels[situation]} County Directory`,
+            description: `Browse all Florida county-specific pages built for ${situationLabels[situation].toLowerCase()}.`,
+            resultType: 'directory'
+          });
+
+          pushPage({
+            href: meta.file,
+            title: meta.statewideTitle,
+            description: meta.statewideDescription,
+            resultType: 'guide'
+          });
+
+          if (
+            situation === 'inherited-property' &&
+            resolvedMarket?.countySlug === 'orange' &&
+            (resolvedMarket?.relatedMarketPages || []).some((marketPage) => marketPage.href === 'orlando.html')
+          ) {
+            pushPage({
+              href: 'sell-inherited-house-fast-orlando-orange-county.html',
+              title: "Samuel's Orlando Inherited-House Article",
+              description: 'A deeper article that combines James Carter\'s story, Orlando context, and Orange County inherited-property guidance.',
+              resultType: 'guide'
+            });
+          }
+
+          return pages;
+        };
+
+        const updateSubmitButton = (situation) => {
+          if (!submitButton) {
+            return;
+          }
+
+          submitButton.textContent = situationButtonLabels[situation] || 'See My Options';
+        };
+
+        const updateUrl = (zip, situation) => {
+          const nextUrl = new URL(window.location.href);
+          nextUrl.searchParams.set('zip', zip);
+          nextUrl.searchParams.set('situation', situation);
+          window.history.replaceState({}, '', nextUrl);
+        };
 
         if (zipPattern.test(queryZip)) {
           zipInput.value = queryZip;
@@ -727,15 +936,16 @@
           const resolvedCity = typeof window.resolveFloridaCityByZip === 'function'
             ? window.resolveFloridaCityByZip(zip)
             : null;
-          const citySlug = resolvedCity?.citySlug || null;
-          const cityName = resolvedCity?.cityDisplayName || 'Florida';
+          const placeLabel = resolvedCity?.countyName
+            ? `${resolvedCity.countyName} County${resolvedCity.citySlug ? ` / ${resolvedCity.cityDisplayName}` : ''}`
+            : resolvedCity?.cityDisplayName || 'Florida';
           const situationName = situationLabels[situation] || 'Your Situation';
 
-          const matched = contentInventory.filter((entry) => isCityMatch(entry, citySlug) && isSituationMatch(entry, situation));
+          const matched = buildResultPages(resolvedCity, situation);
 
-          resultsTitle.textContent = `${situationName} resources for ${cityName}`;
+          resultsTitle.textContent = `${situationName} resources for ${placeLabel}`;
           resultsSubhead.textContent = matched.length
-            ? `We found ${matched.length} page${matched.length === 1 ? '' : 's'} related to ${situationName.toLowerCase()} in ${cityName}.`
+            ? `We found ${matched.length} page${matched.length === 1 ? '' : 's'} related to ${situationName.toLowerCase()} for ZIP ${zip}.`
             : `We couldn't find an exact match, so start with our statewide resources.`;
 
           resultsGrid.innerHTML = '';
@@ -744,13 +954,38 @@
             ? matched
             : [{ href: 'situations.html', title: 'All Situation Guides', description: 'Browse all of our Florida situation pages.', citySlugs: ['all'], situations: ['all'] }];
 
+          const getTailoredMotionVideo = (selectedSituation, resultType) => {
+            if (resultType === 'county-situation') {
+              return `videos/tailored/${selectedSituation}-county-situation.mp4`;
+            }
+
+            return '';
+          };
+
+          const getTailoredMotionPoster = (selectedSituation, resultType) =>
+            `images/tailored/${selectedSituation}-${resultType}.png`;
+
           pagesToShow.forEach((entry) => {
+            const entryUrl = new URL(entry.href, window.location.href);
+            entryUrl.searchParams.set('zip', zip);
+            entryUrl.searchParams.set('situation', situation);
             const card = document.createElement('article');
-            card.className = 'situation-card';
+            const resultType = entry.resultType || 'guide';
+            const motionVideo = getTailoredMotionVideo(situation, resultType);
+            card.className = `situation-card tailored-card ${situationCardClasses[situation] || 'situation-fast'} tailored-card-${entry.resultType || 'guide'}`;
+            card.style.setProperty('--tailored-card-image', `url("images/tailored/${situation}-${entry.resultType || 'guide'}.png")`);
+            if (motionVideo) {
+              card.classList.add('tailored-card-has-video');
+            }
             card.innerHTML = `
-              <h3>${entry.title}</h3>
-              <p>${entry.description}</p>
-              <a class="card-link" href="${entry.href}" title="View ${entry.title}">View Page</a>
+              ${motionVideo ? `<video class="tailored-card-video" autoplay muted loop playsinline preload="metadata" poster="${getTailoredMotionPoster(situation, resultType)}"><source src="${motionVideo}" type="video/mp4"></video>` : ''}
+              <div class="tailored-card-body">
+                <h3>${entry.title}</h3>
+                <p>${entry.description}</p>
+              </div>
+              <div class="tailored-card-footer">
+                <a class="card-link" href="${entryUrl.href}" title="View ${entry.title}">View Page</a>
+              </div>
             `;
             resultsGrid.appendChild(card);
           });
@@ -775,15 +1010,26 @@
           }
         }
 
+        updateSubmitButton(situationInput.value);
+
+        situationInput.addEventListener('change', () => {
+          situationInput.setCustomValidity('');
+          updateSubmitButton(situationInput.value);
+        });
+
         heroForm.addEventListener('submit', (event) => {
           event.preventDefault();
 
           const zip = zipInput.value.trim();
+          const situation = situationInput.value.trim();
+
           if (!zipPattern.test(zip)) {
             zipInput.setCustomValidity('Please enter a valid 5-digit Florida ZIP code.');
             zipInput.reportValidity();
             return;
           }
+
+          zipInput.setCustomValidity('');
 
           if (!situationLabels[situation]) {
             situationInput.setCustomValidity('Please select your situation.');
@@ -791,15 +1037,11 @@
             return;
           }
 
-          zipInput.setCustomValidity('');
           situationInput.setCustomValidity('');
 
-          const resolvedCity = typeof window.resolveFloridaCityByZip === 'function'
-            ? window.resolveFloridaCityByZip(zip)
-            : null;
-
-          const profile = { zip, situation: 'foreclosure-pressure' };
+          const profile = { zip, situation };
           storeProfile(profile);
+          window.dispatchEvent(new Event('fchb:profile-updated'));
           updateUrl(zip, situation);
           renderResults(profile);
         });

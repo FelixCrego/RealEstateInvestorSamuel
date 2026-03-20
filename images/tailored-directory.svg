@@ -1,0 +1,31 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="42" y1="34" x2="602" y2="386" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#274762"/>
+      <stop offset="1" stop-color="#10263C"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#bg)"/>
+  <circle cx="514" cy="96" r="118" fill="#58D0C0" fill-opacity="0.08"/>
+  <g transform="translate(88 88)">
+    <rect width="178" height="236" rx="22" fill="#0C1D30" fill-opacity="0.3" stroke="#D3E3EE" stroke-opacity="0.18"/>
+    <rect x="24" y="28" width="86" height="12" rx="6" fill="#56D3C2"/>
+    <rect x="24" y="58" width="130" height="12" rx="6" fill="#EFF7FD" fill-opacity="0.86"/>
+    <rect x="24" y="89" width="112" height="10" rx="5" fill="#EFF7FD" fill-opacity="0.58"/>
+    <rect x="24" y="119" width="112" height="10" rx="5" fill="#EFF7FD" fill-opacity="0.58"/>
+    <rect x="24" y="149" width="112" height="10" rx="5" fill="#EFF7FD" fill-opacity="0.58"/>
+    <rect x="24" y="187" width="130" height="22" rx="11" fill="#FDB44B" fill-opacity="0.88"/>
+  </g>
+  <g transform="translate(310 82)">
+    <rect width="228" height="252" rx="24" fill="#0B1C2D" fill-opacity="0.34" stroke="#D3E3EE" stroke-opacity="0.18"/>
+    <rect x="24" y="28" width="70" height="70" rx="18" fill="#183149"/>
+    <path d="M59 47C75.016 47 88 59.984 88 76C88 96.496 59 131.75 59 131.75C59 131.75 30 96.496 30 76C30 59.984 42.984 47 59 47Z" fill="#56D3C2"/>
+    <circle cx="59" cy="76" r="12" fill="#10304F"/>
+    <rect x="112" y="34" width="86" height="10" rx="5" fill="#56D3C2"/>
+    <rect x="112" y="58" width="82" height="9" rx="4.5" fill="#EFF7FD" fill-opacity="0.86"/>
+    <rect x="112" y="79" width="62" height="9" rx="4.5" fill="#EFF7FD" fill-opacity="0.56"/>
+    <rect x="24" y="134" width="180" height="16" rx="8" fill="#EFF7FD" fill-opacity="0.18"/>
+    <rect x="24" y="166" width="180" height="16" rx="8" fill="#EFF7FD" fill-opacity="0.18"/>
+    <rect x="24" y="198" width="180" height="16" rx="8" fill="#EFF7FD" fill-opacity="0.18"/>
+  </g>
+</svg>

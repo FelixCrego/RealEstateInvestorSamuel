@@ -1,0 +1,34 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="44" y1="34" x2="588" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#214A74"/>
+      <stop offset="1" stop-color="#10253C"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="420" y1="52" x2="506" y2="162" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#56D3C2" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#56D3C2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#bg)"/>
+  <circle cx="458" cy="108" r="94" fill="url(#glow)"/>
+  <circle cx="544" cy="78" r="112" fill="#2E5D8C" fill-opacity="0.22"/>
+  <path d="M70 337C146 285 214 254 282 244C344 235 413 244 501 278" stroke="#7FC7D6" stroke-opacity="0.28" stroke-width="2"/>
+  <path d="M40 355C126 309 214 281 305 271C382 262 467 274 573 326" stroke="#7FC7D6" stroke-opacity="0.18" stroke-width="2"/>
+  <g opacity="0.95">
+    <path d="M332 208L405 151L478 208V293C478 307.359 466.359 319 452 319H358C343.641 319 332 307.359 332 293V208Z" fill="#EFF6FB" fill-opacity="0.1" stroke="#D9E8F4" stroke-opacity="0.34" stroke-width="2"/>
+    <path d="M356 197L405 160L454 197" stroke="#EAF7FF" stroke-opacity="0.85" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="373" y="228" width="32" height="32" rx="6" fill="#D8E7F5" fill-opacity="0.2"/>
+    <rect x="413" y="228" width="32" height="32" rx="6" fill="#D8E7F5" fill-opacity="0.2"/>
+    <rect x="390" y="268" width="30" height="51" rx="8" fill="#FDB44B" fill-opacity="0.76"/>
+  </g>
+  <g transform="translate(92 88)">
+    <rect width="168" height="214" rx="18" fill="#0B1A2B" fill-opacity="0.34" stroke="#B7D0E4" stroke-opacity="0.26"/>
+    <rect x="22" y="24" width="124" height="14" rx="7" fill="#56D3C2" fill-opacity="0.92"/>
+    <rect x="22" y="54" width="106" height="9" rx="4.5" fill="#F5FBFF" fill-opacity="0.86"/>
+    <rect x="22" y="75" width="98" height="9" rx="4.5" fill="#F5FBFF" fill-opacity="0.62"/>
+    <rect x="22" y="96" width="119" height="9" rx="4.5" fill="#F5FBFF" fill-opacity="0.62"/>
+    <rect x="22" y="136" width="124" height="46" rx="14" fill="#10253C" stroke="#DCEAF5" stroke-opacity="0.24"/>
+    <path d="M84 123C103.33 123 119 107.33 119 88C119 68.67 103.33 53 84 53C64.67 53 49 68.67 49 88C49 107.33 64.67 123 84 123Z" fill="#FDB44B"/>
+    <path d="M84 66L89.4 81.6H106L92.6 91.2L98 107L84 97.6L70 107L75.4 91.2L62 81.6H78.6L84 66Z" fill="#0E2B45"/>
+  </g>
+</svg>

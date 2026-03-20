@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Florida Service Areas | Florida Cash House Buyers</title>
     <meta name="description" content="Explore all Florida Cash House Buyers city pages and the markets where we buy homes for cash." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="canonical" href="https://real-estate-investor-samuel.vercel.app/service-areas.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
@@ -31,7 +32,7 @@
       <div class="container subpage-hero-copy">
         <p class="eyebrow">Service Areas</p>
         <h1>Florida Service Areas: Where We Buy Houses Statewide</h1>
-        <p>We are actively purchasing properties in over 20 major Florida markets. From the I-4 corridor to the South Florida coast, we provide local expertise and certain cash offers.</p>
+        <p>We are actively purchasing properties across Florida's major markets. From the I-4 corridor to the South Florida coast, we provide local expertise and certain cash offers.</p>
       </div>
     </header>
 
@@ -40,7 +41,7 @@
         <div class="container service-areas-head">
           <p class="eyebrow">Regional Hub</p>
           <h2>Florida Service Areas: Where We Buy Houses Statewide</h2>
-          <p class="lead">We are actively purchasing properties in over 20 major Florida markets. From the I-4 corridor to the South Florida coast, we provide local expertise and certain cash offers.</p>
+          <p class="lead">We are actively purchasing properties across Florida's major markets. From the I-4 corridor to the South Florida coast, we provide local expertise and certain cash offers.</p>
         </div>
 
         <div class="container regional-grid" aria-label="Florida regions we serve">
@@ -53,7 +54,13 @@
               <label class="region-select-label" for="central-region">Select Your City</label>
               <select id="central-region" class="region-select" aria-label="Select your city in Central Florida" onchange="if(this.value){window.location.href=this.value;}">
                 <option value="">Choose a city...</option>
+                <option value="central-florida.html">Central Florida Hub</option>
                 <option value="orlando.html">Orlando</option>
+                <option value="kissimmee.html">Kissimmee</option>
+                <option value="lakeland.html">Lakeland</option>
+                <option value="daytona-beach.html">Daytona Beach</option>
+                <option value="melbourne.html">Melbourne</option>
+                <option value="deltona.html">Deltona</option>
               </select>
             </div>
           </article>
@@ -67,13 +74,17 @@
               <label class="region-select-label" for="south-region">Select Your City</label>
               <select id="south-region" class="region-select" aria-label="Select your city in South Florida" onchange="if(this.value){window.location.href=this.value;}">
                 <option value="">Choose a city...</option>
+                <option value="south-florida.html">South Florida Hub</option>
                 <option value="miami.html">Miami</option>
+                <option value="fort-lauderdale.html">Fort Lauderdale</option>
+                <option value="west-palm-beach.html">West Palm Beach</option>
+                <option value="port-st-lucie.html">Port St. Lucie</option>
               </select>
             </div>
           </article>
 
           <article class="region-card">
-            <img class="region-card-image" src="https://images.unsplash.com/photo-1609346709137-24d0d65b3e95?auto=format&fit=crop&w=1400&q=80" alt="Riverwalk scene representing Florida Gulf Coast" loading="lazy" />
+            <img class="region-card-image" src="images/editorial/gulf-coast-editorial.png" alt="Residential Gulf Coast Florida home representing the region" loading="lazy" />
             <div class="region-card-overlay"></div>
             <div class="region-card-content">
               <h3>Gulf Coast</h3>
@@ -81,15 +92,17 @@
               <label class="region-select-label" for="gulf-region">Select Your City</label>
               <select id="gulf-region" class="region-select" aria-label="Select your city in Florida Gulf Coast" onchange="if(this.value){window.location.href=this.value;}">
                 <option value="">Choose a city...</option>
+                <option value="gulf-coast.html">Gulf Coast Hub</option>
                 <option value="tampa.html">Tampa</option>
                 <option value="st-petersburg.html">St. Petersburg</option>
+                <option value="sarasota.html">Sarasota</option>
                 <option value="cape-coral.html">Cape Coral</option>
               </select>
             </div>
           </article>
 
           <article class="region-card">
-            <img class="region-card-image" src="https://images.unsplash.com/photo-1668799368386-bde83a7052b4?auto=format&fit=crop&w=1400&q=80" alt="Jacksonville bridge representing North Florida" loading="lazy" />
+            <img class="region-card-image" src="images/editorial/north-florida-editorial.png" alt="Residential North Florida home representing the region" loading="lazy" />
             <div class="region-card-overlay"></div>
             <div class="region-card-content">
               <h3>North Florida</h3>
@@ -97,7 +110,11 @@
               <label class="region-select-label" for="north-region">Select Your City</label>
               <select id="north-region" class="region-select" aria-label="Select your city in North Florida" onchange="if(this.value){window.location.href=this.value;}">
                 <option value="">Choose a city...</option>
+                <option value="north-florida.html">North Florida Hub</option>
                 <option value="jacksonville.html">Jacksonville</option>
+                <option value="gainesville.html">Gainesville</option>
+                <option value="tallahassee.html">Tallahassee</option>
+                <option value="pensacola.html">Pensacola</option>
               </select>
             </div>
           </article>
@@ -113,60 +130,92 @@
             <h2>We Buy Houses in All 67 Florida Counties.</h2>
           </div>
           <p>Don't see your city? Our reach extends statewide. We use remote closing technology to ensure you can sell your Florida house from anywhere in the world.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="counties.html" title="Browse all 67 Florida county pages">Browse All 67 Counties</a>
+            <a class="btn btn-outline" href="central-florida.html" title="Open the Central Florida regional hub">Open Central Florida Hub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">County Directory</p>
+          <h2>County-level pages built for statewide internal linking and local relevance.</h2>
+          <p>We now have county-specific pages for every Florida county, along with expanded Central Florida market pages that connect city, region, and situation content in a cleaner SEO structure.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Statewide county and regional hubs">
+          <article class="comparison-card">
+            <h3>Florida County Directory</h3>
+            <p>Browse all 67 county pages to find the county-level guide closest to your property.</p>
+            <a class="card-link" href="counties.html" title="Browse the Florida county directory">View County Directory</a>
+          </article>
+          <article class="comparison-card">
+            <h3>Central Florida Hub</h3>
+            <p>Explore Orlando, Kissimmee, Lakeland, Daytona Beach, Melbourne, Deltona, and related county pages from one regional hub.</p>
+            <a class="card-link" href="central-florida.html" title="Open the Central Florida hub">View Central Florida Hub</a>
+          </article>
+          <article class="comparison-card">
+            <h3>Situation Guides</h3>
+            <p>Connect local area pages with inherited property, probate, repair, rental, and foreclosure content.</p>
+            <a class="card-link" href="situations.html" title="Browse all seller situation guides">View Situation Guides</a>
+          </article>
         </div>
       </section>
 
       <section class="final-cta">
         <div class="container final-cta-box">
           <h2>Get a Market Analysis for Your Neighborhood</h2>
-          <a class="btn btn-outline" href="index.html#contact">Check My Area</a>
+          <div class="hero-actions">
+            <a class="btn btn-outline" href="counties.html" title="Browse all county pages">Check My County</a>
+            <a class="btn btn-primary" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer" aria-label="Site footer">
+        <footer class="site-footer" aria-label="Site footer">
       <div class="container footer-grid">
         <section class="footer-brand" aria-label="Florida Cash House Buyers contact details">
           <a class="brand-block footer-logo-wrap" href="index.html" aria-label="Florida Cash House Buyers home" title="Go to Florida Cash House Buyers home page">
             <img src="logo.svg" alt="Florida Cash House Buyers" class="footer-logo" />
           </a>
-          <p>
-            Helping Florida homeowners sell with confidence through a clear process,
-            straightforward communication, and flexible closing timelines.
-          </p>
+          <p>Helping Florida homeowners sell with confidence through a clear process, straightforward communication, and flexible closing timelines.</p>
           <a class="footer-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers at 813-555-0192">(813) 555-0192</a>
         </section>
-
         <nav class="footer-nav" aria-label="Footer navigation">
-          <h2>Navigate</h2>
+          <h2>Core Pages</h2>
           <a href="how-it-works.html" title="Learn our simple 3-step home buying process">How It Works</a>
+          <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="View all Florida service areas where we buy houses">Service Areas</a>
+          <a href="counties.html" title="Browse all 67 Florida county pages">County Directory</a>
           <a href="create-your-offer.html" title="See your offer now with our instant calculator">Offer Calculator</a>
           <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
-          <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
-          <a href="index.html#faq" title="Read frequently asked questions about our process">FAQ</a>
         </nav>
-
+        <nav class="footer-nav" aria-label="Regional hubs">
+          <h2>Regional Hubs</h2>
+          <a href="central-florida.html" title="Central Florida home-selling guide">Central Florida</a>
+          <a href="south-florida.html" title="South Florida home-selling guide">South Florida</a>
+          <a href="gulf-coast.html" title="Gulf Coast home-selling guide">Gulf Coast</a>
+          <a href="north-florida.html" title="North Florida home-selling guide">North Florida</a>
+          <a href="counties.html" title="Florida county directory">All Counties</a>
+          <a href="situations.html" title="All seller situations">All Situations</a>
+        </nav>
         <section class="footer-contact" aria-label="Service footprint and hours">
-          <h2>Service Footprint</h2>
-          <p>Serving homeowners across major Florida markets.</p>
-          <p><strong>Hours:</strong> Monday–Saturday, 8am–7pm</p>
+          <h2>Coverage</h2>
+          <p>Serving homeowners across Florida with regional hubs, city pages, county pages, and county + situation content built for local seller intent.</p>
+          <p><strong>Hours:</strong> Monday-Saturday, 8am-7pm</p>
           <p><strong>Email:</strong> hello@floridacashhousebuyers.com</p>
         </section>
-
-        <nav class="footer-nav" aria-label="Primary service areas">
-          <h2>Primary Service Areas</h2>
-          <a href="miami.html" title="Miami cash home buyers">Miami</a>
-          <a href="tampa.html" title="Tampa cash home buyers">Tampa</a>
-          <a href="orlando.html" title="Orlando cash home buyers">Orlando</a>
-          <a href="jacksonville.html" title="Jacksonville cash home buyers">Jacksonville</a>
-          <a href="st-petersburg.html" title="St. Petersburg cash home buyers">St. Petersburg</a>
-          <a href="cape-coral.html" title="Cape Coral cash home buyers">Cape Coral</a>
+        <nav class="footer-nav" aria-label="Featured city pages">
+          <h2>Featured Cities</h2>
+          <a href="miami.html" title="Miami cash home buyer page">Miami</a><a href="tampa.html" title="Tampa cash home buyer page">Tampa</a><a href="orlando.html" title="Orlando cash home buyer page">Orlando</a><a href="jacksonville.html" title="Jacksonville cash home buyer page">Jacksonville</a><a href="st-petersburg.html" title="St. Petersburg cash home buyer page">St. Petersburg</a><a href="cape-coral.html" title="Cape Coral cash home buyer page">Cape Coral</a><a href="central-florida.html" title="Central Florida cash home buyer page">Central Florida</a><a href="counties.html" title="County Directory cash home buyer page">County Directory</a>
         </nav>
       </div>
-
       <div class="container footer-bottom">
-        <p>© 2026 Florida Cash House Buyers. All rights reserved.</p>
+        <p>&copy; 2026 Florida Cash House Buyers. All rights reserved.</p>
+        <div class="footer-credit" aria-label="Website credit">
+          <a href="https://www.felixcrego.com" target="_blank" rel="noopener noreferrer" title="Website Build and SEO by Felix Crego">Website Build &amp; SEO by Felix Crego</a>
+        </div>
         <div class="footer-legal" aria-label="Legal links">
           <a href="index.html#top" title="View our privacy information">Privacy</a>
           <a href="index.html#top" title="View our terms and conditions">Terms</a>
@@ -175,5 +224,6 @@
       </div>
     </footer>
 
+    <script src="sticky-lead-widget.js"></script>
   </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Internal preview page for testing motion concepts on homepage cards. Not intended for search indexing.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://real-estate-investor-samuel.vercel.app/video-tests.html" />
+  <title>Video Motion Tests</title>
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --ink: #0f1f2f;
+      --muted: #5a6d80;
+      --line: #dbe4ed;
+      --card: #ffffff;
+      --blue: #154a7a;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Lato, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    h1 {
+      margin: 0;
+      font: 800 clamp(2rem, 4vw, 3.2rem)/1.05 Montserrat, Arial, sans-serif;
+    }
+
+    p {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 16px 40px rgba(21, 74, 122, 0.08);
+    }
+
+    .eyebrow {
+      color: #1ba8b3;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0.45rem 0 0.6rem;
+      font: 800 1.5rem/1.1 Montserrat, Arial, sans-serif;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+      border-radius: 0.9rem;
+      background: #0f1f2f;
+    }
+
+    .meta {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Motion Tests</div>
+    <h1>Homepage Video Tile Tests</h1>
+    <p>These are two initial Sora-generated motion concepts for the tailored content area. The first is a property-focused motion tile. The second is a Samuel-inspired local buyer scene, but it is not guaranteed to match Samuel's real likeness.</p>
+
+    <div class="grid">
+      <section class="card">
+        <div class="eyebrow">Property Motion</div>
+        <h2>Inherited Property Tile</h2>
+        <video controls muted loop playsinline preload="metadata">
+          <source src="videos/inherited-property-motion-test.mp4" type="video/mp4">
+        </video>
+        <p class="meta"><strong>File:</strong> <a href="videos/inherited-property-motion-test.mp4">videos/inherited-property-motion-test.mp4</a></p>
+      </section>
+
+      <section class="card">
+        <div class="eyebrow">Samuel Proxy</div>
+        <h2>Samuel-Inspired Buyer Scene</h2>
+        <video controls muted loop playsinline preload="metadata">
+          <source src="videos/samuel-inspired-motion-test.mp4" type="video/mp4">
+        </video>
+        <p class="meta"><strong>File:</strong> <a href="videos/samuel-inspired-motion-test.mp4">videos/samuel-inspired-motion-test.mp4</a></p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
