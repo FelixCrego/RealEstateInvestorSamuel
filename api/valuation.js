@@ -40,6 +40,40 @@ function extractOutputText(payload) {
   return '';
 }
 
+function normalizeValuationPayload(parsed) {
+  if (!parsed || typeof parsed !== 'object') {
+    return null;
+  }
+
+  const confidenceRaw = Number(parsed.confidence_score);
+  const confidenceScore = confidenceRaw > 0 && confidenceRaw <= 1 ? Math.round(confidenceRaw * 100) : Math.round(confidenceRaw);
+
+  return {
+    retail_low: Number(parsed.retail_low) || 0,
+    retail_target: Number(parsed.retail_target) || 0,
+    retail_high: Number(parsed.retail_high) || 0,
+    cash_low: Number(parsed.cash_low) || 0,
+    cash_target: Number(parsed.cash_target) || 0,
+    cash_high: Number(parsed.cash_high) || 0,
+    confidence_score: confidenceScore || 0,
+    confidence_label: String(parsed.confidence_label || ''),
+    market_summary: String(parsed.market_summary || ''),
+    comp_summary: Array.isArray(parsed.comp_summary) ? parsed.comp_summary.slice(0, 3).map((item) => String(item)) : [],
+    comps: Array.isArray(parsed.comps)
+      ? parsed.comps.slice(0, 3).map((comp) => ({
+          address: String(comp?.address || ''),
+          sold_price: Number(comp?.sold_price) || 0,
+          sold_date: String(comp?.sold_date || ''),
+          beds: String(comp?.beds || ''),
+          baths: String(comp?.baths || ''),
+          sqft: String(comp?.sqft || ''),
+          source: String(comp?.source || '')
+        }))
+      : [],
+    note: String(parsed.note || '')
+  };
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -216,7 +250,7 @@ Rules:
 
     const payload = await response.json();
     const outputText = extractOutputText(payload);
-    const parsed = parseJsonFromText(outputText);
+    const parsed = normalizeValuationPayload(parseJsonFromText(outputText));
 
     if (!parsed) {
       return res.status(502).json({
