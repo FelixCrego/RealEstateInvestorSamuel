@@ -18,6 +18,28 @@ function parseJsonFromText(text) {
   }
 }
 
+function extractOutputText(payload) {
+  if (typeof payload?.output_text === 'string' && payload.output_text.trim()) {
+    return payload.output_text.trim();
+  }
+
+  const messages = Array.isArray(payload?.output) ? payload.output : [];
+
+  for (const item of messages) {
+    if (item?.type !== 'message' || !Array.isArray(item?.content)) {
+      continue;
+    }
+
+    for (const part of item.content) {
+      if (part?.type === 'output_text' && typeof part.text === 'string' && part.text.trim()) {
+        return part.text.trim();
+      }
+    }
+  }
+
+  return '';
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -104,6 +126,9 @@ Rules:
       },
       body: JSON.stringify({
         model: 'gpt-5-mini',
+        reasoning: { effort: 'low' },
+        max_output_tokens: 450,
+        text: { verbosity: 'low' },
         tools: [{ type: 'web_search_preview' }],
         input: prompt
       })
@@ -115,7 +140,7 @@ Rules:
     }
 
     const payload = await response.json();
-    const outputText = payload.output_text || '';
+    const outputText = extractOutputText(payload);
     const parsed = parseJsonFromText(outputText);
 
     if (!parsed) {
