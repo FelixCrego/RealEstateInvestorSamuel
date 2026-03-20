@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>See Your Offer Now | Florida Cash House Buyers</title>
+    <title>Florida Home Value & Cash Offer Range | Florida Cash House Buyers</title>
     <meta
       name="description"
-      content="See your estimated cash offer now. Enter your home's projected value and instantly view your offer range, confidence level, and fastest next steps."
+      content="Estimate your Florida home's retail value range and likely as-is cash offer range using address, ZIP, condition, and property details."
     />
     <link rel="canonical" href="https://real-estate-investor-samuel.vercel.app/create-your-offer.html" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap"
@@ -27,19 +27,18 @@
           <a href="how-it-works.html" title="How the home buying process works">How It Works</a>
           <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="See the Florida areas where we buy houses">Areas We Buy</a>
-          <a href="create-your-offer.html" aria-current="page" title="See your offer now with our instant calculator">Offer Calculator</a>
-          <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
+          <a href="create-your-offer.html" aria-current="page" title="Estimate your home value and offer range">Home Value Tool</a>
+          <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog</a>
           <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
-          <a href="index.html#faq" title="View frequently asked questions about selling your house">FAQ</a>
         </nav>
         <a class="btn btn-nav-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Call (813) 555-0192</a>
       </div>
 
       <div class="container subpage-hero-copy offer-hero-copy">
-        <p class="eyebrow">Fast clarity. Zero pressure.</p>
-        <h1>See Your Offer Now</h1>
+        <p class="eyebrow">Address-first valuation</p>
+        <h1>Get a Smarter Value Range Before You Decide How to Sell.</h1>
         <p>
-          Get a data-backed offer range in seconds, then speak with our team to convert it into a real written offer on your timeline.
+          Enter the property address, condition, and basic facts to see a stronger retail-value range, a likely as-is cash range, and the next questions Samuel would ask before making a real offer.
         </p>
       </div>
     </header>
@@ -48,167 +47,347 @@
       <section class="section section-soft" id="offer-calculator">
         <div class="container">
           <div class="offer-calculator-layout">
-            <article class="offer-calculator-card" aria-label="Offer calculator form">
+            <article class="offer-calculator-card valuation-card" aria-label="Home valuation form">
               <p class="calculator-step">Step 1 of 2</p>
-              <h2>Build your offer profile</h2>
-              <p>Fill this in once. We use your timeline + condition profile to generate a stronger estimate instantly.</p>
+              <h2>Build the property profile</h2>
+              <p>This is a better starting point than a generic percentage calculator. We anchor the estimate to address, ZIP, property size, condition, and local Florida market context.</p>
 
               <form class="calculator-form" id="calculator-form" novalidate>
-                <label for="arv">Projected Home Value</label>
-                <div class="money-input-wrap">
-                  <span aria-hidden="true">$</span>
-                  <input id="arv" name="arv" inputmode="decimal" type="number" min="50000" max="5000000" step="1000" placeholder="350000" required />
-                </div>
+                <label for="address">Property address</label>
+                <input id="address" name="address" type="text" placeholder="123 Main St" autocomplete="street-address" required />
 
-                <label for="condition">Property Condition</label>
-                <select id="condition" name="condition" required>
-                  <option value="solid" selected>Move-in Ready / Light Updates</option>
-                  <option value="average">Average Condition</option>
-                  <option value="heavy">Heavy Repairs Needed</option>
-                </select>
-
-                <div class="offer-intent-row">
-                  <p>How soon are you looking to sell?</p>
-                  <div class="pill-options" role="radiogroup" aria-label="Selling timeline">
-                    <input type="radio" name="timeline" id="timeline-asap" value="asap" checked />
-                    <label for="timeline-asap">ASAP</label>
-                    <input type="radio" name="timeline" id="timeline-30" value="30" />
-                    <label for="timeline-30">30 Days</label>
-                    <input type="radio" name="timeline" id="timeline-flex" value="flex" />
-                    <label for="timeline-flex">Flexible</label>
+                <div class="offer-field-grid">
+                  <div>
+                    <label for="city">City</label>
+                    <input id="city" name="city" type="text" placeholder="Orlando" autocomplete="address-level2" />
+                  </div>
+                  <div>
+                    <label for="zip">ZIP code</label>
+                    <input id="zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="32806" required />
                   </div>
                 </div>
 
-                <label for="zip">Property ZIP (optional)</label>
-                <input id="zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="33602" />
+                <div class="offer-field-grid offer-field-grid-4">
+                  <div>
+                    <label for="beds">Beds</label>
+                    <input id="beds" name="beds" type="number" min="1" max="12" step="1" placeholder="3" required />
+                  </div>
+                  <div>
+                    <label for="baths">Baths</label>
+                    <input id="baths" name="baths" type="number" min="1" max="10" step="0.5" placeholder="2" required />
+                  </div>
+                  <div>
+                    <label for="sqft">Living area</label>
+                    <input id="sqft" name="sqft" type="number" min="600" max="10000" step="10" placeholder="1650" required />
+                  </div>
+                  <div>
+                    <label for="year-built">Year built</label>
+                    <input id="year-built" name="yearBuilt" type="number" min="1900" max="2026" step="1" placeholder="1988" />
+                  </div>
+                </div>
 
-                <p class="form-feedback" id="form-feedback" aria-live="polite">Enter your details to generate your offer window.</p>
+                <div class="offer-field-grid">
+                  <div>
+                    <label for="condition">Property condition</label>
+                    <select id="condition" name="condition" required>
+                      <option value="solid">Move-in ready / light updates</option>
+                      <option value="average" selected>Average condition</option>
+                      <option value="heavy">Heavy repairs needed</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="timeline">Selling timeline</label>
+                    <select id="timeline" name="timeline" required>
+                      <option value="asap">ASAP</option>
+                      <option value="30" selected>Within 30 days</option>
+                      <option value="flex">Flexible</option>
+                    </select>
+                  </div>
+                </div>
 
-                <button class="btn btn-primary" type="submit">See Your Offer Now</button>
+                <label for="external-estimate">Zillow / Homes.com estimate you already saw (optional)</label>
+                <div class="money-input-wrap">
+                  <span aria-hidden="true">$</span>
+                  <input id="external-estimate" name="externalEstimate" inputmode="decimal" type="number" min="50000" max="5000000" step="1000" placeholder="425000" />
+                </div>
+
+                <label for="comp-notes">Recent comps, links, or notes (optional)</label>
+                <textarea id="comp-notes" name="compNotes" rows="4" placeholder="Paste listing links, note a recent sale nearby, or mention upgrades/issues that matter."></textarea>
+
+                <p class="form-feedback" id="form-feedback" aria-live="polite">Enter the property details to build a local value range.</p>
+
+                <div class="offer-action-row">
+                  <button class="btn btn-primary" type="submit">Build My Value Range</button>
+                  <button class="btn btn-outline" id="ai-scan-trigger" type="button">Run AI Comp Scan</button>
+                </div>
               </form>
 
               <ul class="trust-points">
-                <li>No listing prep required</li>
-                <li>No commissions or hidden fees</li>
-                <li>Choose your ideal closing date</li>
+                <li>Local market context pulled from the Florida ZIP you enter</li>
+                <li>Retail range and as-is range shown separately</li>
+                <li>Optional AI comp scan can review public web data when configured</li>
               </ul>
             </article>
 
-            <aside class="offer-result-card" aria-live="polite" aria-label="Calculated offer result">
-              <p class="offer-result-label">Your Estimated Offer Window</p>
-              <p class="offer-result-value" id="offer-result-mid">$0</p>
-              <p class="offer-result-note" id="offer-note">Complete the profile to unlock your range.</p>
+            <aside class="offer-result-card valuation-result-card" aria-live="polite" aria-label="Calculated home valuation result">
+              <p class="offer-result-label">Property Value Snapshot</p>
+              <p class="offer-result-value" id="retail-range-mid">$0</p>
+              <p class="offer-result-note" id="offer-note">Complete the profile to see your retail range, likely as-is range, and local market context.</p>
 
-              <div class="offer-range-grid">
+              <div class="market-context-card">
+                <p class="market-context-label">Market context</p>
+                <strong id="market-context-title">Florida market</strong>
+                <p id="market-context-copy">Enter a valid Florida ZIP to connect the estimate to the correct county and local market pages.</p>
+              </div>
+
+              <div class="offer-range-grid valuation-range-grid">
                 <article>
-                  <p>Starting Range</p>
-                  <strong id="offer-result-low">$0</strong>
+                  <p>Retail low</p>
+                  <strong id="retail-range-low">$0</strong>
                 </article>
                 <article>
-                  <p>Target Offer</p>
-                  <strong id="offer-result-mid-2">$0</strong>
+                  <p>Retail target</p>
+                  <strong id="retail-range-target">$0</strong>
                 </article>
                 <article>
-                  <p>Strong Scenario</p>
-                  <strong id="offer-result-high">$0</strong>
+                  <p>Retail high</p>
+                  <strong id="retail-range-high">$0</strong>
+                </article>
+              </div>
+
+              <div class="offer-range-grid valuation-range-grid offer-range-grid-secondary">
+                <article>
+                  <p>As-is low</p>
+                  <strong id="cash-range-low">$0</strong>
+                </article>
+                <article>
+                  <p>Likely cash offer</p>
+                  <strong id="cash-range-target">$0</strong>
+                </article>
+                <article>
+                  <p>Strong as-is case</p>
+                  <strong id="cash-range-high">$0</strong>
                 </article>
               </div>
 
               <div class="confidence-panel">
-                <p>Closing confidence</p>
+                <p>Estimate confidence</p>
                 <div class="confidence-track" aria-hidden="true"><span id="confidence-fill"></span></div>
-                <strong id="confidence-label">High confidence for qualified properties.</strong>
+                <strong id="confidence-label">Add the address, ZIP, and living area to improve confidence.</strong>
               </div>
 
-              <div class="quick-metrics">
+              <div class="quick-metrics valuation-metrics">
                 <article>
-                  <p>Expected call-back</p>
-                  <strong id="metric-callback">Within 10 minutes</strong>
+                  <p>Repair adjustment</p>
+                  <strong id="repair-adjustment">Not calculated yet</strong>
                 </article>
                 <article>
-                  <p>Estimated closing pace</p>
+                  <p>Likely closing pace</p>
                   <strong id="metric-closing">7-21 days</strong>
                 </article>
               </div>
 
+              <div class="valuation-insight-box">
+                <p class="market-context-label">AI / comp notes</p>
+                <p id="ai-summary">When available, the AI comp scan will summarize public web comp signals here. This is an estimate, not an appraisal.</p>
+                <ul id="comp-bullets" class="valuation-bullets">
+                  <li>Condition and timeline usually matter more than generic automated estimates.</li>
+                  <li>Heavier repairs widen the gap between retail value and a realistic as-is offer.</li>
+                  <li>Samuel uses this range as a starting point for a real written offer, not the final word.</li>
+                </ul>
+              </div>
+
+              <div class="valuation-links">
+                <a class="btn btn-outline" id="county-link" href="counties.html" title="Browse Florida county pages">County Page</a>
+                <a class="btn btn-outline" id="market-link" href="service-areas.html" title="Browse Florida service area pages">Local Market</a>
+              </div>
+
               <div class="hero-actions">
-                <a class="btn btn-outline" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Lock In My Real Offer</a>
+                <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Talk Through My Exact Offer</a>
               </div>
             </aside>
           </div>
         </div>
       </section>
 
-      <section class="section" id="offer-story">
+      <section class="section section-muted" id="offer-story">
         <div class="container authority-block offer-story-block">
-          <p class="eyebrow">Step 2 of 2</p>
-          <h2>Turn your estimate into certainty with a 10-minute call.</h2>
+          <p class="eyebrow">How to use this tool</p>
+          <h2>Use the range to decide what questions matter before you list, renovate, or accept a low-ball number.</h2>
           <p>
-            Our team will confirm condition details, title status, and timeline so you get a clear, written offer you can trust—without pressure.
+            This page is meant to help homeowners think more clearly about retail value versus an as-is exit. It is not an appraisal. The best use of it is to narrow the range, understand the tradeoffs, and then let Samuel confirm the property-specific facts that actually move the number.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Get My Exact Offer</a>
+            <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Request My Written Offer</a>
             <a class="btn btn-text" href="how-it-works.html" title="Learn how our process works">See The 3-Step Process</a>
           </div>
         </div>
       </section>
     </main>
 
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-grid">
+        <section class="footer-brand" aria-label="Florida Cash House Buyers contact details">
+          <a class="brand-block footer-logo-wrap" href="index.html" aria-label="Florida Cash House Buyers home" title="Go to Florida Cash House Buyers home page">
+            <img src="logo.svg" alt="Florida Cash House Buyers" class="footer-logo" />
+          </a>
+          <p>Helping Florida homeowners sell with confidence through a clear process, straightforward communication, and flexible closing timelines.</p>
+          <a class="footer-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers at 813-555-0192">(813) 555-0192</a>
+        </section>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h2>Core Pages</h2>
+          <a href="how-it-works.html" title="Learn our simple 3-step home buying process">How It Works</a>
+          <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
+          <a href="service-areas.html" title="View all Florida service areas where we buy houses">Service Areas</a>
+          <a href="counties.html" title="Browse all 67 Florida county pages">County Directory</a>
+          <a href="create-your-offer.html" title="Estimate your home value and offer range">Home Value Tool</a>
+          <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Regional hubs">
+          <h2>Regional Hubs</h2>
+          <a href="central-florida.html" title="Central Florida home-selling guide">Central Florida</a>
+          <a href="south-florida.html" title="South Florida home-selling guide">South Florida</a>
+          <a href="gulf-coast.html" title="Gulf Coast home-selling guide">Gulf Coast</a>
+          <a href="north-florida.html" title="North Florida home-selling guide">North Florida</a>
+          <a href="counties.html" title="Florida county directory">All Counties</a>
+          <a href="situations.html" title="All seller situations">All Situations</a>
+        </nav>
+        <section class="footer-contact" aria-label="Service footprint and hours">
+          <h2>Coverage</h2>
+          <p>Serving homeowners across Florida with regional hubs, city pages, county pages, and county + situation content built for local seller intent.</p>
+          <p><strong>Hours:</strong> Monday-Saturday, 8am-7pm</p>
+          <p><strong>Email:</strong> hello@floridacashhousebuyers.com</p>
+        </section>
+        <nav class="footer-nav" aria-label="Featured city pages">
+          <h2>Featured Cities</h2>
+          <a href="miami.html" title="Miami cash home buyer page">Miami</a>
+          <a href="tampa.html" title="Tampa cash home buyer page">Tampa</a>
+          <a href="orlando.html" title="Orlando cash home buyer page">Orlando</a>
+          <a href="jacksonville.html" title="Jacksonville cash home buyer page">Jacksonville</a>
+          <a href="st-petersburg.html" title="St. Petersburg cash home buyer page">St. Petersburg</a>
+          <a href="cape-coral.html" title="Cape Coral cash home buyer page">Cape Coral</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <p>&copy; 2026 Florida Cash House Buyers. All rights reserved.</p>
+        <div class="footer-credit" aria-label="Website credit">
+          <a href="https://www.felixcrego.com" target="_blank" rel="noopener noreferrer" title="Website Build and SEO by Felix Crego">Website Build &amp; SEO by Felix Crego</a>
+        </div>
+        <div class="footer-legal" aria-label="Legal links">
+          <a href="index.html#top" title="View our privacy information">Privacy</a>
+          <a href="index.html#top" title="View our terms and conditions">Terms</a>
+          <a href="index.html#top" title="Learn about accessibility support on this website">Accessibility</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="zip-city-resolver.js"></script>
     <script>
       const form = document.getElementById('calculator-form');
       const feedback = document.getElementById('form-feedback');
-      const resultMid = document.getElementById('offer-result-mid');
-      const resultMid2 = document.getElementById('offer-result-mid-2');
-      const resultLow = document.getElementById('offer-result-low');
-      const resultHigh = document.getElementById('offer-result-high');
+      const aiScanTrigger = document.getElementById('ai-scan-trigger');
+      const retailLow = document.getElementById('retail-range-low');
+      const retailTarget = document.getElementById('retail-range-target');
+      const retailHigh = document.getElementById('retail-range-high');
+      const retailMid = document.getElementById('retail-range-mid');
+      const cashLow = document.getElementById('cash-range-low');
+      const cashTarget = document.getElementById('cash-range-target');
+      const cashHigh = document.getElementById('cash-range-high');
       const note = document.getElementById('offer-note');
       const confidenceFill = document.getElementById('confidence-fill');
       const confidenceLabel = document.getElementById('confidence-label');
       const metricClosing = document.getElementById('metric-closing');
+      const repairAdjustment = document.getElementById('repair-adjustment');
+      const aiSummary = document.getElementById('ai-summary');
+      const compBullets = document.getElementById('comp-bullets');
+      const marketContextTitle = document.getElementById('market-context-title');
+      const marketContextCopy = document.getElementById('market-context-copy');
+      const countyLink = document.getElementById('county-link');
+      const marketLink = document.getElementById('market-link');
 
-      const STORAGE_KEY = 'offer-calculator-profile-v2';
+      const STORAGE_KEY = 'offer-calculator-profile-v3';
+      const countyPpsf = {
+        miami-dade: 315,
+        broward: 290,
+        palm-beach: 285,
+        orange: 245,
+        seminole: 235,
+        osceola: 220,
+        hillsborough: 230,
+        pinellas: 245,
+        duval: 195,
+        lee: 255,
+        collier: 345,
+        polk: 185,
+        volusia: 205,
+        brevard: 235,
+        sarasota: 300,
+        pasco: 205
+      };
+
+      const conditionAdjustments = {
+        solid: { retail: 1.02, cash: 0.83, repairLabel: 'Light prep likely' },
+        average: { retail: 1.0, cash: 0.76, repairLabel: 'Moderate prep likely' },
+        heavy: { retail: 0.94, cash: 0.67, repairLabel: 'Heavy repair discount likely' }
+      };
+
+      const timelineAdjustments = {
+        asap: { retail: 0.985, cash: 1.01, closing: '7-14 days' },
+        '30': { retail: 1.0, cash: 1.0, closing: '14-21 days' },
+        flex: { retail: 1.015, cash: 0.99, closing: '21-45 days' }
+      };
 
       const asCurrency = (value) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Math.round(value || 0));
 
       const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
-      function getMultipliers({ condition, timeline }) {
-        const conditionMap = { solid: 1.02, average: 1.0, heavy: 0.94 };
-        const timelineMap = { asap: 1.01, '30': 1.0, flex: 0.99 };
-        return {
-          conditionAdj: conditionMap[condition] || 1,
-          timelineAdj: timelineMap[timeline] || 1,
-        };
+      function getMarketProfile(zip) {
+        if (typeof window.resolveFloridaMarketByZip !== 'function') {
+          return null;
+        }
+
+        return window.resolveFloridaMarketByZip(zip);
       }
 
-      function computeOffer(profile) {
-        const { value, condition, timeline } = profile;
-        const baseAnchor = value * 0.6;
-        const { conditionAdj, timelineAdj } = getMultipliers({ condition, timeline });
-        const target = baseAnchor * conditionAdj * timelineAdj;
-        const low = target * 0.95;
-        const high = target * 1.05;
+      function getCountyPpsf(countySlug) {
+        return countyPpsf[countySlug] || 215;
+      }
 
-        const confidenceRaw = 88 + (condition === 'solid' ? 4 : condition === 'average' ? 2 : -2) + (timeline === 'asap' ? 2 : timeline === '30' ? 1 : 0);
-        const confidence = clamp(confidenceRaw, 78, 96);
-
-        const closingDays = timeline === 'asap' ? '7-14 days' : timeline === '30' ? '14-21 days' : '21-45 days';
-
-        return { low, target, high, confidence, closingDays };
+      function getSituationHint() {
+        try {
+          const raw = localStorage.getItem('fchb-profile');
+          if (!raw) return '';
+          const parsed = JSON.parse(raw);
+          return parsed?.situation || '';
+        } catch {
+          return '';
+        }
       }
 
       function normalizeProfile() {
-        const value = Number(form.arv.value) || 0;
         const zip = (form.zip.value || '').trim();
-        const isZipValid = zip === '' || /^[0-9]{5}$/.test(zip);
+        const market = getMarketProfile(zip);
+        const beds = Number(form.beds.value) || 0;
+        const baths = Number(form.baths.value) || 0;
+        const sqft = Number(form.sqft.value) || 0;
+        const yearBuilt = Number(form.yearBuilt.value) || 0;
+        const externalEstimate = Number(form.externalEstimate.value) || 0;
 
         return {
-          value,
+          address: (form.address.value || '').trim(),
+          city: (form.city.value || '').trim(),
+          zip,
+          beds,
+          baths,
+          sqft,
+          yearBuilt,
+          externalEstimate,
           condition: form.condition.value,
           timeline: form.timeline.value,
-          zip,
-          isZipValid,
+          compNotes: (form.compNotes.value || '').trim(),
+          market,
+          situationHint: getSituationHint()
         };
       }
 
@@ -216,7 +395,7 @@
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
         } catch {
-          // Storage may be blocked; continue silently.
+          // Ignore storage failures.
         }
       }
 
@@ -225,64 +404,212 @@
           const raw = localStorage.getItem(STORAGE_KEY);
           if (!raw) return;
           const profile = JSON.parse(raw);
-          if (profile.value) form.arv.value = profile.value;
-          if (profile.condition) form.condition.value = profile.condition;
-          if (profile.timeline) {
-            const timelineInput = form.querySelector(`input[name="timeline"][value="${profile.timeline}"]`);
-            if (timelineInput) timelineInput.checked = true;
+          for (const [key, value] of Object.entries(profile)) {
+            if (form[key] && typeof value !== 'object') {
+              form[key].value = value;
+            }
           }
-          if (profile.zip) form.zip.value = profile.zip;
         } catch {
-          // Invalid cache should not break page.
+          // Ignore invalid cache.
         }
       }
 
-      function renderOffer(profile) {
-        if (!profile.isZipValid) {
-          feedback.textContent = 'Please enter a valid 5-digit ZIP code or leave ZIP blank.';
+      function computeLocalEstimate(profile) {
+        const zipValid = /^\d{5}$/.test(profile.zip);
+        const market = profile.market;
+        const isSupportedFloridaZip = market?.isZipValid && market?.isSupportedMarket;
+        const hasMinimumFields = profile.address && zipValid && profile.sqft >= 600 && profile.beds >= 1 && profile.baths >= 1;
+
+        if (!hasMinimumFields) {
+          return { valid: false, reason: 'Enter the address, ZIP, beds, baths, and living area to build the range.' };
+        }
+
+        const basePpsf = getCountyPpsf(market?.countySlug);
+        const bedroomAdj = 1 + Math.min((profile.beds - 3) * 0.012, 0.06);
+        const bathAdj = 1 + Math.min((profile.baths - 2) * 0.018, 0.06);
+        const yearAdj = profile.yearBuilt ? 1 + clamp((profile.yearBuilt - 1985) / 1000, -0.06, 0.05) : 1;
+        const conditionAdj = conditionAdjustments[profile.condition] || conditionAdjustments.average;
+        const timelineAdj = timelineAdjustments[profile.timeline] || timelineAdjustments['30'];
+
+        let retailTargetValue = profile.sqft * basePpsf * bedroomAdj * bathAdj * yearAdj * conditionAdj.retail * timelineAdj.retail;
+
+        if (profile.externalEstimate >= 50000) {
+          retailTargetValue = retailTargetValue * 0.55 + profile.externalEstimate * 0.45;
+        }
+
+        const retailLowValue = retailTargetValue * 0.94;
+        const retailHighValue = retailTargetValue * 1.06;
+
+        const cashTargetValue = retailTargetValue * conditionAdj.cash * timelineAdj.cash;
+        const cashLowValue = cashTargetValue * 0.95;
+        const cashHighValue = cashTargetValue * 1.05;
+
+        const confidenceBase = isSupportedFloridaZip ? 84 : 72;
+        const confidence = clamp(
+          confidenceBase +
+            (profile.externalEstimate ? 4 : 0) +
+            (profile.compNotes ? 3 : 0) +
+            (profile.yearBuilt ? 2 : 0) -
+            (profile.condition === 'heavy' ? 2 : 0),
+          68,
+          96
+        );
+
+        return {
+          valid: true,
+          market,
+          retailLowValue,
+          retailTargetValue,
+          retailHighValue,
+          cashLowValue,
+          cashTargetValue,
+          cashHighValue,
+          confidence,
+          repairLabel: conditionAdj.repairLabel,
+          closingDays: timelineAdj.closing,
+          countyPpsf: basePpsf
+        };
+      }
+
+      function renderBullets(items) {
+        compBullets.innerHTML = '';
+        items.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          compBullets.appendChild(li);
+        });
+      }
+
+      function renderMarketContext(profile, estimate) {
+        const market = estimate.market;
+
+        if (!market || !market.isZipValid) {
+          marketContextTitle.textContent = 'Florida market';
+          marketContextCopy.textContent = 'Enter a valid Florida ZIP to connect the estimate to the right county and local market pages.';
+          countyLink.href = 'counties.html';
+          countyLink.textContent = 'County Page';
+          marketLink.href = 'service-areas.html';
+          marketLink.textContent = 'Local Market';
           return;
         }
 
-        if (profile.value < 50000 || profile.value > 5000000) {
-          feedback.textContent = 'Enter a property value between $50,000 and $5,000,000 to continue.';
-          note.textContent = 'Once your value is in range, your personalized offer window will appear here.';
-          return;
+        const cityName = profile.city || market.cityDisplayName || 'Florida';
+        const countyName = market.countyName ? `${market.countyName} County` : 'Florida county';
+        marketContextTitle.textContent = `${cityName}, ${countyName}`;
+        marketContextCopy.textContent = `This range is anchored to ${countyName} using a local price-per-square-foot baseline and your property condition profile.`;
+
+        countyLink.href = market.countyPageHref || 'counties.html';
+        countyLink.textContent = market.countyName ? `${market.countyName} County` : 'County Page';
+
+        const relatedMarket = Array.isArray(market.relatedMarketPages) && market.relatedMarketPages.length ? market.relatedMarketPages[0] : null;
+        marketLink.href = relatedMarket?.href || market.cityPageHref || 'service-areas.html';
+        marketLink.textContent = relatedMarket?.label || market.cityDisplayName || 'Local Market';
+      }
+
+      function renderLocalEstimate(profile) {
+        const estimate = computeLocalEstimate(profile);
+
+        if (!estimate.valid) {
+          feedback.textContent = estimate.reason;
+          note.textContent = 'This tool works best once the address, ZIP, and core property facts are filled in.';
+          return false;
         }
 
-        const offer = computeOffer(profile);
-        resultLow.textContent = asCurrency(offer.low);
-        resultMid.textContent = asCurrency(offer.target);
-        resultMid2.textContent = asCurrency(offer.target);
-        resultHigh.textContent = asCurrency(offer.high);
+        retailLow.textContent = asCurrency(estimate.retailLowValue);
+        retailTarget.textContent = asCurrency(estimate.retailTargetValue);
+        retailHigh.textContent = asCurrency(estimate.retailHighValue);
+        retailMid.textContent = asCurrency(estimate.retailTargetValue);
+        cashLow.textContent = asCurrency(estimate.cashLowValue);
+        cashTarget.textContent = asCurrency(estimate.cashTargetValue);
+        cashHigh.textContent = asCurrency(estimate.cashHighValue);
 
-        confidenceFill.style.width = `${offer.confidence}%`;
-        confidenceLabel.textContent = `${offer.confidence}% confidence for qualified properties with a clear title path.`;
-        metricClosing.textContent = offer.closingDays;
+        confidenceFill.style.width = `${estimate.confidence}%`;
+        confidenceLabel.textContent = `${estimate.confidence}% confidence based on address, Florida ZIP, property size, and condition details.`;
+        metricClosing.textContent = estimate.closingDays;
+        repairAdjustment.textContent = estimate.repairLabel;
 
-        feedback.textContent = 'Offer window updated in real-time.';
-        note.textContent = 'Strong result. Your next best move is a 10-minute call so we can lock this into a real written offer.';
+        note.textContent = 'This is a practical estimate, not an appraisal. Use it to compare a retail strategy against an as-is exit before you commit to repairs or a listing plan.';
+        feedback.textContent = 'Value range updated.';
+
+        renderMarketContext(profile, estimate);
+        renderBullets([
+          `Local baseline used: about ${asCurrency(estimate.countyPpsf)} per square foot for this county profile.`,
+          profile.externalEstimate ? 'Your outside automated estimate was blended into the retail target instead of ignored.' : 'No outside automated estimate was blended into this range yet.',
+          profile.compNotes ? 'Your custom comp notes were saved for Samuel to review on the follow-up call.' : 'Add nearby comp notes or links if you want a sharper review later.'
+        ]);
+
+        aiSummary.textContent = 'Local estimate ready. If AI comp scan is available, it can add a public-web market summary, but the strongest next step is still confirming condition and title details with Samuel.';
 
         persistProfile(profile);
+        return true;
       }
 
-      const scheduleRender = (() => {
-        let raf = 0;
-        return () => {
-          cancelAnimationFrame(raf);
-          raf = requestAnimationFrame(() => renderOffer(normalizeProfile()));
-        };
-      })();
+      async function runAiCompScan(profile) {
+        const buttonText = aiScanTrigger.textContent;
+        aiScanTrigger.disabled = true;
+        aiScanTrigger.textContent = 'Running AI Scan...';
+        aiSummary.textContent = 'Running a public-web comp scan. This can take a few seconds.';
 
-      form.addEventListener('input', scheduleRender);
-      form.addEventListener('change', scheduleRender);
+        try {
+          const response = await fetch('/api/valuation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(profile)
+          });
+
+          const payload = await response.json();
+
+          if (!response.ok) {
+            throw new Error(payload?.error || 'AI comp scan is not available right now.');
+          }
+
+          if (payload.retail_low) retailLow.textContent = asCurrency(payload.retail_low);
+          if (payload.retail_target) {
+            retailTarget.textContent = asCurrency(payload.retail_target);
+            retailMid.textContent = asCurrency(payload.retail_target);
+          }
+          if (payload.retail_high) retailHigh.textContent = asCurrency(payload.retail_high);
+          if (payload.cash_low) cashLow.textContent = asCurrency(payload.cash_low);
+          if (payload.cash_target) cashTarget.textContent = asCurrency(payload.cash_target);
+          if (payload.cash_high) cashHigh.textContent = asCurrency(payload.cash_high);
+          if (payload.confidence_score) {
+            confidenceFill.style.width = `${payload.confidence_score}%`;
+            confidenceLabel.textContent = `${payload.confidence_score}% confidence. ${payload.confidence_label || ''}`.trim();
+          }
+          if (payload.market_summary) {
+            aiSummary.textContent = payload.market_summary;
+          }
+          if (Array.isArray(payload.comp_summary) && payload.comp_summary.length) {
+            renderBullets(payload.comp_summary);
+          }
+          if (payload.note) {
+            note.textContent = payload.note;
+          }
+          feedback.textContent = 'AI comp scan complete.';
+        } catch (error) {
+          aiSummary.textContent = 'AI comp scan is not configured yet or could not complete. The local range above is still usable as a planning estimate.';
+          feedback.textContent = error.message || 'AI comp scan unavailable.';
+        } finally {
+          aiScanTrigger.disabled = false;
+          aiScanTrigger.textContent = buttonText;
+        }
+      }
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
-        renderOffer(normalizeProfile());
+        const profile = normalizeProfile();
+        renderLocalEstimate(profile);
+      });
+
+      aiScanTrigger.addEventListener('click', async () => {
+        const profile = normalizeProfile();
+        const rendered = renderLocalEstimate(profile);
+        if (!rendered) return;
+        await runAiCompScan(profile);
       });
 
       hydrateProfile();
-      renderOffer(normalizeProfile());
+      renderLocalEstimate(normalizeProfile());
     </script>
   </body>
 </html>
