@@ -117,7 +117,7 @@
                 <p class="form-feedback" id="form-feedback" aria-live="polite">Enter the property details to build a local value range.</p>
 
                 <div class="offer-action-row">
-                  <button class="btn btn-primary" type="submit">Build My Value Range + AI Comp Scan</button>
+                  <button class="btn btn-primary" id="build-offer-trigger" type="button">Build My Value Range + AI Comp Scan</button>
                   <button class="btn btn-outline" id="ai-scan-trigger" type="button">Refresh AI Comp Scan</button>
                 </div>
               </form>
@@ -286,6 +286,7 @@
       const form = document.getElementById('calculator-form');
       const feedback = document.getElementById('form-feedback');
       const aiScanTrigger = document.getElementById('ai-scan-trigger');
+      const buildOfferTrigger = document.getElementById('build-offer-trigger');
       const retailLow = document.getElementById('retail-range-low');
       const retailTarget = document.getElementById('retail-range-target');
       const retailHigh = document.getElementById('retail-range-high');
@@ -595,16 +596,33 @@
         }
       }
 
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
+      async function handleBuildRequest() {
         const profile = normalizeProfile();
+        persistProfile(profile);
         const rendered = renderLocalEstimate(profile);
         if (!rendered) return;
         await runAiCompScan(profile);
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+      });
+
+      buildOfferTrigger.addEventListener('click', async () => {
+        await handleBuildRequest();
+      });
+
+      form.addEventListener('keydown', async (event) => {
+        if (event.key !== 'Enter') return;
+        const target = event.target;
+        if (target && target.tagName === 'TEXTAREA') return;
+        event.preventDefault();
+        await handleBuildRequest();
       });
 
       aiScanTrigger.addEventListener('click', async () => {
         const profile = normalizeProfile();
+        persistProfile(profile);
         const rendered = renderLocalEstimate(profile);
         if (!rendered) return;
         await runAiCompScan(profile);
