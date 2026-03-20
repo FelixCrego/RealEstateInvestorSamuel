@@ -117,8 +117,8 @@
                 <p class="form-feedback" id="form-feedback" aria-live="polite">Enter the property details to build a local value range.</p>
 
                 <div class="offer-action-row">
-                  <button class="btn btn-primary" type="submit">Build My Value Range</button>
-                  <button class="btn btn-outline" id="ai-scan-trigger" type="button">Run AI Comp Scan</button>
+                  <button class="btn btn-primary" type="submit">Build My Value Range + AI Comp Scan</button>
+                  <button class="btn btn-outline" id="ai-scan-trigger" type="button">Refresh AI Comp Scan</button>
                 </div>
               </form>
 
@@ -595,10 +595,12 @@
         }
       }
 
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const profile = normalizeProfile();
-        renderLocalEstimate(profile);
+        const rendered = renderLocalEstimate(profile);
+        if (!rendered) return;
+        await runAiCompScan(profile);
       });
 
       aiScanTrigger.addEventListener('click', async () => {
