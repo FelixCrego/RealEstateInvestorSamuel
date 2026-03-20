@@ -103,7 +103,8 @@ Rules:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'gpt-5.4-mini',
+        model: 'gpt-5-mini',
+        reasoning: { effort: 'minimal' },
         tools: [{ type: 'web_search_preview' }],
         input: prompt
       })
