@@ -80,8 +80,9 @@
 
             <label for="situation">Situation</label>
             <select id="situation" name="situation" required>
+              <option value="" selected disabled>Select your situation</option>
               <option value="major-repairs-needed">Sell My House As-Is (No Repairs)</option>
-              <option value="foreclosure-pressure" selected>Stop Foreclosure Fast</option>
+              <option value="foreclosure-pressure">Stop Foreclosure Fast</option>
               <option value="inherited-property">Sell Inherited Property</option>
               <option value="unwanted-rental">Selling a Rental with Tenants</option>
               <option value="urgent-timeline">Urgent Timeline</option>
@@ -95,6 +96,20 @@
         </aside>
       </div>
     </header>
+
+    <section class="purchase-ticker" aria-label="Recent homes purchased">
+      <div class="container ticker-row">
+        <p class="ticker-label">Recent Homes Purchased</p>
+        <div class="ticker-viewport">
+          <div class="ticker-track" role="list" aria-label="Recent home purchase highlights">
+            <p class="ticker-item" role="listitem"><span class="dot"></span>Tampa: Inherited home closed in 10 days</p>
+            <p class="ticker-item" role="listitem"><span class="dot"></span>Miami: Insurance-distressed property bought as-is</p>
+            <p class="ticker-item" role="listitem"><span class="dot"></span>Orlando: Probate sale handled remotely</p>
+            <p class="ticker-item" role="listitem"><span class="dot"></span>Jacksonville: Foreclosure stopped with cash sale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section section-soft" id="tailored-results" hidden>
       <div class="container">
@@ -124,22 +139,6 @@
           <p>James Carter's story plus practical guidance on selling an inherited house in Orlando and Orange County.</p>
           <a class="card-link" href="sell-inherited-house-fast-orlando-orange-county.html" title="Read the Orlando inherited-house article">Read Article</a>
         </article>
-      </div>
-    </section>
-
-    <section class="purchase-ticker" aria-label="Recent homes purchased">
-      <div class="container ticker-row">
-        <p class="ticker-label">Recent Homes Purchased</p>
-        <div class="ticker-viewport">
-          <div class="ticker-track" role="list" aria-label="Recent home purchase highlights">
-            <p class="ticker-item" role="listitem"><span class="dot"></span>Tampa: Inherited home closed in 10 days</p>
-            <p class="ticker-item" role="listitem"><span class="dot"></span>Miami: Insurance-distressed property bought as-is</p>
-            <p class="ticker-item" role="listitem"><span class="dot"></span>Orlando: Probate sale handled remotely</p>
-            <p class="ticker-item" role="listitem"><span class="dot"></span>Jacksonville: Foreclosure stopped with cash sale.</p>
-
-
-          </div>
-        </div>
       </div>
     </section>
 
@@ -994,10 +993,9 @@
           resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         };
 
-        const storedProfile = JSON.parse(window.localStorage.getItem(PROFILE_STORAGE_KEY) || 'null');
         const initialProfile = zipPattern.test(queryZip) && situationLabels[querySituation]
           ? { zip: queryZip, situation: querySituation }
-          : storedProfile;
+          : null;
 
         if (initialProfile?.zip) {
           zipInput.value = initialProfile.zip;

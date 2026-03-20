@@ -119,6 +119,26 @@ const assets = {
     filename: 'north-florida-editorial.png',
     prompt:
       'Create a hyper-realistic editorial image for a North Florida home-selling guide. Show a realistic North Florida residential property with mature trees, established neighborhood character, natural daylight, and a calm direct-sale atmosphere. Keep it clearly residential and local rather than civic or tourism imagery. No readable text, no logos, no watermarks, no cartoon styling.'
+  },
+  'roof-leaks': {
+    filename: 'roof-leaks-editorial.png',
+    prompt:
+      'Create a hyper-realistic editorial image for a Florida home-selling guide about roof leaks. Show a real residential roof with visible storm damage or active water-intrusion signs, subtle ceiling stain context, and a trustworthy homeowner decision atmosphere. Keep it grounded in a real Florida house, not a construction advertisement. No readable text, no logos, no watermarks, no cartoon styling.'
+  },
+  'mold-remediation': {
+    filename: 'mold-remediation-editorial.png',
+    prompt:
+      'Create a hyper-realistic editorial image for a Florida home-selling guide about mold remediation. Show a realistic residential interior with visible moisture damage and mold-remediation context, but keep the image clean, credible, and suitable for a professional real-estate website. No horror look, no hazmat drama, no readable text, no logos, no watermarks, no cartoon styling.'
+  },
+  'outdated-electrical': {
+    filename: 'outdated-electrical-editorial.png',
+    prompt:
+      'Create a hyper-realistic editorial image for a Florida home-selling guide about outdated electrical systems. Show a realistic residential electrical panel or older home electrical setup with subtle signs of age and safety concern, in a way that feels credible and professional for a home-selling website. No readable text, no logos, no watermarks, no cartoon styling.'
+  },
+  'foundation-settling': {
+    filename: 'foundation-settling-editorial.png',
+    prompt:
+      'Create a hyper-realistic editorial image for a Florida home-selling guide about foundation settling. Show a real residential home with visible exterior crack or uneven-settlement cues, grounded in a Florida neighborhood context and suitable for a premium real-estate website. No readable text, no logos, no watermarks, no cartoon styling.'
   }
 };
 
