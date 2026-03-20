@@ -127,8 +127,50 @@ Rules:
       body: JSON.stringify({
         model: 'gpt-5-mini',
         reasoning: { effort: 'low' },
-        max_output_tokens: 450,
-        text: { verbosity: 'low' },
+        max_output_tokens: 1200,
+        text: {
+          verbosity: 'low',
+          format: {
+            type: 'json_schema',
+            name: 'valuation_response',
+            strict: true,
+            schema: {
+              type: 'object',
+              additionalProperties: false,
+              properties: {
+                retail_low: { type: 'number' },
+                retail_target: { type: 'number' },
+                retail_high: { type: 'number' },
+                cash_low: { type: 'number' },
+                cash_target: { type: 'number' },
+                cash_high: { type: 'number' },
+                confidence_score: { type: 'number' },
+                confidence_label: { type: 'string' },
+                market_summary: { type: 'string' },
+                comp_summary: {
+                  type: 'array',
+                  items: { type: 'string' },
+                  minItems: 3,
+                  maxItems: 3
+                },
+                note: { type: 'string' }
+              },
+              required: [
+                'retail_low',
+                'retail_target',
+                'retail_high',
+                'cash_low',
+                'cash_target',
+                'cash_high',
+                'confidence_score',
+                'confidence_label',
+                'market_summary',
+                'comp_summary',
+                'note'
+              ]
+            }
+          }
+        },
         tools: [{ type: 'web_search_preview' }],
         input: prompt
       })
