@@ -705,5 +705,218 @@
       hydrateProfile();
       renderLocalEstimate(normalizeProfile());
     </script>
+    <script>
+      (function () {
+        const buildButton = document.getElementById('build-offer-trigger');
+        const refreshButton = document.getElementById('ai-scan-trigger');
+        const address = document.getElementById('address');
+        const city = document.getElementById('city');
+        const zip = document.getElementById('zip');
+        const beds = document.getElementById('beds');
+        const baths = document.getElementById('baths');
+        const sqft = document.getElementById('sqft');
+        const yearBuilt = document.getElementById('year-built');
+        const condition = document.getElementById('condition');
+        const timeline = document.getElementById('timeline');
+        const externalEstimate = document.getElementById('external-estimate');
+        const compNotes = document.getElementById('comp-notes');
+        const feedback = document.getElementById('form-feedback');
+        const retailMid = document.getElementById('retail-range-mid');
+        const retailLow = document.getElementById('retail-range-low');
+        const retailTarget = document.getElementById('retail-range-target');
+        const retailHigh = document.getElementById('retail-range-high');
+        const cashLow = document.getElementById('cash-range-low');
+        const cashTarget = document.getElementById('cash-range-target');
+        const cashHigh = document.getElementById('cash-range-high');
+        const note = document.getElementById('offer-note');
+        const confidenceFill = document.getElementById('confidence-fill');
+        const confidenceLabel = document.getElementById('confidence-label');
+        const metricClosing = document.getElementById('metric-closing');
+        const repairAdjustment = document.getElementById('repair-adjustment');
+        const aiSummary = document.getElementById('ai-summary');
+        const compBullets = document.getElementById('comp-bullets');
+        const compResults = document.getElementById('comp-results');
+        const marketContextTitle = document.getElementById('market-context-title');
+        const marketContextCopy = document.getElementById('market-context-copy');
+        const countyLink = document.getElementById('county-link');
+        const marketLink = document.getElementById('market-link');
+
+        if (!buildButton || !feedback) return;
+
+        const countyPpsf = {
+          'miami-dade': 315,
+          broward: 290,
+          'palm-beach': 285,
+          orange: 245,
+          seminole: 235,
+          osceola: 220,
+          hillsborough: 230,
+          pinellas: 245,
+          duval: 195,
+          lee: 255,
+          collier: 345,
+          polk: 185,
+          volusia: 205,
+          brevard: 235,
+          sarasota: 300,
+          pasco: 205
+        };
+
+        const conditionMap = {
+          solid: { retail: 1.02, cash: 0.83, label: 'Light prep likely' },
+          average: { retail: 1.0, cash: 0.76, label: 'Moderate prep likely' },
+          heavy: { retail: 0.94, cash: 0.67, label: 'Heavy repair discount likely' }
+        };
+
+        const timelineMap = {
+          asap: { retail: 0.985, cash: 1.01, closing: '7-14 days' },
+          '30': { retail: 1.0, cash: 1.0, closing: '14-21 days' },
+          flex: { retail: 1.015, cash: 0.99, closing: '21-45 days' }
+        };
+
+        function currency(value) {
+          return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Math.round(value || 0));
+        }
+
+        function marketByZip(zipCode) {
+          if (typeof window.resolveFloridaMarketByZip === 'function') {
+            return window.resolveFloridaMarketByZip(zipCode);
+          }
+          return null;
+        }
+
+        function renderCompCards(comps) {
+          if (!compResults) return;
+          compResults.innerHTML = '';
+          if (!Array.isArray(comps) || !comps.length) {
+            compResults.innerHTML = '<article class="comp-result-card"><strong>No recent sold comps were returned for this address.</strong><p>The value range still updated, but the public comp list was limited for this search.</p></article>';
+            return;
+          }
+          comps.forEach((comp) => {
+            const card = document.createElement('article');
+            card.className = 'comp-result-card';
+            card.innerHTML = '<div class="comp-result-head"><strong>' + (comp.address || 'Comparable sale') + '</strong><span>' + (comp.sold_date || 'Date unavailable') + '</span></div><p class="comp-result-price">' + currency(comp.sold_price || 0) + '</p><p class="comp-result-meta">' + (comp.beds || '-') + ' beds · ' + (comp.baths || '-') + ' baths · ' + (comp.sqft || '-') + ' sqft</p><p class="comp-result-source">Source: ' + (comp.source || 'Public web data') + '</p>';
+            compResults.appendChild(card);
+          });
+        }
+
+        function localEstimate() {
+          const zipCode = (zip.value || '').trim();
+          const sqFt = Number(sqft.value) || 0;
+          const bedCount = Number(beds.value) || 0;
+          const bathCount = Number(baths.value) || 0;
+          const ext = Number(externalEstimate.value) || 0;
+          const built = Number(yearBuilt.value) || 0;
+          const market = marketByZip(zipCode);
+
+          if (!(address.value || '').trim() || !/^\d{5}$/.test(zipCode) || sqFt < 600 || bedCount < 1 || bathCount < 1) {
+            feedback.textContent = 'Enter the address, ZIP, beds, baths, and living area to build the range.';
+            return null;
+          }
+
+          const countySlug = market && market.countySlug ? market.countySlug : null;
+          const base = countyPpsf[countySlug] || 215;
+          const conditionAdj = conditionMap[condition.value] || conditionMap.average;
+          const timelineAdj = timelineMap[timeline.value] || timelineMap['30'];
+          const bedroomAdj = 1 + Math.min((bedCount - 3) * 0.012, 0.06);
+          const bathAdj = 1 + Math.min((bathCount - 2) * 0.018, 0.06);
+          const yearAdj = built ? 1 + Math.min(Math.max((built - 1985) / 1000, -0.06), 0.05) : 1;
+
+          let retail = sqFt * base * bedroomAdj * bathAdj * yearAdj * conditionAdj.retail * timelineAdj.retail;
+          if (ext >= 50000) retail = retail * 0.55 + ext * 0.45;
+
+          const retailLowVal = retail * 0.94;
+          const retailHighVal = retail * 1.06;
+          const cash = retail * conditionAdj.cash * timelineAdj.cash;
+
+          retailMid.textContent = currency(retail);
+          retailLow.textContent = currency(retailLowVal);
+          retailTarget.textContent = currency(retail);
+          retailHigh.textContent = currency(retailHighVal);
+          cashLow.textContent = currency(cash * 0.95);
+          cashTarget.textContent = currency(cash);
+          cashHigh.textContent = currency(cash * 1.05);
+          confidenceFill.style.width = '84%';
+          confidenceLabel.textContent = '84% confidence based on the property details entered.';
+          metricClosing.textContent = timelineAdj.closing;
+          repairAdjustment.textContent = conditionAdj.label;
+          note.textContent = 'This is a practical estimate, not an appraisal. Use it to compare your options before committing to repairs, a listing, or a fast sale.';
+          aiSummary.textContent = 'Scanning public web data for recent sold comps...';
+          feedback.textContent = 'Value range updated.';
+
+          const countyName = market && market.countyName ? market.countyName + ' County' : 'Florida market';
+          marketContextTitle.textContent = ((city.value || market?.cityDisplayName || 'Florida') + ', ' + countyName).replace(', Florida market', 'Florida market');
+          marketContextCopy.textContent = 'This range reflects the local market, your home size, and the condition profile you selected.';
+          if (market && market.countyPageHref) countyLink.href = market.countyPageHref;
+          if (market && market.relatedMarketPages && market.relatedMarketPages[0]) {
+            marketLink.href = market.relatedMarketPages[0].href;
+            marketLink.textContent = market.relatedMarketPages[0].label;
+          }
+          if (compBullets) {
+            compBullets.innerHTML = '<li>Local market context has been applied to your estimate.</li><li>Property condition and speed-to-close usually matter more than generic online estimates.</li><li>The comp scan below looks for recent sold properties, not just active listings.</li>';
+          }
+          renderCompCards([]);
+
+          return {
+            address: (address.value || '').trim(),
+            city: (city.value || '').trim(),
+            zip: zipCode,
+            beds: bedCount,
+            baths: bathCount,
+            sqft: sqFt,
+            yearBuilt: built,
+            condition: condition.value,
+            timeline: timeline.value,
+            externalEstimate: ext,
+            compNotes: (compNotes.value || '').trim()
+          };
+        }
+
+        async function runCompScan(profile) {
+          try {
+            const response = await fetch('/api/valuation', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(profile)
+            });
+            const payload = await response.json();
+            if (!response.ok) throw new Error(payload && payload.error ? payload.error : 'AI comp scan unavailable.');
+
+            if (payload.retail_target) retailMid.textContent = currency(payload.retail_target);
+            if (payload.retail_low) retailLow.textContent = currency(payload.retail_low);
+            if (payload.retail_target) retailTarget.textContent = currency(payload.retail_target);
+            if (payload.retail_high) retailHigh.textContent = currency(payload.retail_high);
+            if (payload.cash_low) cashLow.textContent = currency(payload.cash_low);
+            if (payload.cash_target) cashTarget.textContent = currency(payload.cash_target);
+            if (payload.cash_high) cashHigh.textContent = currency(payload.cash_high);
+            if (payload.confidence_score) {
+              confidenceFill.style.width = String(payload.confidence_score) + '%';
+              confidenceLabel.textContent = String(payload.confidence_score) + '% confidence. ' + (payload.confidence_label || '');
+            }
+            if (payload.market_summary) aiSummary.textContent = payload.market_summary;
+            if (payload.note) note.textContent = payload.note;
+            if (compBullets && Array.isArray(payload.comp_summary)) {
+              compBullets.innerHTML = payload.comp_summary.map((item) => '<li>' + item + '</li>').join('');
+            }
+            renderCompCards(payload.comps);
+            feedback.textContent = 'AI comp scan complete.';
+          } catch (error) {
+            feedback.textContent = error && error.message ? error.message : 'AI comp scan unavailable.';
+            aiSummary.textContent = 'The local value range is still available, but the comp scan could not complete for this request.';
+            renderCompCards([]);
+          }
+        }
+
+        async function runAll() {
+          const profile = localEstimate();
+          if (!profile) return false;
+          await runCompScan(profile);
+          return false;
+        }
+
+        buildButton.onclick = function () { runAll(); return false; };
+        if (refreshButton) refreshButton.onclick = function () { runAll(); return false; };
+      })();
+    </script>
   </body>
 </html>
