@@ -160,6 +160,7 @@ function footer() {
           <a href="situations.html">Our Solutions</a>
           <a href="service-areas.html">Service Areas</a>
           <a href="counties.html">County Directory</a>
+          <a href="blog.html">Blog</a>
           <a href="create-your-offer.html">Offer Calculator</a>
           <a href="index.html#testimonials">Reviews</a>
         </nav>
@@ -178,6 +179,12 @@ function footer() {
           <p><strong>Hours:</strong> Monday-Saturday, 8am-7pm</p>
           <p><strong>Email:</strong> hello@floridacashhousebuyers.com</p>
         </section>
+        <nav class="footer-nav" aria-label="Blog resources">
+          <h2>From Samuel</h2>
+          <a href="blog.html">Blog Hub</a>
+          <a href="success-stories.html">Success Stories</a>
+          <a href="sell-inherited-house-fast-orlando-orange-county.html">Featured Article</a>
+        </nav>
         <nav class="footer-nav" aria-label="Featured city pages">
           <h2>Featured Cities</h2>
           <a href="miami.html">Miami</a>

@@ -114,6 +114,7 @@ function footer() {
           <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="View all Florida service areas where we buy houses">Service Areas</a>
           <a href="counties.html" title="Browse all 67 Florida county pages">County Directory</a>
+          <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog</a>
           <a href="create-your-offer.html" title="See your offer now with our instant calculator">Offer Calculator</a>
           <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
         </nav>
@@ -132,6 +133,12 @@ function footer() {
           <p><strong>Hours:</strong> Monday-Saturday, 8am-7pm</p>
           <p><strong>Email:</strong> hello@floridacashhousebuyers.com</p>
         </section>
+        <nav class="footer-nav" aria-label="Blog resources">
+          <h2>From Samuel</h2>
+          <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog Hub</a>
+          <a href="success-stories.html" title="Read real Florida seller stories">Success Stories</a>
+          <a href="sell-inherited-house-fast-orlando-orange-county.html" title="Read the Orlando inherited-house article">Featured Article</a>
+        </nav>
         <nav class="footer-nav" aria-label="Featured city pages">
           <h2>Featured Cities</h2>
           ${primaryServiceAreas.map(([href, label]) => `<a href="${href}" title="${label} cash home buyer page">${label}</a>`).join('')}
