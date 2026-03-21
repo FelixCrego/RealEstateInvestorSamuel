@@ -36,9 +36,9 @@
 
       <div class="container subpage-hero-copy offer-hero-copy">
         <p class="eyebrow">Address-first valuation</p>
-        <h1>Get a Smarter Value Range Before You Decide How to Sell.</h1>
+        <h1>See a Comp-Based Value Range Before You Decide How to Sell.</h1>
         <p>
-          Enter the property address, condition, and basic facts to see a stronger retail-value range, a likely as-is cash range, and the next questions Samuel would ask before making a real offer.
+          Enter the property address and details to pull recent sold comps, estimate a realistic after-repair value, and see the kind of as-is cash range serious buyers would likely consider.
         </p>
       </div>
     </header>
@@ -50,7 +50,7 @@
             <article class="offer-calculator-card valuation-card" aria-label="Home valuation form">
               <p class="calculator-step">Step 1 of 2</p>
               <h2>Build the property profile</h2>
-              <p>This is a better starting point than a generic percentage calculator. We anchor the estimate to address, ZIP, property size, condition, and local Florida market context.</p>
+              <p>This starts with sold comps, not guesswork. We use the address, ZIP, property details, and local market context to estimate a realistic after-repair value first, then show the likely as-is range from there.</p>
 
               <form class="calculator-form" id="calculator-form" novalidate onsubmit="return false;">
                 <label for="address">Property address</label>
@@ -105,7 +105,7 @@
                   </div>
                 </div>
 
-                <label for="external-estimate">Zillow / Homes.com estimate you already saw (optional)</label>
+                <label for="external-estimate">Online estimate you already saw (optional reference only)</label>
                 <div class="money-input-wrap">
                   <span aria-hidden="true">$</span>
                   <input id="external-estimate" name="externalEstimate" inputmode="decimal" type="number" min="50000" max="5000000" step="1000" placeholder="425000" />
@@ -114,7 +114,7 @@
                 <label for="comp-notes">Recent comps, links, or notes (optional)</label>
                 <textarea id="comp-notes" name="compNotes" rows="4" placeholder="Paste listing links, note a recent sale nearby, or mention upgrades/issues that matter."></textarea>
 
-                <p class="form-feedback" id="form-feedback" aria-live="polite">Enter the property details to build a local value range.</p>
+                <p class="form-feedback" id="form-feedback" aria-live="polite">Enter the property details to build a comp-based value range.</p>
 
                 <div class="offer-action-row">
                   <button class="btn btn-primary" id="build-offer-trigger" type="button" onclick="window.handleOfferBuild && window.handleOfferBuild(); return false;">Build My Value Range + AI Comp Scan</button>
@@ -124,15 +124,15 @@
 
               <ul class="trust-points">
                 <li>Local market context pulled from the Florida ZIP you enter</li>
-                <li>Retail range and as-is range shown separately</li>
-                <li>Optional AI comp scan can review public web data when configured</li>
+                <li>Comp-based ARV and as-is range shown separately</li>
+                <li>Recent sold comps are used to anchor the range</li>
               </ul>
             </article>
 
             <aside class="offer-result-card valuation-result-card" aria-live="polite" aria-label="Calculated home valuation result">
               <p class="offer-result-label">Property Value Snapshot</p>
               <p class="offer-result-value" id="retail-range-mid">$0</p>
-              <p class="offer-result-note" id="offer-note">Complete the profile to see your retail range, likely as-is range, and local market context.</p>
+              <p class="offer-result-note" id="offer-note">Complete the profile to see the comp-based ARV, likely as-is range, and the recent sold comps behind it.</p>
 
               <div class="market-context-card">
                 <p class="market-context-label">Market context</p>
@@ -142,15 +142,15 @@
 
               <div class="offer-range-grid valuation-range-grid">
                 <article>
-                  <p>Retail low</p>
+                  <p>ARV low</p>
                   <strong id="retail-range-low">$0</strong>
                 </article>
                 <article>
-                  <p>Retail target</p>
+                  <p>Target ARV</p>
                   <strong id="retail-range-target">$0</strong>
                 </article>
                 <article>
-                  <p>Retail high</p>
+                  <p>ARV high</p>
                   <strong id="retail-range-high">$0</strong>
                 </article>
               </div>
@@ -189,11 +189,11 @@
 
               <div class="valuation-insight-box">
                 <p class="market-context-label">AI / comp notes</p>
-                <p id="ai-summary">When available, the AI comp scan will summarize public web comp signals here. This is an estimate, not an appraisal.</p>
+                <p id="ai-summary">When available, the AI scan will summarize recent sold comps and local market signals here. This is an estimate, not an appraisal.</p>
                 <ul id="comp-bullets" class="valuation-bullets">
-                  <li>Condition and timeline usually matter more than generic automated estimates.</li>
-                  <li>Heavier repairs widen the gap between retail value and a realistic as-is offer.</li>
-                  <li>Samuel uses this range as a starting point for a real written offer, not the final word.</li>
+                  <li>Recent sold comps matter more than generic automated estimates.</li>
+                  <li>The ARV is estimated first, then the as-is cash range is built from that number.</li>
+                  <li>Samuel uses this range as the starting point for a real written offer, not the final word.</li>
                 </ul>
               </div>
 
@@ -223,9 +223,9 @@
       <section class="section section-muted" id="offer-story">
         <div class="container authority-block offer-story-block">
           <p class="eyebrow">How to use this tool</p>
-          <h2>Use the range to decide what questions matter before you list, renovate, or accept a low-ball number.</h2>
+          <h2>Use the comps and ARV to decide what makes the most sense before you list, renovate, or accept a low number.</h2>
           <p>
-            This page is meant to help homeowners think more clearly about retail value versus an as-is exit. It is not an appraisal. The best use of it is to narrow the range, understand the tradeoffs, and then let Samuel confirm the property-specific facts that actually move the number.
+            This page is meant to help homeowners think more clearly about recent sold comps, a realistic after-repair value, and what an as-is cash range may look like in the current market. It is not an appraisal. The best use of it is to narrow the range, understand the tradeoffs, and then let Samuel confirm the property-specific facts that actually move the number.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="index.html#final-cta" title="Request your no-pressure cash offer">Request My Written Offer</a>
@@ -462,21 +462,16 @@
 
         let retailTargetValue = profile.sqft * basePpsf * bedroomAdj * bathAdj * yearAdj * conditionAdj.retail * timelineAdj.retail;
 
-        if (profile.externalEstimate >= 50000) {
-          retailTargetValue = retailTargetValue * 0.55 + profile.externalEstimate * 0.45;
-        }
-
         const retailLowValue = retailTargetValue * 0.94;
         const retailHighValue = retailTargetValue * 1.06;
 
-        const cashTargetValue = retailTargetValue * conditionAdj.cash * timelineAdj.cash;
-        const cashLowValue = cashTargetValue * 0.95;
-        const cashHighValue = cashTargetValue * 1.05;
+        const cashTargetValue = retailTargetValue * 0.6;
+        const cashLowValue = retailTargetValue * 0.57;
+        const cashHighValue = retailTargetValue * 0.63;
 
         const confidenceBase = isSupportedFloridaZip ? 84 : 72;
         const confidence = clamp(
           confidenceBase +
-            (profile.externalEstimate ? 4 : 0) +
             (profile.compNotes ? 3 : 0) +
             (profile.yearBuilt ? 2 : 0) -
             (profile.condition === 'heavy' ? 2 : 0),
@@ -590,11 +585,11 @@
         renderMarketContext(profile, estimate);
         renderBullets([
           `Local baseline used: about ${asCurrency(estimate.countyPpsf)} per square foot for this county profile.`,
-          profile.externalEstimate ? 'Your outside automated estimate was blended into the retail target instead of ignored.' : 'No outside automated estimate was blended into this range yet.',
-          profile.compNotes ? 'Your custom comp notes were saved for Samuel to review on the follow-up call.' : 'Add nearby comp notes or links if you want a sharper review later.'
+          'The as-is range shown here is based on 60% of the estimated ARV, not on the outside estimate field.',
+          profile.compNotes ? 'Your custom comp notes were saved for Samuel to review against the sold comps.' : 'Add nearby sold comps or links if you want a sharper review later.'
         ]);
 
-        aiSummary.textContent = 'Local estimate ready. If AI comp scan is available, it can add a public-web market summary, but the strongest next step is still confirming condition and title details with Samuel.';
+        aiSummary.textContent = 'Preliminary local estimate ready. The comp scan will now look for recent sold comps and calculate a comp-based ARV.';
         renderCompResults([]);
 
         persistProfile(profile);
@@ -805,7 +800,6 @@
           const sqFt = Number(sqft.value) || 0;
           const bedCount = Number(beds.value) || 0;
           const bathCount = Number(baths.value) || 0;
-          const ext = Number(externalEstimate.value) || 0;
           const built = Number(yearBuilt.value) || 0;
           const market = marketByZip(zipCode);
 
@@ -823,25 +817,22 @@
           const yearAdj = built ? 1 + Math.min(Math.max((built - 1985) / 1000, -0.06), 0.05) : 1;
 
           let retail = sqFt * base * bedroomAdj * bathAdj * yearAdj * conditionAdj.retail * timelineAdj.retail;
-          if (ext >= 50000) retail = retail * 0.55 + ext * 0.45;
 
           const retailLowVal = retail * 0.94;
           const retailHighVal = retail * 1.06;
-          const cash = retail * conditionAdj.cash * timelineAdj.cash;
-
           retailMid.textContent = currency(retail);
           retailLow.textContent = currency(retailLowVal);
           retailTarget.textContent = currency(retail);
           retailHigh.textContent = currency(retailHighVal);
-          cashLow.textContent = currency(cash * 0.95);
-          cashTarget.textContent = currency(cash);
-          cashHigh.textContent = currency(cash * 1.05);
+          cashLow.textContent = currency(retail * 0.57);
+          cashTarget.textContent = currency(retail * 0.6);
+          cashHigh.textContent = currency(retail * 0.63);
           confidenceFill.style.width = '84%';
           confidenceLabel.textContent = '84% confidence based on the property details entered.';
           metricClosing.textContent = timelineAdj.closing;
           repairAdjustment.textContent = conditionAdj.label;
           note.textContent = 'This is a practical estimate, not an appraisal. Use it to compare your options before committing to repairs, a listing, or a fast sale.';
-          aiSummary.textContent = 'Scanning public web data for recent sold comps...';
+          aiSummary.textContent = 'Scanning public web data for recent sold comps and a comp-based ARV...';
           feedback.textContent = 'Value range updated.';
 
           const countyName = market && market.countyName ? market.countyName + ' County' : 'Florida market';
@@ -853,7 +844,7 @@
             marketLink.textContent = market.relatedMarketPages[0].label;
           }
           if (compBullets) {
-            compBullets.innerHTML = '<li>Local market context has been applied to your estimate.</li><li>Property condition and speed-to-close usually matter more than generic online estimates.</li><li>The comp scan below looks for recent sold properties, not just active listings.</li>';
+              compBullets.innerHTML = '<li>Local market context has been applied to your estimate.</li><li>The ARV is anchored to recent sold comps, not the outside estimate field.</li><li>The comp scan below looks for recent sold properties, not active listings.</li>';
           }
           renderCompCards([]);
 
@@ -867,7 +858,7 @@
             yearBuilt: built,
             condition: condition.value,
             timeline: timeline.value,
-            externalEstimate: ext,
+            externalEstimate: Number(externalEstimate.value) || 0,
             compNotes: (compNotes.value || '').trim()
           };
         }

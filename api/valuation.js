@@ -69,13 +69,20 @@ function normalizeValuationPayload(parsed) {
         .slice(0, 3)
     : [];
 
+  const retailLow = Number(parsed.retail_low) || 0;
+  const retailTarget = Number(parsed.retail_target) || 0;
+  const retailHigh = Number(parsed.retail_high) || 0;
+  const cashTarget = retailTarget ? Math.round(retailTarget * 0.6) : 0;
+  const cashLow = retailTarget ? Math.round(retailTarget * 0.57) : 0;
+  const cashHigh = retailTarget ? Math.round(retailTarget * 0.63) : 0;
+
   return {
-    retail_low: Number(parsed.retail_low) || 0,
-    retail_target: Number(parsed.retail_target) || 0,
-    retail_high: Number(parsed.retail_high) || 0,
-    cash_low: Number(parsed.cash_low) || 0,
-    cash_target: Number(parsed.cash_target) || 0,
-    cash_high: Number(parsed.cash_high) || 0,
+    retail_low: retailLow,
+    retail_target: retailTarget,
+    retail_high: retailHigh,
+    cash_low: cashLow,
+    cash_target: cashTarget,
+    cash_high: cashHigh,
     confidence_score: confidenceScore || 0,
     confidence_label: String(parsed.confidence_label || ''),
     market_summary: String(parsed.market_summary || ''),
@@ -121,7 +128,7 @@ module.exports = async function handler(req, res) {
   }
 
   const prompt = `
-You are helping a Florida homeowner estimate a practical home value range and likely as-is cash-sale range.
+You are helping a Florida homeowner estimate a comp-based after-repair value and likely as-is cash-sale range.
 
 Property:
 - Address: ${address}
@@ -133,11 +140,11 @@ Property:
 - Year built: ${yearBuilt}
 - Condition: ${condition}
 - Selling timeline: ${timeline}
-- Outside automated estimate: ${externalEstimate || 'none provided'}
+- Outside automated estimate (reference only, do not anchor your ARV to this): ${externalEstimate || 'none provided'}
 - Situation hint: ${situationHint || 'none'}
 - User comp notes or links: ${compNotes || 'none'}
 
-Use public web information if available. Prioritize recent residential comp signals and current market context. If public data is limited, say so clearly.
+Use public web information if available. Prioritize recent sold residential comps and current market context. If public data is limited, say so clearly.
 
 Return ONLY valid JSON with this exact shape:
 {
@@ -166,8 +173,10 @@ Return ONLY valid JSON with this exact shape:
 }
 
 Rules:
-- Keep retail numbers realistic, not inflated.
-- Keep cash numbers realistic for a direct buyer, not retail numbers repeated.
+- `retail_target` must represent a realistic comp-based ARV for the property when repaired to normal market condition.
+- `retail_low` and `retail_high` should bracket that ARV realistically.
+- Do not anchor ARV to the seller's estimate field. Use it only as background context if needed.
+- The cash fields should reflect a likely as-is investor range derived from that ARV, with `cash_target` roughly representing 60% of ARV before final deal-specific adjustments.
 - Confidence score must be 55-95.
 - comp_summary must have exactly 3 concise bullets.
 - comps must include only true sold comparable sales, not active listings, pending listings, estimates, or market summaries.
@@ -178,7 +187,7 @@ Rules:
 - note must clearly say this is not an appraisal.
 `;
 
-  try {
+  async function requestValuation(inputPrompt) {
     const response = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
@@ -253,18 +262,26 @@ Rules:
           }
         },
         tools: [{ type: 'web_search_preview' }],
-        input: prompt
+        input: inputPrompt
       })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      return res.status(502).json({ error: `OpenAI request failed: ${errorText}` });
+      throw new Error(`OpenAI request failed: ${errorText}`);
     }
 
     const payload = await response.json();
-    const outputText = extractOutputText(payload);
-    const parsed = normalizeValuationPayload(parseJsonFromText(outputText));
+    return normalizeValuationPayload(parseJsonFromText(extractOutputText(payload)));
+  }
+
+  try {
+    let parsed = await requestValuation(prompt);
+
+    if (!parsed) {
+      const fallbackPrompt = `${prompt}\n\nIf exact recent sold comps are limited, still return the full JSON object with fewer than 3 comps and keep every other field filled. Do not leave the object blank.`;
+      parsed = await requestValuation(fallbackPrompt);
+    }
 
     if (!parsed) {
       return res.status(502).json({
