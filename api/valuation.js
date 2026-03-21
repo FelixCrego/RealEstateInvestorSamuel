@@ -58,6 +58,8 @@ function normalizeValuationPayload(parsed) {
           beds: String(comp?.beds || ''),
           baths: String(comp?.baths || ''),
           sqft: String(comp?.sqft || ''),
+          distance_miles: Number(comp?.distance_miles) || 0,
+          similarity_score: Number(comp?.similarity_score) || 0,
           source: String(comp?.source || '')
         }))
         .filter((comp) => {
@@ -86,6 +88,7 @@ function normalizeValuationPayload(parsed) {
     confidence_score: confidenceScore || 0,
     confidence_label: String(parsed.confidence_label || ''),
     market_summary: String(parsed.market_summary || ''),
+    subject_analysis: String(parsed.subject_analysis || ''),
     comp_summary: Array.isArray(parsed.comp_summary) ? parsed.comp_summary.slice(0, 3).map((item) => String(item)) : [],
     comps: normalizedComps,
     note: String(parsed.note || '')
@@ -157,6 +160,7 @@ Return ONLY valid JSON with this exact shape:
   "confidence_score": number,
   "confidence_label": string,
   "market_summary": string,
+  "subject_analysis": string,
   "comp_summary": [string, string, string],
   "comps": [
     {
@@ -166,6 +170,8 @@ Return ONLY valid JSON with this exact shape:
       "beds": string,
       "baths": string,
       "sqft": string,
+      "distance_miles": number,
+      "similarity_score": number,
       "source": string
     }
   ],
@@ -178,11 +184,15 @@ Rules:
 - Do not anchor ARV to the seller's estimate field. Use it only as background context if needed.
 - The cash fields should reflect a likely as-is investor range derived from that ARV, with cash_target roughly representing 60% of ARV before final deal-specific adjustments.
 - Confidence score must be 55-95.
+- subject_analysis must briefly explain how the target property compares to the chosen comps and what most affects value.
 - comp_summary must have exactly 3 concise bullets.
 - comps must include only true sold comparable sales, not active listings, pending listings, estimates, or market summaries.
-- Prefer sold comps from the last 12 months, and prioritize the most recent 6 months when possible.
+- Prefer sold comps from the last 6 months and no farther than 0.5 miles from the target property when possible.
+- If usable sold comps within 0.5 miles and 6 months are limited, return fewer than 3 comps instead of widening the criteria with weak matches.
 - If true sold comps with usable dates are limited, return fewer than 3 comps rather than using listings or estimates.
 - sold_date should be the actual sold date when available, in a human-readable format like "February 2026" or "2025-12-14".
+- distance_miles must be numeric and represent approximate miles from the target property.
+- similarity_score must be a numeric 0-100 estimate of how similar the comp is to the target property based on size, bed/bath count, age, location, and likely condition.
 - source should identify where the sold comp came from, such as public records, Redfin sold history, county record, or Realtor sold history.
 - note must clearly say this is not an appraisal.
 `;
@@ -217,6 +227,7 @@ Rules:
                 confidence_score: { type: 'number' },
                 confidence_label: { type: 'string' },
                 market_summary: { type: 'string' },
+                subject_analysis: { type: 'string' },
                 comp_summary: {
                   type: 'array',
                   items: { type: 'string' },
@@ -237,9 +248,11 @@ Rules:
                       beds: { type: 'string' },
                       baths: { type: 'string' },
                       sqft: { type: 'string' },
+                      distance_miles: { type: 'number' },
+                      similarity_score: { type: 'number' },
                       source: { type: 'string' }
                     },
-                    required: ['address', 'sold_price', 'sold_date', 'beds', 'baths', 'sqft', 'source']
+                    required: ['address', 'sold_price', 'sold_date', 'beds', 'baths', 'sqft', 'distance_miles', 'similarity_score', 'source']
                   }
                 },
                 note: { type: 'string' }
@@ -254,6 +267,7 @@ Rules:
                 'confidence_score',
                 'confidence_label',
                 'market_summary',
+                'subject_analysis',
                 'comp_summary',
                 'comps',
                 'note'

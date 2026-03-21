@@ -125,7 +125,7 @@
               <ul class="trust-points">
                 <li>Local market context pulled from the Florida ZIP you enter</li>
                 <li>Comp-based ARV and as-is range shown separately</li>
-                <li>Recent sold comps are used to anchor the range</li>
+                <li>Recent sold comps within 6 months and about 0.5 miles are used to anchor the range</li>
               </ul>
             </article>
 
@@ -210,12 +210,17 @@
                 </ul>
               </div>
 
+              <div class="valuation-insight-box">
+                <p class="market-context-label">Target Property Analysis</p>
+                <p id="subject-analysis">The target property analysis will appear here after the comp scan runs.</p>
+              </div>
+
               <div class="valuation-insight-box comp-results-box">
                 <p class="market-context-label">Recent comparable sales</p>
                 <div id="comp-results" class="comp-results-list">
                   <article class="comp-result-card">
                     <strong>Comparable sales will appear here after the AI comp scan runs.</strong>
-                    <p>Each comp will show the address, sold price, sold date, basic size, and source when public web data is available.</p>
+                    <p>Each comp will show the address, sold price, sold date, distance, similarity score, basic size, and source when public web data is available.</p>
                   </article>
                 </div>
               </div>
@@ -338,6 +343,7 @@
       const aiSummary = document.getElementById('ai-summary');
       const compBullets = document.getElementById('comp-bullets');
       const compResults = document.getElementById('comp-results');
+      const subjectAnalysis = document.getElementById('subject-analysis');
       const marketContextTitle = document.getElementById('market-context-title');
       const marketContextCopy = document.getElementById('market-context-copy');
       const countyLink = document.getElementById('county-link');
@@ -545,6 +551,7 @@
             </div>
             <p class="comp-result-price">${asCurrency(comp.sold_price || 0)}</p>
             <p class="comp-result-meta">${comp.beds || '-'} beds · ${comp.baths || '-'} baths · ${comp.sqft || '-'} sqft</p>
+            <p class="comp-result-meta">Distance: ${(Number(comp.distance_miles) || 0).toFixed(2)} mi · Similarity: ${Math.round(Number(comp.similarity_score) || 0)}%</p>
             <p class="comp-result-source">Source: ${comp.source || 'Public web data'}</p>
           `;
           compResults.appendChild(card);
@@ -611,6 +618,9 @@
         ]);
 
         aiSummary.textContent = 'Preliminary local estimate ready. The comp scan will now look for recent sold comps and calculate a comp-based ARV.';
+        if (subjectAnalysis) {
+          subjectAnalysis.textContent = 'The target property analysis will appear here after the comp scan compares the house to recent sold comps.';
+        }
         renderCompResults([]);
 
         persistProfile(profile);
@@ -657,6 +667,9 @@
           }
           if (payload.market_summary) {
             aiSummary.textContent = payload.market_summary;
+          }
+          if (payload.subject_analysis && subjectAnalysis) {
+            subjectAnalysis.textContent = payload.subject_analysis;
           }
           if (Array.isArray(payload.comp_summary) && payload.comp_summary.length) {
             renderBullets(payload.comp_summary);
@@ -760,6 +773,7 @@
         const aiSummary = document.getElementById('ai-summary');
         const compBullets = document.getElementById('comp-bullets');
         const compResults = document.getElementById('comp-results');
+        const subjectAnalysis = document.getElementById('subject-analysis');
         const marketContextTitle = document.getElementById('market-context-title');
         const marketContextCopy = document.getElementById('market-context-copy');
         const countyLink = document.getElementById('county-link');
@@ -819,7 +833,7 @@
           comps.forEach((comp) => {
             const card = document.createElement('article');
             card.className = 'comp-result-card';
-            card.innerHTML = '<div class="comp-result-head"><strong>' + (comp.address || 'Comparable sale') + '</strong><span>' + (comp.sold_date || 'Date unavailable') + '</span></div><p class="comp-result-price">' + currency(comp.sold_price || 0) + '</p><p class="comp-result-meta">' + (comp.beds || '-') + ' beds · ' + (comp.baths || '-') + ' baths · ' + (comp.sqft || '-') + ' sqft</p><p class="comp-result-source">Source: ' + (comp.source || 'Public web data') + '</p>';
+            card.innerHTML = '<div class="comp-result-head"><strong>' + (comp.address || 'Comparable sale') + '</strong><span>' + (comp.sold_date || 'Date unavailable') + '</span></div><p class="comp-result-price">' + currency(comp.sold_price || 0) + '</p><p class="comp-result-meta">' + (comp.beds || '-') + ' beds · ' + (comp.baths || '-') + ' baths · ' + (comp.sqft || '-') + ' sqft</p><p class="comp-result-meta">Distance: ' + ((Number(comp.distance_miles) || 0).toFixed(2)) + ' mi · Similarity: ' + Math.round(Number(comp.similarity_score) || 0) + '%</p><p class="comp-result-source">Source: ' + (comp.source || 'Public web data') + '</p>';
             compResults.appendChild(card);
           });
         }
@@ -864,6 +878,7 @@
           repairAdjustment.textContent = conditionAdj.label;
           note.textContent = 'This is a practical estimate, not an appraisal. Use it to compare your options before committing to repairs, a listing, or a fast sale.';
           aiSummary.textContent = 'Scanning public web data for recent sold comps and a comp-based ARV...';
+          if (subjectAnalysis) subjectAnalysis.textContent = 'Analyzing the subject property against recent sold comps...';
           feedback.textContent = 'Value range updated.';
 
           const countyName = market && market.countyName ? market.countyName + ' County' : 'Florida market';
@@ -924,6 +939,7 @@
               confidenceLabel.textContent = String(payload.confidence_score) + '% confidence. ' + (payload.confidence_label || '');
             }
             if (payload.market_summary) aiSummary.textContent = payload.market_summary;
+            if (payload.subject_analysis && subjectAnalysis) subjectAnalysis.textContent = payload.subject_analysis;
             if (payload.note) note.textContent = payload.note;
             if (compBullets && Array.isArray(payload.comp_summary)) {
               compBullets.innerHTML = payload.comp_summary.map((item) => '<li>' + item + '</li>').join('');
