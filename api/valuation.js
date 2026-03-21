@@ -173,8 +173,8 @@ Return ONLY valid JSON with this exact shape:
 }
 
 Rules:
-- `retail_target` must represent a realistic comp-based ARV for the property when repaired to normal market condition.
-- `retail_low` and `retail_high` should bracket that ARV realistically.
+- retail_target must represent a realistic comp-based ARV for the property when repaired to normal market condition.
+- retail_low and retail_high should bracket that ARV realistically.
 - Do not anchor ARV to the seller's estimate field. Use it only as background context if needed.
 - The cash fields should reflect a likely as-is investor range derived from that ARV, with `cash_target` roughly representing 60% of ARV before final deal-specific adjustments.
 - Confidence score must be 55-95.
