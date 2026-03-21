@@ -197,7 +197,7 @@ Rules:
       body: JSON.stringify({
         model: 'gpt-5-mini',
         reasoning: { effort: 'low' },
-        max_output_tokens: 1200,
+        max_output_tokens: 900,
         text: {
           verbosity: 'low',
           format: {
@@ -276,12 +276,7 @@ Rules:
   }
 
   try {
-    let parsed = await requestValuation(prompt);
-
-    if (!parsed) {
-      const fallbackPrompt = `${prompt}\n\nIf exact recent sold comps are limited, still return the full JSON object with fewer than 3 comps and keep every other field filled. Do not leave the object blank.`;
-      parsed = await requestValuation(fallbackPrompt);
-    }
+    const parsed = await requestValuation(prompt);
 
     if (!parsed) {
       return res.status(502).json({

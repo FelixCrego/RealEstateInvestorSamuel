@@ -608,8 +608,13 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(profile)
           });
-
-          const payload = await response.json();
+          const rawText = await response.text();
+          let payload = {};
+          try {
+            payload = rawText ? JSON.parse(rawText) : {};
+          } catch {
+            throw new Error('The valuation service returned an invalid response. Please try again.');
+          }
 
           if (!response.ok) {
             throw new Error(payload?.error || 'AI comp scan is not available right now.');
@@ -870,7 +875,13 @@
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(profile)
             });
-            const payload = await response.json();
+            const rawText = await response.text();
+            let payload = {};
+            try {
+              payload = rawText ? JSON.parse(rawText) : {};
+            } catch {
+              throw new Error('The valuation service returned an invalid response. Please try again.');
+            }
             if (!response.ok) throw new Error(payload && payload.error ? payload.error : 'AI comp scan unavailable.');
 
             if (payload.retail_target) retailMid.textContent = currency(payload.retail_target);
