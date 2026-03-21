@@ -170,6 +170,19 @@
                 </article>
               </div>
 
+              <div class="offer-celebration-bar" aria-label="Likely cash offer range highlight">
+                <p class="offer-celebration-label">Likely Cash Offer Window</p>
+                <div class="offer-celebration-values">
+                  <strong id="offer-bar-low">$0</strong>
+                  <span class="offer-celebration-divider">to</span>
+                  <strong id="offer-bar-high">$0</strong>
+                </div>
+                <div class="offer-bar-track" aria-hidden="true">
+                  <span class="offer-bar-fill"></span>
+                </div>
+                <p class="offer-celebration-note">A fast, as-is sale means fewer repairs, fewer delays, and a clearer next step.</p>
+              </div>
+
               <div class="confidence-panel">
                 <p>Estimate confidence</p>
                 <div class="confidence-track" aria-hidden="true"><span id="confidence-fill"></span></div>
@@ -315,6 +328,8 @@
       const cashLow = document.getElementById('cash-range-low');
       const cashTarget = document.getElementById('cash-range-target');
       const cashHigh = document.getElementById('cash-range-high');
+      const offerBarLow = document.getElementById('offer-bar-low');
+      const offerBarHigh = document.getElementById('offer-bar-high');
       const note = document.getElementById('offer-note');
       const confidenceFill = document.getElementById('confidence-fill');
       const confidenceLabel = document.getElementById('confidence-label');
@@ -504,6 +519,11 @@
         });
       }
 
+      function renderOfferBar(low, high) {
+        if (offerBarLow) offerBarLow.textContent = asCurrency(low);
+        if (offerBarHigh) offerBarHigh.textContent = asCurrency(high);
+      }
+
       function renderCompResults(comps) {
         compResults.innerHTML = '';
 
@@ -573,6 +593,7 @@
         cashLow.textContent = asCurrency(estimate.cashLowValue);
         cashTarget.textContent = asCurrency(estimate.cashTargetValue);
         cashHigh.textContent = asCurrency(estimate.cashHighValue);
+        renderOfferBar(estimate.cashLowValue, estimate.cashHighValue);
 
         confidenceFill.style.width = `${estimate.confidence}%`;
         confidenceLabel.textContent = `${estimate.confidence}% confidence based on address, Florida ZIP, property size, and condition details.`;
@@ -629,6 +650,7 @@
           if (payload.cash_low) cashLow.textContent = asCurrency(payload.cash_low);
           if (payload.cash_target) cashTarget.textContent = asCurrency(payload.cash_target);
           if (payload.cash_high) cashHigh.textContent = asCurrency(payload.cash_high);
+          renderOfferBar(payload.cash_low || 0, payload.cash_high || 0);
           if (payload.confidence_score) {
             confidenceFill.style.width = `${payload.confidence_score}%`;
             confidenceLabel.textContent = `${payload.confidence_score}% confidence. ${payload.confidence_label || ''}`.trim();
@@ -728,6 +750,8 @@
         const cashLow = document.getElementById('cash-range-low');
         const cashTarget = document.getElementById('cash-range-target');
         const cashHigh = document.getElementById('cash-range-high');
+        const offerBarLow = document.getElementById('offer-bar-low');
+        const offerBarHigh = document.getElementById('offer-bar-high');
         const note = document.getElementById('offer-note');
         const confidenceFill = document.getElementById('confidence-fill');
         const confidenceLabel = document.getElementById('confidence-label');
@@ -832,6 +856,8 @@
           cashLow.textContent = currency(retail * 0.57);
           cashTarget.textContent = currency(retail * 0.6);
           cashHigh.textContent = currency(retail * 0.63);
+          if (offerBarLow) offerBarLow.textContent = currency(retail * 0.57);
+          if (offerBarHigh) offerBarHigh.textContent = currency(retail * 0.63);
           confidenceFill.style.width = '84%';
           confidenceLabel.textContent = '84% confidence based on the property details entered.';
           metricClosing.textContent = timelineAdj.closing;
@@ -891,6 +917,8 @@
             if (payload.cash_low) cashLow.textContent = currency(payload.cash_low);
             if (payload.cash_target) cashTarget.textContent = currency(payload.cash_target);
             if (payload.cash_high) cashHigh.textContent = currency(payload.cash_high);
+            if (offerBarLow) offerBarLow.textContent = currency(payload.cash_low || 0);
+            if (offerBarHigh) offerBarHigh.textContent = currency(payload.cash_high || 0);
             if (payload.confidence_score) {
               confidenceFill.style.width = String(payload.confidence_score) + '%';
               confidenceLabel.textContent = String(payload.confidence_score) + '% confidence. ' + (payload.confidence_label || '');
