@@ -197,7 +197,7 @@ Rules:
       body: JSON.stringify({
         model: 'gpt-5-mini',
         reasoning: { effort: 'low' },
-        max_output_tokens: 900,
+        max_output_tokens: 1800,
         text: {
           verbosity: 'low',
           format: {
@@ -261,7 +261,7 @@ Rules:
             }
           }
         },
-        tools: [{ type: 'web_search_preview' }],
+        tools: [{ type: 'web_search_preview', search_context_size: 'low' }],
         input: inputPrompt
       })
     });
