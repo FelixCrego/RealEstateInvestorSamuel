@@ -2522,6 +2522,106 @@ details p { margin-top: 0.7rem; }
   background: rgba(255, 255, 255, 0.08);
 }
 
+.offer-range-grid-secondary .cash-box {
+  position: relative;
+  overflow: hidden;
+  border-width: 1px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.offer-range-grid-secondary .cash-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.offer-range-grid-secondary .cash-box p,
+.offer-range-grid-secondary .cash-box strong {
+  position: relative;
+  z-index: 1;
+}
+
+.offer-range-grid-secondary .cash-box-low {
+  border-color: rgba(255, 110, 110, 0.5);
+  background: linear-gradient(180deg, rgba(100, 21, 26, 0.48), rgba(73, 12, 18, 0.7));
+  box-shadow:
+    0 0 0 1px rgba(255, 96, 96, 0.14),
+    0 0 18px rgba(255, 72, 72, 0.22);
+}
+
+.offer-range-grid-secondary .cash-box-low::before {
+  background: radial-gradient(circle at top right, rgba(255, 123, 123, 0.22), transparent 48%);
+}
+
+.offer-range-grid-secondary .cash-box-low strong {
+  text-shadow: 0 0 12px rgba(255, 95, 95, 0.28);
+}
+
+.offer-range-grid-secondary .cash-box-target {
+  border-color: rgba(88, 255, 166, 0.76);
+  background: linear-gradient(180deg, rgba(6, 116, 62, 0.55), rgba(4, 88, 47, 0.82));
+  box-shadow:
+    0 0 0 1px rgba(88, 255, 166, 0.28),
+    0 0 26px rgba(88, 255, 166, 0.34),
+    0 0 42px rgba(0, 255, 170, 0.18);
+  animation: offerPulse 1.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.offer-range-grid-secondary .cash-box-target::before {
+  background:
+    radial-gradient(circle at top right, rgba(150, 255, 206, 0.28), transparent 48%),
+    radial-gradient(circle at bottom left, rgba(0, 255, 183, 0.14), transparent 44%);
+}
+
+.offer-range-grid-secondary .cash-box-target p {
+  color: rgba(227, 255, 241, 0.95);
+}
+
+.offer-range-grid-secondary .cash-box-target strong {
+  color: #f6fff9;
+  text-shadow:
+    0 0 14px rgba(113, 255, 182, 0.52),
+    0 0 24px rgba(0, 255, 170, 0.28);
+}
+
+.offer-range-grid-secondary .cash-box-high {
+  border-color: rgba(43, 153, 86, 0.62);
+  background: linear-gradient(180deg, rgba(8, 61, 30, 0.6), rgba(5, 47, 23, 0.82));
+  box-shadow:
+    0 0 0 1px rgba(43, 153, 86, 0.18),
+    0 0 18px rgba(27, 116, 61, 0.24);
+}
+
+.offer-range-grid-secondary .cash-box-high::before {
+  background: radial-gradient(circle at top right, rgba(98, 206, 140, 0.14), transparent 48%);
+}
+
+.offer-range-grid-secondary .cash-box-high strong {
+  text-shadow: 0 0 12px rgba(68, 176, 109, 0.24);
+}
+
+@keyframes offerPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 1px rgba(88, 255, 166, 0.28),
+      0 0 26px rgba(88, 255, 166, 0.34),
+      0 0 42px rgba(0, 255, 170, 0.18);
+  }
+
+  50% {
+    transform: scale(1.04);
+    box-shadow:
+      0 0 0 1px rgba(120, 255, 185, 0.4),
+      0 0 32px rgba(88, 255, 166, 0.5),
+      0 0 56px rgba(0, 255, 170, 0.28);
+  }
+}
+
 .offer-celebration-bar {
   margin-top: 1rem;
   padding: 1rem 1rem 1.1rem;
