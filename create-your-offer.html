@@ -297,6 +297,17 @@
       const feedback = document.getElementById('form-feedback');
       const aiScanTrigger = document.getElementById('ai-scan-trigger');
       const buildOfferTrigger = document.getElementById('build-offer-trigger');
+      const addressInput = document.getElementById('address');
+      const cityInput = document.getElementById('city');
+      const zipInput = document.getElementById('zip');
+      const bedsInput = document.getElementById('beds');
+      const bathsInput = document.getElementById('baths');
+      const sqftInput = document.getElementById('sqft');
+      const yearBuiltInput = document.getElementById('year-built');
+      const conditionInput = document.getElementById('condition');
+      const timelineInput = document.getElementById('timeline');
+      const externalEstimateInput = document.getElementById('external-estimate');
+      const compNotesInput = document.getElementById('comp-notes');
       const retailLow = document.getElementById('retail-range-low');
       const retailTarget = document.getElementById('retail-range-target');
       const retailHigh = document.getElementById('retail-range-high');
@@ -378,26 +389,26 @@
       }
 
       function normalizeProfile() {
-        const zip = (form.zip.value || '').trim();
+        const zip = (zipInput.value || '').trim();
         const market = getMarketProfile(zip);
-        const beds = Number(form.beds.value) || 0;
-        const baths = Number(form.baths.value) || 0;
-        const sqft = Number(form.sqft.value) || 0;
-        const yearBuilt = Number(form.yearBuilt.value) || 0;
-        const externalEstimate = Number(form.externalEstimate.value) || 0;
+        const beds = Number(bedsInput.value) || 0;
+        const baths = Number(bathsInput.value) || 0;
+        const sqft = Number(sqftInput.value) || 0;
+        const yearBuilt = Number(yearBuiltInput.value) || 0;
+        const externalEstimate = Number(externalEstimateInput.value) || 0;
 
         return {
-          address: (form.address.value || '').trim(),
-          city: (form.city.value || '').trim(),
+          address: (addressInput.value || '').trim(),
+          city: (cityInput.value || '').trim(),
           zip,
           beds,
           baths,
           sqft,
           yearBuilt,
           externalEstimate,
-          condition: form.condition.value,
-          timeline: form.timeline.value,
-          compNotes: (form.compNotes.value || '').trim(),
+          condition: conditionInput.value,
+          timeline: timelineInput.value,
+          compNotes: (compNotesInput.value || '').trim(),
           market,
           situationHint: getSituationHint()
         };
@@ -416,11 +427,17 @@
           const raw = localStorage.getItem(STORAGE_KEY);
           if (!raw) return;
           const profile = JSON.parse(raw);
-          for (const [key, value] of Object.entries(profile)) {
-            if (form[key] && typeof value !== 'object') {
-              form[key].value = value;
-            }
-          }
+          if (typeof profile.address === 'string') addressInput.value = profile.address;
+          if (typeof profile.city === 'string') cityInput.value = profile.city;
+          if (typeof profile.zip === 'string') zipInput.value = profile.zip;
+          if (profile.beds) bedsInput.value = profile.beds;
+          if (profile.baths) bathsInput.value = profile.baths;
+          if (profile.sqft) sqftInput.value = profile.sqft;
+          if (profile.yearBuilt) yearBuiltInput.value = profile.yearBuilt;
+          if (profile.condition) conditionInput.value = profile.condition;
+          if (profile.timeline) timelineInput.value = profile.timeline;
+          if (profile.externalEstimate) externalEstimateInput.value = profile.externalEstimate;
+          if (typeof profile.compNotes === 'string') compNotesInput.value = profile.compNotes;
         } catch {
           // Ignore invalid cache.
         }
