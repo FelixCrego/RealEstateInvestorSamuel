@@ -48,6 +48,27 @@ function normalizeValuationPayload(parsed) {
   const confidenceRaw = Number(parsed.confidence_score);
   const confidenceScore = confidenceRaw > 0 && confidenceRaw <= 1 ? Math.round(confidenceRaw * 100) : Math.round(confidenceRaw);
 
+  const normalizedComps = Array.isArray(parsed.comps)
+    ? parsed.comps
+        .slice(0, 6)
+        .map((comp) => ({
+          address: String(comp?.address || ''),
+          sold_price: Number(comp?.sold_price) || 0,
+          sold_date: String(comp?.sold_date || ''),
+          beds: String(comp?.beds || ''),
+          baths: String(comp?.baths || ''),
+          sqft: String(comp?.sqft || ''),
+          source: String(comp?.source || '')
+        }))
+        .filter((comp) => {
+          const sourceText = `${comp.source} ${comp.sold_date}`.toLowerCase();
+          const bannedSignals = ['listing', 'active', 'pending', 'estimate', 'zestimate'];
+          const hasBannedSignal = bannedSignals.some((signal) => sourceText.includes(signal));
+          return comp.address && comp.sold_price > 0 && comp.sold_date && !hasBannedSignal;
+        })
+        .slice(0, 3)
+    : [];
+
   return {
     retail_low: Number(parsed.retail_low) || 0,
     retail_target: Number(parsed.retail_target) || 0,
@@ -59,17 +80,7 @@ function normalizeValuationPayload(parsed) {
     confidence_label: String(parsed.confidence_label || ''),
     market_summary: String(parsed.market_summary || ''),
     comp_summary: Array.isArray(parsed.comp_summary) ? parsed.comp_summary.slice(0, 3).map((item) => String(item)) : [],
-    comps: Array.isArray(parsed.comps)
-      ? parsed.comps.slice(0, 3).map((comp) => ({
-          address: String(comp?.address || ''),
-          sold_price: Number(comp?.sold_price) || 0,
-          sold_date: String(comp?.sold_date || ''),
-          beds: String(comp?.beds || ''),
-          baths: String(comp?.baths || ''),
-          sqft: String(comp?.sqft || ''),
-          source: String(comp?.source || '')
-        }))
-      : [],
+    comps: normalizedComps,
     note: String(parsed.note || '')
   };
 }
@@ -159,8 +170,11 @@ Rules:
 - Keep cash numbers realistic for a direct buyer, not retail numbers repeated.
 - Confidence score must be 55-95.
 - comp_summary must have exactly 3 concise bullets.
-- comps must have exactly 3 items when public web comp signals are available.
-- sold_date should be human-readable, like "February 2026" or "2025-12-14" if available.
+- comps must include only true sold comparable sales, not active listings, pending listings, estimates, or market summaries.
+- Prefer sold comps from the last 12 months, and prioritize the most recent 6 months when possible.
+- If true sold comps with usable dates are limited, return fewer than 3 comps rather than using listings or estimates.
+- sold_date should be the actual sold date when available, in a human-readable format like "February 2026" or "2025-12-14".
+- source should identify where the sold comp came from, such as public records, Redfin sold history, county record, or Realtor sold history.
 - note must clearly say this is not an appraisal.
 `;
 
