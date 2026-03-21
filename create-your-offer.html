@@ -52,7 +52,7 @@
               <h2>Build the property profile</h2>
               <p>This is a better starting point than a generic percentage calculator. We anchor the estimate to address, ZIP, property size, condition, and local Florida market context.</p>
 
-              <form class="calculator-form" id="calculator-form" novalidate>
+              <form class="calculator-form" id="calculator-form" novalidate onsubmit="return false;">
                 <label for="address">Property address</label>
                 <input id="address" name="address" type="text" placeholder="123 Main St" autocomplete="street-address" required />
 
@@ -117,8 +117,8 @@
                 <p class="form-feedback" id="form-feedback" aria-live="polite">Enter the property details to build a local value range.</p>
 
                 <div class="offer-action-row">
-                  <button class="btn btn-primary" id="build-offer-trigger" type="button">Build My Value Range + AI Comp Scan</button>
-                  <button class="btn btn-outline" id="ai-scan-trigger" type="button">Refresh AI Comp Scan</button>
+                  <button class="btn btn-primary" id="build-offer-trigger" type="button" onclick="window.handleOfferBuild && window.handleOfferBuild(); return false;">Build My Value Range + AI Comp Scan</button>
+                  <button class="btn btn-outline" id="ai-scan-trigger" type="button" onclick="window.handleOfferRefresh && window.handleOfferRefresh(); return false;">Refresh AI Comp Scan</button>
                 </div>
               </form>
 
@@ -654,11 +654,29 @@
       }
 
       async function handleBuildRequest() {
-        const profile = normalizeProfile();
-        persistProfile(profile);
-        const rendered = renderLocalEstimate(profile);
-        if (!rendered) return;
-        await runAiCompScan(profile);
+        try {
+          feedback.textContent = 'Building your value range...';
+          const profile = normalizeProfile();
+          persistProfile(profile);
+          const rendered = renderLocalEstimate(profile);
+          if (!rendered) return;
+          await runAiCompScan(profile);
+        } catch (error) {
+          feedback.textContent = error?.message || 'The calculator hit an error. Please refresh and try again.';
+        }
+      }
+
+      async function handleRefreshRequest() {
+        try {
+          feedback.textContent = 'Refreshing AI comp scan...';
+          const profile = normalizeProfile();
+          persistProfile(profile);
+          const rendered = renderLocalEstimate(profile);
+          if (!rendered) return;
+          await runAiCompScan(profile);
+        } catch (error) {
+          feedback.textContent = error?.message || 'The AI comp scan hit an error. Please try again.';
+        }
       }
 
       form.addEventListener('submit', (event) => {
@@ -678,12 +696,11 @@
       });
 
       aiScanTrigger.addEventListener('click', async () => {
-        const profile = normalizeProfile();
-        persistProfile(profile);
-        const rendered = renderLocalEstimate(profile);
-        if (!rendered) return;
-        await runAiCompScan(profile);
+        await handleRefreshRequest();
       });
+
+      window.handleOfferBuild = handleBuildRequest;
+      window.handleOfferRefresh = handleRefreshRequest;
 
       hydrateProfile();
       renderLocalEstimate(normalizeProfile());
