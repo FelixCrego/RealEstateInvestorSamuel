@@ -43,15 +43,33 @@ const slugify = (value) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
+const COMMERCIAL_HUB_FILE = 'we-buy-commercial-properties.html';
 const countyFile = (name) => `${slugify(name)}-county.html`;
 const countySituationFile = (countyName, situation) => `${slugify(countyName)}-county-${situation.shortSlug}.html`;
 const situationCountyHubFile = (situation) => `${situation.slug}-counties.html`;
+const countyCommercialFile = (countyName) => `${slugify(countyName)}-county-commercial-properties.html`;
+const cityCommercialFile = (page) => `${page.file.replace('.html', '')}-commercial-properties.html`;
 const labelFromHref = (href) => href.replace('.html', '').split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
 const write = (file, contents) => fs.writeFileSync(path.join(ROOT, file), `${contents.trim()}\n`, 'utf8');
 const replaceCounty = (template, countyName) => template.replace(/\{county\}/g, countyName);
 const formatCounty = (countyName) => `${countyName} County`;
 const editorialImageFile = (slug) => `images/editorial/${slug}-editorial.png`;
 const hasEditorialImage = (slug) => fs.existsSync(path.join(ROOT, editorialImageFile(slug)));
+const commercialPropertyTypes = [
+  ['Multi-family and apartment buildings', 'Duplexes, triplexes, quads, garden apartments, and larger multi-family assets where turnover, vacancy, renovations, or a partnership transition are driving the sale.'],
+  ['Mixed-use property', 'Street-level retail with apartments above, live-work buildings, and mixed-use assets where the valuation depends on both residential and commercial income.'],
+  ['Retail and strip-center space', 'Neighborhood retail, freestanding storefronts, and small centers where tenant rollover, deferred maintenance, or vacancy are changing the hold strategy.'],
+  ['Office, medical, and flex space', 'Owner-user buildings, office condos, medical space, and flex assets where capex, leasing friction, or a business transition makes timing matter.'],
+  ['Warehouse and light industrial', 'Small-bay industrial, storage, warehouse, and contractor-oriented properties where location still works but the owner wants a cleaner exit.'],
+  ['Special-use and value-add assets', 'Hospitality, self-storage, mobile-home-park, church, and other niche assets are evaluated case by case when the property needs a practical buyer instead of a generic listing plan.']
+];
+const commercialRegionThemes = {
+  'Central Florida': 'growth corridors, repositioning pressure, lease rollover, and owners who want a cleaner exit timeline',
+  'South Florida': 'insurance pressure, dense submarkets, aging improvements, and timing-sensitive commercial exits',
+  'Gulf Coast': 'storm wear, insurance volatility, vacancy, and owners weighing hold costs against another lease cycle',
+  'North Florida': 'estate-driven portfolios, distance ownership, local leasing friction, and older commercial assets that need work',
+  Panhandle: 'distance ownership, storm wear, lease risk, and owners who want a more direct commercial exit'
+};
 
 function schemaScript(items) {
   return items.map((item) => `    <script type="application/ld+json">${JSON.stringify(item)}</script>`).join('\n');
@@ -114,6 +132,7 @@ function footer() {
           <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="View all Florida service areas where we buy houses">Service Areas</a>
           <a href="counties.html" title="Browse all 67 Florida county pages">County Directory</a>
+          <a href="${COMMERCIAL_HUB_FILE}" title="Browse our Florida commercial property pages">We Buy Commercial Properties</a>
           <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog</a>
           <a href="create-your-offer.html" title="See your offer now with our instant calculator">Offer Calculator</a>
           <a href="index.html#testimonials" title="Read reviews from Florida home sellers">Reviews</a>
@@ -197,7 +216,7 @@ function faqSchema(items) {
   };
 }
 
-function serviceSchema(name, canonical, area) {
+function serviceSchema(name, canonical, area, serviceType = 'Direct home purchase and as-is home sale solutions') {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -209,7 +228,7 @@ function serviceSchema(name, canonical, area) {
       url: BASE_URL,
       telephone: '+1-813-555-0192'
     },
-    serviceType: 'Direct home purchase and as-is home sale solutions',
+    serviceType,
     url: canonical
   };
 }
@@ -332,6 +351,10 @@ function areaLabel(page) {
   return areaIsRegion(page)
     ? page.eyebrow.replace(' Region', '')
     : page.file.replace('.html', '').split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
+}
+
+function commercialCityRows() {
+  return areaRows.filter((page) => !areaIsRegion(page));
 }
 
 function findCounty(name) {
@@ -522,6 +545,179 @@ function countySituationEditorialParagraphs(county, situation) {
   ];
 }
 
+function cityCommercialLinksForCounty(countyName) {
+  return commercialCityRows()
+    .filter((page) => page.counties.includes(countyName))
+    .map((page) => ({ href: cityCommercialFile(page), label: `${areaLabel(page)} Commercial Properties` }));
+}
+
+function countyCommercialFaqs(county) {
+  const countyLabel = formatCounty(county.name);
+  return [
+    {
+      q: `What types of commercial real estate do you buy in ${countyLabel}?`,
+      a: `We review a wide range of commercial property in ${countyLabel}, including multi-family, mixed-use, retail, office, flex, warehouse, and other value-add assets where the owner wants a cleaner sale path.`
+    },
+    {
+      q: `Do you buy ${countyLabel} multi-family and apartment properties as-is?`,
+      a: `Yes. Many of the commercial files we review in ${countyLabel} involve deferred maintenance, vacancy, tenant turnover, older systems, or a need to close without first stabilizing the asset for the open market.`
+    },
+    {
+      q: `Can you buy commercial property in ${countyLabel} with leases, tenants, or title issues still in play?`,
+      a: `Often, yes. We start by understanding the rent roll, occupancy, entity structure, payoff details, and title questions so the owner can compare a direct sale against another long leasing or marketing cycle.`
+    },
+    {
+      q: `Why would an owner in ${countyLabel} sell commercial real estate directly instead of listing it first?`,
+      a: `The answer is usually timing, capex, vacancy, lease rollover, partnership decisions, or a seller who values certainty more than another round of broker tours, negotiated credits, and buyer contingencies.`
+    }
+  ];
+}
+
+function cityCommercialFaqs(page, county) {
+  const cityLabel = areaLabel(page);
+  const countyLabel = formatCounty(county.name);
+  const cityArticle = articleFor(cityLabel);
+  return [
+    {
+      q: `What kinds of commercial property do you buy in ${cityLabel}, Florida?`,
+      a: `We review many ${cityLabel} commercial assets, including multi-family, retail, office, flex, warehouse, mixed-use, and other properties where the owner wants a direct buyer that can work with the asset as it stands today.`
+    },
+    {
+      q: `Do you buy ${cityLabel} apartment buildings and smaller multi-family properties?`,
+      a: `Yes. Smaller apartment assets, duplex-to-quad portfolios, and larger multi-family properties are some of the most common commercial pages people search for in ${cityLabel}, especially when turnover, capex, or inherited ownership is involved.`
+    },
+    {
+      q: `Should I use the ${cityLabel} commercial page or the ${countyLabel} commercial page?`,
+      a: `Use the ${cityLabel} page when city-specific search intent matters. Use the ${countyLabel} page when the asset sits outside the urban core, serves a wider county trade area, or needs broader county-level context before the next step is clear.`
+    },
+    {
+      q: `What usually pushes ${cityArticle} ${cityLabel} owner toward a direct commercial sale?`,
+      a: `Vacancy, leasing friction, insurance and carrying costs, deferred maintenance, partnership timing, inherited portfolios, and owners who need a more certain closing window than a traditional commercial listing can offer.`
+    }
+  ];
+}
+
+function statewideCommercialFaqs() {
+  return [
+    {
+      q: 'What kinds of commercial real estate do you buy in Florida?',
+      a: 'We review commercial properties across Florida including multi-family, mixed-use, retail, office, flex, warehouse, and select special-use assets where the owner wants a practical direct-sale option.'
+    },
+    {
+      q: 'Do you buy Florida apartment buildings and smaller multi-family portfolios?',
+      a: 'Yes. Multi-family is a core part of the commercial search intent this page is built around, from duplex and quad-level portfolios to larger apartment buildings where vacancy, capex, or management fatigue are driving the exit.'
+    },
+    {
+      q: 'Why create county and city commercial pages instead of only one statewide page?',
+      a: 'Because commercial owners search locally. County and city pages give stronger location relevance, make internal linking cleaner, and help owners land on a page that matches the property location and asset type more closely.'
+    },
+    {
+      q: 'When does a direct commercial buyer make more sense than a traditional listing?',
+      a: 'Usually when the owner wants certainty around timing, needs to avoid another stabilization cycle, is dealing with tenant or title complexity, or wants to sell before more capex, vacancy, or carrying costs build up.'
+    }
+  ];
+}
+
+function commercialCountyEditorialParagraphs(county) {
+  const countyLabel = formatCounty(county.name);
+  const cityLinks = cityCommercialLinksForCounty(county.name);
+  const regionTheme = commercialRegionThemes[county.region] || 'commercial timing pressure, vacancy, carry costs, and owners who want a more certain exit';
+  const cityText = cityLinks.length
+    ? `${countyLabel} owners also compare options with nearby commercial pages like ${cityLinks.map((item) => item.label.replace(' Commercial Properties', '')).join(', ')} when they want city-level search relevance tied back to the county.`
+    : `${countyLabel} still needs a commercial page even without a major-city companion because many owners search by county when the asset serves a broader trade area than a single city.`;
+
+  return [
+    `Owners searching for commercial real estate buyers in ${countyLabel} are usually balancing more than headline price. Lease rollover, vacancy, insurance, deferred maintenance, entity cleanup, and the cost of another stabilization cycle often matter just as much.`,
+    `In ${countyLabel}, commercial sellers are often working through ${regionTheme}. ${cityText}`,
+    `That is why this page is built around direct-sale fit for multi-family, mixed-use, retail, office, flex, warehouse, and other commercial assets where a practical closing path matters more than generic marketing language.`
+  ];
+}
+
+function commercialCityEditorialParagraphs(page, county) {
+  const cityLabel = areaLabel(page);
+  const countyLabel = formatCounty(county.name);
+  const localMarkets = communityLinks(page)
+    .map((item) => areaRows.find((row) => row.file === item.href))
+    .filter((item) => item && !areaIsRegion(item))
+    .map((item) => areaLabel(item));
+  const marketText = localMarkets.length
+    ? `${cityLabel} commercial owners often compare this page with nearby markets like ${localMarkets.join(', ')} when the property sits between submarkets or serves a wider trade area.`
+    : `${cityLabel} commercial owners usually compare this page with the broader county page before deciding how local the search intent needs to be.`;
+
+  return [
+    `Commercial owners searching in ${cityLabel} are usually looking for a practical buyer who understands asset condition, occupancy, timing, and the fact that not every property should be pushed through a long broker-marketing cycle first.`,
+    `${countyLabel} shapes the local backdrop, but city-level search intent still matters when the asset is in ${cityLabel} itself. ${marketText}`,
+    `This page is meant to support owners selling multi-family, mixed-use, retail, office, flex, warehouse, and value-add assets where certainty, discretion, and execution matter.`
+  ];
+}
+
+function countyCommercialFitCards(county) {
+  const countyLabel = formatCounty(county.name);
+  return [
+    {
+      title: `${countyLabel} multi-family owners`,
+      body: `Apartment buildings and other multi-family assets in ${countyLabel} often come to market because turnover, capex, collections, or management fatigue are changing the hold decision.`
+    },
+    {
+      title: `${countyLabel} retail and office sellers`,
+      body: `Retail, office, and flex owners often need a direct path when vacancy, lease rollover, or deferred maintenance makes a standard marketing timeline feel too open-ended.`
+    },
+    {
+      title: `${countyLabel} mixed-use and value-add property`,
+      body: `Mixed-use assets are often sold because the owner does not want to keep solving both residential and commercial issues before the property can trade cleanly.`
+    },
+    {
+      title: `${countyLabel} estate, partner, and portfolio exits`,
+      body: `Commercial property sales often overlap with inherited ownership, partnership unwind, business transitions, or owners who simply want to redeploy capital on a defined schedule.`
+    }
+  ];
+}
+
+function countyCommercialPressureCards(county) {
+  const countyLabel = formatCounty(county.name);
+  return [
+    {
+      title: 'Vacancy and leasing friction',
+      body: `In ${countyLabel}, many owners start exploring a direct sale after another vacancy cycle, broker tour period, or tenant rollover begins stretching the timeline.`
+    },
+    {
+      title: 'Capex and deferred maintenance',
+      body: 'Roofs, parking lots, HVAC, facades, unit turns, and code issues can quickly change whether it still makes sense to hold the asset and market it traditionally.'
+    },
+    {
+      title: 'Insurance, taxes, and carry costs',
+      body: 'Commercial sellers often feel the pressure monthly. When the property is underperforming, another quarter of hold costs can matter more than theoretical upside.'
+    },
+    {
+      title: 'Entity, title, and partner coordination',
+      body: 'Commercial closings often involve LLC documents, trust or estate coordination, payoff details, and multiple decision-makers that make certainty more valuable.'
+    }
+  ];
+}
+
+function cityCommercialFitCards(page, county) {
+  const cityLabel = areaLabel(page);
+  const countyLabel = formatCounty(county.name);
+  return [
+    {
+      title: `${cityLabel} multi-family sellers`,
+      body: `Owners of apartments and smaller multi-family property in ${cityLabel} often search for a direct buyer when vacancy, unit turns, inspections, or financing friction are slowing the exit.`
+    },
+    {
+      title: `${cityLabel} retail, office, and flex owners`,
+      body: `Commercial owners in ${cityLabel} often need a quicker path when leasing, capex, or occupancy issues make a long listing cycle difficult to justify.`
+    },
+    {
+      title: `${cityLabel} mixed-use and warehouse assets`,
+      body: `Mixed-use and industrial-style properties often need a buyer who can look past cosmetic noise and focus on the real operating and location story of the asset.`
+    },
+    {
+      title: `${countyLabel} timing-driven exits`,
+      body: `Some owners are not trying to maximize one last marketing round. They want a defined closing date around a partnership change, inherited portfolio, 1031 window, or business transition.`
+    }
+  ];
+}
+
 function countyPage(county) {
   const region = regionProfiles[county.region];
   const keyword = `sell my home fast in ${county.name} County`;
@@ -634,6 +830,25 @@ ${nav()}
             (item) => item.label,
             () => `Open the county-specific version of that seller situation if the real query is more specific than a general "${keyword}" search.`,
             () => 'View Local Situation Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
+          <p class="eyebrow">Commercial Property Sales</p>
+          <h2>Commercial real estate and multi-family pages connected to ${formatCounty(county.name)}.</h2>
+          <p>Use these pages if the property is multi-family, mixed-use, retail, office, flex, warehouse, or another commercial asset that needs a direct-sale path instead of residential guidance.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="${formatCounty(county.name)} commercial property pages">
+          ${comparisonCards(
+            [
+              { href: countyCommercialFile(county.name), label: `${formatCounty(county.name)} Commercial Properties` },
+              { href: COMMERCIAL_HUB_FILE, label: 'We Buy Commercial Properties' }
+            ],
+            (item) => item.label,
+            () => `Open the commercial page if the property in ${formatCounty(county.name)} is multi-family or another non-residential asset.`,
+            () => 'View Commercial Page'
           )}
         </div>
       </section>
@@ -1137,6 +1352,26 @@ ${nav()}
 
       <section class="section">
         <div class="container section-head">
+          <p class="eyebrow">Commercial and Multi-Family</p>
+          <h2>Commercial property pages tied to ${label}.</h2>
+          <p>Use these pages if the property is apartment, mixed-use, retail, office, flex, warehouse, or another commercial asset that needs local search relevance beyond standard house-sale content.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial property pages tied to ${label}">
+          ${comparisonCards(
+            [
+              { href: cityCommercialFile(page), label: `${label} Commercial Properties` },
+              { href: countyCommercialFile(primaryCounty.name), label: `${formatCounty(primaryCounty.name)} Commercial Properties` },
+              { href: COMMERCIAL_HUB_FILE, label: 'We Buy Commercial Properties' }
+            ],
+            (item) => item.label,
+            () => `Open the commercial page if the property in or around ${label} is not a standard residential house sale.`,
+            () => 'View Commercial Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
           <p class="eyebrow">City Process</p>
           <h2>How a direct sale usually works for homeowners in ${label}.</h2>
           <p>We keep the process simple because most sellers who need speed are also trying to reduce stress, not add more uncertainty.</p>
@@ -1192,6 +1427,489 @@ ${nav()}
           <p>Call now or move into the offer page to share your timeline, ZIP, and property details so we can point you to the cleanest next step.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now for help in ${label}">Call (813) 555-0192</a>
+            <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+${footer()}`
+  });
+}
+
+function commercialHubPage() {
+  const cityLinks = commercialCityRows().map((page) => ({
+    href: cityCommercialFile(page),
+    label: `${areaLabel(page)} Commercial Properties`
+  }));
+  const groups = Object.entries(
+    counties.reduce((acc, county) => {
+      acc[county.region] = acc[county.region] || [];
+      acc[county.region].push(county);
+      return acc;
+    }, {})
+  );
+  const faqs = statewideCommercialFaqs();
+  const canonical = `${BASE_URL}/${COMMERCIAL_HUB_FILE}`;
+  const description =
+    'We buy commercial properties in Florida, including multi-family, mixed-use, retail, office, flex, warehouse, and other value-add assets. Browse county and city commercial pages.';
+  const schemaItems = [
+    webPageSchema('We Buy Commercial Properties in Florida', canonical, description),
+    serviceSchema(
+      'We Buy Commercial Properties in Florida',
+      canonical,
+      'Florida',
+      'Direct commercial real estate, multifamily, mixed-use, retail, office, and industrial acquisition'
+    ),
+    breadcrumbSchema([
+      { name: 'Home', href: 'index.html' },
+      { name: 'We Buy Commercial Properties', href: COMMERCIAL_HUB_FILE }
+    ]),
+    faqSchema(faqs)
+  ];
+
+  return pageShell({
+    title: 'We Buy Commercial Properties in Florida | County and City Pages',
+    description,
+    canonical,
+    schemaItems,
+    body: `
+    <header class="hero subpage-hero" id="top">
+${nav()}
+      <div class="container subpage-hero-copy">
+        <p class="eyebrow">Florida Commercial Real Estate</p>
+        <h1>We Buy Commercial Properties in Florida, Including Multi-Family, Mixed-Use, Retail, Office, and More.</h1>
+        <p>This statewide hub is built to support commercial-property search intent across Florida with county pages, major-city pages, and content written for owners who need a direct-sale path instead of another generic listing pitch.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#commercial-cities" title="Browse Florida city commercial pages">Browse City Commercial Pages</a>
+          <a class="btn btn-text" href="#commercial-counties" title="Browse Florida county commercial pages">Browse County Commercial Pages</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      ${sectionBlock(
+        'Commercial Seller Intent',
+        'Why this Florida commercial hub exists.',
+        [
+          'Commercial owners search differently than residential sellers. They search by asset class, by county, by city, and by terms like multi-family, mixed-use, retail, office, warehouse, and value-add property.',
+          'This page is here to give those searches a stronger landing point while connecting every county and major-city commercial page under one master link.',
+          'If you need a direct-sale path for commercial real estate in Florida, the goal is to move you quickly into the exact county or city page that matches the asset location.'
+        ]
+      )}
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Property Types</p>
+          <h2>Commercial property types these pages are built to support.</h2>
+          <p class="lead">Multi-family is a core part of this build, but the page family is broader than apartments alone.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial property types we buy in Florida">
+          ${commercialPropertyTypes.map(([title, body]) => `<article class="comparison-card"><h3>${title}</h3><p>${body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      <section class="section" id="commercial-cities">
+        <div class="container section-head">
+          <p class="eyebrow">Major City Pages</p>
+          <h2>Commercial property pages for Florida's major cities.</h2>
+          <p>Use these city pages when local market identity matters more than the county label alone.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Florida city commercial property pages">
+          ${comparisonCards(
+            cityLinks,
+            (item) => item.label,
+            () => 'Open the city-specific commercial page for stronger local relevance, internal links, and commercial search alignment.',
+            () => 'View City Commercial Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Why Direct Sale Comes Up</p>
+          <h2>What usually drives a Florida commercial owner to look for a direct buyer.</h2>
+          <p>Commercial owners usually arrive here because another hold period, another lease-up cycle, or another round of capex no longer looks like the best use of time or capital.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial seller scenarios in Florida">
+          ${[
+            ['Multi-family repositioning pressure', 'Owners of apartment and other multi-family assets often need a faster exit when turnover, vacancy, renovations, or soft collections are changing the hold plan.'],
+            ['Retail, office, and flex uncertainty', 'Commercial listings can drag when lease rollover, TI demands, maintenance, or occupancy issues keep the asset from presenting cleanly to the open market.'],
+            ['Entity, partner, or estate decisions', 'Inherited portfolios, partnership unwind, and business transitions often make certainty and execution more important than another long marketing process.'],
+            ['Insurance and carrying-cost drag', 'Across Florida, taxes, insurance, maintenance, and vacancy can quickly change the math on whether holding the property still makes sense.']
+          ].map(([title, body]) => `<article class="comparison-card"><h3>${title}</h3><p>${body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      ${groups
+        .map(
+          ([region, items], index) => `
+      <section class="section ${index % 2 ? '' : 'section-muted'}" ${index === 0 ? 'id="commercial-counties"' : ''}>
+        <div class="container section-head">
+          <p class="eyebrow">${region}</p>
+          <h2>${region} commercial property pages by county.</h2>
+          <p>Use these county pages to reach commercial, multi-family, retail, office, mixed-use, flex, and warehouse content tied to the exact county where the asset sits.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="${region} commercial property county pages">
+          ${comparisonCards(
+            items.map((county) => ({ href: countyCommercialFile(county.name), label: `${county.name} County Commercial Properties` })),
+            (item) => item.label,
+            () => 'County-specific commercial content built to support local search relevance and a direct-sale decision.',
+            () => 'View County Commercial Page'
+          )}
+        </div>
+      </section>`
+        )
+        .join('')}
+
+      <section class="section" id="commercial-faq">
+        <div class="container section-head">
+          <p class="eyebrow">Commercial FAQ</p>
+          <h2>Questions we hear about selling commercial property in Florida.</h2>
+        </div>
+        <div class="container faq-list" aria-label="Florida commercial property frequently asked questions">
+          ${faqList(faqs)}
+        </div>
+      </section>
+    </main>
+
+${footer()}`
+  });
+}
+
+function countyCommercialPage(county) {
+  const countyLabel = formatCounty(county.name);
+  const canonicalFile = countyCommercialFile(county.name);
+  const canonical = `${BASE_URL}/${canonicalFile}`;
+  const description = `Need to sell commercial real estate in ${countyLabel}, Florida? We buy multi-family, mixed-use, retail, office, flex, warehouse, and other commercial property with a direct-sale path.`;
+  const faqs = countyCommercialFaqs(county);
+  const cityLinks = cityCommercialLinksForCounty(county.name);
+  const relatedCounties = nearbyCountyLinks(county, 6).map((item) => ({
+    href: countyCommercialFile(item.label.replace(' County', '')),
+    label: `${item.label} Commercial Properties`
+  }));
+  const schemaItems = [
+    webPageSchema(`We Buy Commercial Property in ${countyLabel}`, canonical, description),
+    serviceSchema(
+      `We Buy Commercial Property in ${countyLabel}`,
+      canonical,
+      `${countyLabel}, Florida`,
+      'Direct commercial real estate, multifamily, mixed-use, retail, office, and industrial acquisition'
+    ),
+    breadcrumbSchema([
+      { name: 'Home', href: 'index.html' },
+      { name: 'We Buy Commercial Properties', href: COMMERCIAL_HUB_FILE },
+      { name: `${countyLabel} Commercial Properties`, href: canonicalFile }
+    ]),
+    faqSchema(faqs)
+  ];
+
+  return pageShell({
+    title: `We Buy Commercial Property in ${countyLabel}, FL | Multi-Family and More`,
+    description,
+    canonical,
+    schemaItems,
+    body: `
+    <header class="hero subpage-hero" id="top">
+${nav()}
+      <div class="container subpage-hero-copy">
+        <p class="eyebrow">${countyLabel} Commercial Real Estate</p>
+        <h1>We Buy Commercial Properties in ${countyLabel}, FL.</h1>
+        <p>This page is built for owners of commercial real estate in ${countyLabel} who need a direct-sale path for multi-family, mixed-use, retail, office, flex, warehouse, or other value-add assets.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial property in ${countyLabel}">Talk Through My Commercial Property</a>
+          <a class="btn btn-text" href="${COMMERCIAL_HUB_FILE}" title="Browse all Florida commercial property pages">Browse All Commercial Pages</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      ${sectionBlock(
+        'County Commercial Overview',
+        `What commercial owners in ${countyLabel} are usually trying to solve.`,
+        [
+          `Most people searching for a commercial buyer in ${countyLabel} are not looking for generic real-estate advice. They are usually dealing with vacancy, capex, lease rollover, inherited ownership, a partner decision, or a property that no longer fits the hold strategy.`,
+          `This page is designed to support commercial-property search intent in ${countyLabel} and make it easier to compare a direct sale against another long listing or stabilization cycle.`,
+          `If the property is multi-family, mixed-use, retail, office, flex, warehouse, or another commercial asset, the question is usually what path is still practical to execute from here.`
+        ]
+      )}
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Local Commercial Context</p>
+          <h2>Why commercial owners in ${countyLabel} look for a direct buyer.</h2>
+          ${commercialCountyEditorialParagraphs(county).map((paragraph, index) => (index === 0 ? `<p class="lead">${paragraph}</p>` : `<p>${paragraph}</p>`)).join('')}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
+          <p class="eyebrow">Commercial Asset Types</p>
+          <h2>Property types this ${countyLabel} page is built to support.</h2>
+          <p>Commercial search intent is broader than one asset class, so the page is written to support apartment, mixed-use, retail, office, flex, warehouse, and other value-add property searches.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial property types in ${countyLabel}">
+          ${commercialPropertyTypes.map(([title, body]) => `<article class="comparison-card"><h3>${title}</h3><p>${body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Direct Sale Fit</p>
+          <h2>Who this ${countyLabel} commercial page is for.</h2>
+          <p>These are the most common patterns behind county-level commercial searches.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Best fit commercial seller scenarios in ${countyLabel}">
+          ${countyCommercialFitCards(county).map((item) => `<article class="comparison-card"><h3>${item.title}</h3><p>${item.body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
+          <p class="eyebrow">What Creates Drag</p>
+          <h2>Why commercial listings often slow down in ${countyLabel}.</h2>
+          <p>Commercial assets can still list traditionally. The point of this page is to explain why many owners choose a direct buyer instead.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial listing bottlenecks in ${countyLabel}">
+          ${countyCommercialPressureCards(county).map((item) => `<article class="comparison-card"><h3>${item.title}</h3><p>${item.body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      ${cityLinks.length
+        ? `
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Commercial City Pages</p>
+          <h2>Major-city commercial pages connected to ${countyLabel}.</h2>
+          <p>Use these pages when city-level search intent is stronger than the county label alone.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="${countyLabel} city commercial pages">
+          ${comparisonCards(
+            cityLinks,
+            (item) => item.label,
+            () => 'Open the city-specific commercial page for a more focused local search match.',
+            () => 'View City Commercial Page'
+          )}
+        </div>
+      </section>`
+        : ''}
+
+      <section class="section">
+        <div class="container section-head">
+          <p class="eyebrow">Related Local Pages</p>
+          <h2>Keep navigating commercial and residential pages around ${countyLabel}.</h2>
+          <p>These links help move between the county commercial page, the broader commercial hub, and the standard county page when you need both versions.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Related local pages for ${countyLabel} commercial property">
+          ${comparisonCards(
+            [
+              { href: countyFile(county.name), label: countyLabel },
+              { href: COMMERCIAL_HUB_FILE, label: 'We Buy Commercial Properties' },
+              ...cityLinks.slice(0, 3)
+            ],
+            (item) => item.label,
+            () => 'Use this related page to keep narrowing the local search and property type fit.',
+            () => 'View Related Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Nearby County Commercial Pages</p>
+          <h2>Other ${county.region} county commercial pages nearby.</h2>
+          <p>These pages help when the asset sits just outside ${countyLabel} or the owner is comparing another Florida county in the same region.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Nearby county commercial pages for ${countyLabel}">
+          ${comparisonCards(
+            relatedCounties,
+            (item) => item.label,
+            () => 'Compare another county-specific commercial page in the same region.',
+            () => 'View County Commercial Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section" id="county-commercial-faq">
+        <div class="container section-head">
+          <p class="eyebrow">County Commercial FAQ</p>
+          <h2>Questions we hear from commercial owners in ${countyLabel}.</h2>
+        </div>
+        <div class="container faq-list" aria-label="${countyLabel} commercial property frequently asked questions">
+          ${faqList(faqs)}
+        </div>
+      </section>
+
+      <section class="final-cta" id="final-cta">
+        <div class="container final-cta-box">
+          <p class="eyebrow">Next Step</p>
+          <h2>Need to sell commercial real estate in ${countyLabel}?</h2>
+          <p>Call now or move into the offer page to share the asset type, occupancy, timing, and the issue driving the sale so we can point you to the most practical next step.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial real estate in ${countyLabel}">Call (813) 555-0192</a>
+            <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+${footer()}`
+  });
+}
+
+function cityCommercialPage(page) {
+  const label = areaLabel(page);
+  const primaryCounty = findCounty(page.counties[0]);
+  const countyLabel = formatCounty(primaryCounty.name);
+  const canonicalFile = cityCommercialFile(page);
+  const canonical = `${BASE_URL}/${canonicalFile}`;
+  const description = `Need to sell commercial real estate in ${label}, Florida? We buy multi-family, mixed-use, retail, office, flex, warehouse, and other commercial property with a direct-sale path tied to ${countyLabel}.`;
+  const faqs = cityCommercialFaqs(page, primaryCounty);
+  const nearbyCommercialMarkets = dedupeLinks(
+    communityLinks(page)
+      .map((item) => areaRows.find((row) => row.file === item.href))
+      .filter((item) => item && !areaIsRegion(item))
+      .map((item) => ({ href: cityCommercialFile(item), label: `${areaLabel(item)} Commercial Properties` }))
+  );
+  const nearbyCommercialCounties = nearbyAreaCounties(page, primaryCounty).map((item) => ({
+    href: countyCommercialFile(item.label.replace(' County', '')),
+    label: `${item.label} Commercial Properties`
+  }));
+  const schemaItems = [
+    webPageSchema(`We Buy Commercial Property in ${label}, Florida`, canonical, description),
+    serviceSchema(
+      `We Buy Commercial Property in ${label}`,
+      canonical,
+      `${label}, ${countyLabel}, Florida`,
+      'Direct commercial real estate, multifamily, mixed-use, retail, office, and industrial acquisition'
+    ),
+    breadcrumbSchema([
+      { name: 'Home', href: 'index.html' },
+      { name: 'We Buy Commercial Properties', href: COMMERCIAL_HUB_FILE },
+      { name: `${countyLabel} Commercial Properties`, href: countyCommercialFile(primaryCounty.name) },
+      { name: `${label} Commercial Properties`, href: canonicalFile }
+    ]),
+    faqSchema(faqs)
+  ];
+
+  return pageShell({
+    title: `We Buy Commercial Property in ${label}, FL | Multi-Family and More`,
+    description,
+    canonical,
+    schemaItems,
+    body: `
+    <header class="hero subpage-hero" id="top">
+${nav()}
+      <div class="container subpage-hero-copy">
+        <p class="eyebrow">${label} Commercial Real Estate</p>
+        <h1>We Buy Commercial Properties in ${label}, FL.</h1>
+        <p>This page is built for owners in ${label} who need a direct-sale path for multi-family, mixed-use, retail, office, flex, warehouse, and other commercial property tied to ${countyLabel}.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial property in ${label}">Talk Through My ${label} Asset</a>
+          <a class="btn btn-text" href="${countyCommercialFile(primaryCounty.name)}" title="View the ${countyLabel} commercial page">View ${countyLabel} Commercial Page</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      ${sectionBlock(
+        'City Commercial Overview',
+        `What owners searching for commercial property buyers in ${label} are usually trying to solve.`,
+        [
+          `Most city-level commercial searches happen because the owner needs a more targeted page than a statewide or county-only result can provide. The asset is in ${label}, the search is local, and the owner wants a clearer next step.`,
+          `This page is built to support direct-sale search intent for commercial real estate in ${label}, especially when the property is multi-family, mixed-use, retail, office, flex, warehouse, or another asset that needs local relevance.`,
+          `For many owners, the practical issue is not whether the property could be marketed. It is whether another listing cycle still makes sense after vacancy, capex, leasing friction, or timing pressure are accounted for.`
+        ]
+      )}
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Local Commercial Context</p>
+          <h2>Why city-level commercial content matters in ${label}.</h2>
+          ${commercialCityEditorialParagraphs(page, primaryCounty).map((paragraph, index) => (index === 0 ? `<p class="lead">${paragraph}</p>` : `<p>${paragraph}</p>`)).join('')}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
+          <p class="eyebrow">Commercial Asset Types</p>
+          <h2>Property types this ${label} page is built to support.</h2>
+          <p>Multi-family is a major part of the query set, but this page is also meant to support mixed-use, retail, office, flex, warehouse, and value-add commercial assets.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial property types in ${label}">
+          ${commercialPropertyTypes.map(([title, body]) => `<article class="comparison-card"><h3>${title}</h3><p>${body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Direct Sale Fit</p>
+          <h2>Who this ${label} commercial page is built for.</h2>
+          <p>These are the most common commercial seller profiles behind city-level searches in ${label}.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Best fit commercial seller scenarios in ${label}">
+          ${cityCommercialFitCards(page, primaryCounty).map((item) => `<article class="comparison-card"><h3>${item.title}</h3><p>${item.body}</p></article>`).join('')}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
+          <p class="eyebrow">Related Commercial Pages</p>
+          <h2>Commercial pages connected to ${label}.</h2>
+          <p>Use these pages if the property sits just outside the city core, the county label is a better fit, or a nearby market deserves its own comparison.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Related commercial pages for ${label}">
+          ${comparisonCards(
+            dedupeLinks([
+              { href: countyCommercialFile(primaryCounty.name), label: `${countyLabel} Commercial Properties` },
+              { href: COMMERCIAL_HUB_FILE, label: 'We Buy Commercial Properties' },
+              ...nearbyCommercialMarkets,
+              ...nearbyCommercialCounties
+            ]).slice(0, 8),
+            (item) => item.label,
+            () => 'Use this related page if it better matches the asset location or commercial search pattern.',
+            () => 'View Related Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container section-head">
+          <p class="eyebrow">Keep the Search Local</p>
+          <h2>Pages that help move between commercial and standard local guidance in ${label}.</h2>
+          <p>These pages are useful when you want both the commercial version and the broader residential or county context around the same market.</p>
+        </div>
+        <div class="container comparison-grid" aria-label="Commercial and standard local pages for ${label}">
+          ${comparisonCards(
+            [
+              { href: page.file, label },
+              { href: countyFile(primaryCounty.name), label: countyLabel },
+              { href: countyCommercialFile(primaryCounty.name), label: `${countyLabel} Commercial Properties` }
+            ],
+            (item) => item.label,
+            () => 'Use this page to compare the city commercial version with the broader local pages underneath it.',
+            () => 'View Page'
+          )}
+        </div>
+      </section>
+
+      <section class="section" id="city-commercial-faq">
+        <div class="container section-head">
+          <p class="eyebrow">${label} Commercial FAQ</p>
+          <h2>Questions we hear from commercial owners in ${label}.</h2>
+        </div>
+        <div class="container faq-list" aria-label="${label} commercial property frequently asked questions">
+          ${faqList(faqs)}
+        </div>
+      </section>
+
+      <section class="final-cta" id="final-cta">
+        <div class="container final-cta-box">
+          <p class="eyebrow">Next Step</p>
+          <h2>Need to sell commercial real estate in ${label}?</h2>
+          <p>Call now or move into the offer page to share the asset type, occupancy, timing, and property details so we can point you to the most practical next step.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial property in ${label}">Call (813) 555-0192</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>
@@ -1384,18 +2102,21 @@ function sitemapXml() {
 
 function main() {
   areaRows.forEach((page) => write(page.file, areaPage(page)));
+  commercialCityRows().forEach((page) => write(cityCommercialFile(page), cityCommercialPage(page)));
   counties.forEach((county) => write(countyFile(county.name), countyPage(county)));
+  counties.forEach((county) => write(countyCommercialFile(county.name), countyCommercialPage(county)));
   situationProfiles.forEach((situation) => write(situationCountyHubFile(situation), situationCountyHubPage(situation)));
   counties.forEach((county) => {
     situationProfiles.forEach((situation) => {
       write(countySituationFile(county.name, situation), countySituationPage(county, situation));
     });
   });
+  write(COMMERCIAL_HUB_FILE, commercialHubPage());
   write('counties.html', countyHub());
   write('robots.txt', robotsTxt());
   write('sitemap.xml', sitemapXml());
   console.log(
-    `Regenerated ${counties.length} county pages, ${counties.length * situationProfiles.length} county-situation pages, ${situationProfiles.length} situation county hubs, and ${areaRows.length} area pages.`
+    `Regenerated ${counties.length} county pages, ${counties.length} county commercial pages, ${commercialCityRows().length} city commercial pages, ${counties.length * situationProfiles.length} county-situation pages, ${situationProfiles.length} situation county hubs, 1 statewide commercial hub, and ${areaRows.length} area pages.`
   );
 }
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -268,6 +268,7 @@
           <a href="situations.html" title="Explore our home selling solutions">Our Solutions</a>
           <a href="service-areas.html" title="View all Florida service areas where we buy houses">Service Areas</a>
           <a href="counties.html" title="Browse all 67 Florida county pages">County Directory</a>
+          <a href="we-buy-commercial-properties.html" title="Browse our Florida commercial property pages">We Buy Commercial Properties</a>
           <a href="create-your-offer.html" title="Estimate your home value and offer range">Home Value Tool</a>
           <a href="blog.html" title="Read Samuel's Florida home selling articles">Blog</a>
         </nav>
@@ -550,8 +551,8 @@
               <span>${comp.sold_date || 'Date unavailable'}</span>
             </div>
             <p class="comp-result-price">${asCurrency(comp.sold_price || 0)}</p>
-            <p class="comp-result-meta">${comp.beds || '-'} beds · ${comp.baths || '-'} baths · ${comp.sqft || '-'} sqft</p>
-            <p class="comp-result-meta">Distance: ${(Number(comp.distance_miles) || 0).toFixed(2)} mi · Similarity: ${Math.round(Number(comp.similarity_score) || 0)}%</p>
+            <p class="comp-result-meta">${comp.beds || '-'} beds Â· ${comp.baths || '-'} baths Â· ${comp.sqft || '-'} sqft</p>
+            <p class="comp-result-meta">Distance: ${(Number(comp.distance_miles) || 0).toFixed(2)} mi Â· Similarity: ${Math.round(Number(comp.similarity_score) || 0)}%</p>
             <p class="comp-result-source">Source: ${comp.source || 'Public web data'}</p>
           `;
           compResults.appendChild(card);
@@ -833,7 +834,7 @@
           comps.forEach((comp) => {
             const card = document.createElement('article');
             card.className = 'comp-result-card';
-            card.innerHTML = '<div class="comp-result-head"><strong>' + (comp.address || 'Comparable sale') + '</strong><span>' + (comp.sold_date || 'Date unavailable') + '</span></div><p class="comp-result-price">' + currency(comp.sold_price || 0) + '</p><p class="comp-result-meta">' + (comp.beds || '-') + ' beds · ' + (comp.baths || '-') + ' baths · ' + (comp.sqft || '-') + ' sqft</p><p class="comp-result-meta">Distance: ' + ((Number(comp.distance_miles) || 0).toFixed(2)) + ' mi · Similarity: ' + Math.round(Number(comp.similarity_score) || 0) + '%</p><p class="comp-result-source">Source: ' + (comp.source || 'Public web data') + '</p>';
+            card.innerHTML = '<div class="comp-result-head"><strong>' + (comp.address || 'Comparable sale') + '</strong><span>' + (comp.sold_date || 'Date unavailable') + '</span></div><p class="comp-result-price">' + currency(comp.sold_price || 0) + '</p><p class="comp-result-meta">' + (comp.beds || '-') + ' beds Â· ' + (comp.baths || '-') + ' baths Â· ' + (comp.sqft || '-') + ' sqft</p><p class="comp-result-meta">Distance: ' + ((Number(comp.distance_miles) || 0).toFixed(2)) + ' mi Â· Similarity: ' + Math.round(Number(comp.similarity_score) || 0) + '%</p><p class="comp-result-source">Source: ' + (comp.source || 'Public web data') + '</p>';
             compResults.appendChild(card);
           });
         }
