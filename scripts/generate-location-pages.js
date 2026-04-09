@@ -111,7 +111,7 @@ function nav() {
           <a href="index.html#samuel" title="Learn about our Florida home buying team">About Us</a>
           <a href="index.html#faq" title="View frequently asked questions about selling your house">FAQ</a>
         </nav>
-        <a class="btn btn-nav-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now at 813-555-0192">Call (813) 555-0192</a>
+        <a class="btn btn-nav-phone" href="tel:+1-407-349-7118" title="Call Florida Cash House Buyers now at 407-349-7118">Call (407) 349-7118</a>
       </div>`;
 }
 
@@ -124,7 +124,7 @@ function footer() {
             <img src="logo.svg" alt="Florida Cash House Buyers" class="footer-logo" />
           </a>
           <p>Helping Florida homeowners sell with confidence through a clear process, straightforward communication, and flexible closing timelines.</p>
-          <a class="footer-phone" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers at 813-555-0192">(813) 555-0192</a>
+          <a class="footer-phone" href="tel:+1-407-349-7118" title="Call Florida Cash House Buyers at 407-349-7118">(407) 349-7118</a>
         </section>
         <nav class="footer-nav" aria-label="Footer navigation">
           <h2>Core Pages</h2>
@@ -226,7 +226,7 @@ function serviceSchema(name, canonical, area, serviceType = 'Direct home purchas
       '@type': 'RealEstateAgent',
       name: 'Florida Cash House Buyers',
       url: BASE_URL,
-      telephone: '+1-813-555-0192'
+      telephone: '+1-407-349-7118'
     },
     serviceType,
     url: canonical
@@ -761,7 +761,7 @@ ${nav()}
         <h1>Sell My Home Fast in ${formatCounty(county.name)}, FL Without Repairs, Showings, or Timeline Guesswork.</h1>
         <p>If you are searching for the fastest realistic way to sell your home in ${formatCounty(county.name)}, this page is built to help you compare a direct as-is sale with the delays, prep work, and uncertainty of a traditional listing.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about selling in ${formatCounty(county.name)}">Get My ${county.name} County Cash Offer</a>
+          <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about selling in ${formatCounty(county.name)}">Get My ${county.name} County Cash Offer</a>
           <a class="btn btn-text" href="counties.html" title="Browse all Florida county pages">Browse All County Pages</a>
         </div>
       </div>
@@ -946,7 +946,7 @@ ${nav()}
           <h2>Need to sell your home fast in ${formatCounty(county.name)}?</h2>
           <p>Call now or continue to the offer page to share your timeline, property condition, and the issue that is pushing the sale.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now">Call (813) 555-0192</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call Florida Cash House Buyers now">Call (407) 349-7118</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>
@@ -998,7 +998,7 @@ ${nav()}
         <h1>${replaceCounty(situation.heroTitleTemplate, county.name)}</h1>
         <p>${replaceCounty(situation.heroBodyTemplate, county.name)}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about ${situation.shortLabel.toLowerCase()} in ${countyLabel}">${situation.cta}</a>
+          <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about ${situation.shortLabel.toLowerCase()} in ${countyLabel}">${situation.cta}</a>
           <a class="btn btn-text" href="${countyFile(county.name)}" title="View the full ${countyLabel} page">View ${countyLabel} Page</a>
         </div>
       </div>
@@ -1108,7 +1108,7 @@ ${nav()}
           <h2>Need help with ${situation.faqTopic} in ${countyLabel}?</h2>
           <p>Call now or move into the offer page to share your ZIP, timeline, and property details. We will help you compare the practical next step.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about ${situation.faqTopic} in ${countyLabel}">Call (813) 555-0192</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about ${situation.faqTopic} in ${countyLabel}">Call (407) 349-7118</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>
@@ -1159,7 +1159,7 @@ ${nav()}
         <h1>${page.heroTitle}</h1>
         <p>${page.heroText}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now for help in ${label}">Get My Cash Offer</a>
+          <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now for help in ${label}">Get My Cash Offer</a>
           <a class="btn btn-text" href="service-areas.html" title="View all Florida service areas">View All Service Areas</a>
         </div>
       </div>
@@ -1258,7 +1258,7 @@ ${nav()}
           <h2>Need a direct-sale option in ${label}?</h2>
           <p>Call now or move into the offer page to share your timeline, ZIP, and property details.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now for help in ${label}">Call (813) 555-0192</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now for help in ${label}">Call (407) 349-7118</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>
@@ -1274,7 +1274,7 @@ ${nav()}
         <h1>${page.heroTitle}</h1>
         <p>${page.heroText}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now for help in ${label}">Get My ${label} Cash Offer</a>
+          <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now for help in ${label}">Get My ${label} Cash Offer</a>
           <a class="btn btn-text" href="${countyFile(primaryCounty.name)}" title="View the ${formatCounty(primaryCounty.name)} page">View ${primaryCounty.name} County</a>
         </div>
       </div>
@@ -1426,7 +1426,7 @@ ${nav()}
           <h2>Need a direct-sale option in ${label}?</h2>
           <p>Call now or move into the offer page to share your timeline, ZIP, and property details so we can point you to the cleanest next step.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now for help in ${label}">Call (813) 555-0192</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now for help in ${label}">Call (407) 349-7118</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>
@@ -1617,7 +1617,7 @@ ${nav()}
         <h1>We Buy Commercial Properties in ${countyLabel}, FL.</h1>
         <p>This page is built for owners of commercial real estate in ${countyLabel} who need a direct-sale path for multi-family, mixed-use, retail, office, flex, warehouse, or other value-add assets.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial property in ${countyLabel}">Talk Through My Commercial Property</a>
+          <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about commercial property in ${countyLabel}">Talk Through My Commercial Property</a>
           <a class="btn btn-text" href="${COMMERCIAL_HUB_FILE}" title="Browse all Florida commercial property pages">Browse All Commercial Pages</a>
         </div>
       </div>
@@ -1746,7 +1746,7 @@ ${nav()}
           <h2>Need to sell commercial real estate in ${countyLabel}?</h2>
           <p>Call now or move into the offer page to share the asset type, occupancy, timing, and the issue driving the sale so we can point you to the most practical next step.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial real estate in ${countyLabel}">Call (813) 555-0192</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about commercial real estate in ${countyLabel}">Call (407) 349-7118</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>
@@ -1805,7 +1805,7 @@ ${nav()}
         <h1>We Buy Commercial Properties in ${label}, FL.</h1>
         <p>This page is built for owners in ${label} who need a direct-sale path for multi-family, mixed-use, retail, office, flex, warehouse, and other commercial property tied to ${countyLabel}.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial property in ${label}">Talk Through My ${label} Asset</a>
+          <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about commercial property in ${label}">Talk Through My ${label} Asset</a>
           <a class="btn btn-text" href="${countyCommercialFile(primaryCounty.name)}" title="View the ${countyLabel} commercial page">View ${countyLabel} Commercial Page</a>
         </div>
       </div>
@@ -1909,7 +1909,7 @@ ${nav()}
           <h2>Need to sell commercial real estate in ${label}?</h2>
           <p>Call now or move into the offer page to share the asset type, occupancy, timing, and property details so we can point you to the most practical next step.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call now about commercial property in ${label}">Call (813) 555-0192</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call now about commercial property in ${label}">Call (407) 349-7118</a>
             <a class="btn btn-outline" href="create-your-offer.html" title="Open the detailed offer page">Create Your Offer</a>
           </div>
         </div>

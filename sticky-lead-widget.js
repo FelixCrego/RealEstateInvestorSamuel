@@ -98,7 +98,7 @@
           <input id="sticky-lead-name" name="name" type="text" autocomplete="name" placeholder="Your name" value="${typeof draft.name === 'string' ? draft.name.replace(/"/g, '&quot;') : ''}" required />
 
           <label for="sticky-lead-phone">Phone Number</label>
-          <input id="sticky-lead-phone" name="phone" type="tel" autocomplete="tel" placeholder="(813) 555-0192" value="${typeof draft.phone === 'string' ? draft.phone.replace(/"/g, '&quot;') : ''}" required />
+          <input id="sticky-lead-phone" name="phone" type="tel" autocomplete="tel" placeholder="(407) 349-7118" value="${typeof draft.phone === 'string' ? draft.phone.replace(/"/g, '&quot;') : ''}" required />
 
           <div class="sticky-lead-nav">
             <button class="btn btn-primary sticky-lead-next" type="button">Next</button>
@@ -127,7 +127,7 @@
             <button class="btn btn-outline sticky-lead-back" type="button">Back</button>
             <button class="btn btn-primary sticky-lead-continue" type="button">Continue</button>
           </div>
-          <a class="sticky-lead-call" href="tel:+1-813-555-0192" title="Call Florida Cash House Buyers now about ${situationLabel}">Call Instead</a>
+          <a class="sticky-lead-call" href="tel:+1-407-349-7118" title="Call Florida Cash House Buyers now about ${situationLabel}">Call Instead</a>
         </section>
 
       <p class="sticky-lead-feedback" aria-live="polite"></p>
@@ -252,7 +252,7 @@
           <p class="exit-intent-text">If you have questions about ${situationLabel}, this is the fastest way to get a real answer from our team.</p>
           <p class="exit-intent-note">${prompt}</p>
           <div class="exit-intent-actions">
-            <a class="btn btn-primary" href="tel:+1-813-555-0192" title="Call Samuel now at 813-555-0192">Call Samuel Now</a>
+            <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call Samuel now at 407-349-7118">Call Samuel Now</a>
             <button class="btn btn-outline exit-intent-dismiss" type="button">Keep Browsing</button>
           </div>
         </div>
