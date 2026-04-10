@@ -84,6 +84,7 @@ function pageShell({ title, description, canonical, schemaItems, body }) {
     <title>${title}</title>
     <meta name="description" content="${description}" />
     <link rel="canonical" href="${canonical}" />
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
 ${schemaScript(schemaItems)}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
