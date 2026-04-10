@@ -13,6 +13,14 @@ const {
 
 const ROOT = path.resolve(__dirname, '..');
 const BASE_URL = 'https://real-estate-investor-samuel.vercel.app';
+const GA_TAG = `    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPPVMLREZ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KPPVMLREZ9');
+    </script>`;
 
 const counties = countyCsv.split('\n').map((line) => {
   const [name, region] = line.split('|');
@@ -85,6 +93,7 @@ function pageShell({ title, description, canonical, schemaItems, body }) {
     <meta name="description" content="${description}" />
     <link rel="canonical" href="${canonical}" />
     <link rel="icon" type="image/png" href="favicon.png" />
+${GA_TAG}
 ${schemaScript(schemaItems)}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

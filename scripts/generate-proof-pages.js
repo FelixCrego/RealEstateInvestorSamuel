@@ -3,6 +3,14 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const BASE_URL = 'https://real-estate-investor-samuel.vercel.app';
+const GA_TAG = `    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPPVMLREZ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KPPVMLREZ9');
+    </script>`;
 
 const stories = [
   {
@@ -219,6 +227,7 @@ function pageShell({ title, description, canonical, body }) {
     <title>${title}</title>
     <meta name="description" content="${description}" />
     <link rel="canonical" href="${canonical}" />
+${GA_TAG}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
