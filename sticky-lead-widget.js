@@ -64,25 +64,38 @@
   };
 
   const submitLeadCapture = async (payload) => {
-    try {
-      await fetch('/api/lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        keepalive: true,
-        body: JSON.stringify({
-          source: payload.source,
-          formName: payload.formName,
-          pageUrl: window.location.href,
-          pageTitle: document.title,
-          submittedAt: new Date().toISOString(),
-          fields: payload.fields || {}
-        })
-      });
-    } catch {
-      // Do not block the next step if email delivery is unavailable.
+    const response = await fetch('/api/lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      keepalive: true,
+      body: JSON.stringify({
+        source: payload.source,
+        formName: payload.formName,
+        pageUrl: window.location.href,
+        pageTitle: document.title,
+        submittedAt: new Date().toISOString(),
+        fields: payload.fields || {}
+      })
+    });
+
+    if (!response.ok) {
+      let errorMessage = 'We could not confirm your submission yet.';
+
+      try {
+        const payload = await response.json();
+        if (payload && typeof payload.error === 'string' && payload.error.trim()) {
+          errorMessage = payload.error.trim();
+        }
+      } catch {
+        // Use the default message.
+      }
+
+      throw new Error(errorMessage);
     }
+
+    return response.json().catch(() => ({ ok: true }));
   };
 
   const buildWidget = () => {
@@ -214,27 +227,41 @@
       setStep(1);
     });
 
-    continueButton.addEventListener('click', () => {
+    continueButton.addEventListener('click', async () => {
       if (!addressInput.value.trim() || !timelineInput.value) {
         feedback.textContent = 'Enter the property address and timeline to continue.';
         return;
       }
 
-      void submitLeadCapture({
-        source: 'sticky-lead-widget',
-        formName: 'Sticky Lead Widget',
-        fields: {
-          full_name: nameInput.value.trim(),
-          phone: phoneInput.value.trim(),
-          property_address: addressInput.value.trim(),
-          selling_timeline: timelineInput.value,
-          zip,
-          situation: situationLabel
-        }
-      });
+      continueButton.disabled = true;
+      continueButton.textContent = 'Sending...';
+      feedback.textContent = 'Sending your details to Felix now...';
 
-      feedback.textContent = 'Saved. Opening the detailed offer page.';
-      goToOfferPage();
+      try {
+        await submitLeadCapture({
+          source: 'sticky-lead-widget',
+          formName: 'Sticky Lead Widget',
+          fields: {
+            full_name: nameInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            property_address: addressInput.value.trim(),
+            selling_timeline: timelineInput.value,
+            zip,
+            situation: situationLabel
+          }
+        });
+
+        feedback.textContent = 'Submitted. Felix received your details. Opening the detailed offer page...';
+        window.setTimeout(() => {
+          goToOfferPage();
+        }, 900);
+      } catch (error) {
+        feedback.textContent = error && error.message
+          ? `${error.message} Please try again or call (407) 349-7118.`
+          : 'We could not confirm your submission. Please try again or call (407) 349-7118.';
+        continueButton.disabled = false;
+        continueButton.textContent = 'Continue';
+      }
     });
 
     closeButton.addEventListener('click', () => {
