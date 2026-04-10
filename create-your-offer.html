@@ -311,6 +311,7 @@
     </footer>
 
     <script src="zip-city-resolver.js"></script>
+    <script src="lead-submission.js"></script>
     <script>
       const form = document.getElementById('calculator-form');
       const feedback = document.getElementById('form-feedback');
@@ -955,11 +956,52 @@
         }
 
         async function runAll() {
-          const profile = localEstimate();
-          if (!profile) return false;
-          await runCompScan(profile);
-          return false;
+      const profile = localEstimate();
+      if (!profile) return false;
+      const leadDraft = (() => {
+        try {
+          return JSON.parse(window.localStorage.getItem('fchb-lead-draft') || 'null') || {};
+        } catch {
+          return {};
         }
+      })();
+      const leadSentKey = 'fchb-offer-form-submitted';
+
+      if (typeof window.submitLeadCapture === 'function') {
+        try {
+          if (window.sessionStorage.getItem(leadSentKey) !== '1') {
+            await window.submitLeadCapture({
+              source: 'offer-calculator',
+              formName: 'Offer Calculator Form',
+              fields: {
+                property_address: profile.address || '',
+                city: profile.city || '',
+                zip: profile.zip || '',
+                beds: profile.beds || '',
+                baths: profile.baths || '',
+                living_area: profile.sqft || '',
+                year_built: profile.yearBuilt || '',
+                property_condition: profile.condition || '',
+                selling_timeline: profile.timeline || '',
+                external_estimate: profile.externalEstimate || '',
+                comp_notes: profile.compNotes || '',
+                contact_name: leadDraft.name || '',
+                contact_phone: leadDraft.phone || '',
+                sticky_address: leadDraft.address || '',
+                sticky_timeline: leadDraft.timeline || '',
+                situation: (new URLSearchParams(window.location.search).get('situation') || '').trim()
+              }
+            });
+            window.sessionStorage.setItem(leadSentKey, '1');
+          }
+        } catch {
+          // Keep the valuation workflow available even if email delivery is unavailable.
+        }
+      }
+
+      await runCompScan(profile);
+      return false;
+    }
 
         buildButton.onclick = function () { runAll(); return false; };
         if (refreshButton) refreshButton.onclick = function () { runAll(); return false; };

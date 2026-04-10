@@ -63,6 +63,28 @@
     }
   };
 
+  const submitLeadCapture = async (payload) => {
+    try {
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        keepalive: true,
+        body: JSON.stringify({
+          source: payload.source,
+          formName: payload.formName,
+          pageUrl: window.location.href,
+          pageTitle: document.title,
+          submittedAt: new Date().toISOString(),
+          fields: payload.fields || {}
+        })
+      });
+    } catch {
+      // Do not block the next step if email delivery is unavailable.
+    }
+  };
+
   const buildWidget = () => {
     const searchParams = new URLSearchParams(window.location.search);
     const storedProfile = readJson(PROFILE_STORAGE_KEY) || {};
@@ -197,6 +219,19 @@
         feedback.textContent = 'Enter the property address and timeline to continue.';
         return;
       }
+
+      void submitLeadCapture({
+        source: 'sticky-lead-widget',
+        formName: 'Sticky Lead Widget',
+        fields: {
+          full_name: nameInput.value.trim(),
+          phone: phoneInput.value.trim(),
+          property_address: addressInput.value.trim(),
+          selling_timeline: timelineInput.value,
+          zip,
+          situation: situationLabel
+        }
+      });
 
       feedback.textContent = 'Saved. Opening the detailed offer page.';
       goToOfferPage();

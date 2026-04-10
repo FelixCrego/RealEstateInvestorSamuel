@@ -137,7 +137,7 @@
             <a class="btn btn-primary" href="tel:+1-407-349-7118" title="Call Samuel to discuss your home sale options">Talk to Samuel Today</a>
           </div>
           <figure class="samuel-images" aria-label="Samuel Colon photo">
-            <img src="images/We buy Head shot.png" alt="Samuel Colon" />
+            <img src="images/samuel-colon-headshot-2026-04-09.jpeg" alt="Samuel Colon" />
           </figure>
         </div>
       </section>
@@ -574,6 +574,7 @@
     </footer>
     <script src="zip-city-resolver.js"></script>
     <script src="sticky-lead-widget.js"></script>
+    <script src="lead-submission.js"></script>
     <script>
       (function () {
         const tabs = Array.from(document.querySelectorAll('.process-step-button'));
@@ -1026,6 +1027,18 @@
           const profile = { zip, situation };
           storeProfile(profile);
           window.dispatchEvent(new Event('fchb:profile-updated'));
+          if (typeof window.submitLeadCapture === 'function') {
+            void window.submitLeadCapture({
+              source: 'homepage-market-match',
+              formName: 'Homepage Market Match Form',
+              fields: {
+                zip,
+                situation: situationLabels[situation]
+              }
+            }).catch(() => {
+              // Keep the page-discovery flow responsive even if email delivery is unavailable.
+            });
+          }
           updateUrl(zip, situation);
           renderResults(profile);
         });
