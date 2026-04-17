@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEOHub Dashboard | Florida Cash House Buyers</title>
+    <meta
+      name="description"
+      content="Interactive SEOHub dashboard for page grading, content review, crawl/index signals, and fix planning for Floridacashhousebuyers.com."
+    />
+        <link rel="canonical" href="https://floridacashhousebuyers.com/seo-audit-dashboard.html" />
+        <meta name="robots" content="noindex, follow" />
+        <meta property="og:title" content="SEOHub Dashboard | Florida Cash House Buyers" />
+        <meta property="og:description" content="Interactive SEOHub dashboard for page grading, content review, crawl/index signals, and fix planning for Floridacashhousebuyers.com." />
+        <meta property="og:url" content="https://floridacashhousebuyers.com/seo-audit-dashboard.html" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Florida Cash House Buyers" />
+        <meta property="og:image" content="https://floridacashhousebuyers.com/florida_final_transparent.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SEOHub Dashboard | Florida Cash House Buyers" />
+        <meta name="twitter:description" content="Interactive SEOHub dashboard for page grading, content review, crawl/index signals, and fix planning for Floridacashhousebuyers.com." />
+        <meta name="twitter:image" content="https://floridacashhousebuyers.com/florida_final_transparent.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #eef4f9;
+        --surface: #ffffff;
+        --surface-soft: #f7fafc;
+        --ink: #102131;
+        --muted: #5d6f82;
+        --line: #d7e1eb;
+        --blue: #154a7a;
+        --teal: #168892;
+        --green: #2f8f58;
+        --amber: #c77f1e;
+        --red: #b65448;
+        --purple: #5b5dcf;
+        --shadow: 0 22px 54px rgba(16, 33, 49, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(22, 136, 146, 0.12), transparent 28%),
+          linear-gradient(180deg, #f6fafc 0%, #edf3f8 100%);
+      }
+
+      a { color: var(--blue); }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1480px, calc(100% - 1.2rem));
+        margin: 0 auto;
+        padding: 1rem 0 2rem;
+      }
+
+      .hero {
+        padding: 1.35rem;
+        border: 1px solid rgba(21, 74, 122, 0.12);
+        border-radius: 1.4rem;
+        background:
+          linear-gradient(135deg, rgba(21, 74, 122, 0.96), rgba(16, 33, 49, 0.94)),
+          #14385b;
+        color: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 1rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.4rem;
+        color: #89e4ea;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+      }
+
+      h1, h2, h3, h4 {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: -0.025em;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        line-height: 1.05;
+      }
+
+      .hero-copy p {
+        color: rgba(236, 244, 250, 0.9);
+        max-width: 70ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1rem;
+      }
+
+      .hero-actions a,
+      .hero-actions button,
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.82rem 1rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .btn-primary {
+        background: #fff;
+        color: var(--blue);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+      }
+
+      .summary-card {
+        padding: 0.95rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .summary-card .label {
+        color: rgba(236, 244, 250, 0.76);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .summary-card .value {
+        margin-top: 0.35rem;
+        font-size: 1.9rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+      }
+
+      .summary-card .meta {
+        margin-top: 0.2rem;
+        color: rgba(236, 244, 250, 0.76);
+        font-size: 0.92rem;
+      }
+
+      .workspace {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: 380px minmax(0, 1fr);
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 1.2rem;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .panel-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        align-items: flex-end;
+        padding: 1rem 1rem 0.75rem;
+      }
+
+      .panel-head p {
+        margin: 0.35rem 0 0;
+        color: var(--muted);
+      }
+
+      .inventory-panel {
+        position: sticky;
+        top: 0.8rem;
+        overflow: hidden;
+      }
+
+      .filter-stack {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0 1rem 1rem;
+      }
+
+      .filter {
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .filter label {
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .filter input,
+      .filter select {
+        width: 100%;
+        padding: 0.78rem 0.85rem;
+        border: 1px solid var(--line);
+        border-radius: 0.8rem;
+        background: #fff;
+      }
+
+      .inventory-stats {
+        padding: 0 1rem 0.8rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .inventory-list {
+        max-height: calc(100vh - 310px);
+        overflow: auto;
+        border-top: 1px solid var(--line);
+      }
+
+      .inventory-item {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .inventory-item:hover,
+      .inventory-item.is-active {
+        background: linear-gradient(180deg, #f7fbff 0%, #eef5fb 100%);
+      }
+
+      .inventory-item strong {
+        display: block;
+        font-size: 0.98rem;
+        color: var(--ink);
+      }
+
+      .inventory-item .meta {
+        margin-top: 0.25rem;
+        display: flex;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.28rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+
+      .bucket-A { background: rgba(47, 143, 88, 0.14); color: var(--green); }
+      .bucket-B { background: rgba(199, 127, 30, 0.14); color: var(--amber); }
+      .bucket-C { background: rgba(182, 84, 72, 0.14); color: var(--red); }
+      .bucket-D { background: rgba(21, 74, 122, 0.14); color: var(--blue); }
+
+      .detail-stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 1rem;
+      }
+
+      .section p {
+        color: var(--muted);
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .page-header-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .page-header-actions .btn {
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--blue);
+      }
+
+      .grade-wrap {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 0.9rem;
+      }
+
+      .grade-chip {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        background: linear-gradient(145deg, var(--blue), var(--teal));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .signal-grid,
+      .score-grid,
+      .action-grid {
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .signal-card,
+      .score-card,
+      .action-card {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: linear-gradient(180deg, #fff 0%, #f8fbfd 100%);
+        padding: 0.9rem;
+      }
+
+      .signal-card .label,
+      .score-card .label {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .signal-card .value,
+      .score-card .value {
+        margin-top: 0.35rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 1.35rem;
+      }
+
+      .issue-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+      }
+
+      .issue-chip {
+        display: inline-flex;
+        padding: 0.42rem 0.7rem;
+        border-radius: 999px;
+        background: #f0f5fa;
+        color: var(--blue);
+        font-weight: 700;
+        font-size: 0.82rem;
+      }
+
+      .issue-chip.is-bad {
+        background: rgba(182, 84, 72, 0.12);
+        color: var(--red);
+      }
+
+      .issue-chip.is-warn {
+        background: rgba(199, 127, 30, 0.14);
+        color: var(--amber);
+      }
+
+      .recommendations {
+        margin: 0.8rem 0 0;
+        padding-left: 1rem;
+      }
+
+      .recommendations li {
+        margin-bottom: 0.45rem;
+        color: var(--muted);
+      }
+
+      .preview-frame {
+        width: 100%;
+        min-height: 560px;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: #fff;
+      }
+
+      .action-card button {
+        width: 100%;
+        justify-content: center;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--blue);
+      }
+
+      .action-card.is-apply {
+        background: linear-gradient(180deg, #f7fbff 0%, #edf7ff 100%);
+      }
+
+      .action-card.is-apply button {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+      }
+
+      .action-output {
+        margin-top: 0.9rem;
+        width: 100%;
+        min-height: 220px;
+        resize: vertical;
+        padding: 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: #fbfdff;
+        color: var(--ink);
+      }
+
+      .empty-state {
+        padding: 1rem;
+        color: var(--muted);
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .jump-button {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--blue);
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+      }
+
+      .jump-button:hover {
+        text-decoration: underline;
+      }
+
+      .status {
+        margin-top: 0.7rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 1180px) {
+        .workspace,
+        .detail-grid,
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .inventory-panel {
+          position: static;
+        }
+
+        .inventory-list {
+          max-height: 360px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">SEOHub</p>
+            <h1>Interactive SEO Review And Action Console</h1>
+            <p>
+              Click any page, audit its content, inspect technical signals, review indexation
+              strategy, and generate action payloads from one dashboard. This is the browser-facing
+              control layer for the repo audit work.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="reports/seo-audit-after.md" target="_blank" rel="noopener noreferrer">Open Full Audit</a>
+              <a class="btn btn-secondary" href="reports/page-inventory-after.csv" target="_blank" rel="noopener noreferrer">Open Inventory CSV</a>
+            </div>
+          </div>
+          <div class="summary-grid" id="summary-cards"></div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel inventory-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Page Inventory</h2>
+              <p>Filter pages, click a row, then inspect or trigger actions.</p>
+            </div>
+          </div>
+          <div class="filter-stack">
+            <div class="filter">
+              <label for="search">Search file / reason</label>
+              <input id="search" type="search" placeholder="orange-county, probate, noindex..." />
+            </div>
+            <div class="filter">
+              <label for="bucket-filter">Bucket</label>
+              <select id="bucket-filter">
+                <option value="">All buckets</option>
+                <option value="A">A - Keep indexable now</option>
+                <option value="B">B - Improve before indexable</option>
+                <option value="C">C - Noindex, follow for now</option>
+                <option value="D">D - Consolidate into parent page</option>
+              </select>
+            </div>
+            <div class="filter">
+              <label for="type-filter">Page type</label>
+              <select id="type-filter">
+                <option value="">All page types</option>
+              </select>
+            </div>
+            <div class="filter">
+              <label for="action-filter">Recommended action</label>
+              <select id="action-filter">
+                <option value="">All actions</option>
+              </select>
+            </div>
+          </div>
+          <div class="inventory-stats" id="inventory-count">Loading inventory...</div>
+          <div class="inventory-list" id="inventory-list"></div>
+        </aside>
+
+        <section class="detail-stack">
+          <article class="panel section">
+            <div class="page-header">
+              <div>
+                <p class="eyebrow" id="page-brow">Select A Page</p>
+                <h2 id="page-title">Choose a page from the left inventory.</h2>
+                <p id="page-subtitle">The selected page will show technical signals, content score, and recommended actions.</p>
+              </div>
+              <div class="page-header-actions">
+                <a class="btn" id="open-page-link" href="#" target="_blank" rel="noopener noreferrer">Open Live Page</a>
+                <button class="btn" id="copy-page-url-button" type="button">Copy Page URL</button>
+                <a class="btn" id="open-source-link" href="#" target="_blank" rel="noopener noreferrer">Open Audit Report</a>
+                <button class="btn" id="run-audit-button" type="button">Re-Run Content Audit</button>
+              </div>
+            </div>
+
+            <div class="grade-wrap">
+              <div class="grade-chip" id="grade-chip">-</div>
+              <div>
+                <div id="grade-label"><strong>Waiting for page selection</strong></div>
+                <p class="small" id="grade-summary">Content readiness, technical hygiene, and structural usefulness will appear here.</p>
+                <div class="issue-chips" id="issue-chips"></div>
+              </div>
+            </div>
+          </article>
+
+          <div class="detail-grid">
+            <article class="panel section">
+              <div class="panel-head" style="padding:0 0 0.8rem;">
+                <div>
+                  <h3>Technical And Content Signals</h3>
+                  <p>Metrics update live from the selected page HTML.</p>
+                </div>
+              </div>
+              <div class="signal-grid" id="signal-grid"></div>
+              <div class="panel-head" style="padding:1rem 0 0.8rem;">
+                <div>
+                  <h3>Scoring Breakdown</h3>
+                  <p>Weighted heuristics for content quality and indexation readiness.</p>
+                </div>
+              </div>
+              <div class="score-grid" id="score-grid"></div>
+              <div class="panel-head" style="padding:1rem 0 0.8rem;">
+                <div>
+                  <h3>Recommendations</h3>
+                  <p>Immediate next steps for the selected page.</p>
+                </div>
+              </div>
+              <ul class="recommendations" id="recommendations"></ul>
+            </article>
+
+            <article class="panel section">
+              <div class="panel-head" style="padding:0 0 0.8rem;">
+                <div>
+                  <h3>Page Preview</h3>
+                  <p>Inline preview of the selected URL for visual QA.</p>
+                </div>
+              </div>
+              <iframe class="preview-frame" id="page-preview" title="Page preview"></iframe>
+            </article>
+          </div>
+
+          <article class="panel section">
+            <div class="panel-head" style="padding:0 0 0.8rem;">
+              <div>
+                <h3>Action Center</h3>
+                <p>Run one-click SEOHub functions against the selected page.</p>
+              </div>
+            </div>
+            <div class="action-grid">
+              <div class="action-card">
+                <h4>Audit Content</h4>
+                <p class="small">Return a structured content audit with score, findings, and page-level weaknesses.</p>
+                <button type="button" data-action="audit-content">Run Action</button>
+              </div>
+              <div class="action-card">
+                <h4>Generate Fix Brief</h4>
+                <p class="small">Build a page-specific remediation brief with title, description, and next fixes.</p>
+                <button type="button" data-action="generate-fix-brief">Run Action</button>
+              </div>
+              <div class="action-card">
+                <h4>Generate Head Pack</h4>
+                <p class="small">Return a ready-to-paste title, description, canonical, robots, and social meta block.</p>
+                <button type="button" data-action="generate-head-pack">Run Action</button>
+              </div>
+              <div class="action-card">
+                <h4>Suggest Meta</h4>
+                <p class="small">Return candidate title and description based on file type and structure.</p>
+                <button type="button" data-action="suggest-meta">Run Action</button>
+              </div>
+              <div class="action-card">
+                <h4>Suggest Internal Links</h4>
+                <p class="small">Return likely supporting URLs for the selected page family.</p>
+                <button type="button" data-action="suggest-links">Run Action</button>
+              </div>
+              <div class="action-card">
+                <h4>Generate Related Links</h4>
+                <p class="small">Build a contextual related-links module for county, situation, or hub pages.</p>
+                <button type="button" data-action="generate-related-links">Run Action</button>
+              </div>
+              <div class="action-card is-apply">
+                <h4>Apply Head Pack</h4>
+                <p class="small">One-click head normalization in a writable environment.</p>
+                <button type="button" data-action="apply-head-pack">Apply</button>
+              </div>
+              <div class="action-card is-apply">
+                <h4>Apply Noindex</h4>
+                <p class="small">One-click `noindex, follow` for pages that should stay out of the index for now.</p>
+                <button type="button" data-action="apply-noindex">Apply</button>
+              </div>
+              <div class="action-card is-apply">
+                <h4>Apply Related Links</h4>
+                <p class="small">Insert a related-links module before the page closes.</p>
+                <button type="button" data-action="apply-related-links">Apply</button>
+              </div>
+            </div>
+            <textarea class="action-output" id="action-output" spellcheck="false" placeholder="Action output will appear here."></textarea>
+            <div class="hero-actions" style="margin-top:0.8rem;">
+              <button class="btn" id="copy-output-button" type="button">Copy Output</button>
+              <button class="btn" id="download-output-button" type="button">Download Output</button>
+            </div>
+          </article>
+
+          <article class="panel section">
+            <div class="panel-head" style="padding:0 0 0.8rem;">
+              <div>
+                <h3>Audit Snapshot</h3>
+                <p>Global issues from the latest `after` run.</p>
+              </div>
+            </div>
+            <div class="signal-grid" id="audit-summary-grid"></div>
+            <div class="detail-grid" style="margin-top:1rem;">
+              <div class="panel section" style="margin:0;">
+                <h4>Orphan Pages</h4>
+                <ul class="recommendations" id="orphan-list"></ul>
+              </div>
+              <div class="panel section" style="margin:0;">
+                <h4>Canonical / Redirect Exceptions</h4>
+                <ul class="recommendations" id="redirect-list"></ul>
+              </div>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <p class="status" id="status">Loading SEOHub data...</p>
+    </main>
+
+    <script>
+      const bucketLabels = {
+        A: "Keep indexable now",
+        B: "Improve before indexable",
+        C: "Noindex, follow for now",
+        D: "Consolidate into parent page"
+      };
+
+      const state = {
+        issues: null,
+        inventory: [],
+        filtered: [],
+        selected: null,
+        selectedAnalysis: null
+      };
+
+      const summaryCards = document.getElementById("summary-cards");
+      const inventoryList = document.getElementById("inventory-list");
+      const inventoryCount = document.getElementById("inventory-count");
+      const typeFilter = document.getElementById("type-filter");
+      const actionFilter = document.getElementById("action-filter");
+      const statusEl = document.getElementById("status");
+
+      const pageBrow = document.getElementById("page-brow");
+      const pageTitle = document.getElementById("page-title");
+      const pageSubtitle = document.getElementById("page-subtitle");
+      const openPageLink = document.getElementById("open-page-link");
+      const openSourceLink = document.getElementById("open-source-link");
+      const copyPageUrlButton = document.getElementById("copy-page-url-button");
+      const gradeChip = document.getElementById("grade-chip");
+      const gradeLabel = document.getElementById("grade-label");
+      const gradeSummary = document.getElementById("grade-summary");
+      const signalGrid = document.getElementById("signal-grid");
+      const scoreGrid = document.getElementById("score-grid");
+      const issueChips = document.getElementById("issue-chips");
+      const recommendationsList = document.getElementById("recommendations");
+      const previewFrame = document.getElementById("page-preview");
+      const actionOutput = document.getElementById("action-output");
+      const auditSummaryGrid = document.getElementById("audit-summary-grid");
+      const orphanList = document.getElementById("orphan-list");
+      const redirectList = document.getElementById("redirect-list");
+
+      const escapeHtml = (value) =>
+        String(value == null ? "" : value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+
+      function normalizeSpaces(value) {
+        return String(value || "").replace(/\s+/g, " ").trim();
+      }
+
+      function titleCase(value) {
+        return normalizeSpaces(String(value || "").replace(/[-_]+/g, " ")).replace(/\b\w/g, (char) => char.toUpperCase());
+      }
+
+      function canonicalUrlForFile(file) {
+        return file === "index.html" ? "https://floridacashhousebuyers.com/" : `https://floridacashhousebuyers.com/${file}`;
+      }
+
+      function parsePageContext(file) {
+        const stem = String(file || "").replace(/\.(html|htm)$/i, "");
+        const parts = stem.split("-");
+        const countyIndex = parts.indexOf("county");
+        const situations = {
+          repairs: "As-Is Repairs",
+          foreclosure: "Foreclosure Help",
+          "inherited-property": "Inherited Property",
+          rental: "Rental Exit",
+          "urgent-sale": "Urgent Sale",
+          probate: "Probate Sale",
+          divorce: "Divorce Sale",
+          "vacant-home": "Vacant Home Help"
+        };
+
+        if (countyIndex > 0) {
+          const county = titleCase(parts.slice(0, countyIndex).join(" "));
+          const afterCounty = parts.slice(countyIndex + 1).join("-");
+          if (afterCounty && situations[afterCounty]) {
+            return {
+              label: `${county} County ${situations[afterCounty]}`,
+              county,
+              countySlug: `${county.toLowerCase().replace(/\./g, "").replace(/\s+/g, "-")}-county`,
+              type: "countySituation",
+              locationNeedle: `${county} County`,
+              situationLabel: situations[afterCounty]
+            };
+          }
+
+          return {
+            label: `${county} County`,
+            county,
+            countySlug: `${county.toLowerCase().replace(/\./g, "").replace(/\s+/g, "-")}-county`,
+            type: "county",
+            locationNeedle: `${county} County`
+          };
+        }
+
+        return {
+          label: titleCase(stem),
+          type: "generic",
+          locationNeedle: ""
+        };
+      }
+
+      function gradeFromScore(score) {
+        if (score >= 90) return "A";
+        if (score >= 80) return "B";
+        if (score >= 70) return "C";
+        if (score >= 60) return "D";
+        return "F";
+      }
+
+      function bucketCss(bucket) {
+        return `bucket-${bucket || "D"}`;
+      }
+
+      function countWords(value) {
+        return normalizeSpaces(value).split(" ").filter(Boolean).length;
+      }
+
+      function dedupeParagraphs(paragraphs) {
+        const seen = new Map();
+        let duplicates = 0;
+
+        paragraphs.forEach((text) => {
+          const normalized = normalizeSpaces(text.toLowerCase());
+          if (!normalized || normalized.length < 60) {
+            return;
+          }
+
+          if (seen.has(normalized)) {
+            duplicates += 1;
+          } else {
+            seen.set(normalized, true);
+          }
+        });
+
+        return duplicates;
+      }
+
+      function renderJumpList(target, items, extractor) {
+        target.innerHTML = items.length
+          ? items
+              .map((item) => {
+                const file = extractor(item);
+                return file
+                  ? `<li><button class="jump-button" type="button" data-jump-file="${escapeHtml(file)}">${escapeHtml(item)}</button></li>`
+                  : `<li>${escapeHtml(item)}</li>`;
+              })
+              .join("")
+          : "<li>None</li>";
+      }
+
+      function renderSummary(issues) {
+        const cards = [
+          ["Total Pages", issues.totalPages, "HTML pages audited"],
+          ["Bucket A", issues.bucketCounts.A || 0, bucketLabels.A],
+          ["Bucket B", issues.bucketCounts.B || 0, bucketLabels.B],
+          ["Bucket C", issues.bucketCounts.C || 0, bucketLabels.C],
+          ["Bucket D", issues.bucketCounts.D || 0, bucketLabels.D],
+          ["Orphans", issues.orphanPages.length, "Pages without discovered inbound HTML links"]
+        ];
+
+        summaryCards.innerHTML = cards
+          .map(
+            ([label, value, meta]) => `
+              <article class="summary-card">
+                <div class="label">${escapeHtml(label)}</div>
+                <div class="value">${escapeHtml(value)}</div>
+                <div class="meta">${escapeHtml(meta)}</div>
+              </article>
+            `
+          )
+          .join("");
+
+        const auditCards = [
+          ["Missing robots", issues.missingStats.missingRobots],
+          ["Broken links", issues.brokenLinks.length],
+          ["Vercel refs", issues.vercelReferences.length],
+          ["Redirect refs", issues.redirectReferences.length],
+          ["Nav variants", issues.navVariantCount],
+          ["Footer variants", issues.footerVariantCount]
+        ];
+
+        auditSummaryGrid.innerHTML = auditCards
+          .map(
+            ([label, value]) => `
+              <article class="signal-card">
+                <div class="label">${escapeHtml(label)}</div>
+                <div class="value">${escapeHtml(value)}</div>
+              </article>
+            `
+          )
+          .join("");
+
+        renderJumpList(orphanList, issues.orphanPages, (item) => item);
+        renderJumpList(redirectList, issues.redirectReferences, (item) => {
+          const match = String(item).match(/^([^ ]+)\s/);
+          return match ? match[1] : "";
+        });
+      }
+
+      function populateFilters(inventory) {
+        const uniqueTypes = [...new Set(inventory.map((item) => item.pageType))].sort();
+        const uniqueActions = [...new Set(inventory.map((item) => item.recommendedAction))].sort();
+
+        typeFilter.innerHTML =
+          '<option value="">All page types</option>' +
+          uniqueTypes.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("");
+
+        actionFilter.innerHTML =
+          '<option value="">All actions</option>' +
+          uniqueActions.map((action) => `<option value="${escapeHtml(action)}">${escapeHtml(action)}</option>`).join("");
+      }
+
+      function applyFilters() {
+        const search = document.getElementById("search").value.trim().toLowerCase();
+        const bucket = document.getElementById("bucket-filter").value;
+        const type = document.getElementById("type-filter").value;
+        const action = document.getElementById("action-filter").value;
+
+        state.filtered = state.inventory.filter((item) => {
+          const haystack = [
+            item.file,
+            item.pageType,
+            item.recommendedAction,
+            item.reason,
+            item.title || "",
+            item.description || "",
+            item.url || ""
+          ]
+            .join(" ")
+            .toLowerCase();
+
+          return (
+            (!search || haystack.includes(search)) &&
+            (!bucket || item.bucket === bucket) &&
+            (!type || item.pageType === type) &&
+            (!action || item.recommendedAction === action)
+          );
+        });
+
+        renderInventory();
+      }
+
+      function renderInventory() {
+        inventoryCount.textContent = `${state.filtered.length} pages shown`;
+
+        if (!state.filtered.length) {
+          inventoryList.innerHTML = '<div class="empty-state">No pages match the current filters.</div>';
+          return;
+        }
+
+        inventoryList.innerHTML = state.filtered
+          .map(
+            (item) => `
+              <button class="inventory-item ${state.selected && state.selected.file === item.file ? "is-active" : ""}" type="button" data-file="${escapeHtml(item.file)}">
+                <strong>${escapeHtml(item.file)}</strong>
+                <div class="meta">
+                  <span class="badge ${bucketCss(item.bucket)}">${escapeHtml(item.bucket)}</span>
+                  <span>${escapeHtml(item.pageType)}</span>
+                  <span>${escapeHtml(item.indexable ? "Target: indexable" : "Target: noindex")}</span>
+                  <span>${escapeHtml(item.recommendedAction)}</span>
+                </div>
+              </button>
+            `
+          )
+          .join("");
+
+        inventoryList.querySelectorAll("[data-file]").forEach((button) => {
+          button.addEventListener("click", () => selectPage(button.getAttribute("data-file")));
+        });
+      }
+
+      function buildRecommendations(page, analysis) {
+        const items = [];
+
+        if (!analysis) {
+          return ["Run a content audit to populate page-specific recommendations."];
+        }
+
+        if (page.bucket === "D") items.push("Consolidate this page into its parent hub unless it can earn stronger unique local value.");
+        if (page.bucket === "C") items.push("Keep this page out of the index until the underlying content or utility is strong enough to justify indexing.");
+        if (analysis.titleLength < 40 || analysis.titleLength > 65) items.push("Retune the title length to roughly 40-65 characters.");
+        if (analysis.descriptionLength < 110 || analysis.descriptionLength > 160) items.push("Retune the meta description to a tighter 110-160 character range.");
+        if (analysis.canonicalMismatch) items.push("Correct the canonical so it self-references the production URL.");
+        if (analysis.wordCount < 350) items.push("Increase original body copy depth so the page carries more than navigational intent.");
+        if (analysis.internalLinks < 4) items.push("Add more contextual internal links to parent, sibling, and statewide support pages.");
+        if (analysis.sameClusterLinks < 2 && /county/i.test(page.pageType)) items.push("Add stronger same-county or same-cluster internal links so local pages reinforce each other naturally.");
+        if (analysis.h2Count < 4) items.push("Expand section structure with more distinct H2-led sections.");
+        if (analysis.duplicateParagraphs > 0) items.push("Rewrite duplicated paragraph blocks or remove repeated templated copy.");
+        if (analysis.locationMentions < 3 && analysis.locationNeedle) items.push(`Use the page's local target more naturally in visible copy. Current mentions for "${analysis.locationNeedle}": ${analysis.locationMentions}.`);
+        if (analysis.indexabilityMismatch) items.push("Robots directives conflict with the current bucket strategy and should be corrected.");
+        if (analysis.faqCount < 1 && /county|service|guide|page/i.test(page.pageType)) items.push("Consider adding visible FAQ content only if the page already supports real FAQs.");
+
+        if (Array.isArray(analysis.contentRecommendations)) {
+          analysis.contentRecommendations.forEach((item) => items.push(item));
+        }
+
+        return Array.from(new Set(items)).filter(Boolean);
+      }
+
+      async function fetchPageAnalysis(page) {
+        const response = await fetch(page.file, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Could not load ${page.file}`);
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const pageContext = parsePageContext(page.file);
+        const title = normalizeSpaces(doc.querySelector("title")?.textContent || "");
+        const description = doc.querySelector('meta[name="description"]')?.getAttribute("content") || "";
+        const robots = normalizeSpaces(doc.querySelector('meta[name="robots"]')?.getAttribute("content") || "");
+        const canonical = normalizeSpaces(doc.querySelector('link[rel="canonical"]')?.getAttribute("href") || "");
+        const canonicalExpected = page.canonicalExpected || page.url || canonicalUrlForFile(page.file);
+        const h1Count = doc.querySelectorAll("h1").length;
+        const h2Count = doc.querySelectorAll("h2").length;
+        const h3Count = doc.querySelectorAll("h3").length;
+        const listCount = doc.querySelectorAll("ul li, ol li").length;
+        const detailsCount = doc.querySelectorAll("details").length;
+        const paragraphNodes = [...doc.querySelectorAll("main p, article p, section p")];
+        const paragraphs = paragraphNodes.map((node) => normalizeSpaces(node.textContent)).filter(Boolean);
+        const headingTexts = [...doc.querySelectorAll("h2, h3")].map((node) => normalizeSpaces(node.textContent)).filter(Boolean);
+        const duplicatedHeadings = headingTexts.length - new Set(headingTexts.map((value) => value.toLowerCase())).size;
+        const mainText = normalizeSpaces(doc.querySelector("main")?.textContent || doc.body.textContent || "");
+        const locationNeedle = pageContext.locationNeedle;
+        const locationRegex = locationNeedle ? new RegExp(locationNeedle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+        const locationMentions = locationRegex ? (mainText.match(locationRegex) || []).length : 0;
+        const allLinks = [...doc.querySelectorAll('a[href]')];
+        const internalLinkHrefs = allLinks
+          .map((a) => normalizeSpaces(a.getAttribute("href") || ""))
+          .filter((href) => href && !href.startsWith("http") && !href.startsWith("mailto:") && !href.startsWith("tel:") && !href.startsWith("#"));
+        const internalLinks = internalLinkHrefs.length;
+        const sameClusterLinks = pageContext.countySlug ? internalLinkHrefs.filter((href) => href.includes(pageContext.countySlug)).length : 0;
+        const ctaLinks = allLinks.filter((a) => /call|get offer|create your offer|view related page|view guide|view county|get my offer|start your offer/i.test(normalizeSpaces(a.textContent))).length;
+        const duplicateParagraphs = dedupeParagraphs(paragraphs);
+        const introWords = countWords(paragraphs.slice(0, 2).join(" "));
+
+        const issues = [];
+        const contentRecommendations = [];
+        let score = 100;
+
+        if (!title) {
+          score -= 12;
+          issues.push("Missing title tag.");
+        } else if (title.length < 40 || title.length > 65) {
+          score -= 5;
+          issues.push(`Title length is ${title.length}; target 40-65.`);
+        }
+
+        if (!description) {
+          score -= 12;
+          issues.push("Missing meta description.");
+        } else if (description.length < 110 || description.length > 160) {
+          score -= 5;
+          issues.push(`Meta description length is ${description.length}; target 110-160.`);
+        }
+
+        const canonicalMismatch = !!canonical && canonical !== canonicalExpected;
+        if (!canonical) {
+          score -= 8;
+          issues.push("Missing canonical.");
+        } else if (canonicalMismatch) {
+          score -= 8;
+          issues.push(`Canonical does not match target URL: ${canonicalExpected}.`);
+        }
+
+        const pageShouldIndex = !!page.indexable;
+        const hasNoindex = /noindex/i.test(robots);
+        const indexabilityMismatch = (pageShouldIndex && hasNoindex) || (!pageShouldIndex && !hasNoindex);
+        if (indexabilityMismatch) {
+          score -= 8;
+          issues.push("Robots directives do not match the intended bucket strategy.");
+        }
+
+        if (h1Count !== 1) {
+          score -= 8;
+          issues.push(`Expected exactly one H1, found ${h1Count}.`);
+        }
+
+        if (h2Count < 4) {
+          score -= 6;
+          issues.push("Thin section structure. Add more distinct H2 sections.");
+        }
+
+        if (paragraphs.length < 6) {
+          score -= 6;
+          issues.push("Low paragraph count. Page reads more like a landing stub than a developed resource.");
+        }
+
+        const wordCount = countWords(mainText);
+        if (wordCount < 350) {
+          score -= 12;
+          issues.push("Thin body copy.");
+          contentRecommendations.push("Add original county-specific or situation-specific guidance instead of extending template filler.");
+        } else if (wordCount < 500) {
+          score -= 5;
+        }
+
+        if (internalLinks < 4) {
+          score -= 8;
+          issues.push("Internal linking is too light.");
+          contentRecommendations.push("Add contextual links to the county hub, statewide situation page, and a small set of relevant siblings.");
+        }
+
+        if (sameClusterLinks < 2 && /county/i.test(page.pageType)) {
+          score -= 4;
+          issues.push("Weak same-cluster internal linking.");
+        }
+
+        if (duplicateParagraphs > 0) {
+          score -= Math.min(15, duplicateParagraphs * 5);
+          issues.push(`${duplicateParagraphs} duplicate paragraph blocks detected.`);
+          contentRecommendations.push("Rewrite repeated boilerplate so the page carries real local differentiation.");
+        }
+
+        if (detailsCount < 1 && /county|service|guide/i.test(page.pageType)) {
+          score -= 3;
+        }
+
+        if (ctaLinks < 2) {
+          score -= 2;
+        }
+
+        if (locationNeedle && locationMentions < 3) {
+          score -= 5;
+          issues.push(`Local target appears only ${locationMentions} times in body copy.`);
+          contentRecommendations.push(`Use ${locationNeedle} more naturally in the intro, urgency section, and FAQ copy.`);
+        }
+
+        if (introWords < 70) {
+          score -= 4;
+          issues.push("Intro is too short to establish page intent.");
+        }
+
+        if (duplicatedHeadings > 0) {
+          score -= Math.min(6, duplicatedHeadings * 2);
+          issues.push("Heading structure repeats across sections.");
+        }
+
+        if (listCount < 3) {
+          contentRecommendations.push("Use short lists for seller problems, process steps, or next-step options to break up repeated paragraph patterns.");
+        }
+
+        score = Math.max(0, score);
+
+        return {
+          title,
+          description,
+          robots,
+          canonical,
+          canonicalExpected,
+          canonicalMismatch,
+          indexabilityMismatch,
+          titleLength: title.length,
+          descriptionLength: description.length,
+          h1Count,
+          h2Count,
+          h3Count,
+          faqCount: detailsCount,
+          paragraphCount: paragraphs.length,
+          wordCount,
+          internalLinks,
+          sameClusterLinks,
+          ctaLinks,
+          duplicateParagraphs,
+          duplicatedHeadings,
+          introWords,
+          listCount,
+          locationNeedle,
+          locationMentions,
+          issues,
+          contentRecommendations: Array.from(new Set(contentRecommendations)),
+          score,
+          grade: gradeFromScore(score)
+        };
+      }
+
+      function renderSelectedPage(page, analysis) {
+        pageBrow.textContent = `${page.bucket} - ${bucketLabels[page.bucket] || page.recommendedAction}`;
+        pageTitle.textContent = page.file;
+        pageSubtitle.textContent = `${page.pageType} | ${page.currentIndexationRisk} risk | ${page.recommendedAction}`;
+        openPageLink.href = page.file;
+        openSourceLink.href = "reports/seo-audit-after.md";
+        previewFrame.src = page.file;
+
+        const analysisReady = !!analysis;
+        const grade = analysisReady ? analysis.grade : page.bucket;
+        gradeChip.textContent = grade;
+        gradeLabel.innerHTML = `<strong>${analysisReady ? `Content grade ${grade}` : `Bucket ${page.bucket}`}</strong>`;
+        gradeSummary.textContent = analysisReady
+          ? `Score ${analysis.score}/100. ${page.reason}`
+          : page.reason;
+
+        issueChips.innerHTML = [
+          `<span class="issue-chip">${escapeHtml(page.pageType)}</span>`,
+          `<span class="issue-chip">${escapeHtml(page.indexable ? "Target indexable" : "Target noindex")}</span>`,
+          `<span class="issue-chip">${escapeHtml(page.recommendedAction)}</span>`,
+          page.robots ? `<span class="issue-chip ${/noindex/i.test(page.robots) ? "is-bad" : ""}">${escapeHtml(page.robots)}</span>` : '<span class="issue-chip is-warn">No explicit robots tag</span>',
+          analysisReady && analysis.canonicalMismatch ? '<span class="issue-chip is-bad">Canonical mismatch</span>' : "",
+          analysisReady && analysis.indexabilityMismatch ? '<span class="issue-chip is-bad">Robots mismatch</span>' : "",
+          analysisReady && analysis.duplicateParagraphs > 0 ? `<span class="issue-chip is-bad">${analysis.duplicateParagraphs} duplicate paragraph blocks</span>` : "",
+          analysisReady && analysis.wordCount < 350 ? '<span class="issue-chip is-warn">Thin body copy</span>' : "",
+          analysisReady && analysis.internalLinks < 4 ? '<span class="issue-chip is-warn">Low internal linking</span>' : ""
+        ]
+          .filter(Boolean)
+          .join("");
+
+        const signalCards = analysisReady
+          ? [
+              ["Title length", analysis.titleLength],
+              ["Meta length", analysis.descriptionLength],
+              ["Words", analysis.wordCount],
+              ["Paragraphs", analysis.paragraphCount],
+              ["Intro words", analysis.introWords],
+              ["H1s", analysis.h1Count],
+              ["H2s", analysis.h2Count],
+              ["Lists", analysis.listCount],
+              ["FAQs", analysis.faqCount],
+              ["Internal links", analysis.internalLinks],
+              ["Same-cluster links", analysis.sameClusterLinks],
+              ["Local mentions", analysis.locationNeedle ? analysis.locationMentions : "n/a"],
+              ["CTA links", analysis.ctaLinks],
+              ["Duplicate paras", analysis.duplicateParagraphs]
+            ]
+          : [
+              ["URL", page.url || canonicalUrlForFile(page.file)],
+              ["Canonical", page.canonical ? "Yes" : "No"],
+              ["Robots", page.robots || "None"],
+              ["H1 count", page.h1Count],
+              ["Bucket", page.bucket]
+            ];
+
+        signalGrid.innerHTML = signalCards
+          .map(
+            ([label, value]) => `
+              <article class="signal-card">
+                <div class="label">${escapeHtml(label)}</div>
+                <div class="value">${escapeHtml(value)}</div>
+              </article>
+            `
+          )
+          .join("");
+
+        scoreGrid.innerHTML = analysisReady
+          ? [
+              ["Overall score", `${analysis.score}/100`],
+              ["Metadata", analysis.titleLength >= 40 && analysis.titleLength <= 65 && analysis.descriptionLength >= 110 && analysis.descriptionLength <= 160 ? "Pass" : "Needs work"],
+              ["Canonical", analysis.canonical && !analysis.canonicalMismatch ? "Pass" : "Needs work"],
+              ["Robots vs bucket", !analysis.indexabilityMismatch ? "Pass" : "Needs work"],
+              ["Structure", analysis.h1Count === 1 && analysis.h2Count >= 4 ? "Pass" : "Needs work"],
+              ["Content depth", analysis.wordCount >= 500 ? "Strong" : analysis.wordCount >= 350 ? "Fair" : "Thin"],
+              ["Local differentiation", analysis.locationNeedle ? (analysis.locationMentions >= 3 ? "Pass" : "Weak") : "n/a"],
+              ["Linking", analysis.internalLinks >= 4 ? "Pass" : "Needs work"],
+              ["Bucket strategy", page.bucket]
+            ]
+              .map(
+                ([label, value]) => `
+                  <article class="score-card">
+                    <div class="label">${escapeHtml(label)}</div>
+                    <div class="value">${escapeHtml(value)}</div>
+                  </article>
+                `
+              )
+              .join("")
+          : '<div class="empty-state">Run the content audit to populate the scoring breakdown.</div>';
+
+        recommendationsList.innerHTML = buildRecommendations(page, analysis)
+          .map((item) => `<li>${escapeHtml(item)}</li>`)
+          .join("");
+      }
+
+      async function selectPage(file) {
+        const page = state.inventory.find((item) => item.file === file);
+        if (!page) return;
+
+        state.selected = page;
+        state.selectedAnalysis = null;
+        window.location.hash = encodeURIComponent(file);
+        renderInventory();
+        renderSelectedPage(page, null);
+        statusEl.textContent = `Auditing ${file}...`;
+
+        try {
+          const analysis = await fetchPageAnalysis(page);
+          state.selectedAnalysis = analysis;
+          renderSelectedPage(page, analysis);
+          statusEl.textContent = `Loaded ${file}. Content grade ${analysis.grade}.`;
+        } catch (error) {
+          state.selectedAnalysis = null;
+          renderSelectedPage(page, null);
+          statusEl.textContent = error.message;
+        }
+      }
+
+      function formatActionOutput(output) {
+        if (typeof output === "string") {
+          return output;
+        }
+
+        return JSON.stringify(output, null, 2);
+      }
+
+      async function runAction(action) {
+        if (!state.selected) {
+          actionOutput.value = "Select a page first.";
+          return;
+        }
+
+        actionOutput.value = "Running action...";
+
+        try {
+          const response = await fetch("/api/seo-hub-action", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action,
+              page: state.selected,
+              analysis: state.selectedAnalysis
+            })
+          });
+
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || data.output || "Action failed.");
+          }
+
+          actionOutput.value = formatActionOutput(data.output);
+          statusEl.textContent = data.applied ? `Change applied: ${action}` : `Action completed: ${action}`;
+
+          if (data.applied) {
+            await selectPage(state.selected.file);
+          }
+        } catch (error) {
+          actionOutput.value = error.message;
+          statusEl.textContent = error.message;
+        }
+      }
+
+      async function loadData() {
+        try {
+          const [issuesResponse, inventoryResponse] = await Promise.all([
+            fetch("reports/seo-issues-after.json", { cache: "no-store" }),
+            fetch("reports/page-inventory-after.json", { cache: "no-store" })
+          ]);
+
+          if (!issuesResponse.ok || !inventoryResponse.ok) {
+            throw new Error("SEOHub could not load the audit JSON files.");
+          }
+
+          state.issues = await issuesResponse.json();
+          state.inventory = await inventoryResponse.json();
+          state.filtered = state.inventory;
+
+          renderSummary(state.issues);
+          populateFilters(state.inventory);
+          renderInventory();
+
+          const hashFile = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+          const preferred =
+            state.inventory.find((item) => item.file === hashFile) ||
+            state.inventory.find((item) => item.bucket === "A") ||
+            state.inventory[0];
+
+          if (preferred) {
+            await selectPage(preferred.file);
+          }
+
+          ["search", "bucket-filter", "type-filter", "action-filter"].forEach((id) => {
+            document.getElementById(id).addEventListener("input", applyFilters);
+            document.getElementById(id).addEventListener("change", applyFilters);
+          });
+
+          document.getElementById("run-audit-button").addEventListener("click", () => {
+            if (state.selected) {
+              selectPage(state.selected.file);
+            }
+          });
+
+          copyPageUrlButton.addEventListener("click", async () => {
+            if (!state.selected) return;
+            const url = state.selected.url || canonicalUrlForFile(state.selected.file);
+            await navigator.clipboard.writeText(url);
+            statusEl.textContent = `Copied ${url}`;
+          });
+
+          document.querySelectorAll("[data-action]").forEach((button) => {
+            button.addEventListener("click", () => runAction(button.getAttribute("data-action")));
+          });
+
+          document.getElementById("copy-output-button").addEventListener("click", async () => {
+            if (!actionOutput.value) return;
+            await navigator.clipboard.writeText(actionOutput.value);
+            statusEl.textContent = "Action output copied.";
+          });
+
+          document.getElementById("download-output-button").addEventListener("click", () => {
+            const blob = new Blob([actionOutput.value || ""], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const anchor = document.createElement("a");
+            anchor.href = url;
+            anchor.download = `${(state.selected?.file || "seohub-action").replace(/\.(html|htm)$/i, "")}-action.txt`;
+            anchor.click();
+            URL.revokeObjectURL(url);
+          });
+
+          document.addEventListener("click", (event) => {
+            const target = event.target.closest("[data-jump-file]");
+            if (!target) return;
+            selectPage(target.getAttribute("data-jump-file"));
+          });
+
+          statusEl.textContent = `SEOHub loaded ${state.issues.totalPages} audited pages.`;
+        } catch (error) {
+          statusEl.textContent = error.message;
+          statusEl.style.color = "#b65448";
+        }
+      }
+
+      loadData();
+    </script>
+  </body>
+</html>

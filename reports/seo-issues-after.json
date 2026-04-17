@@ -1,0 +1,136 @@
+{
+  "label": "after",
+  "baseUrlExpected": "https://floridacashhousebuyers.com",
+  "totalPages": 753,
+  "bucketCounts": {
+    "A": 169,
+    "D": 557,
+    "B": 1,
+    "C": 26
+  },
+  "missingStats": {
+    "missingTitle": 0,
+    "missingDescription": 0,
+    "missingCanonical": 0,
+    "missingViewport": 0,
+    "missingOgTitle": 0,
+    "missingTwitterCard": 0,
+    "missingRobots": 170,
+    "badH1Count": 0
+  },
+  "duplicateTitles": [],
+  "duplicateDescriptions": [],
+  "brokenLinks": [],
+  "orphanPages": [
+    "relocating-from-florida.html",
+    "sell-house-fast-before-relocating-miami-miami-dade-county.html",
+    "sell-house-fast-with-major-repairs-orlando-orange-county.html",
+    "sell-inherited-house-fast-orlando-orange-county.html",
+    "seo-audit-dashboard.html",
+    "stop-foreclosure-fast-pembroke-pines-broward-county.html",
+    "tax-lien-hardship-sale-guide.html",
+    "urgent-timeline.htm",
+    "video-tests.html"
+  ],
+  "redirectReferences": [],
+  "vercelReferences": [],
+  "repetitiveAnchors": [
+    [
+      "View Related Page",
+      3337
+    ],
+    [
+      "County Directory",
+      1523
+    ],
+    [
+      "[empty]",
+      1504
+    ],
+    [
+      "How It Works",
+      1490
+    ],
+    [
+      "Our Solutions",
+      1488
+    ],
+    [
+      "Offer Calculator",
+      1486
+    ],
+    [
+      "Call (407) 349-7118",
+      1474
+    ],
+    [
+      "About Us",
+      1465
+    ],
+    [
+      "Central Florida",
+      761
+    ],
+    [
+      "Service Areas",
+      754
+    ],
+    [
+      "Process",
+      753
+    ],
+    [
+      "South Florida",
+      748
+    ],
+    [
+      "(407) 349-7118",
+      747
+    ],
+    [
+      "Gulf Coast",
+      747
+    ],
+    [
+      "North Florida",
+      747
+    ],
+    [
+      "All Counties",
+      747
+    ],
+    [
+      "All Situations",
+      747
+    ],
+    [
+      "Website Build &amp; SEO by Felix Crego",
+      747
+    ],
+    [
+      "About",
+      746
+    ],
+    [
+      "Get Offer",
+      746
+    ]
+  ],
+  "navVariantCount": 6,
+  "footerVariantCount": 1,
+  "duplicateTemplates": [
+    {
+      "sequence": "This is a composite story template for structure and tone. | The details that make a seller story believable and useful. | What the seller was trying to solve. | How to frame the result without sounding inflated. | The exact elements we should ask the seller for later. | Core Pages | Regional Hubs | Coverage | Seller Guides | Priority Counties",
+      "files": [
+        "divorce-transition-story.html",
+        "foreclosure-pressure-story.html",
+        "inherited-property-story.html",
+        "major-repairs-story.html",
+        "probate-complexity-story.html",
+        "unwanted-rental-story.html",
+        "urgent-timeline-story.html",
+        "vacant-home-costs-story.html"
+      ]
+    }
+  ]
+}
