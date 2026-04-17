@@ -647,7 +647,9 @@ async function applyGithubMutation(page, mutation, changeLabel) {
 }
 
 async function applyMutation(page, mutation, changeLabel) {
-  const writeMode = String(process.env.SEOHUB_WRITE_MODE || '').toLowerCase();
+  const writeMode = String(process.env.SEOHUB_WRITE_MODE || '')
+    .trim()
+    .toLowerCase();
 
   if (writeMode === 'local') {
     return applyLocalMutation(page, mutation);
