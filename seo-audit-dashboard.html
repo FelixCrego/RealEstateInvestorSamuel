@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,11 +8,11 @@
       name="description"
       content="Interactive SEOHub dashboard for page grading, content review, crawl/index signals, and fix planning for Floridacashhousebuyers.com."
     />
-        <link rel="canonical" href="https://floridacashhousebuyers.com/seo-audit-dashboard.html" />
+        <link rel="canonical" href="https://floridacashhousebuyers.com/seo-audit-dashboard" />
         <meta name="robots" content="noindex, follow" />
         <meta property="og:title" content="SEOHub Dashboard | Florida Cash House Buyers" />
         <meta property="og:description" content="Interactive SEOHub dashboard for page grading, content review, crawl/index signals, and fix planning for Floridacashhousebuyers.com." />
-        <meta property="og:url" content="https://floridacashhousebuyers.com/seo-audit-dashboard.html" />
+        <meta property="og:url" content="https://floridacashhousebuyers.com/seo-audit-dashboard" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Florida Cash House Buyers" />
         <meta property="og:image" content="https://floridacashhousebuyers.com/florida_final_transparent.png" />
@@ -464,6 +464,133 @@
         color: var(--ink);
       }
 
+      .auto-controls {
+        margin-top: 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: #fbfdff;
+        padding: 0.9rem;
+      }
+
+      .auto-controls-grid {
+        display: grid;
+        gap: 0.75rem;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .auto-controls .field {
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .auto-controls .field label {
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .auto-controls input[type="number"] {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 0.6rem;
+        padding: 0.56rem 0.62rem;
+      }
+
+      .auto-controls .checks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 0.65rem;
+        color: var(--muted);
+      }
+
+      .auto-controls .checks label {
+        display: inline-flex;
+        gap: 0.45rem;
+        align-items: center;
+      }
+
+      .auto-progress {
+        margin-top: 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 0.9rem;
+        background: #f8fbff;
+        padding: 0.8rem;
+      }
+
+      .auto-progress-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .auto-progress-meta {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .auto-progress-bar {
+        height: 10px;
+        width: 100%;
+        border-radius: 999px;
+        background: #dde8f3;
+        overflow: hidden;
+        margin-top: 0.6rem;
+      }
+
+      .auto-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--teal), var(--blue));
+        transition: width 220ms ease;
+      }
+
+      .auto-progress-current {
+        margin: 0.55rem 0 0;
+      }
+
+      .auto-progress-log {
+        margin: 0.65rem 0 0;
+        padding-left: 1rem;
+        max-height: 160px;
+        overflow: auto;
+      }
+
+      .auto-progress-log li {
+        margin-bottom: 0.32rem;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .history-ticker {
+        margin-top: 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 0.9rem;
+        background: #fff;
+        padding: 0.75rem;
+      }
+
+      .history-ticker-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .history-ticker-list {
+        margin: 0.6rem 0 0;
+        padding-left: 1rem;
+        max-height: 220px;
+        overflow: auto;
+      }
+
+      .history-ticker-list li {
+        margin-bottom: 0.45rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
       .empty-state {
         padding: 1rem;
         color: var(--muted);
@@ -672,6 +799,11 @@
                 <button type="button" data-action="generate-related-links">Run Action</button>
               </div>
               <div class="action-card is-apply">
+                <h4>Rewrite Page Content</h4>
+                <p class="small">Use OpenAI to rewrite the selected page with E-E-A-T-focused, humanized SEO copy.</p>
+                <button type="button" data-action="rewrite-page-content">Apply</button>
+              </div>
+              <div class="action-card is-apply">
                 <h4>Apply Head Pack</h4>
                 <p class="small">One-click head normalization in a writable environment.</p>
                 <button type="button" data-action="apply-head-pack">Apply</button>
@@ -685,6 +817,53 @@
                 <h4>Apply Related Links</h4>
                 <p class="small">Insert a related-links module before the page closes.</p>
                 <button type="button" data-action="apply-related-links">Apply</button>
+              </div>
+            </div>
+            <div class="auto-controls">
+              <h4 style="margin:0;">Auto SEO Improvement Center</h4>
+              <p class="small" style="margin-top:0.35rem;">
+                Automatically process the lowest-scored pages using OpenAI rewrite + score validation.
+              </p>
+              <div class="auto-controls-grid">
+                <div class="field">
+                  <label for="auto-max-pages">Pages per run</label>
+                  <input id="auto-max-pages" type="number" min="1" max="50" value="15" />
+                </div>
+                <div class="field">
+                  <label for="auto-max-score">Max score to target</label>
+                  <input id="auto-max-score" type="number" min="10" max="95" value="72" />
+                </div>
+                <div class="field">
+                  <label for="auto-min-delta">Minimum score delta</label>
+                  <input id="auto-min-delta" type="number" min="0" max="40" value="3" />
+                </div>
+              </div>
+              <div class="checks">
+                <label><input id="auto-dry-run" type="checkbox" checked /> Dry run (preview only)</label>
+                <label><input id="auto-include-noindex" type="checkbox" /> Include noindex buckets (C/D)</label>
+                <label><input id="auto-run-all-underperforming" type="checkbox" checked /> Run all underperforming pages (multi-pass)</label>
+              </div>
+              <div class="hero-actions" style="margin-top:0.75rem;">
+                <button class="btn btn-primary" id="auto-improve-button" type="button">Run Lowest-Score Auto Improve</button>
+                <button class="btn btn-secondary" id="refresh-buckets-button" type="button">Refresh Top Buckets</button>
+              </div>
+              <div class="auto-progress" id="auto-progress" hidden>
+                <div class="auto-progress-head">
+                  <strong id="auto-progress-title">Idle</strong>
+                  <span class="auto-progress-meta" id="auto-progress-meta">0 / 0</span>
+                </div>
+                <div class="auto-progress-bar">
+                  <div class="auto-progress-fill" id="auto-progress-fill"></div>
+                </div>
+                <p class="small auto-progress-current" id="auto-progress-current">Waiting to run.</p>
+                <ul class="auto-progress-log" id="auto-progress-log"></ul>
+              </div>
+              <div class="history-ticker">
+                <div class="history-ticker-head">
+                  <strong>Recent Changes</strong>
+                  <button class="btn" id="clear-history-button" type="button">Clear</button>
+                </div>
+                <ul class="history-ticker-list" id="history-ticker-list"></ul>
               </div>
             </div>
             <textarea class="action-output" id="action-output" spellcheck="false" placeholder="Action output will appear here."></textarea>
@@ -720,6 +899,7 @@
     </main>
 
     <script>
+      const SEOHUB_API_ENDPOINT = "/api/seo-hub-action";
       const bucketLabels = {
         A: "Keep indexable now",
         B: "Improve before indexable",
@@ -732,7 +912,9 @@
         inventory: [],
         filtered: [],
         selected: null,
-        selectedAnalysis: null
+        selectedAnalysis: null,
+        liveBucketDelta: null,
+        liveRefreshedAt: ""
       };
 
       const summaryCards = document.getElementById("summary-cards");
@@ -760,6 +942,24 @@
       const auditSummaryGrid = document.getElementById("audit-summary-grid");
       const orphanList = document.getElementById("orphan-list");
       const redirectList = document.getElementById("redirect-list");
+      const autoMaxPagesInput = document.getElementById("auto-max-pages");
+      const autoMaxScoreInput = document.getElementById("auto-max-score");
+      const autoMinDeltaInput = document.getElementById("auto-min-delta");
+      const autoDryRunInput = document.getElementById("auto-dry-run");
+      const autoIncludeNoindexInput = document.getElementById("auto-include-noindex");
+      const autoRunAllUnderperformingInput = document.getElementById("auto-run-all-underperforming");
+      const autoImproveButton = document.getElementById("auto-improve-button");
+      const refreshBucketsButton = document.getElementById("refresh-buckets-button");
+      const autoProgress = document.getElementById("auto-progress");
+      const autoProgressTitle = document.getElementById("auto-progress-title");
+      const autoProgressMeta = document.getElementById("auto-progress-meta");
+      const autoProgressFill = document.getElementById("auto-progress-fill");
+      const autoProgressCurrent = document.getElementById("auto-progress-current");
+      const autoProgressLog = document.getElementById("auto-progress-log");
+      const historyTickerList = document.getElementById("history-ticker-list");
+      const clearHistoryButton = document.getElementById("clear-history-button");
+      const HISTORY_STORAGE_KEY = "seohubRecentChangesV1";
+      const HISTORY_MAX_ITEMS = 180;
 
       const escapeHtml = (value) =>
         String(value == null ? "" : value)
@@ -770,6 +970,75 @@
 
       function normalizeSpaces(value) {
         return String(value || "").replace(/\s+/g, " ").trim();
+      }
+
+      function formatSignedDelta(value) {
+        const numeric = Number(value || 0);
+        if (!Number.isFinite(numeric)) return "0";
+        return `${numeric >= 0 ? "+" : ""}${numeric}`;
+      }
+
+      function formatLocalTime(value) {
+        const date = new Date(value);
+        if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+          return "";
+        }
+        return date.toLocaleString([], {
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        });
+      }
+
+      function getHistoryEntries() {
+        try {
+          const raw = localStorage.getItem(HISTORY_STORAGE_KEY);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function setHistoryEntries(entries) {
+        try {
+          localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(entries.slice(0, HISTORY_MAX_ITEMS)));
+        } catch {
+          // Ignore localStorage failures.
+        }
+      }
+
+      function renderHistoryTicker() {
+        const items = getHistoryEntries();
+        if (!items.length) {
+          historyTickerList.innerHTML = "<li>No recent changes yet.</li>";
+          return;
+        }
+
+        historyTickerList.innerHTML = items
+          .map((item) => {
+            const when = formatLocalTime(item.at) || "Unknown time";
+            return `<li><strong>${escapeHtml(when)}</strong> - ${escapeHtml(item.message || "")}</li>`;
+          })
+          .join("");
+      }
+
+      function addHistoryEntry(message) {
+        const items = getHistoryEntries();
+        items.unshift({
+          at: new Date().toISOString(),
+          message: String(message || "")
+        });
+        setHistoryEntries(items);
+        renderHistoryTicker();
+      }
+
+      function clearHistoryTicker() {
+        setHistoryEntries([]);
+        renderHistoryTicker();
       }
 
       function titleCase(value) {
@@ -875,12 +1144,33 @@
       }
 
       function renderSummary(issues) {
+        const isLiveQuality = !!issues.liveQuality;
+        const delta = issues.liveBucketDelta || {};
+        const liveRefreshMeta = issues.liveRefreshedAt
+          ? `Live refresh ${formatLocalTime(issues.liveRefreshedAt)}`
+          : "Live score bands";
         const cards = [
-          ["Total Pages", issues.totalPages, "HTML pages audited"],
-          ["Bucket A", issues.bucketCounts.A || 0, bucketLabels.A],
-          ["Bucket B", issues.bucketCounts.B || 0, bucketLabels.B],
-          ["Bucket C", issues.bucketCounts.C || 0, bucketLabels.C],
-          ["Bucket D", issues.bucketCounts.D || 0, bucketLabels.D],
+          ["Total Pages", issues.totalPages, isLiveQuality ? liveRefreshMeta : "HTML pages audited"],
+          [
+            isLiveQuality ? "Grade A" : "Bucket A",
+            issues.bucketCounts.A || 0,
+            isLiveQuality ? `Score 90-100 | delta ${formatSignedDelta(delta.A)}` : bucketLabels.A
+          ],
+          [
+            isLiveQuality ? "Grade B" : "Bucket B",
+            issues.bucketCounts.B || 0,
+            isLiveQuality ? `Score 80-89 | delta ${formatSignedDelta(delta.B)}` : bucketLabels.B
+          ],
+          [
+            isLiveQuality ? "Grade C" : "Bucket C",
+            issues.bucketCounts.C || 0,
+            isLiveQuality ? `Score 70-79 | delta ${formatSignedDelta(delta.C)}` : bucketLabels.C
+          ],
+          [
+            isLiveQuality ? "Grade D/F" : "Bucket D",
+            issues.bucketCounts.D || 0,
+            isLiveQuality ? `Score below 70 | delta ${formatSignedDelta(delta.D)}` : bucketLabels.D
+          ],
           ["Orphans", issues.orphanPages.length, "Pages without discovered inbound HTML links"]
         ];
 
@@ -897,7 +1187,10 @@
           .join("");
 
         const auditCards = [
-          ["Missing robots", issues.missingStats.missingRobots],
+          [
+            isLiveQuality ? `Underperforming <= ${issues.maxScore || 72}` : "Missing robots",
+            isLiveQuality ? issues.underperformingCount || 0 : issues.missingStats.missingRobots
+          ],
           ["Broken links", issues.brokenLinks.length],
           ["Vercel refs", issues.vercelReferences.length],
           ["Redirect refs", issues.redirectReferences.length],
@@ -1325,6 +1618,179 @@
         return JSON.stringify(output, null, 2);
       }
 
+      function readAutoOptions() {
+        const parseNumber = (value, fallback) => {
+          const parsed = Number.parseInt(String(value || ""), 10);
+          return Number.isFinite(parsed) ? parsed : fallback;
+        };
+
+        return {
+          maxPages: parseNumber(autoMaxPagesInput.value, 15),
+          maxScore: parseNumber(autoMaxScoreInput.value, 72),
+          minimumDelta: parseNumber(autoMinDeltaInput.value, 3),
+          dryRun: !!autoDryRunInput.checked,
+          includeNoindex: !!autoIncludeNoindexInput.checked,
+          runAllUnderperforming: !!autoRunAllUnderperformingInput.checked
+        };
+      }
+
+      function setAutoProgress({ visible = true, title, done = 0, total = 0, current = "", percent = null } = {}) {
+        autoProgress.hidden = !visible;
+        if (title) autoProgressTitle.textContent = title;
+        autoProgressMeta.textContent = `${done} / ${total}`;
+        if (current) autoProgressCurrent.textContent = current;
+        const pct = percent == null ? (total > 0 ? Math.round((done / total) * 100) : 0) : percent;
+        autoProgressFill.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+      }
+
+      function appendAutoProgressLog(message) {
+        const item = document.createElement("li");
+        item.textContent = message;
+        autoProgressLog.appendChild(item);
+        while (autoProgressLog.children.length > 120) {
+          autoProgressLog.removeChild(autoProgressLog.firstChild);
+        }
+        autoProgressLog.scrollTop = autoProgressLog.scrollHeight;
+      }
+
+      async function postSeoHub(payload) {
+        const response = await fetch(SEOHUB_API_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const raw = await response.text();
+        let data = null;
+        if (raw) {
+          try {
+            data = JSON.parse(raw);
+          } catch {
+            const sample = raw.slice(0, 200);
+            throw new Error(`API returned non-JSON (${response.status}): ${sample}`);
+          }
+        } else {
+          data = {};
+        }
+
+        if (!response.ok) {
+          const requestId = response.headers.get("x-vercel-id") || "";
+          const baseMessage = data.error || data.output || `API request failed (${response.status}).`;
+          throw new Error(requestId ? `${baseMessage} [${requestId}]` : baseMessage);
+        }
+
+        return data;
+      }
+
+      async function ensureApiSupportsAutoRewrite() {
+        const probePage =
+          state.inventory.find((item) => item && item.file) ||
+          { file: "about-us.html", bucket: "A", indexable: true, pageType: "core service page", recommendedAction: "Keep indexable now" };
+
+        try {
+          await postSeoHub({
+            action: "list-underperforming-pages",
+            options: { maxScore: 72, includeNoindex: true, runAllUnderperforming: false, maxPages: 1 }
+          });
+        } catch (error) {
+          const message = error && error.message ? error.message : "Unknown API capability error.";
+          if (/Unknown action|Action and page payload are required/i.test(message)) {
+            throw new Error(
+              "Backend version mismatch: /api/seo-hub-action does not support auto rewrite actions right now. Refresh after redeploy."
+            );
+          }
+          throw error;
+        }
+
+        try {
+          await postSeoHub({
+            action: "rewrite-page-content",
+            page: probePage,
+            options: { dryRun: true, minimumDelta: 0 }
+          });
+        } catch (error) {
+          const message = error && error.message ? error.message : "Unknown API rewrite probe error.";
+          if (/Unknown action|Action and page payload are required/i.test(message)) {
+            throw new Error(
+              "Backend version mismatch: rewrite-page-content is unavailable on the active deployment. Refresh after redeploy."
+            );
+          }
+          if (/OPENAI_API_KEY is missing/i.test(message)) {
+            throw new Error("OPENAI_API_KEY is missing on the active deployment.");
+          }
+          // If probe fails for other reasons, still allow user run to proceed.
+        }
+      }
+
+      async function refreshTopBucketsFromLive(options) {
+        const previous = {
+          A: Number(state.issues?.bucketCounts?.A || 0),
+          B: Number(state.issues?.bucketCounts?.B || 0),
+          C: Number(state.issues?.bucketCounts?.C || 0),
+          D: Number(state.issues?.bucketCounts?.D || 0)
+        };
+        const data = await postSeoHub({
+          action: "get-live-content-buckets",
+          options: {
+            maxScore: options.maxScore,
+            includeNoindex: options.includeNoindex
+          }
+        });
+        const nextCounts = {
+          A: Number(data.bucketCounts?.A || 0),
+          B: Number(data.bucketCounts?.B || 0),
+          C: Number(data.bucketCounts?.C || 0),
+          D: Number(data.bucketCounts?.D || 0)
+        };
+        const liveBucketDelta = {
+          A: nextCounts.A - previous.A,
+          B: nextCounts.B - previous.B,
+          C: nextCounts.C - previous.C,
+          D: nextCounts.D - previous.D
+        };
+
+        state.issues = {
+          ...state.issues,
+          bucketCounts: nextCounts,
+          totalPages: data.totalPages || state.issues.totalPages,
+          liveQuality: true,
+          maxScore: data.maxScore,
+          underperformingCount: data.underperformingCount,
+          liveBucketDelta,
+          liveRefreshedAt: data.refreshedAt || new Date().toISOString()
+        };
+        renderSummary(state.issues);
+        return {
+          liveBucketDelta,
+          refreshedAt: state.issues.liveRefreshedAt
+        };
+      }
+
+      async function refreshTopBucketsUi(options, { logProgress = false } = {}) {
+        if (logProgress) {
+          appendAutoProgressLog("Refreshing top bucket cards from live page scores...");
+        }
+        const refreshSummary = await refreshTopBucketsFromLive(options);
+        if (refreshSummary && refreshSummary.liveBucketDelta) {
+          const d = refreshSummary.liveBucketDelta;
+          addHistoryEntry(
+            `Top buckets refreshed. A ${formatSignedDelta(d.A)}, B ${formatSignedDelta(d.B)}, C ${formatSignedDelta(d.C)}, D ${formatSignedDelta(d.D)}.`
+          );
+          statusEl.textContent = `Top bucket cards refreshed. Delta A ${formatSignedDelta(d.A)}, B ${formatSignedDelta(d.B)}, C ${formatSignedDelta(d.C)}, D ${formatSignedDelta(d.D)}.`;
+          if (logProgress) {
+            appendAutoProgressLog(
+              `Top buckets delta A ${formatSignedDelta(d.A)}, B ${formatSignedDelta(d.B)}, C ${formatSignedDelta(d.C)}, D ${formatSignedDelta(d.D)}.`
+            );
+          }
+        } else {
+          statusEl.textContent = "Top bucket cards refreshed.";
+        }
+        if (logProgress) {
+          appendAutoProgressLog("Top bucket cards refreshed.");
+        }
+        return refreshSummary;
+      }
+
       async function runAction(action) {
         if (!state.selected) {
           actionOutput.value = "Select a page first.";
@@ -1334,23 +1800,25 @@
         actionOutput.value = "Running action...";
 
         try {
-          const response = await fetch("/api/seo-hub-action", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              action,
-              page: state.selected,
-              analysis: state.selectedAnalysis
-            })
+          const data = await postSeoHub({
+            action,
+            page: state.selected,
+            analysis: state.selectedAnalysis,
+            options: action === "rewrite-page-content" ? readAutoOptions() : undefined
           });
-
-          const data = await response.json();
-          if (!response.ok) {
-            throw new Error(data.error || data.output || "Action failed.");
-          }
 
           actionOutput.value = formatActionOutput(data.output);
           statusEl.textContent = data.applied ? `Change applied: ${action}` : `Action completed: ${action}`;
+          if (action === "rewrite-page-content") {
+            const deltaText = Number.isFinite(Number(data.delta))
+              ? `delta ${formatSignedDelta(Number(data.delta))}`
+              : "delta n/a";
+            const resultText = data.applied ? "applied" : "skipped";
+            addHistoryEntry(`${state.selected.file}: ${resultText} (${deltaText}).`);
+          } else if (action === "apply-head-pack" || action === "apply-noindex" || action === "apply-related-links") {
+            const resultText = data.applied ? "applied" : "no change";
+            addHistoryEntry(`${state.selected.file}: ${action} ${resultText}.`);
+          }
 
           if (data.applied) {
             await selectPage(state.selected.file);
@@ -1358,6 +1826,172 @@
         } catch (error) {
           actionOutput.value = error.message;
           statusEl.textContent = error.message;
+        }
+      }
+
+      async function runAutoImprove() {
+        const options = readAutoOptions();
+        autoImproveButton.disabled = true;
+        actionOutput.value = "Running lowest-score auto improve...";
+        statusEl.textContent = "Running auto improvement batch...";
+        autoProgressLog.innerHTML = "";
+        setAutoProgress({
+          visible: true,
+          title: "Preparing Auto Improvement Run",
+          done: 0,
+          total: 0,
+          current: "Building underperforming page list..."
+        });
+
+        try {
+          await ensureApiSupportsAutoRewrite();
+
+          const listData = await postSeoHub({
+            action: "list-underperforming-pages",
+            options
+          });
+
+          let candidates = Array.isArray(listData.candidates) ? listData.candidates : [];
+          if (!options.runAllUnderperforming) {
+            candidates = candidates.slice(0, Math.max(1, Number(options.maxPages || 1)));
+          }
+
+          if (!candidates.length) {
+            setAutoProgress({
+              visible: true,
+              title: "Auto Improvement Complete",
+              done: 0,
+              total: 0,
+              current: "No pages matched the current underperforming threshold."
+            });
+            actionOutput.value = formatActionOutput({
+              ok: true,
+              message: "No underperforming pages matched your filters.",
+              options,
+              list: listData
+            });
+            statusEl.textContent = "No underperforming pages matched your filters. Refreshing top buckets...";
+            await refreshTopBucketsUi(options, { logProgress: true });
+            return;
+          }
+
+          const total = candidates.length;
+          let completed = 0;
+          let applied = 0;
+          const results = [];
+          appendAutoProgressLog(
+            `Selected ${total} page(s) at score <= ${options.maxScore}.`
+          );
+          setAutoProgress({
+            visible: true,
+            title: "Running Auto Improvement",
+            done: 0,
+            total,
+            current: `Starting page 1 of ${total}...`
+          });
+
+          for (const candidate of candidates) {
+            const page = state.inventory.find((item) => item.file === candidate.file) || candidate;
+            setAutoProgress({
+              visible: true,
+              title: "Running Auto Improvement",
+              done: completed,
+              total,
+              current: `Working on ${candidate.file} (score ${candidate.score})...`
+            });
+
+            try {
+              const data = await postSeoHub({
+                action: "rewrite-page-content",
+                page,
+                options: {
+                  dryRun: options.dryRun,
+                  minimumDelta: options.minimumDelta
+                }
+              });
+
+              completed += 1;
+              if (data.applied) applied += 1;
+              results.push({
+                file: candidate.file,
+                startingScore: candidate.score,
+                ...data
+              });
+
+              const deltaValue = Number(data.delta || 0);
+              const deltaText = Number.isFinite(deltaValue) ? ` (delta ${deltaValue >= 0 ? "+" : ""}${deltaValue})` : "";
+              const historyDeltaText = Number.isFinite(deltaValue)
+                ? `delta ${formatSignedDelta(deltaValue)}`
+                : "delta n/a";
+              addHistoryEntry(`${candidate.file}: ${data.applied ? "applied" : "skipped"} (${historyDeltaText}).`);
+              appendAutoProgressLog(
+                `${completed}/${total} ${candidate.file}: ${data.applied ? "applied" : "skipped"}${deltaText}.`
+              );
+            } catch (pageError) {
+              completed += 1;
+              const message = pageError && pageError.message ? pageError.message : "Unknown page error.";
+              if (/Unknown action|Action and page payload are required/i.test(message)) {
+                throw new Error(
+                  `Backend API switched to an unsupported version mid-run. Stopped at ${completed}/${total}. ${message}`
+                );
+              }
+              results.push({
+                file: candidate.file,
+                startingScore: candidate.score,
+                applied: false,
+                output: message
+              });
+              addHistoryEntry(`${candidate.file}: error (${message}).`);
+              appendAutoProgressLog(`${completed}/${total} ${candidate.file}: error - ${message}`);
+            }
+
+            setAutoProgress({
+              visible: true,
+              title: "Running Auto Improvement",
+              done: completed,
+              total,
+              current: `Completed ${candidate.file}`
+            });
+          }
+
+          const outputPayload = {
+            ok: true,
+            options,
+            totalCandidates: total,
+            processed: completed,
+            applied,
+            results
+          };
+          actionOutput.value = formatActionOutput(outputPayload);
+          statusEl.textContent = options.dryRun
+            ? `Auto improve dry run analyzed ${completed} low-score page(s).`
+            : `Auto improve applied ${applied} page update(s) across ${completed} page(s).`;
+          setAutoProgress({
+            visible: true,
+            title: "Auto Improvement Complete",
+            done: completed,
+            total,
+            current: options.dryRun
+              ? `Dry run complete. ${completed} page(s) analyzed.`
+              : `Live run complete. ${applied} page(s) updated.`
+          });
+
+          await refreshTopBucketsUi(options, { logProgress: true });
+
+          if (!options.dryRun && state.selected) {
+            await selectPage(state.selected.file);
+          }
+        } catch (error) {
+          actionOutput.value = error.message;
+          statusEl.textContent = error.message;
+          appendAutoProgressLog(`Error: ${error.message}`);
+          setAutoProgress({
+            visible: true,
+            title: "Auto Improvement Stopped",
+            current: error.message
+          });
+        } finally {
+          autoImproveButton.disabled = false;
         }
       }
 
@@ -1412,6 +2046,20 @@
             button.addEventListener("click", () => runAction(button.getAttribute("data-action")));
           });
 
+          autoImproveButton.addEventListener("click", runAutoImprove);
+          refreshBucketsButton.addEventListener("click", async () => {
+            const options = readAutoOptions();
+            refreshBucketsButton.disabled = true;
+            statusEl.textContent = "Refreshing top bucket cards from live page scores...";
+            try {
+              await refreshTopBucketsUi(options);
+            } catch (error) {
+              statusEl.textContent = error.message;
+            } finally {
+              refreshBucketsButton.disabled = false;
+            }
+          });
+
           document.getElementById("copy-output-button").addEventListener("click", async () => {
             if (!actionOutput.value) return;
             await navigator.clipboard.writeText(actionOutput.value);
@@ -1434,6 +2082,13 @@
             selectPage(target.getAttribute("data-jump-file"));
           });
 
+          clearHistoryButton.addEventListener("click", () => {
+            clearHistoryTicker();
+            statusEl.textContent = "Recent changes history cleared.";
+          });
+
+          renderHistoryTicker();
+
           statusEl.textContent = `SEOHub loaded ${state.issues.totalPages} audited pages.`;
         } catch (error) {
           statusEl.textContent = error.message;
@@ -1445,3 +2100,4 @@
     </script>
   </body>
 </html>
+

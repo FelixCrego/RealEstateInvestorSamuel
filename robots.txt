@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://real-estate-investor-samuel.vercel.app/sitemap.xml
+Sitemap: https://floridacashhousebuyers.com/sitemap.xml

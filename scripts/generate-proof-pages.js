@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const BASE_URL = 'https://real-estate-investor-samuel.vercel.app';
+const BASE_URL = 'https://floridacashhousebuyers.com';
 const GA_TAG = `    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPPVMLREZ9"></script>
     <script>
@@ -11,6 +11,45 @@ const GA_TAG = `    <!-- Google tag (gtag.js) -->
       gtag('js', new Date());
       gtag('config', 'G-KPPVMLREZ9');
     </script>`;
+
+function toPublicPath(value) {
+  const hashIndex = value.indexOf('#');
+  const hash = hashIndex >= 0 ? value.slice(hashIndex) : '';
+  const withoutHash = hashIndex >= 0 ? value.slice(0, hashIndex) : value;
+  const queryIndex = withoutHash.indexOf('?');
+  const query = queryIndex >= 0 ? withoutHash.slice(queryIndex) : '';
+  const pathname = queryIndex >= 0 ? withoutHash.slice(0, queryIndex) : withoutHash;
+  const cleanedPath = pathname.replace(/^\.?\//, '');
+
+  let route = cleanedPath;
+  if (route === 'index.html') {
+    route = '';
+  } else if (route.endsWith('.html')) {
+    route = route.slice(0, -'.html'.length);
+  } else if (route.endsWith('.htm')) {
+    route = route.slice(0, -'.htm'.length);
+  }
+
+  return `${route ? `/${route}` : '/'}${query}${hash}`;
+}
+
+function canonicalUrlFromFile(file) {
+  return `${BASE_URL}${toPublicPath(file)}`;
+}
+
+function normalizeGeneratedHtml(html) {
+  return html.replace(/href=(["'])([^"']+)\1/g, (match, quote, href) => {
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(href)) {
+      return match;
+    }
+
+    if (!/\.html?(?:[?#]|$)/i.test(href)) {
+      return match;
+    }
+
+    return `href=${quote}${toPublicPath(href)}${quote}`;
+  });
+}
 
 const stories = [
   {
@@ -257,7 +296,7 @@ function nav() {
 }
 
 function storyPage(story) {
-  const canonical = `${BASE_URL}/${story.file}`;
+  const canonical = canonicalUrlFromFile(story.file);
   return pageShell({
     title: story.title,
     description: story.description,
@@ -350,7 +389,7 @@ ${footer()}`
 }
 
 function hubPage() {
-  const canonical = `${BASE_URL}/success-stories.html`;
+  const canonical = canonicalUrlFromFile('success-stories.html');
   return pageShell({
     title: 'Success Story Templates | Florida Cash House Buyers',
     description: 'Preview the seller story and case-study format we recommend for each major seller situation on the site.',
@@ -390,9 +429,9 @@ ${footer()}`
 }
 
 for (const story of stories) {
-  fs.writeFileSync(path.join(ROOT, story.file), `${storyPage(story).trim()}\n`, 'utf8');
+  fs.writeFileSync(path.join(ROOT, story.file), `${normalizeGeneratedHtml(storyPage(story)).trim()}\n`, 'utf8');
 }
 
-fs.writeFileSync(path.join(ROOT, 'success-stories.html'), `${hubPage().trim()}\n`, 'utf8');
+fs.writeFileSync(path.join(ROOT, 'success-stories.html'), `${normalizeGeneratedHtml(hubPage()).trim()}\n`, 'utf8');
 
 console.log(`Generated ${stories.length} story templates and success-stories.html`);

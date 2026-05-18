@@ -12,7 +12,7 @@ const {
 } = require('./location-data');
 
 const ROOT = path.resolve(__dirname, '..');
-const BASE_URL = 'https://real-estate-investor-samuel.vercel.app';
+const BASE_URL = 'https://floridacashhousebuyers.com';
 const GA_TAG = `    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPPVMLREZ9"></script>
     <script>
@@ -58,7 +58,10 @@ const situationCountyHubFile = (situation) => `${situation.slug}-counties.html`;
 const countyCommercialFile = (countyName) => `${slugify(countyName)}-county-commercial-properties.html`;
 const cityCommercialFile = (page) => `${page.file.replace('.html', '')}-commercial-properties.html`;
 const labelFromHref = (href) => href.replace('.html', '').split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
-const write = (file, contents) => fs.writeFileSync(path.join(ROOT, file), `${contents.trim()}\n`, 'utf8');
+const write = (file, contents) => {
+  const normalized = file.endsWith('.html') ? normalizeGeneratedHtml(contents) : contents;
+  fs.writeFileSync(path.join(ROOT, file), `${normalized.trim()}\n`, 'utf8');
+};
 const replaceCounty = (template, countyName) => template.replace(/\{county\}/g, countyName);
 const formatCounty = (countyName) => `${countyName} County`;
 const editorialImageFile = (slug) => `images/editorial/${slug}-editorial.png`;
@@ -78,6 +81,45 @@ const commercialRegionThemes = {
   'North Florida': 'estate-driven portfolios, distance ownership, local leasing friction, and older commercial assets that need work',
   Panhandle: 'distance ownership, storm wear, lease risk, and owners who want a more direct commercial exit'
 };
+
+function toPublicPath(value) {
+  const hashIndex = value.indexOf('#');
+  const hash = hashIndex >= 0 ? value.slice(hashIndex) : '';
+  const withoutHash = hashIndex >= 0 ? value.slice(0, hashIndex) : value;
+  const queryIndex = withoutHash.indexOf('?');
+  const query = queryIndex >= 0 ? withoutHash.slice(queryIndex) : '';
+  const pathname = queryIndex >= 0 ? withoutHash.slice(0, queryIndex) : withoutHash;
+  const cleanedPath = pathname.replace(/^\.?\//, '');
+
+  let route = cleanedPath;
+  if (route === 'index.html') {
+    route = '';
+  } else if (route.endsWith('.html')) {
+    route = route.slice(0, -'.html'.length);
+  } else if (route.endsWith('.htm')) {
+    route = route.slice(0, -'.htm'.length);
+  }
+
+  return `${route ? `/${route}` : '/'}${query}${hash}`;
+}
+
+function canonicalUrlFromFile(file) {
+  return `${BASE_URL}${toPublicPath(file)}`;
+}
+
+function normalizeGeneratedHtml(html) {
+  return html.replace(/href=(["'])([^"']+)\1/g, (match, quote, href) => {
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(href)) {
+      return match;
+    }
+
+    if (!/\.html?(?:[?#]|$)/i.test(href)) {
+      return match;
+    }
+
+    return `href=${quote}${toPublicPath(href)}${quote}`;
+  });
+}
 
 function schemaScript(items) {
   return items.map((item) => `    <script type="application/ld+json">${JSON.stringify(item)}</script>`).join('\n');
@@ -209,7 +251,7 @@ function breadcrumbSchema(items) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${BASE_URL}/${item.href}`
+      item: canonicalUrlFromFile(item.href)
     }))
   };
 }
@@ -731,7 +773,7 @@ function cityCommercialFitCards(page, county) {
 function countyPage(county) {
   const region = regionProfiles[county.region];
   const keyword = `sell my home fast in ${county.name} County`;
-  const canonical = `${BASE_URL}/${countyFile(county.name)}`;
+  const canonical = canonicalUrlFromFile(countyFile(county.name));
   const description = `Need to sell fast in ${county.name} County, Florida? Explore as-is sale options, common seller situations, and direct-sale paths for a simpler closing.`;
   const nearby = nearbyCountyLinks(county);
   const marketLinks = connectedMarkets(county);
@@ -971,7 +1013,7 @@ function countySituationPage(county, situation) {
   const countyLabel = formatCounty(county.name);
   const region = regionProfiles[county.region];
   const canonicalFile = countySituationFile(county.name, situation);
-  const canonical = `${BASE_URL}/${canonicalFile}`;
+  const canonical = canonicalUrlFromFile(canonicalFile);
   const description = replaceCounty(situation.descriptionTemplate, county.name);
   const faqs = countySituationFaqs(county, situation);
   const marketLinks = connectedMarkets(county);
@@ -1131,7 +1173,7 @@ ${footer()}`
 
 function areaPage(page) {
   const label = areaLabel(page);
-  const canonical = `${BASE_URL}/${page.file}`;
+  const canonical = canonicalUrlFromFile(page.file);
   const faqs = areaFaqs(page);
   const countyLinks = page.counties.map((name) => ({ href: countyFile(name), label: `${name} County` }));
   const isRegion = areaIsRegion(page);
@@ -1460,7 +1502,7 @@ function commercialHubPage() {
     }, {})
   );
   const faqs = statewideCommercialFaqs();
-  const canonical = `${BASE_URL}/${COMMERCIAL_HUB_FILE}`;
+  const canonical = canonicalUrlFromFile(COMMERCIAL_HUB_FILE);
   const description =
     'We buy commercial properties in Florida, including multi-family, mixed-use, retail, office, flex, warehouse, and other value-add assets. Browse county and city commercial pages.';
   const schemaItems = [
@@ -1590,7 +1632,7 @@ ${footer()}`
 function countyCommercialPage(county) {
   const countyLabel = formatCounty(county.name);
   const canonicalFile = countyCommercialFile(county.name);
-  const canonical = `${BASE_URL}/${canonicalFile}`;
+  const canonical = canonicalUrlFromFile(canonicalFile);
   const description = `Need to sell commercial real estate in ${countyLabel}, Florida? We buy multi-family, mixed-use, retail, office, flex, warehouse, and other commercial property with a direct-sale path.`;
   const faqs = countyCommercialFaqs(county);
   const cityLinks = cityCommercialLinksForCounty(county.name);
@@ -1772,7 +1814,7 @@ function cityCommercialPage(page) {
   const primaryCounty = findCounty(page.counties[0]);
   const countyLabel = formatCounty(primaryCounty.name);
   const canonicalFile = cityCommercialFile(page);
-  const canonical = `${BASE_URL}/${canonicalFile}`;
+  const canonical = canonicalUrlFromFile(canonicalFile);
   const description = `Need to sell commercial real estate in ${label}, Florida? We buy multi-family, mixed-use, retail, office, flex, warehouse, and other commercial property with a direct-sale path tied to ${countyLabel}.`;
   const faqs = cityCommercialFaqs(page, primaryCounty);
   const nearbyCommercialMarkets = dedupeLinks(
@@ -1938,7 +1980,7 @@ function countyHub() {
       return acc;
     }, {})
   );
-  const canonical = `${BASE_URL}/counties.html`;
+  const canonical = canonicalUrlFromFile('counties.html');
   const description = 'Browse all 67 Florida county pages for local as-is sale guidance, seller situations, and direct-sale options.';
   const schemaItems = [
     webPageSchema('Florida County Directory', canonical, description),
@@ -2018,7 +2060,7 @@ ${footer()}`
 
 function situationCountyHubPage(situation) {
   const canonicalFile = situationCountyHubFile(situation);
-  const canonical = `${BASE_URL}/${canonicalFile}`;
+  const canonical = canonicalUrlFromFile(canonicalFile);
   const priority = (priorityCountiesBySituation[situation.slug] || [])
     .map((name) => {
       const county = counties.find((item) => item.name === name);
@@ -2106,7 +2148,7 @@ function sitemapXml() {
     .filter((file) => file.endsWith('.html') && file !== 'video-tests.html')
     .sort();
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${files
-    .map((file) => `  <url>\n    <loc>${BASE_URL}/${file}</loc>\n  </url>`)
+    .map((file) => `  <url>\n    <loc>${canonicalUrlFromFile(file)}</loc>\n  </url>`)
     .join('\n')}\n</urlset>`;
 }
 

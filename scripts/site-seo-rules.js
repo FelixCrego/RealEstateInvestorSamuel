@@ -126,7 +126,19 @@ function parseCityCommercialPage(file) {
 }
 
 function canonicalUrlForFile(file) {
-  return file === 'index.html' ? `${BASE_URL}/` : `${BASE_URL}/${file}`;
+  if (file === 'index.html') {
+    return `${BASE_URL}/`;
+  }
+
+  if (file.endsWith('.html')) {
+    return `${BASE_URL}/${file.slice(0, -'.html'.length)}`;
+  }
+
+  if (file.endsWith('.htm')) {
+    return `${BASE_URL}/${file.slice(0, -'.htm'.length)}`;
+  }
+
+  return `${BASE_URL}/${file}`;
 }
 
 function articleTypeForFile(file) {
