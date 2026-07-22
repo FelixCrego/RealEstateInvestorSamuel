@@ -966,8 +966,9 @@
       "propertyType": "URL-prefix"
     },
     "ga4SearchConsoleLink": {
-      "status": "pending_admin_link",
-      "detail": "Correct GA4 and Search Console properties verified; product link must be completed in Google Analytics Admin."
+      "status": "blocked_verified_owner_required",
+      "detail": "GA4 is active and the Florida Search Console property is accessible, but Google Analytics only offers properties for which this Google login is a verified Search Console owner. The Florida property did not appear in the eligible-property selector.",
+      "requiredAction": "Verify this Google login as an owner of https://floridacashhousebuyers.com/ in Search Console, then complete GA4 Admin > Product links > Search Console links."
     }
   }
 }
