@@ -27,6 +27,10 @@
       "destination": "/api/seohub"
     },
     {
+      "source": "/seohub/",
+      "destination": "/api/seohub"
+    },
+    {
       "source": "/seohub/:path*",
       "destination": "/api/seohub?path=:path*"
     }
