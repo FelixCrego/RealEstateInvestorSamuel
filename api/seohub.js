@@ -1,5 +1,5 @@
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
-const ROOT=path.join(process.cwd(),'private','seohub'),COOKIE='fchb_seohub_session',PASSWORD_HASH='fd05eb151e2f31ff9ac88d4e9b7b9778babcb7ad0bb6dc9db5f113f3bf126474';
+const ROOT=path.join(process.cwd(),'private','seohub'),COOKIE='fchb_seohub_session',PASSWORD_HASH=process.env.SEOHUB_PASSWORD_HASH||'';
 const TYPES={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.csv':'text/csv; charset=utf-8'};
 const token=()=>crypto.createHash('sha256').update('fchb-seohub-session:'+PASSWORD_HASH).digest('hex');
 function cookies(req){return Object.fromEntries(String(req.headers.cookie||'').split(';').map(x=>x.trim()).filter(Boolean).map(x=>{const i=x.indexOf('=');return [x.slice(0,i),decodeURIComponent(x.slice(i+1))]}))}
