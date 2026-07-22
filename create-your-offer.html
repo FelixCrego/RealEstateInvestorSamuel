@@ -979,6 +979,7 @@
       if (typeof window.submitLeadCapture === 'function') {
         try {
           if (window.sessionStorage.getItem(leadSentKey) !== '1') {
+            if (typeof window.gtag === 'function') window.gtag('event', 'lead_form_submit', { form_name: 'Offer Calculator', page_path: window.location.pathname });
             await window.submitLeadCapture({
               source: 'offer-calculator',
               formName: 'Offer Calculator Form',
@@ -1001,6 +1002,7 @@
                 situation: (new URLSearchParams(window.location.search).get('situation') || '').trim()
               }
             });
+            if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_name: 'Offer Calculator', page_path: window.location.pathname });
             window.sessionStorage.setItem(leadSentKey, '1');
           }
         } catch {

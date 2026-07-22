@@ -1,4 +1,23 @@
 (function () {
+  const trackEvent = (eventName, params = {}) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params);
+    }
+  };
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('tel:')) {
+      trackEvent('phone_click', { link_url: href, page_path: window.location.pathname });
+    } else if (href.startsWith('mailto:')) {
+      trackEvent('email_click', { link_url: href, page_path: window.location.pathname });
+    } else if (href.includes('create-your-offer')) {
+      trackEvent('offer_cta_click', { link_url: link.href, page_path: window.location.pathname, link_text: (link.textContent || '').trim() });
+    }
+  });
+
   const pathname = window.location.pathname.split('/').pop() || 'index.html';
   if (pathname === 'create-your-offer.html') {
     return;
@@ -238,6 +257,7 @@
       feedback.textContent = 'Sending your details to Felix now...';
 
       try {
+        trackEvent('lead_form_submit', { form_name: 'Sticky Lead Widget', page_path: window.location.pathname });
         await submitLeadCapture({
           source: 'sticky-lead-widget',
           formName: 'Sticky Lead Widget',
@@ -251,11 +271,13 @@
           }
         });
 
+        trackEvent('generate_lead', { form_name: 'Sticky Lead Widget', page_path: window.location.pathname, situation: situationLabel, zip });
         feedback.textContent = 'Submitted. Felix received your details. Opening the detailed offer page...';
         window.setTimeout(() => {
           goToOfferPage();
         }, 900);
       } catch (error) {
+        trackEvent('lead_form_error', { form_name: 'Sticky Lead Widget', page_path: window.location.pathname });
         feedback.textContent = error && error.message
           ? `${error.message} Please try again or call (407) 349-7118.`
           : 'We could not confirm your submission. Please try again or call (407) 349-7118.';

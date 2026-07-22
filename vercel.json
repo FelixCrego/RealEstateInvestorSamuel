@@ -3,5 +3,22 @@
   "cleanUrls": true,
   "git": {
     "deploymentEnabled": false
-  }
+  },
+  "redirects": [
+    {
+      "source": "/offer-calculator",
+      "destination": "/create-your-offer",
+      "permanent": true
+    },
+    {
+      "source": "/cash-offer",
+      "destination": "/create-your-offer",
+      "permanent": true
+    },
+    {
+      "source": "/get-offer",
+      "destination": "/create-your-offer",
+      "permanent": true
+    }
+  ]
 }
