@@ -20,5 +20,35 @@
       "destination": "/create-your-offer",
       "permanent": true
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/seohub",
+      "destination": "/api/seohub"
+    },
+    {
+      "source": "/seohub/:path*",
+      "destination": "/api/seohub?path=:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/seohub/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive, nosnippet"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store, private"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/seohub.js": {
+      "includeFiles": "private/seohub/**"
+    }
+  }
 }

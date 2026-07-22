@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-07-22T19:45:52.787Z",
+  "status": "not_connected",
+  "profile": {
+    "name": "Florida Cash House Buyers",
+    "category": "Real estate consultant",
+    "website": "https://floridacashhousebuyers.com/",
+    "googlePhone": "Not connected",
+    "sitePhone": "Not connected",
+    "hoursSummary": "Not connected",
+    "reviews": 0,
+    "interactions": 0,
+    "daysSincePhoto": 0,
+    "description": ""
+  },
+  "actions": [
+    {
+      "name": "Open Business Profile Manager",
+      "detail": "Review business details, posts, photos, services, and reviews",
+      "query": "Florida Cash House Buyers Google Business Profile"
+    }
+  ],
+  "priorities": [
+    {
+      "priority": "high",
+      "title": "Connect the verified Google Business Profile",
+      "detail": "Live profile data is not yet wired into this SEO Brain."
+    }
+  ],
+  "calendar": [
+    {
+      "week": "Week 1",
+      "work": "Connect and validate the correct Florida Cash House Buyers profile before making recommendations."
+    }
+  ]
+}

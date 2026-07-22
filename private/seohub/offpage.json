@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-07-22T19:45:52.787Z",
+  "summary": {
+    "referringDomains": 0,
+    "knownBacklinks": 0,
+    "newLinks30d": 0,
+    "lostLinks30d": 0,
+    "citationCoverage": 0,
+    "citationConsistency": 0,
+    "toxicRisk": 0,
+    "outreachTargets": 12
+  },
+  "providers": [
+    {
+      "name": "Google Search Console",
+      "type": "search-performance",
+      "status": "not_connected",
+      "capabilities": [
+        "queries",
+        "pages",
+        "clicks",
+        "impressions",
+        "indexing",
+        "sitemaps"
+      ]
+    },
+    {
+      "name": "Google Analytics 4",
+      "type": "analytics",
+      "status": "not_connected",
+      "capabilities": [
+        "sessions",
+        "conversions",
+        "landing pages",
+        "engagement"
+      ]
+    },
+    {
+      "name": "Backlink Provider",
+      "type": "backlinks",
+      "status": "not_connected",
+      "capabilities": [
+        "referring domains",
+        "new/lost links",
+        "anchors",
+        "authority",
+        "spam risk"
+      ]
+    },
+    {
+      "name": "Citation Monitor",
+      "type": "citations",
+      "status": "active_manual",
+      "capabilities": [
+        "NAP consistency",
+        "directory coverage",
+        "duplicate detection"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "source": "Website",
+      "domain": "floridacashhousebuyers.com",
+      "status": "consistent",
+      "name": "Florida Cash House Buyers",
+      "phone": "",
+      "location": "Florida",
+      "url": "https://floridacashhousebuyers.com/",
+      "priority": "core"
+    },
+    {
+      "source": "Google Business Profile",
+      "domain": "google.com",
+      "status": "unchecked",
+      "name": "",
+      "phone": "",
+      "location": "",
+      "url": "",
+      "priority": "critical"
+    }
+  ],
+  "anchors": [],
+  "backlinks": [],
+  "competitors": [],
+  "opportunities": [
+    {
+      "type": "data-connection",
+      "priority": "critical",
+      "title": "Connect Search Console and GA4",
+      "detail": "Authorize live search and conversion data for the Florida property.",
+      "target": "Google integrations"
+    },
+    {
+      "type": "backlink-provider",
+      "priority": "high",
+      "title": "Connect backlink intelligence",
+      "detail": "Add a supported provider for referring-domain and competitor-gap data.",
+      "target": "DataForSEO / Ahrefs / Semrush"
+    }
+  ]
+}

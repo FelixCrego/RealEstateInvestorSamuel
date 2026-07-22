@@ -1,0 +1,973 @@
+{
+  "generatedAt": "2026-07-22T19:45:52.787Z",
+  "nextCycleAt": "2026-07-24T07:45:52.787Z",
+  "status": "observation_only",
+  "site": {
+    "health": 98,
+    "pages": 752,
+    "attention": 99,
+    "highPriority": 15,
+    "schemaCoverage": 97,
+    "clusters": 7,
+    "edges": 22742,
+    "orphans": 7,
+    "weakPages": 297
+  },
+  "gsc": {
+    "connected": false,
+    "property": "https://floridacashhousebuyers.com/",
+    "verification": "connection_required",
+    "lastSync": null,
+    "clicks": 0,
+    "impressions": 0,
+    "ctr": 0,
+    "position": null,
+    "queries": [],
+    "pages": [],
+    "daily": [],
+    "indexing": {
+      "known": 752,
+      "indexed": 0,
+      "notIndexed": 0
+    }
+  },
+  "leads": {
+    "storage": "Existing site lead pipeline",
+    "status": "unchanged",
+    "lastSubmission": null
+  },
+  "alerts": [
+    {
+      "severity": "medium",
+      "title": "Observation-only safeguards active",
+      "detail": "The SEO Brain can inspect and recommend but cannot modify public pages.",
+      "action": "Open Action Center"
+    },
+    {
+      "severity": "high",
+      "title": "99 pages have review signals",
+      "detail": "Signals are recommendations only; no public files were changed.",
+      "action": "Open Action Center"
+    },
+    {
+      "severity": "medium",
+      "title": "297 pages have weak authority signals",
+      "detail": "Review internal-link opportunities before approving changes.",
+      "action": "Open Link Intelligence"
+    }
+  ],
+  "opportunities": [
+    {
+      "priority": "critical",
+      "path": "/urgent-timeline.htm",
+      "title": "Redirecting...",
+      "score": 57,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Missing meta description \u00b7 0 H1 elements \u00b7 Content depth \u00b7 Weak internal linking",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/video-tests.html",
+      "title": "Video Motion Tests",
+      "score": 71,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Content depth \u00b7 Weak internal linking",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/alachua-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Alachua County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/baker-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Baker County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/bradford-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Bradford County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/brevard-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Brevard County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/broward-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Broward County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/calhoun-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Calhoun County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/charlotte-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Charlotte County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/citrus-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Citrus County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/clay-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Clay County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/collier-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Collier County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/columbia-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Columbia County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/daytona-beach-commercial-properties.html",
+      "title": "We Buy Commercial Property in Daytona Beach, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "critical",
+      "path": "/desoto-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in DeSoto County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/dixie-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Dixie County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/duval-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Duval County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/escambia-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Escambia County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/flagler-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Flagler County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/fort-lauderdale-commercial-properties.html",
+      "title": "We Buy Commercial Property in Fort Lauderdale, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/franklin-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Franklin County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/gadsden-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Gadsden County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/gainesville-commercial-properties.html",
+      "title": "We Buy Commercial Property in Gainesville, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/gilchrist-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Gilchrist County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/glades-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Glades County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/gulf-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Gulf County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/hamilton-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Hamilton County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/hardee-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Hardee County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/hendry-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Hendry County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/hernando-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Hernando County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/highlands-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Highlands County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/hillsborough-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Hillsborough County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/holmes-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Holmes County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/indian-river-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Indian River County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/jackson-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Jackson County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/jacksonville-commercial-properties.html",
+      "title": "We Buy Commercial Property in Jacksonville, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/jefferson-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Jefferson County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/lafayette-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Lafayette County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/lake-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Lake County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/leon-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Leon County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/levy-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Levy County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/liberty-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Liberty County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/madison-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Madison County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/manatee-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Manatee County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/marion-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Marion County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/martin-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Martin County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/miami-dade-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Miami-Dade County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/monroe-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Monroe County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/nassau-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Nassau County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "high",
+      "path": "/okaloosa-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Okaloosa County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/okeechobee-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Okeechobee County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/orange-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Orange County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/osceola-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Osceola County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/palm-beach-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Palm Beach County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/pasco-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Pasco County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/pinellas-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Pinellas County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/polk-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Polk County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/port-st-lucie-commercial-properties.html",
+      "title": "We Buy Commercial Property in Port St Lucie, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/putnam-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Putnam County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/santa-rosa-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Santa Rosa County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/sarasota-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Sarasota County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/sell-house-fast-before-relocating-miami-miami-dade-county.html",
+      "title": "How to Sell a House Fast Before Relocating in Miami and Miami-Dade County | By Samuel",
+      "score": 86,
+      "cluster": "location hub",
+      "reason": "Title length \u00b7 Content depth",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/seminole-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Seminole County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/st-johns-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in St. Johns County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/st-lucie-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in St. Lucie County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/st-petersburg-commercial-properties.html",
+      "title": "We Buy Commercial Property in St Petersburg, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/sumter-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Sumter County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/suwannee-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Suwannee County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/tallahassee-commercial-properties.html",
+      "title": "We Buy Commercial Property in Tallahassee, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/taylor-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Taylor County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/union-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Union County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/volusia-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Volusia County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/wakulla-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Wakulla County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/walton-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Walton County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/washington-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Washington County, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "situation",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/west-palm-beach-commercial-properties.html",
+      "title": "We Buy Commercial Property in West Palm Beach, FL | Multi-Family and More",
+      "score": 86,
+      "cluster": "location",
+      "reason": "Title length \u00b7 Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/about-us.html",
+      "title": "About Us | Florida Cash House Buyers",
+      "score": 93,
+      "cluster": "trust",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/bay-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Bay County, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/blog.html",
+      "title": "Samuel's Florida Home Selling Blog | Florida Cash House Buyers",
+      "score": 93,
+      "cluster": "guide",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/cape-coral-commercial-properties.html",
+      "title": "We Buy Commercial Property in Cape Coral, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/create-your-offer.html",
+      "title": "Florida Home Value & Cash Offer Range | Florida Cash House Buyers",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/deltona-commercial-properties.html",
+      "title": "We Buy Commercial Property in Deltona, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/kissimmee-commercial-properties.html",
+      "title": "We Buy Commercial Property in Kissimmee, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/lake-county-probate.html",
+      "title": "Sell a Probate House in Lake County, FL | As-Is Cash Offer",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/lake-county.html",
+      "title": "We Buy Houses in Lake County, FL | Local Cash Home Buyer",
+      "score": 93,
+      "cluster": "location hub",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/lakeland-commercial-properties.html",
+      "title": "We Buy Commercial Property in Lakeland, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/lee-county-commercial-properties.html",
+      "title": "We Buy Commercial Property in Lee County, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/melbourne-commercial-properties.html",
+      "title": "We Buy Commercial Property in Melbourne, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/miami-commercial-properties.html",
+      "title": "We Buy Commercial Property in Miami, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/orlando-commercial-properties.html",
+      "title": "We Buy Commercial Property in Orlando, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/pensacola-commercial-properties.html",
+      "title": "We Buy Commercial Property in Pensacola, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/sarasota-commercial-properties.html",
+      "title": "We Buy Commercial Property in Sarasota, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/sell-house-fast-with-major-repairs-orlando-orange-county.html",
+      "title": "How to Sell a House Fast With Major Repairs in Orlando and Orange County | By Samuel",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Title length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/sell-inherited-house-fast-orlando-orange-county.html",
+      "title": "How to Sell an Inherited House Fast in Orlando and Orange County | By Samuel",
+      "score": 93,
+      "cluster": "location hub",
+      "reason": "Title length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/seminole-county-probate.html",
+      "title": "Sell a Probate House in Seminole County, FL | Cash Offer",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/stop-foreclosure-fast-pembroke-pines-broward-county.html",
+      "title": "How to Stop Foreclosure Fast in Pembroke Pines and Broward County | By Samuel",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Title length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/tampa-commercial-properties.html",
+      "title": "We Buy Commercial Property in Tampa, FL | Multi-Family and More",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/vacant-home-costs.html",
+      "title": "Florida Insurance Crisis 2026 Guide | Vacant Home Costs",
+      "score": 93,
+      "cluster": "situation",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    },
+    {
+      "priority": "medium",
+      "path": "/we-buy-commercial-properties.html",
+      "title": "We Buy Commercial Properties in Florida | County and City Pages",
+      "score": 93,
+      "cluster": "location",
+      "reason": "Meta description length",
+      "action": "Review recommendation before any public change"
+    }
+  ],
+  "integrations": {
+    "ga4": {
+      "status": "verified",
+      "propertyName": "Florida Cash House Buyers",
+      "propertyId": "532392415",
+      "streamName": "FCHB Website",
+      "streamId": "14345883151",
+      "measurementId": "G-KPPVMLREZ9",
+      "streamUrl": "https://www.floridacashhousebuyers.com/",
+      "receivingTraffic": true
+    },
+    "searchConsole": {
+      "status": "verified",
+      "property": "https://floridacashhousebuyers.com/",
+      "propertyType": "URL-prefix"
+    },
+    "ga4SearchConsoleLink": {
+      "status": "pending_admin_link",
+      "detail": "Correct GA4 and Search Console properties verified; product link must be completed in Google Analytics Admin."
+    }
+  }
+}
