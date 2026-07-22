@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-07-22T19:45:52.787Z",
-  "status": "not_connected",
+  "status": "linked",
   "profile": {
     "name": "Florida Cash House Buyers",
     "category": "Real estate consultant",
@@ -11,7 +11,11 @@
     "reviews": 0,
     "interactions": 0,
     "daysSincePhoto": 0,
-    "description": ""
+    "description": "",
+    "locationId": "17991537861163488716",
+    "address": "12335 N Putney Ct, Leesburg, FL 34788-2958, US",
+    "verification": "verified",
+    "analyticsLink": "linked"
   },
   "actions": [
     {
@@ -22,15 +26,15 @@
   ],
   "priorities": [
     {
-      "priority": "high",
-      "title": "Connect the verified Google Business Profile",
-      "detail": "Live profile data is not yet wired into this SEO Brain."
+      "priority": "medium",
+      "title": "Authorize the Business Profile API for automated metrics",
+      "detail": "The verified profile is natively linked to GA4. Automated reviews, calls, directions, and interaction metrics still require Google Business Profile API credentials."
     }
   ],
   "calendar": [
     {
       "week": "Week 1",
-      "work": "Connect and validate the correct Florida Cash House Buyers profile before making recommendations."
+      "work": "Validate profile fields, categories, services, website URL, phone, hours, photos, reviews, and UTM tracking."
     }
   ]
 }

@@ -14,10 +14,10 @@
     "weakPages": 297
   },
   "gsc": {
-    "connected": false,
+    "connected": true,
     "property": "https://floridacashhousebuyers.com/",
-    "verification": "connection_required",
-    "lastSync": null,
+    "verification": "verified_owner",
+    "lastSync": "2026-07-22T20:24:00.000Z",
     "clicks": 0,
     "impressions": 0,
     "ctr": 0,
@@ -29,7 +29,8 @@
       "known": 752,
       "indexed": 0,
       "notIndexed": 0
-    }
+    },
+    "dataStatus": "api_authorization_required"
   },
   "leads": {
     "storage": "Existing site lead pipeline",
@@ -961,14 +962,14 @@
       "receivingTraffic": true
     },
     "searchConsole": {
-      "status": "verified",
+      "status": "verified_owner",
       "property": "https://floridacashhousebuyers.com/",
       "propertyType": "URL-prefix"
     },
     "ga4SearchConsoleLink": {
-      "status": "blocked_verified_owner_required",
-      "detail": "GA4 is active and the Florida Search Console property is accessible, but Google Analytics only offers properties for which this Google login is a verified Search Console owner. The Florida property did not appear in the eligible-property selector.",
-      "requiredAction": "Verify this Google login as an owner of https://floridacashhousebuyers.com/ in Search Console, then complete GA4 Admin > Product links > Search Console links."
+      "status": "linked",
+      "detail": "Native GA4 to Search Console link created for https://floridacashhousebuyers.com/ and the FCHB Website stream.",
+      "linkedAt": "2026-07-22T20:24:00.000Z"
     }
   }
 }
