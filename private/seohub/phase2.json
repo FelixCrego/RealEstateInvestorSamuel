@@ -1,9 +1,9 @@
 {
   "summary": {
-    "pages": 752,
+    "pages": 753,
     "edges": 22742,
-    "orphans": 7,
-    "weakPages": 297,
+    "orphans": 8,
+    "weakPages": 298,
     "clusters": 7,
     "avgAuthority": 43
   },
@@ -28,11 +28,11 @@
     },
     {
       "name": "location",
-      "pages": 41,
-      "health": 95,
-      "avgWords": 1505,
-      "avgLinks": 49.8,
-      "weakPages": 2,
+      "pages": 42,
+      "health": 93,
+      "avgWords": 1469,
+      "avgLinks": 48.6,
+      "weakPages": 3,
       "topPage": "/situations.html"
     },
     {
@@ -114132,6 +114132,13 @@
       "cluster": "situation",
       "incoming": 2,
       "outgoing": 44
+    },
+    {
+      "title": "googlea935c44ef8292626.html",
+      "path": "/googlea935c44ef8292626.html",
+      "cluster": "location",
+      "incoming": 0,
+      "outgoing": 0
     },
     {
       "title": "Sell Fast in Gulf County During Divorce",

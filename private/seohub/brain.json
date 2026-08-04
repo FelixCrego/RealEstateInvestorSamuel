@@ -1,17 +1,26 @@
 {
-  "generatedAt": "2026-07-22T19:45:52.787Z",
+  "generatedAt": "2026-08-04T19:57:40.415Z",
   "healthScore": 98,
-  "totalPages": 752,
+  "totalPages": 753,
   "cleanPages": 653,
-  "needsAttention": 99,
+  "needsAttention": 100,
   "highPriority": 15,
   "decay": {
-    "high": 1,
+    "high": 2,
     "medium": 75,
     "low": 676
   },
   "schemaCoverage": 97,
   "recommendations": [
+    {
+      "priority": "critical",
+      "path": "/googlea935c44ef8292626.html",
+      "title": "googlea935c44ef8292626.html",
+      "score": 50,
+      "cluster": "location",
+      "reason": "Missing title · Missing meta description · Missing canonical · 0 H1 elements · Content depth · Weak internal linking",
+      "action": "Review recommendation before any public change"
+    },
     {
       "priority": "critical",
       "path": "/urgent-timeline.htm",
@@ -139,7 +148,7 @@
       "action": "Review recommendation before any public change"
     },
     {
-      "priority": "critical",
+      "priority": "high",
       "path": "/desoto-county-commercial-properties.html",
       "title": "We Buy Commercial Property in DeSoto County, FL | Multi-Family and More",
       "score": 86,
@@ -268,15 +277,6 @@
       "priority": "high",
       "path": "/hendry-county-commercial-properties.html",
       "title": "We Buy Commercial Property in Hendry County, FL | Multi-Family and More",
-      "score": 86,
-      "cluster": "situation",
-      "reason": "Title length · Meta description length",
-      "action": "Review recommendation before any public change"
-    },
-    {
-      "priority": "high",
-      "path": "/hernando-county-commercial-properties.html",
-      "title": "We Buy Commercial Property in Hernando County, FL | Multi-Family and More",
       "score": 86,
       "cluster": "situation",
       "reason": "Title length · Meta description length",

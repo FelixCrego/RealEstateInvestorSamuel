@@ -1,12 +1,12 @@
 {
-  "total": 752,
+  "total": 753,
   "avgScore": 98,
-  "avgWords": 1302,
+  "avgWords": 1300,
   "clean": 653,
   "clusters": {
     "situation": 614,
     "location hub": 83,
-    "location": 41,
+    "location": 42,
     "story": 9,
     "guide": 3,
     "trust": 1,

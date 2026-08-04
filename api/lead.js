@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 function parseBody(req) {
   if (!req || req.body == null) {
     return null;
@@ -54,6 +56,49 @@ function formatLabel(key) {
     .replace(/\s+/g, ' ')
     .trim()
     .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+
+async function syncLeadToAgentOs(payload) {
+  const formKey = process.env.CRM_FORM_API_KEY;
+  const endpoint = process.env.AGENT_OS_LEAD_ENDPOINT || 'https://agents.floridacashhousebuyers.com/api/intake/lead';
+  if (!formKey) {
+    console.error('CRM_FORM_API_KEY is not configured; Agent OS sync skipped.');
+    return { ok: false, skipped: true };
+  }
+
+  const seed = crypto.createHash('sha256').update(`fchb-agent-os-signing-v1:${formKey}`).digest();
+  const privateKey = crypto.createPrivateKey({
+    key: Buffer.concat([Buffer.from('302e020100300506032b657004220420', 'hex'), seed]),
+    format: 'der',
+    type: 'pkcs8'
+  });
+  const body = JSON.stringify(payload);
+  let lastError = '';
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const timestamp = Date.now().toString();
+    const signature = crypto.sign(null, Buffer.from(`${timestamp}.${body}`), privateKey).toString('base64url');
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-fchb-timestamp': timestamp,
+          'x-fchb-signature': signature
+        },
+        body,
+        signal: AbortSignal.timeout(10000)
+      });
+      const result = await response.json().catch(() => ({}));
+      if (response.ok && result.ok) return { ok: true, leadId: result.leadId || null };
+      lastError = `HTTP ${response.status}: ${result.error || 'Unknown Agent OS response'}`;
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : String(error);
+    }
+    if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 350));
+  }
+  console.error('Florida Cash House Buyers Agent OS sync failed:', lastError);
+  return { ok: false, error: lastError };
 }
 
 module.exports = async (req, res) => {
@@ -147,5 +192,18 @@ module.exports = async (req, res) => {
     });
   }
 
-  return res.status(200).json({ ok: true });
+  const agentOs = await syncLeadToAgentOs({
+    source,
+    formName,
+    pageUrl,
+    pageTitle,
+    submittedAt,
+    fields: Object.fromEntries(normalizedFields)
+  });
+
+  return res.status(200).json({
+    ok: true,
+    agentOsSynced: agentOs.ok,
+    leadId: agentOs.leadId || null
+  });
 };

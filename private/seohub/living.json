@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-22T19:45:52.787Z",
+  "generatedAt": "2026-08-04T19:57:40.415Z",
   "mode": "observation-only",
   "cadenceHours": 36,
-  "nextCycleAt": "2026-07-24T07:45:52.787Z",
+  "nextCycleAt": "2026-08-06T07:57:40.415Z",
   "health": 98,
   "cycleStatus": "healthy",
   "safeguards": [
@@ -12,10 +12,17 @@
     "Every scan produces data files only"
   ],
   "checks": {
-    "scannedPages": 752
+    "scannedPages": 753
   },
   "applied": [],
   "approvalQueue": [
+    {
+      "path": "/googlea935c44ef8292626.html",
+      "issues": [
+        "Missing title · Missing meta description · Missing canonical · 0 H1 elements · Content depth · Weak internal linking"
+      ],
+      "risk": "critical"
+    },
     {
       "path": "/urgent-timeline.htm",
       "issues": [
@@ -119,7 +126,7 @@
       "issues": [
         "Title length · Meta description length"
       ],
-      "risk": "critical"
+      "risk": "high"
     },
     {
       "path": "/dixie-county-commercial-properties.html",
@@ -218,18 +225,11 @@
         "Title length · Meta description length"
       ],
       "risk": "high"
-    },
-    {
-      "path": "/hernando-county-commercial-properties.html",
-      "issues": [
-        "Title length · Meta description length"
-      ],
-      "risk": "high"
     }
   ],
   "totals": {
-    "pages": 752,
-    "pagesNeedingReview": 99,
+    "pages": 753,
+    "pagesNeedingReview": 100,
     "automaticFixes": 0,
     "healthyEndpoints": 3
   },
@@ -237,7 +237,7 @@
     {
       "path": "/seohub/",
       "changes": [
-        "Scanned 752 pages in observation-only mode",
+        "Scanned 753 pages in observation-only mode",
         "Mapped 22742 internal relationships"
       ]
     }

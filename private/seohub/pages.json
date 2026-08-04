@@ -5856,6 +5856,38 @@
     "linkGap": 0
   },
   {
+    "file": "googlea935c44ef8292626.html",
+    "path": "/googlea935c44ef8292626.html",
+    "url": "https://floridacashhousebuyers.com/googlea935c44ef8292626.html",
+    "title": "googlea935c44ef8292626.html",
+    "description": "",
+    "canonical": "",
+    "cluster": "location",
+    "primaryKeyword": "googlea935c44ef8292626 html",
+    "wordCount": 2,
+    "internalLinkCount": 0,
+    "h1Count": 0,
+    "h2Count": 0,
+    "schema": {
+      "article": false,
+      "faq": false,
+      "breadcrumb": false,
+      "organization": false
+    },
+    "issues": [
+      "Missing title",
+      "Missing meta description",
+      "Missing canonical",
+      "0 H1 elements",
+      "Content depth",
+      "Weak internal linking"
+    ],
+    "score": 50,
+    "decayRisk": "high",
+    "incoming": 0,
+    "linkGap": 8
+  },
+  {
     "file": "gulf-coast.html",
     "path": "/gulf-coast.html",
     "url": "https://floridacashhousebuyers.com/gulf-coast.html",
